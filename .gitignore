@@ -1,0 +1,72 @@
+# ── Data (never commit raw/interim; commit processed selectively) ──────────────
+data/raw/**
+!data/raw/.gitkeep
+data/interim/**
+!data/interim/.gitkeep
+data/external/**
+!data/external/.gitkeep
+*.zip
+*.tar.gz
+
+# ── Python ─────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg-link
+
+# ── Jupyter ─────────────────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# ── Virtual environments ────────────────────────────────────────────────────────
+.venv/
+venv/
+env/
+.env
+*.env
+
+# ── Secrets / credentials ───────────────────────────────────────────────────────
+*.kaggle
+kaggle.json
+.kaggle/
+secrets.yaml
+secrets.json
+
+# ── Model artifacts (large binaries — keep run bundles, skip raw checkpoints) ──
+artifacts/models/*.pkl
+artifacts/models/*.joblib
+artifacts/models/*.pt
+artifacts/models/*.pth
+artifacts/models/*.ckpt
+# Keep: artifacts/models/*.yaml (metadata)
+
+# ── Large logs ──────────────────────────────────────────────────────────────────
+*.log
+nohup.out
+
+# ── OS / IDE ────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.claude/
+*.swp
+*.swo
+
+# ── JAX/XLA cache ───────────────────────────────────────────────────────────────
+jax_cache/
+.jax_compilation_cache/
+
+# ── MLflow / W&B (if used locally) ─────────────────────────────────────────────
+mlruns/
+wandb/
+
+# ── Submission files (keep in artifacts/reports/) ──────────────────────────────
+submission.csv
