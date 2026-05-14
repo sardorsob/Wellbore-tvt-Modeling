@@ -23,6 +23,8 @@
 **Consequences:** May leave signal on the table if test files do include these columns.
 **Follow-up:** On first data load, log test file columns to `context/DECISIONS.md` and update this decision.
 
+**Follow-up verification (notebook `01_phase0_phase1_data_and_schema.ipynb`, Phase 1B):** Downloaded **Kaggle** test split (**3** wells in bundle checked). `get_test_column_names(data/raw/test/)` confirms **no** formation-depth columns in test headers. **Decision unchanged:** keep these columns **out** of any train/test-parity feature list; they may still be used in **train-only** analysis or models that explicitly drop them at inference. Re-verify if competition releases additional test files with different schemas.
+
 ---
 
 ## D003 — Validate by masking TVT_input in evaluation zone

@@ -7,6 +7,8 @@
 **Risk:** If Kaggle reindexes files, id mapping breaks.
 **Test:** Verify that all sample_submission ids resolve to valid rows in test horizontal_well files.
 
+**Verification (notebook `notebooks/eda/01_phase0_phase1_data_and_schema.ipynb`, Phase 1A):** **Passed.** For all **3** test wells, every `row_idx` appearing in `sample_submission.csv` for that well exists in the corresponding horizontal-well DataFrame index loaded with `load_horizontal_well()` (default CSV index preserved).
+
 ---
 
 ## A2 — TVT_input NaN marks evaluation zone
@@ -16,6 +18,8 @@
 **Risk:** Some NaN rows may be non-evaluation (data quality). Some non-NaN rows may be in the evaluation zone (partial reveal).
 **Test:** Count NaN in TVT_input vs. ids in sample_submission per well; they should match.
 
+**Verification (Phase 1D):** **Passed.** For each test well, the set of DataFrame indices where `TVT_input` is NaN equals exactly the set of `row_idx` values parsed from `sample_submission.csv` for that well.
+
 ---
 
 ## A3 — Formation columns absent in test
@@ -24,6 +28,8 @@
 **Basis:** Competition description: "These are marked as training-only."
 **Risk:** If they are available in test, we leave signal on the table.
 **Test:** Check test file column list on first data load; log to `context/DECISIONS.md`.
+
+**Verification (Phase 1B):** **Passed.** Union of column names across **all** test horizontal-well CSV headers (**3** wells in this download) contains **none** of `{ANCC, ASTNU, ASTNL, EGFDU, EGFDL, BUDA}`. Logged under D002 follow-up in `context/DECISIONS.md`. If Kaggle adds more test wells, re-run the header union check.
 
 ---
 

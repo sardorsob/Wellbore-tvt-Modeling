@@ -2,6 +2,9 @@
 
 ## [Unreleased]
 
+### Changed
+- Logged Phase 0–1 structural EDA results from `notebooks/eda/01_phase0_phase1_data_and_schema.ipynb` into `structure.md`, `ASSUMPTIONS.md`, `DECISIONS.md`, `DATASETS.md`, and `STATUS.md`.
+
 ### Added
 - Full repository scaffold per `rules_templet.md`
 - `requirements.txt` with JAX, NumpPyro, Flax, XGBoost, LightGBM, PyMC, ArviZ

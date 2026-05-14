@@ -1,7 +1,7 @@
 # Project Status
 
 **Last updated:** 2026-05-08
-**Current phase:** Setup / Data Exploration
+**Current phase:** Data Exploration — structural gate **complete**; geology/signal EDA next
 
 ---
 
@@ -15,17 +15,20 @@
 - [x] CLI scripts (download_data, train, predict, eval)
 - [x] Unit test stubs
 - [x] Notebook stubs (EDA through reporting)
+- [x] Download competition data (`python scripts/download_data.py`)
+- [x] Phase 0–1 EDA notebook (`notebooks/eda/01_phase0_phase1_data_and_schema.ipynb`) — counts, schema spot-check, 1A–1E
+- [x] Verify row index → submission id mapping (**A1** — pass)
+- [x] Verify TVT_input NaN rows ↔ submission ids (**A2** — pass)
+- [x] Check test file columns (**A3** / **D002** — formation columns absent in test; decision unchanged)
 
 ## In progress
 
-- [ ] Download competition data (`python scripts/download_data.py`)
-- [ ] Run EDA notebook (`notebooks/eda/01_data_exploration.ipynb`)
-- [ ] Verify row index → submission id mapping (Assumption A1)
-- [ ] Check test file columns (Assumption A3 / Decision D002)
+- [ ] Phase 2 geological / domain EDA (`notebooks/eda/02_phase2_geological_domain.ipynb`)
+- [ ] Export artifact figures per `CURSOR_RULES.md`
 
 ## Next up
 
-1. Complete EDA → update `context/structure.md` with findings
+1. Phase 2 notebook (TVT vs MD, GR, typewell correlation, XY, dip) → figures under `artifacts/figures/`
 2. Build and validate interpolation baseline
 3. Train XGBoost with hand-crafted features
 4. Set up Bayesian GP (NumpPyro)

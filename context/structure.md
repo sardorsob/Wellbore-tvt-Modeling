@@ -47,8 +47,10 @@ Wellbore-tvt-Modeling/
 │
 ├── notebooks/
 │   ├── eda/
-│   │   ├── 01_data_exploration.ipynb  → load data, schema checks, distributions
-│   │   └── 02_feature_engineering.ipynb → feature analysis, typewell correlation
+│   │   ├── 01_phase0_phase1_data_and_schema.ipynb → download verify + schema / ID / eval-zone checks
+│   │   ├── 02_phase2_geological_domain.ipynb      → TVT/GR/typewell/spatial (stub)
+│   │   ├── 03_phase3_feature_signal.ipynb           → feature correlations / lags (stub)
+│   │   └── 04_phase4_validation.ipynb             → CV + baselines (stub)
 │   ├── modeling/
 │   │   ├── 03_baseline.ipynb          → interpolation baseline + CV
 │   │   ├── 04_classical_ml.ipynb      → XGBoost / LightGBM
@@ -109,10 +111,12 @@ Wellbore-tvt-Modeling/
 ## ARTIFACT INDEX
 
 ### Figures
-*(populated as notebooks are run)*
+*(Phase 0–1 structural checks produced in-notebook tables only; export PNGs per `CURSOR_RULES.md` when Phase 2 plotting runs.)*
 
 ### Tables
 *(populated as notebooks are run)*
+
+- **In-notebook only (01 Phase 0–1):** `zone_df`-style eval-zone summary and weighted missingness (`miss_summary`) — reproduce from `notebooks/eda/01_phase0_phase1_data_and_schema.ipynb`. Optional export: `artifacts/tables/eda__phase01_missingness__YYYY-MM-DD.csv` when saved from notebook.
 
 ### Models
 *(populated as training runs complete)*
@@ -121,22 +125,51 @@ Wellbore-tvt-Modeling/
 
 ## RESULTS LOG
 
-### notebooks/eda/01_data_exploration.ipynb
-**Status:** Not yet run — stub only.
-**Purpose:** Load all train/test wells; inspect schemas; plot GR distributions; verify id mapping.
+### notebooks/eda/01_phase0_phase1_data_and_schema.ipynb
+**Status:** **Run** — Phase 0–1 checks completed on downloaded Kaggle data (outputs captured below and in `context/ASSUMPTIONS.md` / `DECISIONS.md`).
+**Purpose:** Verify download counts; schema spot-check; Assumption A1 ID mapping; D002 formation columns; eval-zone layout (1C–1D); missingness audit (1E).
 **Inputs:** `data/raw/train/`, `data/raw/test/`, `data/raw/sample_submission.csv`
-**Outputs:** TBD
-**Key findings:** TBD
-**Next steps:** Complete EDA then move to feature engineering.
+
+**Findings (concise):**
+
+| Item | Result |
+|---|---|
+| Train wells | **773** (`discover_wells(train/)`) |
+| Test wells | **3** |
+| `sample_submission.csv` rows | **14,151** (= total eval-zone rows to predict) |
+| Example train horizontal columns | `MD, X, Y, Z, ANCC, ASTNU, ASTNL, EGFDU, EGFDL, BUDA, TVT, GR, TVT_input` (+ `row_idx` added by loader). Example typewell: `TVT, GR, Geology`. |
+| Phase 1A (A1) | **Pass:** every submission `row_idx` exists on the matching test horizontal-well index. |
+| Phase 1B (A3 / D002) | **Pass:** no formation columns `{ANCC, ASTNU, ASTNL, EGFDU, EGFDL, BUDA}` in test CSV headers. |
+| Phase 1C — eval zone shape | **773 / 773** wells: `nan_index_contiguous == True`, `nan_index_gaps == 0`. **100%** of wells satisfy `max(MD_known) ≤ min(MD_eval)` (trailing MD block after known zone). Per-well `eval_frac` ranges roughly **0.65–0.81** (eval-zone fraction of rows). |
+| Phase 1D (A2) | **Pass:** rows with `TVT_input` NaN match submission indices exactly per test well. |
+| Phase 1E — missingness (weighted mean across **all train rows**) | `TVT_input`: **~74.3%** missing overall (expected: NaN in eval zone only). `GR`: **~29.6%** all rows; **~23.9%** in known zone; **~31.6%** in eval zone. `ANCC`: **~0.90%** missing (equal in known vs eval). `EGFDL`: **~0.12%** missing. All other listed trajectory/target/formation columns in audit: **0%** missing in aggregate. |
+
+**Outputs:** Context updates (this file, ASSUMPTIONS, DECISIONS, DATASETS, STATUS); figures not yet exported.
+**Next steps:** Phase 2 notebook — TVT vs MD, GR, typewell correlation, spatial XY, dip proxies; save figures under `artifacts/figures/` per naming convention.
 
 ---
 
-### notebooks/eda/02_feature_engineering.ipynb
-**Status:** Not yet run — stub only.
-**Purpose:** Build and analyze feature set; typewell GR correlation; lag/rolling features.
+### notebooks/eda/02_phase2_geological_domain.ipynb
+**Status:** Stub — Phase 2 (geology / GR / typewell / spatial / dip).
+**Purpose:** TVT vs MD, GR distributions, typewell correlation, XY scatter, dTVT/dMD.
 **Inputs:** `data/raw/train/`, `data/raw/test/`
 **Outputs:** TBD
-**Next steps:** Feed validated features into modeling notebooks.
+
+---
+
+### notebooks/eda/03_phase3_feature_signal.ipynb
+**Status:** Stub — Phase 3 (feature correlations, lag analysis, train/test drift).
+**Purpose:** Correlate engineered features with TVT; lag-1 residual analysis.
+**Inputs:** Train/processed features via `src/preprocessing/features.py`
+**Outputs:** TBD
+
+---
+
+### notebooks/eda/04_phase4_validation.ipynb
+**Status:** Stub — Phase 4 (leave-one-well-out CV + baseline benchmarks).
+**Purpose:** Lock validation protocol; interpolation vs naive mean RMSE.
+**Inputs:** `src/modeling/baseline.py`, configs
+**Outputs:** TBD
 
 ---
 
@@ -178,5 +211,5 @@ Wellbore-tvt-Modeling/
 
 ## CURRENT STATUS
 
-**Phase:** Repository setup complete. Awaiting data download and EDA.
-**Next action:** `python scripts/download_data.py` then run `notebooks/eda/01_data_exploration.ipynb`.
+**Phase:** Phase 0–1 **EDA structural verification complete** on local download. Geological / signal EDA (Phase 2 notebook) not started.
+**Next action:** Run `notebooks/eda/02_phase2_geological_domain.ipynb`; export plots to `artifacts/figures/` and refresh this log.

@@ -29,9 +29,11 @@ data/raw/
 
 ## Horizontal well CSV schema
 
+**Observed locally:** Horizontal files use the **filename** `{WELLNAME}__horizontal_well.csv` for the well id; the CSV body may **not** include a `WELLNAME` column (confirmed on at least one train file in EDA). Treat well identity as from discovery/`load_all_wells` paths, not from a required column.
+
 | Column | Type | Description |
 |---|---|---|
-| `WELLNAME` | str | Well identifier |
+| `WELLNAME` | str | Well identifier *(may be absent in CSV; use filename if needed)* |
 | `MD` | float | Measured Depth (ft) |
 | `X` | float | Easting (ft) |
 | `Y` | float | Northing (ft) |

@@ -20,7 +20,7 @@ python scripts/download_data.py
 
 ### EDA
 ```bash
-jupyter lab notebooks/eda/01_data_exploration.ipynb
+jupyter lab notebooks/eda/01_phase0_phase1_data_and_schema.ipynb
 ```
 
 ### Train a model
