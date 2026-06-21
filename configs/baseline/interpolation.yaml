@@ -1,0 +1,3 @@
+# InterpolationBaseline — LOO-well CV + eval-zone masking.
+# Expand with hyperparameters / paths once training code lands.
+experiment_name: interpolation_baseline

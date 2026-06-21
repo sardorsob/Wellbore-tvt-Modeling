@@ -1,0 +1,3 @@
+# GPyTorch ExactGP / SVGP shared toggles.
+model: exact_gp
+matern_nu: 2.5

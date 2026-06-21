@@ -1,0 +1,2 @@
+# XGBoostModel (src.modeling.classical) — booster params + early stopping.
+params: {}

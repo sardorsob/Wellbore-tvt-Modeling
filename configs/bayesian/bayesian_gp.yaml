@@ -1,0 +1,2 @@
+# BayesianGPModel — SVI vs NUTS knobs (see src/modeling/bayesian_gp.py).
+inference: svi

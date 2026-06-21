@@ -1,0 +1,2 @@
+# Flax LSTM / GRU — hidden size, layers, bidirectional.
+hidden_size: null

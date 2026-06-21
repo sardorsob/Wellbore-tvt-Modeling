@@ -1,0 +1,2 @@
+# BayesianNNModel — SVI epochs, lr, uncertainty reporting.
+experiment_name: bnn_numpyro
