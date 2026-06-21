@@ -9,6 +9,8 @@ These rules apply to AI-assisted work in this repository.
 - If a local copy of that workflow exists under `context/_external/`, treat it as reference-only material and never commit it.
 - Keep notebook work artifact-first: exported figures/tables/models plus updates to `context/structure.md`.
 - Record meaningful decisions in `context/DECISIONS.md` and assumptions in `context/ASSUMPTIONS.md`.
+- Delete one-off notebook/script generators after their output is produced unless they are intentionally reusable project tooling.
+- For Bayesian work, record the generative story, priors, likelihood choices, and prior/posterior predictive assumptions before treating results as reportable.
 
 ## Git
 

@@ -10,6 +10,7 @@
 - Self-contained Kaggle Ridge submission notebook and kernel metadata under `kaggle/linear_ridge_submission/`.
 - Locally validated Ridge submission CSV under `artifacts/reports/`.
 - First Kaggle code-competition submission log entry for notebook version 2 (`ref=53923555`, public LB `15.905`).
+- Agent/project rules for deleting one-off notebook generators and logging Bayesian generative assumptions.
 - NumPy OLS/Ridge/Lasso baseline model utilities and regression metric/validation helpers.
 - Tests for metrics, validation masks/folds, linear models, and run-bundle writing.
 - Run-bundle fallback config serialization when PyYAML is unavailable.

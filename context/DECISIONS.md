@@ -57,3 +57,27 @@
 **Rationale:** Kaggle notebooks should work identically to local code without any manual path changes.
 **Consequences:** Slightly magic behavior; documented in `context/INTERFACES.md`.
 **Follow-up:** None.
+
+---
+
+## D006 — Do not keep one-off notebook generator scripts
+
+**Date:** 2026-06-21
+**Decision:** Delete ad hoc Python scripts that only generate or rewrite a specific notebook once their output has been produced and verified. Keep only scripts that are reusable project tooling with a clear future role.
+**Alternatives considered:**
+- Keep every notebook generator for provenance.
+- Move one-off generators into an archive folder.
+**Rationale:** The notebooks, artifacts, run bundles, and context logs are the project deliverables. Keeping one-off generator scripts adds clutter and can confuse the source of truth.
+**Consequences:** If a generated notebook needs broad structural changes later, recreate or refactor reusable tooling intentionally rather than relying on stale one-off scaffolding.
+**Follow-up:** When a script is kept, document why it is reusable in its docstring or the relevant context file.
+
+---
+
+## D007 — Log Bayesian generative assumptions before reportable fitting
+
+**Date:** 2026-06-21
+**Decision:** For Bayesian GP, BNN, or other probabilistic models, write down the generative story, likelihood, prior rationale, and predictive-check expectations in `context/ASSUMPTIONS.md` or the relevant experiment notes before treating results as reportable.
+**Alternatives considered:** Capture priors only inside notebooks.
+**Rationale:** Bayesian modeling choices are part of the model definition, not incidental implementation details. Externalizing them keeps the reasoning auditable across long-running experiments.
+**Consequences:** Bayesian notebooks may move slightly slower up front, but comparisons and debugging should be cleaner.
+**Follow-up:** Add model-specific assumptions when starting the Bayesian GP notebook.

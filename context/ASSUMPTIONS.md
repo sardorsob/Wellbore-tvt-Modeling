@@ -75,3 +75,12 @@
 **Basis:** Geological wells are physically separate.
 **Risk:** Low.
 **Mitigation:** None needed.
+
+---
+
+## A9 — Bayesian models require explicit generative assumptions
+
+**Assumption:** Bayesian GP/BNN results are only reportable after the generative story, priors, likelihood, and predictive-check expectations are written down outside the notebook output.
+**Basis:** Bayesian model performance and uncertainty depend directly on prior and likelihood choices.
+**Risk:** If assumptions live only in code cells, later results may be hard to compare or audit.
+**Mitigation:** Record Bayesian assumptions in this file, `context/EXPERIMENTS.md`, and the run bundle notes before logging a Bayesian result as selected or rejected.
