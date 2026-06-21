@@ -2,7 +2,9 @@
 
 ## Public Leaderboard
 
-No public leaderboard scores logged yet.
+| Date | Ref | Notebook | Local CV RMSE | Public LB | Notes |
+|---|---|---|---:|---:|---|
+| 2026-06-21 | `53923555` | `sardorbsobirov/wellbore-linear-ridge-baseline` v2 | 15.7660 | 15.905 | First Ridge baseline. Public score is close to local grouped CV, but slightly worse. |
 
 ## Risks
 
@@ -15,4 +17,3 @@ No public leaderboard scores logged yet.
 - Prefer models that improve local grouped CV and have plausible error analysis.
 - Treat single small leaderboard improvements as tentative until repeated by local validation.
 - Log rejected submissions as well as selected submissions.
-
