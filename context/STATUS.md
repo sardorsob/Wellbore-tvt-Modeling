@@ -20,11 +20,13 @@
 - [x] Verify row index → submission id mapping (**A1** — pass)
 - [x] Verify TVT_input NaN rows ↔ submission ids (**A2** — pass)
 - [x] Check test file columns (**A3** / **D002** — formation columns absent in test; decision unchanged)
+- [x] Add local agent rules and Kaggle tracking docs from `sardorsob/sardors-agentic-workflows` guidance
 
 ## In progress
 
 - [ ] Phase 2 geological / domain EDA (`notebooks/eda/02_phase2_geological_domain.ipynb`)
 - [ ] Export artifact figures per `CURSOR_RULES.md`
+- [ ] Verify Kaggle competition rules page before first submission (`kaggle/RULES_SUMMARY.md`)
 
 ## Next up
 

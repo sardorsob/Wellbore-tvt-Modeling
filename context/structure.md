@@ -14,6 +14,8 @@ Wellbore-tvt-Modeling/
 ├── CURSOR_RULES.md                    → AI agent workflow rules
 ├── requirements.txt                   → full dependency set
 ├── .gitignore
+├── .agents/
+│   └── AGENTS.md                      → repo-local AI workflow and commit rules
 │
 ├── configs/                           → yaml experiment configs
 │   ├── baseline.yaml                  → interpolation baseline
@@ -34,8 +36,17 @@ Wellbore-tvt-Modeling/
 │   ├── ASSUMPTIONS.md                 → modeling assumptions + caveats
 │   ├── DECISIONS.md                   → architecture + design decisions
 │   ├── CHANGELOG.md                   → milestone log
+│   ├── EXPERIMENTS.md                 → human-readable experiment registry
 │   ├── STATUS.md                      → current state + next steps
 │   └── RISKS.md                       → known risks + mitigations
+│
+├── kaggle/                            → competition operations and submission tracking
+│   ├── COMPETITION.md                 → objective, metric, deadlines, local source of truth
+│   ├── RULES_SUMMARY.md               → known rules and verification checklist
+│   ├── CV_STRATEGY.md                 → local validation plan and leakage guardrails
+│   ├── FEATURES.md                    → test-safe and train-only feature log
+│   ├── SUBMISSIONS.md                 → every Kaggle submission log entry
+│   └── LEADERBOARD_NOTES.md           → public/private leaderboard interpretation notes
 │
 ├── data/
 │   ├── raw/                           → immutable Kaggle download (gitignored)
@@ -125,6 +136,15 @@ Wellbore-tvt-Modeling/
 
 ## RESULTS LOG
 
+### Workflow / Kaggle operations setup
+**Status:** Added — local workflow reference and Kaggle tracking docs.
+**Purpose:** Align this project with `sardorsob/sardors-agentic-workflows` while keeping copied workflow material out of Git. Establish places to track competition rules, CV strategy, features, submissions, leaderboard notes, and experiments.
+**Inputs:** `context/_external/sardors-agentic-workflows/` (ignored local reference), existing project context files.
+**Outputs:** `.agents/AGENTS.md`, `kaggle/*.md`, `context/EXPERIMENTS.md`, `.gitignore` entry for `context/_external/`.
+**Findings:** GitHub connector could not read the private workflow repo, but local Git access could. The reference copy is kept under an ignored path and should not be committed.
+
+---
+
 ### notebooks/eda/01_phase0_phase1_data_and_schema.ipynb
 **Status:** **Run** — Phase 0–1 checks completed on downloaded Kaggle data (outputs captured below and in `context/ASSUMPTIONS.md` / `DECISIONS.md`).
 **Purpose:** Verify download counts; schema spot-check; Assumption A1 ID mapping; D002 formation columns; eval-zone layout (1C–1D); missingness audit (1E).
@@ -212,4 +232,5 @@ Wellbore-tvt-Modeling/
 ## CURRENT STATUS
 
 **Phase:** Phase 0–1 **EDA structural verification complete** on local download. Geological / signal EDA (Phase 2 notebook) not started.
+**Workflow posture:** Use `sardorsob/sardors-agentic-workflows` data-science gates: data gate, split/leakage gate, baseline gate, experiment loop, evaluation gate, artifact gate, handoff gate. Local reference copy lives under ignored `context/_external/`.
 **Next action:** Run `notebooks/eda/02_phase2_geological_domain.ipynb`; export plots to `artifacts/figures/` and refresh this log.

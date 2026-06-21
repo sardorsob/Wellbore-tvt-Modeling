@@ -39,6 +39,9 @@ kaggle.json
 secrets.yaml
 secrets.json
 
+# Local reference material
+context/_external/
+
 # ── Model artifacts (large binaries — keep run bundles, skip raw checkpoints) ──
 artifacts/models/*.pkl
 artifacts/models/*.joblib
