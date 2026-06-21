@@ -1,0 +1,12 @@
+model_family: linear
+candidates:
+  - ols
+  - ridge_alpha_0.1
+  - ridge_alpha_1
+  - ridge_alpha_10
+  - ridge_alpha_100
+  - lasso_alpha_0.001
+  - lasso_alpha_0.01
+  - lasso_alpha_0.1
+validation: 3-fold grouped by well; train known-zone rows; score target-zone rows
+max_train_rows_per_fold: 25000

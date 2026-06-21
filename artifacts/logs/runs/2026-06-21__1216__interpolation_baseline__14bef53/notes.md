@@ -1,0 +1,1 @@
+Naive interpolation baseline. Predicts evaluation-zone TVT by linear interpolation/forward fill of TVT_input.

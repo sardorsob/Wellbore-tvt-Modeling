@@ -4,8 +4,12 @@
 
 ### Changed
 - Logged Phase 0–1 structural EDA results from `notebooks/eda/01_phase0_phase1_data_and_schema.ipynb` into `structure.md`, `ASSUMPTIONS.md`, `DECISIONS.md`, `DATASETS.md`, and `STATUS.md`.
+- Generated and ran first baseline modeling notebooks; updated structure, status, experiments, and feature log with run IDs and RMSEs.
 
 ### Added
+- NumPy OLS/Ridge/Lasso baseline model utilities and regression metric/validation helpers.
+- Tests for metrics, validation masks/folds, linear models, and run-bundle writing.
+- Run-bundle fallback config serialization when PyYAML is unavailable.
 - Local agent rules in `.agents/AGENTS.md`, including the rule to never add AI co-author trailers to commits.
 - Ignored local workflow reference path `context/_external/`.
 - Kaggle operations docs under `kaggle/`: competition summary, rules summary, CV strategy, feature log, submission log, and leaderboard notes.

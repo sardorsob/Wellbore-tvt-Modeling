@@ -6,10 +6,13 @@ import subprocess
 from datetime import datetime
 from pathlib import Path
 
-import yaml
-
 from .paths import get_artifacts_dir
 from .seeds import make_seed_dict
+
+try:
+    import yaml
+except ModuleNotFoundError:
+    yaml = None
 
 
 def _git_short_sha() -> str:
@@ -89,9 +92,11 @@ class RunBundle:
         (self.bundle_dir / "meta.json").write_text(json.dumps(meta, indent=2))
 
     def _write_config(self) -> None:
-        (self.bundle_dir / "config.yaml").write_text(
-            yaml.dump(self.config, default_flow_style=False)
-        )
+        if yaml is not None:
+            text = yaml.dump(self.config, default_flow_style=False)
+        else:
+            text = _simple_yaml(self.config)
+        (self.bundle_dir / "config.yaml").write_text(text)
 
     def _write_seeds(self) -> None:
         (self.bundle_dir / "seeds.json").write_text(
@@ -112,3 +117,27 @@ class RunBundle:
 
     def _write_notes(self) -> None:
         (self.bundle_dir / "notes.md").write_text(self._notes)
+
+
+def _simple_yaml(value, indent: int = 0) -> str:
+    """Serialize simple dict/list/scalar configs when PyYAML is unavailable."""
+    prefix = " " * indent
+    if isinstance(value, dict):
+        lines = []
+        for key, item in value.items():
+            if isinstance(item, (dict, list)):
+                lines.append(f"{prefix}{key}:")
+                lines.append(_simple_yaml(item, indent + 2).rstrip())
+            else:
+                lines.append(f"{prefix}{key}: {item}")
+        return "\n".join(lines) + "\n"
+    if isinstance(value, list):
+        lines = []
+        for item in value:
+            if isinstance(item, (dict, list)):
+                lines.append(f"{prefix}-")
+                lines.append(_simple_yaml(item, indent + 2).rstrip())
+            else:
+                lines.append(f"{prefix}- {item}")
+        return "\n".join(lines) + "\n"
+    return f"{prefix}{value}\n"

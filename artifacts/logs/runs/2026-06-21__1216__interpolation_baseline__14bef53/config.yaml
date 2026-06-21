@@ -1,0 +1,3 @@
+model: InterpolationBaseline
+validation: 3-fold grouped by well; score TVT_input-missing rows
+n_splits: 3

@@ -1,0 +1,10 @@
+{
+  "global_seed": 42,
+  "numpy_seed": 42,
+  "python_random_seed": 42,
+  "jax_key": [
+    0,
+    42
+  ],
+  "torch_seed": 42
+}

@@ -124,13 +124,23 @@ Wellbore-tvt-Modeling/
 ### Figures
 *(Phase 0–1 structural checks produced in-notebook tables only; export PNGs per `CURSOR_RULES.md` when Phase 2 plotting runs.)*
 
+- `artifacts/figures/model__interpolation_baseline_residuals__2026-06-21__1216__interpolation_baseline__14bef53.png` — residual strip for stateless interpolation baseline on grouped masked-zone validation.
+- `artifacts/figures/model__linear_rmse_comparison__2026-06-21__1218__linear_ols_ridge_lasso__14bef53.png` — RMSE bar comparison across OLS/Ridge/Lasso candidates.
+- `artifacts/figures/model__linear_best_residuals__2026-06-21__1218__linear_ols_ridge_lasso__14bef53.png` — residual strip for best linear candidate (`ridge_alpha_10`).
+
 ### Tables
 *(populated as notebooks are run)*
 
 - **In-notebook only (01 Phase 0–1):** `zone_df`-style eval-zone summary and weighted missingness (`miss_summary`) — reproduce from `notebooks/eda/01_phase0_phase1_data_and_schema.ipynb`. Optional export: `artifacts/tables/eda__phase01_missingness__YYYY-MM-DD.csv` when saved from notebook.
+- `artifacts/tables/model__interpolation_baseline_metrics__2026-06-21__1216__interpolation_baseline__14bef53.csv` — 3-fold grouped masked-zone metrics for interpolation baseline.
+- `artifacts/tables/model__linear_ols_ridge_lasso_metrics__2026-06-21__1218__linear_ols_ridge_lasso__14bef53.csv` — candidate summary for OLS/Ridge/Lasso sweep.
+- `artifacts/tables/model__linear_ols_ridge_lasso_fold_metrics__2026-06-21__1218__linear_ols_ridge_lasso__14bef53.csv` — fold-level metrics for each linear candidate.
+- `artifacts/tables/model_comparison.csv` — latest reportable baseline-vs-linear comparison rows.
 
 ### Models
 *(populated as training runs complete)*
+
+- `artifacts/models/linear/model__linear_ridge_alpha_10__2026-06-21__1218__linear_ols_ridge_lasso__14bef53.pkl` — ignored local model artifact for best first linear baseline.
 
 ---
 
@@ -194,14 +204,36 @@ Wellbore-tvt-Modeling/
 ---
 
 ### notebooks/modeling/03_baseline.ipynb
-**Status:** Not yet run — stub only.
-**Purpose:** Interpolation / forward-fill baseline; measure RMSE on masked evaluation zone.
+**Status:** Superseded by actual path `notebooks/modeling/00_baseline/00_interpolation_baseline.ipynb`.
 
 ---
 
-### notebooks/modeling/04_classical_ml.ipynb
-**Status:** Not yet run — stub only.
-**Purpose:** XGBoost and LightGBM with full feature set; CV RMSE comparison.
+### notebooks/modeling/00_baseline/00_interpolation_baseline.ipynb
+**Status:** Run — stateless interpolation/forward-fill baseline.
+**Purpose:** Establish the first naive RMSE anchor before regression models.
+**Inputs:** `data/raw/train/`
+**Validation:** 3 grouped well folds; score rows where `TVT_input` is missing and `TVT` is present.
+**Run ID:** `2026-06-21__1216__interpolation_baseline__14bef53`
+**Result:** CV RMSE mean **15.9003**, CV RMSE std **0.6071**, overall RMSE **15.9099** across **3,783,989** target-zone rows.
+**Outputs:** metrics CSV and residual PNG listed above; run bundle under `artifacts/logs/runs/2026-06-21__1216__interpolation_baseline__14bef53/`.
+
+---
+
+### notebooks/modeling/01_linear/01_ols_ridge_lasso.ipynb
+**Status:** Run — first regression baseline sweep.
+**Purpose:** Compare OLS, Ridge, and Lasso using simple test-safe numeric trajectory/GR/known-context features.
+**Inputs:** `data/raw/train/`
+**Validation:** 3 grouped well folds; train on known-zone rows, score held-out wells' target-zone rows; cap each fold training sample at **25,000** deterministic rows.
+**Run ID:** `2026-06-21__1218__linear_ols_ridge_lasso__14bef53`
+**Result:** Best candidate **`ridge_alpha_10`** with CV RMSE mean **15.7660**, CV RMSE std **0.5331**, MAE **11.1123**, mean R2 **0.999365**.
+**Comparison:** Improves over interpolation baseline by about **0.1343 RMSE**.
+**Outputs:** candidate metrics CSV, fold metrics CSV, RMSE comparison PNG, best residual PNG, ignored local model pickle, and run bundle under `artifacts/logs/runs/2026-06-21__1218__linear_ols_ridge_lasso__14bef53/`.
+
+---
+
+### notebooks/modeling/02_trees/*
+**Status:** Not yet run.
+**Purpose:** Extra Trees, Random Forest, XGBoost, LightGBM, CatBoost with richer features and CV RMSE comparison.
 
 ---
 

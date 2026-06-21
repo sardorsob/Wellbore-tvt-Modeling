@@ -43,4 +43,4 @@ Record feature additions here when they are used in reportable experiments:
 | Date | Feature family | Files | Reason | Leakage notes |
 |---|---|---|---|---|
 | 2026-06-21 | Initial documented feature families | `src/preprocessing/features.py` | Existing scaffold orientation | Train-only formation columns excluded by `get_feature_columns`. |
-
+| 2026-06-21 | Simple linear baseline features | `notebooks/modeling/01_linear/01_ols_ridge_lasso.ipynb`, `scripts/generate_baseline_notebooks.py` | First OLS/Ridge/Lasso sweep | Uses raw trajectory, clipped/imputed GR, forward-filled `TVT_input`, known-zone flag, MD position, and trajectory deltas. Trains only on known-zone rows and scores target-zone rows. |

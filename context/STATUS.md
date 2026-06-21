@@ -21,6 +21,8 @@
 - [x] Verify TVT_input NaN rows ↔ submission ids (**A2** — pass)
 - [x] Check test file columns (**A3** / **D002** — formation columns absent in test; decision unchanged)
 - [x] Add local agent rules and Kaggle tracking docs from `sardorsob/sardors-agentic-workflows` guidance
+- [x] Run interpolation baseline (`2026-06-21__1216__interpolation_baseline__14bef53`) — CV RMSE mean **15.9003**
+- [x] Run first OLS/Ridge/Lasso sweep (`2026-06-21__1218__linear_ols_ridge_lasso__14bef53`) — best **ridge_alpha_10**, CV RMSE mean **15.7660**
 
 ## In progress
 
@@ -31,10 +33,11 @@
 ## Next up
 
 1. Phase 2 notebook (TVT vs MD, GR, typewell correlation, XY, dip) → figures under `artifacts/figures/`
-2. Build and validate interpolation baseline
-3. Train XGBoost with hand-crafted features
-4. Set up Bayesian GP (NumpPyro)
-5. First Kaggle Notebook commit + submission
+2. Expand feature EDA / leakage review for linear and tree features
+3. Train tree baseline with hand-crafted features
+4. Set up Kaggle Notebook for reproducible local-best baseline
+5. Set up Bayesian GP (NumpPyro)
+6. First Kaggle Notebook commit + submission
 
 ## Blockers
 

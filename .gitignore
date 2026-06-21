@@ -44,7 +44,9 @@ context/_external/
 
 # ── Model artifacts (large binaries — keep run bundles, skip raw checkpoints) ──
 artifacts/models/*.pkl
+artifacts/models/**/*.pkl
 artifacts/models/*.joblib
+artifacts/models/**/*.joblib
 artifacts/models/*.pt
 artifacts/models/*.pth
 artifacts/models/*.ckpt

@@ -1,0 +1,12 @@
+{
+  "inputs": [
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\data\\raw\\train"
+  ],
+  "outputs": [
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\model__linear_ols_ridge_lasso_metrics__2026-06-21__1218__linear_ols_ridge_lasso__14bef53.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\model__linear_ols_ridge_lasso_fold_metrics__2026-06-21__1218__linear_ols_ridge_lasso__14bef53.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\figures\\model__linear_rmse_comparison__2026-06-21__1218__linear_ols_ridge_lasso__14bef53.png",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\figures\\model__linear_best_residuals__2026-06-21__1218__linear_ols_ridge_lasso__14bef53.png",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\models\\linear\\model__linear_ridge_alpha_10__2026-06-21__1218__linear_ols_ridge_lasso__14bef53.pkl"
+  ]
+}

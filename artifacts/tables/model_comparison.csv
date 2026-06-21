@@ -1,1 +1,3 @@
 run_id,model_family,model_name,cv_rmse_mean,cv_rmse_std,train_time_s,n_features,notes
+2026-06-21__1216__interpolation_baseline__14bef53,baseline,interpolation,15.900253508246438,0.6070616017188922,1.8774542808532717,1,Stateless interpolation/ffill baseline
+2026-06-21__1218__linear_ols_ridge_lasso__14bef53,linear,ridge_alpha_10,15.765977474514608,0.5331361575834483,75.04263472557068,15,OLS/Ridge/Lasso NumPy sweep; grouped well CV
