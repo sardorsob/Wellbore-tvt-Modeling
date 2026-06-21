@@ -1,0 +1,11 @@
+max_train_rows_per_fold: 30000
+model: extra_trees
+model_family: trees
+params:
+  max_depth: 20
+  max_features: 0.9
+  min_samples_leaf: 6
+  n_estimators: 80
+  n_jobs: -1
+  random_state: 42
+validation: 3-fold grouped by well; train known-zone rows; score target-zone rows

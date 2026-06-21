@@ -30,6 +30,34 @@ This file is the human-readable registry for reportable runs.
 - Decision: selected as current best local model, improving over interpolation by about 0.1343 RMSE.
 - Notes: Still intentionally simple; next model should improve features and try tree-based methods.
 
+## 2026-06-21__1310__tree_random_forest__4eb4a55
+
+- Task: first tree baseline
+- Purpose: Test a nonlinear bagged-tree baseline before deeper linear tuning.
+- Config: notebook-local config in `notebooks/modeling/02_trees/01_random_forest.ipynb`
+- Data version: local Kaggle download in `data/raw/train/`
+- Split / CV: 3 grouped well folds; train known-zone rows; score target-zone rows; deterministic cap of 30,000 training rows per fold.
+- Model: `RandomForestRegressor`
+- Primary metric: CV RMSE mean 16.0655; CV RMSE std 0.5282.
+- Secondary metrics: MAE 11.4252; mean R2 0.999341.
+- Artifacts: fold metrics CSV, residual PNG, feature-importance PNG, ignored local model pickle, run bundle under `artifacts/logs/runs/2026-06-21__1310__tree_random_forest__4eb4a55/`
+- Decision: keep as a nonlinear baseline, but do not promote over Ridge because local RMSE is worse by about 0.2995.
+- Notes: Uses the same simple test-safe features as the linear sweep; better tree results likely need richer well-relative/geologic features or boosted trees.
+
+## 2026-06-21__1312__tree_extra_trees__4eb4a55
+
+- Task: first tree baseline
+- Purpose: Compare a more randomized tree ensemble against Random Forest on the same feature set.
+- Config: notebook-local config in `notebooks/modeling/02_trees/02_extra_trees.ipynb`
+- Data version: local Kaggle download in `data/raw/train/`
+- Split / CV: 3 grouped well folds; train known-zone rows; score target-zone rows; deterministic cap of 30,000 training rows per fold.
+- Model: `ExtraTreesRegressor`
+- Primary metric: CV RMSE mean 52.2415; CV RMSE std 1.3594.
+- Secondary metrics: MAE 36.5310; mean R2 0.992999.
+- Artifacts: fold metrics CSV, residual PNG, feature-importance PNG, ignored local model pickle, run bundle under `artifacts/logs/runs/2026-06-21__1312__tree_extra_trees__4eb4a55/`
+- Decision: do not pursue this naive Extra Trees setup without feature changes; it is far worse than interpolation, Ridge, and Random Forest.
+- Notes: The randomized split behavior appears poorly matched to the smooth trailing-zone extrapolation task with only the current simple features.
+
 ## Entry Format
 
 ```text

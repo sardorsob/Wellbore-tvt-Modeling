@@ -3,10 +3,13 @@
 ## [Unreleased]
 
 ### Changed
-- Logged Phase 0–1 structural EDA results from `notebooks/eda/01_phase0_phase1_data_and_schema.ipynb` into `structure.md`, `ASSUMPTIONS.md`, `DECISIONS.md`, `DATASETS.md`, and `STATUS.md`.
+- Added first tree-baseline experiment results for Random Forest and Extra Trees, including exported metrics, plots, run bundles, and comparison-table rows.
+- Logged Phase 0-1 structural EDA results from `notebooks/eda/01_phase0_phase1_data_and_schema.ipynb` into `structure.md`, `ASSUMPTIONS.md`, `DECISIONS.md`, `DATASETS.md`, and `STATUS.md`.
 - Generated and ran first baseline modeling notebooks; updated structure, status, experiments, and feature log with run IDs and RMSEs.
 
 ### Added
+- Reusable simple tabular feature builder and deterministic row sampler for train/test-safe model baselines.
+- Random Forest and Extra Trees model factory utilities plus focused tests.
 - Self-contained Kaggle Ridge submission notebook and kernel metadata under `kaggle/linear_ridge_submission/`.
 - Locally validated Ridge submission CSV under `artifacts/reports/`.
 - First Kaggle code-competition submission log entry for notebook version 2 (`ref=53923555`, public LB `15.905`).
@@ -31,8 +34,8 @@
 
 ## Milestone format
 
-```
-## [YYYY-MM-DD] — <Short milestone name>
+```text
+## [YYYY-MM-DD] - <Short milestone name>
 ### Added / Changed / Fixed / Removed
 - ...
 

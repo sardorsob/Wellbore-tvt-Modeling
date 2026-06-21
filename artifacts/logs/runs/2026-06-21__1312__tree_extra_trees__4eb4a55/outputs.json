@@ -1,0 +1,11 @@
+{
+  "inputs": [
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\data\\raw\\train"
+  ],
+  "outputs": [
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\model__extra_trees_metrics__2026-06-21__1312__tree_extra_trees__4eb4a55.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\figures\\model__extra_trees_residuals__2026-06-21__1312__tree_extra_trees__4eb4a55.png",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\figures\\model__extra_trees_feature_importance__2026-06-21__1312__tree_extra_trees__4eb4a55.png",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\models\\trees\\model__extra_trees__2026-06-21__1312__tree_extra_trees__4eb4a55.pkl"
+  ]
+}
