@@ -45,6 +45,21 @@
 - Notes: Local CV ranked this behind Ridge, but public LB improved over the Ridge submission (`15.873` vs `15.905`). This is a validation-warning signal, not proof that the forest will generalize better privately.
 - Decision: current best public LB. Keep Random Forest as the best external baseline while investigating why local grouped CV under-ranked it.
 
+- Timestamp: 2026-06-21
+- Run ID: `2026-06-21__1412__linear_elasticnet_huber_quantile__448574b`
+- Git SHA: `cbadf04`
+- Config: self-contained ElasticNet notebook, `alpha=0.001`, `l1_ratio=0.2`, `MAX_TRAIN_ROWS=100_000`, robust `/kaggle/input` data discovery
+- Local CV: best robust-linear candidate `elasticnet_alpha_0p001_l1_0p2`, CV RMSE mean `15.7907`, CV RMSE std `0.5575`
+- Local submission file: `artifacts/reports/submission__elasticnet_alpha_0p001_l1_0p2__2026-06-21.csv`
+- Kaggle notebook: `https://www.kaggle.com/code/sardorbsobirov/wellbore-elasticnet-baseline`
+- Kaggle kernel version: 1
+- Status: `KernelWorkerStatus.COMPLETE`
+- Public LB: `16.091`
+- Submission ref: `53924934`
+- Submission status: `SubmissionStatus.COMPLETE`
+- Notes: External score is worse than both Ridge (`15.905`) and Random Forest (`15.873`), despite local CV being close to Ridge.
+- Decision: rejected as a promotion candidate; useful evidence that this ElasticNet variant does not generalize better to the public test wells.
+
 Use this format for every submission:
 
 ```text

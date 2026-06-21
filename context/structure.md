@@ -47,7 +47,9 @@ Wellbore-tvt-Modeling/
 │   ├── FEATURES.md                    → test-safe and train-only feature log
 │   ├── SUBMISSIONS.md                 → every Kaggle submission log entry
 │   └── LEADERBOARD_NOTES.md           → public/private leaderboard interpretation notes
-│   └── linear_ridge_submission/        → Kaggle-ready private notebook upload folder
+│   ├── linear_ridge_submission/        → Kaggle-ready private notebook upload folder
+│   ├── random_forest_submission/       → Kaggle-ready private notebook upload folder
+│   └── elasticnet_submission/          → Kaggle-ready private notebook upload folder
 │
 ├── data/
 │   ├── raw/                           → immutable Kaggle download (gitignored)
@@ -258,7 +260,7 @@ Wellbore-tvt-Modeling/
 **Validation:** 3 grouped well folds; train on known-zone rows, score held-out wells' target-zone rows; cap each fold training sample at **25,000** deterministic rows.
 **Run ID:** `2026-06-21__1412__linear_elasticnet_huber_quantile__448574b`
 **Result:** Best candidate **`elasticnet_alpha_0p001_l1_0p2`** with CV RMSE mean **15.7907**, CV RMSE std **0.5575**, MAE **11.2119**, mean R2 **0.999363**.
-**Comparison:** Close to but worse than `ridge_alpha_10` by about **0.0247 RMSE**, so not submitted to Kaggle.
+**Comparison:** Close to but worse than `ridge_alpha_10` by about **0.0247 RMSE** locally. The Kaggle submission scored **16.091**, worse than both Ridge and Random Forest.
 **Outputs:** candidate summary CSV, fold metrics CSV, RMSE comparison PNG, residual PNG, ignored local model pickle, and run bundle under `artifacts/logs/runs/2026-06-21__1412__linear_elasticnet_huber_quantile__448574b/`.
 
 ---
@@ -270,6 +272,17 @@ Wellbore-tvt-Modeling/
 **Local verification:** Ran top-to-bottom locally and wrote `artifacts/reports/submission__linear_ridge_alpha_10__2026-06-21.csv` with **14,151** finite predictions matching `sample_submission.csv` id order.
 **Kaggle URL:** `https://www.kaggle.com/code/sardorbsobirov/wellbore-linear-ridge-baseline`
 **Leaderboard:** Submission `53923555` public score **15.905**.
+
+---
+
+### kaggle/elasticnet_submission/elasticnet_submission.ipynb
+**Status:** Pushed to Kaggle as private notebook version 1, completed, and submitted to the competition. Submission `53924934` scored **16.091** public LB.
+**Purpose:** Self-contained Kaggle submission notebook for the best ElasticNet candidate from the robust-linear sweep.
+**Inputs:** Competition dataset attached by `kernel-metadata.json` as `rogii-wellbore-geology-prediction`.
+**Local verification:** Ran top-to-bottom locally and wrote `artifacts/reports/submission__elasticnet_alpha_0p001_l1_0p2__2026-06-21.csv` with **14,151** finite predictions matching `sample_submission.csv` id order.
+**Kaggle URL:** `https://www.kaggle.com/code/sardorbsobirov/wellbore-elasticnet-baseline`
+**Leaderboard:** Submission `53924934` public score **16.091**.
+**Decision:** Rejected as a promotion candidate; the public score is worse than Ridge and Random Forest.
 
 ---
 

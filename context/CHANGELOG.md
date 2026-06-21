@@ -3,6 +3,7 @@
 ## [Unreleased]
 
 ### Changed
+- Recorded the ElasticNet Kaggle submission and leaderboard result (`ref=53924934`, public LB `16.091`), including the decision not to promote it.
 - Ran the ElasticNet / Huber / median Quantile linear-family sweep and recorded that the best ElasticNet candidate did not beat Ridge locally.
 - Ran the first KNN neighbor baseline and recorded the decision to reject vanilla global KNN on the current simple feature space.
 - Recorded the Random Forest Kaggle submission and leaderboard result (`ref=53924036`, public LB `15.873`), including the validation mismatch against Ridge.
@@ -11,6 +12,7 @@
 - Generated and ran first baseline modeling notebooks; updated structure, status, experiments, and feature log with run IDs and RMSEs.
 
 ### Added
+- Self-contained Kaggle ElasticNet submission notebook and locally validated submission CSV.
 - Scikit-learn linear model factory, focused tests, executable ElasticNet/Huber/Quantile notebook, and reportable run artifacts.
 - KNN neighbor model factory, focused tests, executable KNN notebook, and reportable KNN run artifacts.
 - Self-contained Kaggle Random Forest submission notebook and kernel metadata under `kaggle/random_forest_submission/`.
