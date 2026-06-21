@@ -30,6 +30,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: selected as current best local model, improving over interpolation by about 0.1343 RMSE.
 - Notes: Still intentionally simple; next model should improve features and try tree-based methods.
 
+## 2026-06-21__1412__linear_elasticnet_huber_quantile__448574b
+
+- Task: second linear-family sweep
+- Purpose: Compare ElasticNet, Huber, and median Quantile regression before moving into Bayesian models.
+- Config: notebook-local config in `notebooks/modeling/01_linear/02_elasticnet_huber_quantile.ipynb`
+- Data version: local Kaggle download in `data/raw/train/`
+- Split / CV: 3 grouped well folds; train known-zone rows; score target-zone rows; deterministic cap of 25,000 training rows per fold.
+- Model: best candidate `elasticnet_alpha_0p001_l1_0p2`
+- Primary metric: CV RMSE mean 15.7907; CV RMSE std 0.5575.
+- Secondary metrics: MAE 11.2119; mean R2 0.999363.
+- Artifacts: candidate summary CSV, fold metrics CSV, RMSE comparison PNG, residual PNG, ignored local model pickle, run bundle under `artifacts/logs/runs/2026-06-21__1412__linear_elasticnet_huber_quantile__448574b/`
+- Decision: do not submit to Kaggle yet; it is close to Ridge but worse by about 0.0247 local RMSE.
+- Notes: Huber and median Quantile landed near the interpolation baseline at 15.9003; stronger ElasticNet regularization was much worse at 23.1799.
+
 ## 2026-06-21__1310__tree_random_forest__4eb4a55
 
 - Task: first tree baseline

@@ -1,0 +1,10 @@
+{
+  "inputs": [],
+  "outputs": [
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\model__elasticnet_huber_quantile_fold_metrics__2026-06-21__1412__linear_elasticnet_huber_quantile__448574b.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\model__elasticnet_huber_quantile_summary__2026-06-21__1412__linear_elasticnet_huber_quantile__448574b.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\figures\\model__elasticnet_huber_quantile_rmse_comparison__2026-06-21__1412__linear_elasticnet_huber_quantile__448574b.png",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\figures\\model__elasticnet_huber_quantile_residuals__2026-06-21__1412__linear_elasticnet_huber_quantile__448574b.png",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\models\\linear\\model__elasticnet_huber_quantile__2026-06-21__1412__linear_elasticnet_huber_quantile__448574b.pkl"
+  ]
+}

@@ -1,0 +1,27 @@
+best_candidate: elasticnet_alpha_0p001_l1_0p2
+candidate_kind: elasticnet
+candidate_params:
+  alpha: 0.001
+  l1_ratio: 0.2
+  max_iter: 5000
+  random_state: 42
+feature_columns:
+- row_idx
+- MD
+- X
+- Y
+- Z
+- GR
+- TVT_input_ffill
+- known_zone
+- md_from_start
+- md_norm
+- dX
+- dY
+- dZ
+- horizontal_step
+- horizontal_dist
+max_final_train_rows: 100000
+max_train_rows_per_fold: 25000
+model: elasticnet_huber_quantile
+n_splits: 3

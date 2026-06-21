@@ -1,0 +1,8 @@
+{
+  "best_cv_rmse_mean": 15.790673516119561,
+  "best_cv_rmse_std": 0.5575220413961632,
+  "best_cv_mae_mean": 11.211901538820973,
+  "best_cv_r2_mean": 0.9993631138949084,
+  "train_time_s": 613.4634413719177,
+  "n_features": 15
+}

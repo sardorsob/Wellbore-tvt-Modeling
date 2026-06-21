@@ -1,0 +1,1 @@
+Best candidate: elasticnet_alpha_0p001_l1_0p2 with CV RMSE 15.7907.

@@ -128,6 +128,8 @@ Wellbore-tvt-Modeling/
 - `artifacts/figures/model__interpolation_baseline_residuals__2026-06-21__1216__interpolation_baseline__14bef53.png` — residual strip for stateless interpolation baseline on grouped masked-zone validation.
 - `artifacts/figures/model__linear_rmse_comparison__2026-06-21__1218__linear_ols_ridge_lasso__14bef53.png` — RMSE bar comparison across OLS/Ridge/Lasso candidates.
 - `artifacts/figures/model__linear_best_residuals__2026-06-21__1218__linear_ols_ridge_lasso__14bef53.png` — residual strip for best linear candidate (`ridge_alpha_10`).
+- `artifacts/figures/model__elasticnet_huber_quantile_rmse_comparison__2026-06-21__1412__linear_elasticnet_huber_quantile__448574b.png` — RMSE bar comparison across ElasticNet, Huber, and median Quantile candidates.
+- `artifacts/figures/model__elasticnet_huber_quantile_residuals__2026-06-21__1412__linear_elasticnet_huber_quantile__448574b.png` — residual strip for best robust/regularized linear candidate.
 - `artifacts/figures/model__random_forest_residuals__2026-06-21__1310__tree_random_forest__4eb4a55.png` — residual strip for the first Random Forest baseline.
 - `artifacts/figures/model__random_forest_feature_importance__2026-06-21__1310__tree_random_forest__4eb4a55.png` — feature-importance bar chart for the first Random Forest baseline.
 - `artifacts/figures/model__extra_trees_residuals__2026-06-21__1312__tree_extra_trees__4eb4a55.png` — residual strip for the first Extra Trees baseline.
@@ -142,6 +144,8 @@ Wellbore-tvt-Modeling/
 - `artifacts/tables/model__interpolation_baseline_metrics__2026-06-21__1216__interpolation_baseline__14bef53.csv` — 3-fold grouped masked-zone metrics for interpolation baseline.
 - `artifacts/tables/model__linear_ols_ridge_lasso_metrics__2026-06-21__1218__linear_ols_ridge_lasso__14bef53.csv` — candidate summary for OLS/Ridge/Lasso sweep.
 - `artifacts/tables/model__linear_ols_ridge_lasso_fold_metrics__2026-06-21__1218__linear_ols_ridge_lasso__14bef53.csv` — fold-level metrics for each linear candidate.
+- `artifacts/tables/model__elasticnet_huber_quantile_summary__2026-06-21__1412__linear_elasticnet_huber_quantile__448574b.csv` — candidate summary for ElasticNet, Huber, and median Quantile sweep.
+- `artifacts/tables/model__elasticnet_huber_quantile_fold_metrics__2026-06-21__1412__linear_elasticnet_huber_quantile__448574b.csv` — fold-level metrics for each robust/regularized linear candidate.
 - `artifacts/tables/model__random_forest_metrics__2026-06-21__1310__tree_random_forest__4eb4a55.csv` — fold-level metrics for the Random Forest baseline.
 - `artifacts/tables/model__extra_trees_metrics__2026-06-21__1312__tree_extra_trees__4eb4a55.csv` — fold-level metrics for the Extra Trees baseline.
 - `artifacts/tables/model__knn_regression_metrics__2026-06-21__1348__neighbor_knn_regression__31e8e1a.csv` — fold-level sampled validation metrics for KNN candidates.
@@ -153,6 +157,7 @@ Wellbore-tvt-Modeling/
 *(populated as training runs complete)*
 
 - `artifacts/models/linear/model__linear_ridge_alpha_10__2026-06-21__1218__linear_ols_ridge_lasso__14bef53.pkl` — ignored local model artifact for best first linear baseline.
+- `artifacts/models/linear/model__elasticnet_huber_quantile__2026-06-21__1412__linear_elasticnet_huber_quantile__448574b.pkl` — ignored local model artifact for best ElasticNet/Huber/Quantile sweep candidate.
 - `artifacts/models/trees/model__random_forest__2026-06-21__1310__tree_random_forest__4eb4a55.pkl` — ignored local model artifact for first Random Forest baseline.
 - `artifacts/models/trees/model__extra_trees__2026-06-21__1312__tree_extra_trees__4eb4a55.pkl` — ignored local model artifact for first Extra Trees baseline.
 - `artifacts/models/neighbors/model__knn_regression__2026-06-21__1348__neighbor_knn_regression__31e8e1a.pkl` — ignored local model artifact for first KNN baseline.
@@ -243,6 +248,18 @@ Wellbore-tvt-Modeling/
 **Result:** Best candidate **`ridge_alpha_10`** with CV RMSE mean **15.7660**, CV RMSE std **0.5331**, MAE **11.1123**, mean R2 **0.999365**.
 **Comparison:** Improves over interpolation baseline by about **0.1343 RMSE**.
 **Outputs:** candidate metrics CSV, fold metrics CSV, RMSE comparison PNG, best residual PNG, ignored local model pickle, and run bundle under `artifacts/logs/runs/2026-06-21__1218__linear_ols_ridge_lasso__14bef53/`.
+
+---
+
+### notebooks/modeling/01_linear/02_elasticnet_huber_quantile.ipynb
+**Status:** Run — second linear-family sweep.
+**Purpose:** Compare ElasticNet, Huber, and median Quantile regression using the same simple test-safe numeric features.
+**Inputs:** `data/raw/train/`
+**Validation:** 3 grouped well folds; train on known-zone rows, score held-out wells' target-zone rows; cap each fold training sample at **25,000** deterministic rows.
+**Run ID:** `2026-06-21__1412__linear_elasticnet_huber_quantile__448574b`
+**Result:** Best candidate **`elasticnet_alpha_0p001_l1_0p2`** with CV RMSE mean **15.7907**, CV RMSE std **0.5575**, MAE **11.2119**, mean R2 **0.999363**.
+**Comparison:** Close to but worse than `ridge_alpha_10` by about **0.0247 RMSE**, so not submitted to Kaggle.
+**Outputs:** candidate summary CSV, fold metrics CSV, RMSE comparison PNG, residual PNG, ignored local model pickle, and run bundle under `artifacts/logs/runs/2026-06-21__1412__linear_elasticnet_huber_quantile__448574b/`.
 
 ---
 
