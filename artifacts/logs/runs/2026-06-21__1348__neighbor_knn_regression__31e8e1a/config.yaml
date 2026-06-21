@@ -1,0 +1,28 @@
+best_candidate: knn_k31_distance
+candidate_params:
+  algorithm: auto
+  n_jobs: -1
+  n_neighbors: 31
+  weights: distance
+feature_columns:
+- row_idx
+- MD
+- X
+- Y
+- Z
+- GR
+- TVT_input_ffill
+- known_zone
+- md_from_start
+- md_norm
+- dX
+- dY
+- dZ
+- horizontal_step
+- horizontal_dist
+max_final_train_rows: 60000
+max_train_rows_per_fold: 5000
+max_valid_rows_per_fold: 30000
+model: knn_regression
+n_splits: 3
+validation_note: Deterministic sampled target-zone validation for KNN runtime control.

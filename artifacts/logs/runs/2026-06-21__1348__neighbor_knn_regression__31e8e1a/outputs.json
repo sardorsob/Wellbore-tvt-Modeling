@@ -1,0 +1,10 @@
+{
+  "inputs": [],
+  "outputs": [
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\model__knn_regression_metrics__2026-06-21__1348__neighbor_knn_regression__31e8e1a.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\model__knn_regression_summary__2026-06-21__1348__neighbor_knn_regression__31e8e1a.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\figures\\model__knn_regression_rmse_comparison__2026-06-21__1348__neighbor_knn_regression__31e8e1a.png",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\figures\\model__knn_regression_residuals__2026-06-21__1348__neighbor_knn_regression__31e8e1a.png",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\models\\neighbors\\model__knn_regression__2026-06-21__1348__neighbor_knn_regression__31e8e1a.pkl"
+  ]
+}

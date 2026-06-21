@@ -3,12 +3,14 @@
 ## [Unreleased]
 
 ### Changed
+- Ran the first KNN neighbor baseline and recorded the decision to reject vanilla global KNN on the current simple feature space.
 - Recorded the Random Forest Kaggle submission and leaderboard result (`ref=53924036`, public LB `15.873`), including the validation mismatch against Ridge.
 - Added first tree-baseline experiment results for Random Forest and Extra Trees, including exported metrics, plots, run bundles, and comparison-table rows.
 - Logged Phase 0-1 structural EDA results from `notebooks/eda/01_phase0_phase1_data_and_schema.ipynb` into `structure.md`, `ASSUMPTIONS.md`, `DECISIONS.md`, `DATASETS.md`, and `STATUS.md`.
 - Generated and ran first baseline modeling notebooks; updated structure, status, experiments, and feature log with run IDs and RMSEs.
 
 ### Added
+- KNN neighbor model factory, focused tests, executable KNN notebook, and reportable KNN run artifacts.
 - Self-contained Kaggle Random Forest submission notebook and kernel metadata under `kaggle/random_forest_submission/`.
 - Locally validated Random Forest submission CSV under `artifacts/reports/`.
 - Reusable simple tabular feature builder and deterministic row sampler for train/test-safe model baselines.

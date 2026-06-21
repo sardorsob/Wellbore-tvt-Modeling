@@ -1,0 +1,9 @@
+{
+  "cv_rmse_mean": 448.41478227001215,
+  "cv_rmse_std": 33.12158241042083,
+  "cv_mae_mean": 352.31679880363066,
+  "cv_r2_mean": 0.48343730493529097,
+  "train_time_s": 328.9588179588318,
+  "n_features": 15,
+  "valid_rows_scored_per_fold": 30000
+}

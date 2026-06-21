@@ -3,3 +3,4 @@ run_id,model_family,model_name,cv_rmse_mean,cv_rmse_std,train_time_s,n_features,
 2026-06-21__1218__linear_ols_ridge_lasso__14bef53,linear,ridge_alpha_10,15.765977474514608,0.5331361575834483,75.04263472557068,15,OLS/Ridge/Lasso NumPy sweep; grouped well CV
 2026-06-21__1310__tree_random_forest__4eb4a55,trees,random_forest,16.06550629767113,0.528198892403144,78.20490193367004,15,Random Forest; grouped well CV; deterministic row cap
 2026-06-21__1312__tree_extra_trees__4eb4a55,trees,extra_trees,52.24152125588939,1.3593875948834482,56.38267755508423,15,Extra Trees; grouped well CV; deterministic row cap
+2026-06-21__1348__neighbor_knn_regression__31e8e1a,neighbors,knn_k31_distance,448.41478227001215,33.12158241042083,328.9588179588318,15,KNN distance-weighted sweep; sampled target-zone validation for runtime control

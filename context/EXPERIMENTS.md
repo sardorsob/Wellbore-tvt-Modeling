@@ -58,6 +58,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: do not pursue this naive Extra Trees setup without feature changes; it is far worse than interpolation, Ridge, and Random Forest.
 - Notes: The randomized split behavior appears poorly matched to the smooth trailing-zone extrapolation task with only the current simple features.
 
+## 2026-06-21__1348__neighbor_knn_regression__31e8e1a
+
+- Task: first neighbor baseline
+- Purpose: Test whether local feature-space neighbors are useful before trying SVR, radius-neighbor, clustered-neighbor, XGBoost, or LightGBM models.
+- Config: notebook-local config in `notebooks/modeling/03_svr_neighbors/02_knn_regression.ipynb`
+- Data version: local Kaggle download in `data/raw/train/`
+- Split / CV: 3 grouped well folds; train known-zone rows; score a deterministic sample of 30,000 target-zone validation rows per fold for runtime control.
+- Model: best candidate `knn_k31_distance`
+- Primary metric: sampled CV RMSE mean 448.4148; sampled CV RMSE std 33.1216.
+- Secondary metrics: sampled MAE 352.3168; sampled mean R2 0.483437.
+- Artifacts: candidate fold metrics CSV, candidate summary CSV, RMSE comparison PNG, residual PNG, ignored local model pickle, run bundle under `artifacts/logs/runs/2026-06-21__1348__neighbor_knn_regression__31e8e1a/`
+- Decision: do not pursue vanilla KNN on the current simple scaled features; it is orders of magnitude worse than Ridge and Random Forest.
+- Notes: Runtime required sampled validation, so the score is not directly comparable to full-row tree/linear CV, but it is far enough away to reject this baseline. If revisiting neighbors, use well-local/stratified features, radius constraints, or clustered local models rather than global KNN.
+
 ## Entry Format
 
 ```text
