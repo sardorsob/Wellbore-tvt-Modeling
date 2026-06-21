@@ -251,12 +251,23 @@ Wellbore-tvt-Modeling/
 
 ---
 
+### kaggle/random_forest_submission/random_forest_submission.ipynb
+**Status:** Pushed to Kaggle as private notebook version 1, completed, and submitted to the competition. Submission `53924036` scored **15.873** public LB.
+**Purpose:** Self-contained Kaggle submission notebook for the first Random Forest baseline.
+**Inputs:** Competition dataset attached by `kernel-metadata.json` as `rogii-wellbore-geology-prediction`.
+**Local verification:** Ran top-to-bottom locally and wrote `artifacts/reports/submission__random_forest__2026-06-21.csv` with **14,151** finite predictions matching `sample_submission.csv` id order.
+**Kaggle URL:** `https://www.kaggle.com/code/sardorbsobirov/wellbore-random-forest-baseline`
+**Leaderboard:** Submission `53924036` public score **15.873**.
+**Decision:** Current best public LB, but local CV ranked it worse than Ridge, so validation design needs review before treating the gain as robust.
+
+---
+
 ### notebooks/modeling/02_trees/*
 **Status:** Partially run — Random Forest and Extra Trees complete; XGBoost, LightGBM, and CatBoost remain stubs.
 **Purpose:** Extra Trees, Random Forest, XGBoost, LightGBM, CatBoost with richer features and CV RMSE comparison.
 **Run IDs:** `2026-06-21__1310__tree_random_forest__4eb4a55`, `2026-06-21__1312__tree_extra_trees__4eb4a55`
 **Results:** Random Forest CV RMSE mean **16.0655**; Extra Trees CV RMSE mean **52.2415**.
-**Decision:** Random Forest is a useful nonlinear baseline but does not beat `ridge_alpha_10`; naive Extra Trees should not be pursued without feature changes.
+**Decision:** Random Forest is a useful nonlinear baseline and now beats Ridge on public LB, despite worse local CV; naive Extra Trees should not be pursued without feature changes.
 
 ---
 
@@ -286,6 +297,6 @@ Wellbore-tvt-Modeling/
 
 ## CURRENT STATUS
 
-**Phase:** Baseline modeling loop — structural EDA complete, Ridge remains the best local and Kaggle-tested baseline, and first tree baselines are recorded.
+**Phase:** Baseline modeling loop — structural EDA complete, Random Forest is the best public LB, and local CV disagreement needs validation review.
 **Workflow posture:** Use `sardorsob/sardors-agentic-workflows` data-science gates: data gate, split/leakage gate, baseline gate, experiment loop, evaluation gate, artifact gate, handoff gate. Local reference copy lives under ignored `context/_external/`.
-**Next action:** Run Phase 2 geology/signal EDA or try a boosted-tree baseline with the current simple features before adding richer well-relative features.
+**Next action:** Review validation split behavior, then run Phase 2 geology/signal EDA or try a boosted-tree baseline with the current simple features before adding richer well-relative features.

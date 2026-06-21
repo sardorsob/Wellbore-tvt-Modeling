@@ -4,6 +4,7 @@
 
 | Date | Ref | Notebook | Local CV RMSE | Public LB | Notes |
 |---|---|---|---:|---:|---|
+| 2026-06-21 | `53924036` | `sardorbsobirov/wellbore-random-forest-baseline` v1 | 16.0655 | 15.873 | First Random Forest submission. Public LB beats Ridge even though local CV is worse, so treat the improvement as tentative until validation is refined. |
 | 2026-06-21 | `53923555` | `sardorbsobirov/wellbore-linear-ridge-baseline` v2 | 15.7660 | 15.905 | First Ridge baseline. Public score is close to local grouped CV, but slightly worse. |
 
 ## Risks
@@ -15,5 +16,6 @@
 ## Interpretation Rules
 
 - Prefer models that improve local grouped CV and have plausible error analysis.
+- When local CV and public LB disagree, inspect split design and feature behavior before trusting either ranking.
 - Treat single small leaderboard improvements as tentative until repeated by local validation.
 - Log rejected submissions as well as selected submissions.

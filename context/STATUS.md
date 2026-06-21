@@ -1,7 +1,7 @@
 # Project Status
 
 **Last updated:** 2026-06-21
-**Current phase:** Baseline modeling loop - structural EDA complete; tree baselines added; geology/signal EDA still next
+**Current phase:** Baseline modeling loop - Random Forest is best public LB; local CV ordering needs validation review
 
 ---
 
@@ -29,21 +29,22 @@
 - [x] Submit Kaggle notebook version 2 output to competition (`ref=53923555`) - public LB **15.905**
 - [x] Run first Random Forest baseline (`2026-06-21__1310__tree_random_forest__4eb4a55`) - CV RMSE mean **16.0655**
 - [x] Run first Extra Trees baseline (`2026-06-21__1312__tree_extra_trees__4eb4a55`) - CV RMSE mean **52.2415**
+- [x] Push and submit Random Forest Kaggle notebook version 1 (`ref=53924036`) - public LB **15.873**
 
 ## In progress
 
 - [ ] Phase 2 geological / domain EDA (`notebooks/eda/02_phase2_geological_domain.ipynb`)
 - [ ] Export artifact figures per `CURSOR_RULES.md`
 - [ ] Verify Kaggle competition rules page before first submission (`kaggle/RULES_SUMMARY.md`)
-- [ ] Use public LB **15.905** as the first external baseline; avoid leaderboard-only tuning
-- [ ] Decide next modeling branch: richer features plus boosted trees before revisiting Bayesian linear assumptions
+- [ ] Use public LB **15.873** as the current external baseline; avoid leaderboard-only tuning
+- [ ] Investigate why local CV ranked Random Forest worse than Ridge while public LB ranked it better
 
 ## Next up
 
 1. Phase 2 notebook (TVT vs MD, GR, typewell correlation, XY, dip) - figures under `artifacts/figures/`
 2. Expand feature EDA / leakage review for linear and tree features
 3. Try boosted-tree baseline (XGBoost or LightGBM) on the current simple features, then add richer well-relative features
-4. Prepare a Kaggle submission notebook only after a local CV candidate beats the current Ridge baseline
+4. Refine validation before making many leaderboard submissions from small public-LB gains
 5. Set up Bayesian GP (NumpPyro) once the feature/split baseline is more stable
 
 ## Blockers
@@ -64,3 +65,4 @@
 | Date | Model | Local RMSE | LB RMSE | Notes |
 |---|---|---|---|---|
 | 2026-06-21 | Ridge alpha 10 | 15.7660 | 15.905 | Submission `53923555`; first external baseline |
+| 2026-06-21 | Random Forest | 16.0655 | 15.873 | Submission `53924036`; current best public LB, but local CV disagrees with Ridge ordering |

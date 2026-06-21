@@ -3,11 +3,14 @@
 ## [Unreleased]
 
 ### Changed
+- Recorded the Random Forest Kaggle submission and leaderboard result (`ref=53924036`, public LB `15.873`), including the validation mismatch against Ridge.
 - Added first tree-baseline experiment results for Random Forest and Extra Trees, including exported metrics, plots, run bundles, and comparison-table rows.
 - Logged Phase 0-1 structural EDA results from `notebooks/eda/01_phase0_phase1_data_and_schema.ipynb` into `structure.md`, `ASSUMPTIONS.md`, `DECISIONS.md`, `DATASETS.md`, and `STATUS.md`.
 - Generated and ran first baseline modeling notebooks; updated structure, status, experiments, and feature log with run IDs and RMSEs.
 
 ### Added
+- Self-contained Kaggle Random Forest submission notebook and kernel metadata under `kaggle/random_forest_submission/`.
+- Locally validated Random Forest submission CSV under `artifacts/reports/`.
 - Reusable simple tabular feature builder and deterministic row sampler for train/test-safe model baselines.
 - Random Forest and Extra Trees model factory utilities plus focused tests.
 - Self-contained Kaggle Ridge submission notebook and kernel metadata under `kaggle/linear_ridge_submission/`.
