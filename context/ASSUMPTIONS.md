@@ -84,3 +84,34 @@
 **Basis:** Bayesian model performance and uncertainty depend directly on prior and likelihood choices.
 **Risk:** If assumptions live only in code cells, later results may be hard to compare or audit.
 **Mitigation:** Record Bayesian assumptions in this file, `context/EXPERIMENTS.md`, and the run bundle notes before logging a Bayesian result as selected or rejected.
+---
+
+## Phase 2 EDA Addendum - 2026-06-21
+
+**Notebook:** `notebooks/eda/02_phase2_geological_domain.ipynb`
+**Run ID:** `2026-06-21__1506__eda_phase2_geological_domain__542b1c1`
+
+### A4 update - Typewell GR is useful but noisy
+
+Phase 2 measured horizontal/typewell GR correlation at known `TVT_input` positions. The median correlation is **0.8125**, which supports the typewell as a useful vertical reference, but the notebook also treats this as noisy enough to avoid raw one-to-one matching as a primary feature.
+
+**Modeling implication:** Build robust typewell summaries, alignment scores, lagged/correlated windows, or smoothed typewell-derived features rather than trusting a single raw matched GR value.
+
+### A5 update - Prediction is long trailing-zone extrapolation
+
+Across train wells, the evaluation-zone fraction median is **0.740**. The local example test wells have evaluation-zone fractions from **0.674** to **0.796**. The known-zone median `dTVT/dMD` is **0.3200**, while the median last-50 known-row slope is **0.0000**.
+
+**Modeling implication:** The core prediction problem is not random row interpolation. It is extrapolation through a long trailing block after the known boundary. Endpoint TVT, distance past boundary, normalized within-well position, recent-window slope, and smoothness priors should matter. Bayesian models should encode a boundary-conditioned generative story before fitting.
+
+### A6 update - Local test files are diagnostic, not distribution evidence
+
+The visible local test wells overlap train wells exactly: `000d7d20`, `00bbac68`, and `00e12e8b`. Their nearest train summary distances are zero because of that overlap.
+
+**Modeling implication:** Use the local test files for submission-shape checks and notebook runtime validation only. Do not infer hidden-test distribution from their descriptor values, and do not tune modeling choices to local test similarity.
+
+### A10 - GR missingness is part of the data-generating process
+
+Mean GR missingness is **0.294** in train and **0.215** in the visible local test files. Phase 1 also showed GR missingness differs between known and evaluation zones.
+
+**Assumption:** GR availability is not ignorable noise; it may reflect acquisition, processing, or interval-specific logging behavior.
+**Modeling implication:** Add explicit GR missingness indicators, within-window availability summaries, and imputation choices before boosted-tree or Bayesian models. For Bayesian work, consider whether missing GR should be modeled as observed-with-missingness rather than silently imputed.

@@ -3,6 +3,7 @@
 ## [Unreleased]
 
 ### Changed
+- Completed Phase 2 geological/domain EDA and recorded the resulting assumptions for long trailing-zone extrapolation, GR missingness, typewell alignment, train-only formation caveats, and local-test overlap.
 - Recorded the ElasticNet Kaggle submission and leaderboard result (`ref=53924934`, public LB `16.091`), including the decision not to promote it.
 - Ran the ElasticNet / Huber / median Quantile linear-family sweep and recorded that the best ElasticNet candidate did not beat Ridge locally.
 - Ran the first KNN neighbor baseline and recorded the decision to reject vanilla global KNN on the current simple feature space.
@@ -12,6 +13,7 @@
 - Generated and ran first baseline modeling notebooks; updated structure, status, experiments, and feature log with run IDs and RMSEs.
 
 ### Added
+- Phase 2 EDA notebook execution artifacts: train/test/typewell/formation summary tables, diagnostic figures, findings table, markdown report, and run bundle.
 - Self-contained Kaggle ElasticNet submission notebook and locally validated submission CSV.
 - Scikit-learn linear model factory, focused tests, executable ElasticNet/Huber/Quantile notebook, and reportable run artifacts.
 - KNN neighbor model factory, focused tests, executable KNN notebook, and reportable KNN run artifacts.

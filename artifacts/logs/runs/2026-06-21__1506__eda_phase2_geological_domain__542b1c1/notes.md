@@ -1,0 +1,1 @@
+Phase 2 geological/domain EDA completed; findings exported for feature engineering, validation review, and future Bayesian assumptions.

@@ -1,0 +1,8 @@
+{
+  "train_wells": 773.0,
+  "test_wells": 3.0,
+  "train_eval_frac_median": 0.7399910700997172,
+  "test_eval_frac_min": 0.6737155388471178,
+  "test_eval_frac_max": 0.7956078846408255,
+  "typewell_gr_corr_median": 0.8124768849789871
+}

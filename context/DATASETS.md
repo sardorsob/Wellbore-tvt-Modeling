@@ -69,6 +69,10 @@ data/raw/
 | `id` | str | `{WELLNAME}_{row_index}` |
 | `tvt` | float | Predicted TVT (placeholder = 0.0) |
 
+### Local visible test caveat
+
+Phase 2 EDA found that the three visible local test wells also appear in the train split: `000d7d20`, `00bbac68`, and `00e12e8b`. Treat these files as code-competition examples for schema, row-id mapping, and submission-shape validation. Do not use their exact descriptor values as evidence about the hidden scoring distribution.
+
 ---
 
 ## Data governance notes

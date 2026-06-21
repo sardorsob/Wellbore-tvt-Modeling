@@ -81,3 +81,16 @@
 **Rationale:** Bayesian modeling choices are part of the model definition, not incidental implementation details. Externalizing them keeps the reasoning auditable across long-running experiments.
 **Consequences:** Bayesian notebooks may move slightly slower up front, but comparisons and debugging should be cleaner.
 **Follow-up:** Add model-specific assumptions when starting the Bayesian GP notebook.
+
+---
+
+## D008 - Use Phase 2 EDA to guide the next feature pass
+
+**Date:** 2026-06-21
+**Decision:** Before serious LightGBM/XGBoost tuning or Bayesian modeling, prioritize feature engineering and validation checks suggested by Phase 2 EDA: boundary-distance features, endpoint TVT summaries, normalized evaluation-zone position, recent known-zone slope/window summaries, GR missingness flags, and robust typewell-alignment summaries.
+**Alternatives considered:**
+- Move directly to boosted-tree hyperparameter tuning on the current simple tabular features.
+- Start Bayesian GP modeling immediately.
+**Rationale:** Phase 2 confirms the task is dominated by long trailing-zone extrapolation. The current simple features are useful baselines, but the next lift is more likely to come from well-relative and boundary-aware signal than from tuning alone.
+**Consequences:** Boosted trees will start from a richer, more geologically informed feature set. Bayesian modeling is deferred until the generative story around boundary extrapolation, GR missingness, and typewell alignment is explicit.
+**Follow-up:** Run Phase 3 feature-signal EDA, then update `src/preprocessing/tabular.py` or add a richer feature builder before the first tuned LightGBM/XGBoost notebook.

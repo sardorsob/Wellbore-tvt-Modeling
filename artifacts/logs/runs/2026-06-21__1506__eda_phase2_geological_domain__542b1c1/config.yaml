@@ -1,0 +1,5 @@
+notebook: notebooks/eda/02_phase2_geological_domain.ipynb
+sample_well_count: 18
+test_wells: 3
+train_wells: 773
+typewell_sample_per_well: 500

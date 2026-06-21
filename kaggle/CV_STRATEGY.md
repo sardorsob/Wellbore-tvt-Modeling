@@ -16,6 +16,8 @@ This follows decision `D003` in `context/DECISIONS.md`.
 - Add leave-one-well-out or grouped well-level CV before repeated leaderboard submissions.
 - Keep preprocessing fit inside the training fold only.
 - Track validation RMSE variability across wells, not only global RMSE.
+- Add Phase 4 fold-similarity diagnostics: compare held-out folds on eval-zone fraction, GR missingness, endpoint TVT, recent slopes, trajectory length, and typewell alignment.
+- Investigate why Ridge beat Random Forest locally while Random Forest beat Ridge on public LB before making many boosted-tree leaderboard submissions.
 
 ## Leakage Guardrails
 
@@ -23,4 +25,4 @@ This follows decision `D003` in `context/DECISIONS.md`.
 - Do not use test labels or leaderboard feedback to choose features directly.
 - Preserve row index mapping for submission ids.
 - Treat public leaderboard as a noisy external check, not the validation set.
-
+- Treat the visible local test wells as submission-shape examples only. Phase 2 found that `000d7d20`, `00bbac68`, and `00e12e8b` also exist in train, so their exact summary descriptors should not be used as hidden-test distribution evidence.

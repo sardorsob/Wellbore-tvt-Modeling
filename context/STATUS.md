@@ -1,7 +1,7 @@
 # Project Status
 
 **Last updated:** 2026-06-21
-**Current phase:** Baseline modeling loop - Random Forest is best public LB; vanilla KNN rejected
+**Current phase:** EDA feature-signal loop - Phase 2 geology/domain EDA complete
 
 ---
 
@@ -33,10 +33,11 @@
 - [x] Run first Extra Trees baseline (`2026-06-21__1312__tree_extra_trees__4eb4a55`) - CV RMSE mean **52.2415**
 - [x] Push and submit Random Forest Kaggle notebook version 1 (`ref=53924036`) - public LB **15.873**
 - [x] Run first KNN baseline (`2026-06-21__1348__neighbor_knn_regression__31e8e1a`) - sampled CV RMSE mean **448.4148**
+- [x] Run Phase 2 geological/domain EDA (`2026-06-21__1506__eda_phase2_geological_domain__542b1c1`) - long trailing-zone extrapolation, GR missingness, typewell alignment, and local-test overlap documented
 
 ## In progress
 
-- [ ] Phase 2 geological / domain EDA (`notebooks/eda/02_phase2_geological_domain.ipynb`)
+- [ ] Phase 3 feature-signal EDA (`notebooks/eda/03_phase3_feature_signal.ipynb`)
 - [ ] Export artifact figures per `CURSOR_RULES.md`
 - [ ] Verify Kaggle competition rules page before first submission (`kaggle/RULES_SUMMARY.md`)
 - [ ] Use public LB **15.873** as the current external baseline; avoid leaderboard-only tuning
@@ -45,9 +46,9 @@
 
 ## Next up
 
-1. Phase 2 notebook (TVT vs MD, GR, typewell correlation, XY, dip) - figures under `artifacts/figures/`
-2. Expand feature EDA / leakage review for linear and tree features
-3. Try boosted-tree baseline (XGBoost or LightGBM) on the current simple features, then add richer well-relative features
+1. Phase 3 feature-signal EDA: boundary features, recent-window slopes, GR availability, typewell alignment summaries, and target-zone position effects.
+2. Phase 4 validation review: inspect whether held-out folds resemble the scoring setup and explain the Ridge vs Random Forest public/local disagreement.
+3. Try boosted-tree baseline (XGBoost or LightGBM) on richer well-relative features, then tune.
 4. Refine validation before making many leaderboard submissions from small public-LB gains
 5. Revisit neighbors only with radius constraints, clusters, or richer local geologic features
 6. Set up Bayesian GP (NumpPyro) once the feature/split baseline is more stable
