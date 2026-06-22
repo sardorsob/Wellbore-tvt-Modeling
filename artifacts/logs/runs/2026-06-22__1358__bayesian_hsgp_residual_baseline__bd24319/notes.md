@@ -1,0 +1,1 @@
+First HSGP residual baseline completed with boundary/progress coordinate variants.

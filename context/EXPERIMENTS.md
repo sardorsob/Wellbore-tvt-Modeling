@@ -196,6 +196,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: use the diagnostics to design HSGP next. Do not spend more notebook cycles on standalone Bayesian-linear heteroskedastic scale tuning unless HSGP results show a specific scale failure.
 - Notes: Boundary/progress scale improves the same-notebook fixed Student-t reference by **0.0503** RMSE, but remains **0.0176** worse than the prior tuned Bayesian best and **0.0697** worse than Huber GLM locally.
 
+## 2026-06-22__1358__bayesian_hsgp_residual_baseline__bd24319
+
+- Task: Bayesian HSGP residual baseline
+- Purpose: Test whether a Hilbert-space Gaussian process residual over boundary/progress geometry improves the slope-core Bayesian linear Student-t baseline before trying richer GP or hierarchical models.
+- Config: notebook-local config in `notebooks/modeling/06_bayesian/04_hsgp_residual_baseline.ipynb`
+- Data version: local Kaggle download in `data/raw/train/`
+- Split / CV: 3 grouped well folds on sampled target-zone rows; deterministic cap of 140 target rows per well and 50,000 training rows per fold.
+- Model: best candidate `hsgp_bp_m5_autodelta`, a fixed-nu Student-t Bayesian linear model with a squared-exponential HSGP residual over standardized `distance_log1p` and `eval_progress`, using 25 basis functions.
+- Primary metric: sampled target-zone CV RMSE mean **14.8997**; RMSE std **0.5109**.
+- Secondary metrics: empirical 80% interval coverage **0.767** with mean width **31.10** TVT units; HSGP alpha mean **0.770**, length mean **0.802**, residual-function SD mean **1.995** TVT units. The best HSGP improved the same-notebook linear reference by **0.0310** RMSE but trailed the prior tuned Bayesian best by **0.0547** RMSE.
+- Artifacts: fold metrics CSV, summary CSV, posterior diagnostics, residual sample, diagnostic figures, report, model comparison row, and run bundle under `artifacts/logs/runs/2026-06-22__1358__bayesian_hsgp_residual_baseline__bd24319/`
+- Decision: keep as the first HSGP baseline, but do not submit to Kaggle. Next GP work should test additive/coordinate-specific HSGP variants rather than only larger basis counts.
+- Notes: A 49-basis 2D HSGP and a 48-basis 3D boundary/progress/horizontal HSGP both underperformed the smaller 25-basis boundary/progress model.
+
 ## Entry Format
 
 ```text

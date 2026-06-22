@@ -1,0 +1,6 @@
+topic,finding,modeling_implication
+best_hsgp_candidate,Best HSGP candidate is hsgp_bp_m5_autodelta with sampled grouped RMSE 14.8997.,Use this as the first check of whether smooth GP residual structure improves Bayesian point predictions.
+linear_reference_delta,Best HSGP RMSE delta versus same-notebook linear reference is -0.0310.,"A negative delta supports expanding HSGP; a small or positive delta means revisit coordinates, priors, or validation before making it more complex."
+bayesian_baseline_delta,Best HSGP RMSE delta versus prior tuned Bayesian best is 0.0547.,This controls for notebook-to-notebook stochastic and implementation differences.
+huber_reference_delta,Best HSGP RMSE delta versus Huber GLM local reference is 0.1069.,"If HSGP still trails Huber, use residual diagnostics to decide between richer HSGP and boosted trees."
+posterior_calibration,Best HSGP 80% coverage is 0.767 with mean width 31.10.,Coverage and width indicate whether HSGP uncertainty remains usable for later hierarchical extensions.

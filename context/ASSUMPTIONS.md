@@ -220,3 +220,9 @@ The Bayesian linear tuning sweep found `student_t_fixed3_autodelta` as the best 
 The posterior-diagnostics and targeted-scale sweep found `hetero_boundary_progress_autodelta` as the best targeted scale candidate with sampled grouped RMSE **14.8626**, 80% coverage **0.780**, and mean Spearman correlation **0.315** between posterior predictive SD and absolute error. This improves the fixed Student-t reference inside the same notebook by **0.0503** RMSE, but remains **0.0176** worse than the prior tuned Bayesian linear best and **0.0697** worse than the Huber GLM diagnostic. The 90th percentile absolute well-level mean residual remains **18.60** TVT units.
 
 **Modeling implication:** Boundary/progress-driven heteroskedasticity is useful for uncertainty diagnostics, but it is not enough as a standalone Bayesian-linear improvement. The next Bayesian model should add a smooth residual function with HSGP, and later hierarchical well effects should be considered because persistent well-level signed bias remains.
+
+### A25 - First HSGP residual model improves its linear reference but not the best Bayesian baseline
+
+The first HSGP residual sweep found `hsgp_bp_m5_autodelta` as the best candidate with sampled grouped RMSE **14.8997**, improving the same-notebook linear Student-t reference by **0.0310** RMSE. However, it remains **0.0547** worse than the prior tuned Bayesian linear best (**14.8449**) and **0.1069** worse than the Huber GLM local diagnostic (**14.7928**). The best model used a small 2D boundary/progress basis with **25** functions; larger 2D basis (**49**) and a 3D boundary/progress/horizontal basis (**48**) did not improve RMSE.
+
+**Modeling implication:** Smooth residual structure exists, but the first HSGP coordinate/basis design is not enough. Next GP work should try additive HSGP terms, coordinate-specific priors, or residual-only modeling around the strongest robust mean rather than simply increasing basis count.

@@ -356,6 +356,15 @@ Wellbore-tvt-Modeling/
 
 ---
 
+### notebooks/modeling/06_bayesian/04_hsgp_residual_baseline.ipynb
+**Status:** Run - first HSGP residual baseline complete.
+**Purpose:** Test whether a Hilbert-space Gaussian process residual over boundary/progress geometry improves the Bayesian linear Student-t slope-core baseline.
+**Run ID:** `2026-06-22__1358__bayesian_hsgp_residual_baseline__bd24319`
+**Results:** Best candidate `hsgp_bp_m5_autodelta`; sampled target-zone grouped CV RMSE mean **14.8997**, RMSE std **0.5109**. It improved the same-notebook linear reference by **0.0310** RMSE but trailed the prior tuned Bayesian linear best by **0.0547** RMSE.
+**Decision:** Keep as the first HSGP baseline. Next GP work should test additive/coordinate-specific HSGP variants instead of only increasing basis count.
+
+---
+
 ### kaggle/linear_ridge_submission/linear_ridge_submission.ipynb
 **Status:** Pushed to Kaggle as private notebook version 2, completed, and submitted to the competition. Submission `53923555` scored **15.905** public LB. Version 1 errored due to an assumed input mount path.
 **Purpose:** Self-contained Kaggle submission notebook for the first `ridge_alpha_10` baseline.
@@ -483,6 +492,6 @@ Wellbore-tvt-Modeling/
 
 ## CURRENT STATUS
 
-**Phase:** Bayesian posterior diagnostics complete - structural EDA and Phases 2-4 are complete; fine-tuned GAM remains best public LB; robust signed-delta GLM is the best local diagnostic.
+**Phase:** First HSGP residual baseline complete - structural EDA and Phases 2-4 are complete; fine-tuned GAM remains best public LB; robust signed-delta GLM is the best local diagnostic.
 **Workflow posture:** Use `sardorsob/sardors-agentic-workflows` data-science gates: data gate, split/leakage gate, baseline gate, experiment loop, evaluation gate, artifact gate, handoff gate. Local reference copy lives under ignored `context/_external/`.
-**Next action:** Design the HSGP residual model using the tuned fixed-tail Student-t mean and boundary/progress posterior diagnostics, then investigate the Huber/GAM local-public mismatch and run LightGBM/XGBoost with the same notebook-local slope-core feature logic.
+**Next action:** Design additive or coordinate-specific HSGP variants using the 25-basis boundary/progress HSGP as the reference, then investigate the Huber/GAM local-public mismatch and run LightGBM/XGBoost with the same notebook-local slope-core feature logic.
