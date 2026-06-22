@@ -1,0 +1,8 @@
+{
+  "sample_rows": 108220.0,
+  "best_gam_rmse": 14.871891912103736,
+  "best_gam_rmse_std": 0.5336610364459924,
+  "endpoint_hold_rmse": 15.578175280473118,
+  "slope50_projection_rmse": 104.61574445031857,
+  "best_gam_minus_endpoint": -0.7062833683693821
+}

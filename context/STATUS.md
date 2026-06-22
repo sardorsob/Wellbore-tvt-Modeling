@@ -1,7 +1,7 @@
 # Project Status
 
 **Last updated:** 2026-06-21
-**Current phase:** Feature engineering loop - Phase 4 validation EDA complete
+**Current phase:** GAM-style modeling loop - first additive spline baseline complete
 
 ---
 
@@ -36,10 +36,11 @@
 - [x] Run Phase 2 geological/domain EDA (`2026-06-21__1506__eda_phase2_geological_domain__542b1c1`) - long trailing-zone extrapolation, GR missingness, typewell alignment, and local-test overlap documented
 - [x] Run Phase 3 feature-signal EDA (`2026-06-21__1847__eda_phase3_feature_signal__ebaa6c3`) - endpoint hold, feature-family probes, GR availability, typewell residual signal, and visible-test caveats documented
 - [x] Run Phase 4 validation EDA (`2026-06-21__1928__eda_phase4_validation__203566d`) - endpoint baseline, fold balance, local/public mismatch, and validation protocol documented
+- [x] Run first GAM-style additive spline baseline (`2026-06-21__2007__gam_spline_baseline__8046b3f`) - best `boundary_trajectory_slopes`, sampled target-zone CV RMSE mean **14.8719**
 
 ## In progress
 
-- [ ] Richer well-relative feature builder for boosted-tree and validation experiments
+- [ ] Decide whether to self-contain and submit the GAM-style model to Kaggle before boosted trees
 - [ ] Export artifact figures per `CURSOR_RULES.md`
 - [ ] Verify Kaggle competition rules page before first submission (`kaggle/RULES_SUMMARY.md`)
 - [ ] Use public LB **15.873** as the current external baseline; avoid leaderboard-only tuning
@@ -48,8 +49,8 @@
 
 ## Next up
 
-1. Implement a richer well-relative feature builder based on Phase 3: endpoint hold, boundary distance, target-zone progress, trajectory, recent slopes, GR availability, and cautious typewell summaries.
-2. Apply the Phase 4 validation protocol to Ridge/Random Forest/LightGBM on richer features: endpoint baseline, grouped fold metrics, descriptor balance, and public-LB gap notes.
+1. Review GAM residuals and decide whether to create a self-contained Kaggle GAM-style submission notebook.
+2. Apply the Phase 4 validation protocol to LightGBM/XGBoost on the same notebook-local feature logic: endpoint baseline, grouped fold metrics, descriptor balance, and public-LB gap notes.
 3. Try boosted-tree baseline (XGBoost or LightGBM) on richer well-relative features, then tune.
 4. Refine validation before making many leaderboard submissions from small public-LB gains
 5. Revisit neighbors only with radius constraints, clusters, or richer local geologic features
@@ -75,3 +76,9 @@
 | 2026-06-21 | Ridge alpha 10 | 15.7660 | 15.905 | Submission `53923555`; first external baseline |
 | 2026-06-21 | Random Forest | 16.0655 | 15.873 | Submission `53924036`; current best public LB, but local CV disagrees with Ridge ordering |
 | 2026-06-21 | ElasticNet alpha 0.001 l1 0.2 | 15.7907 | 16.091 | Submission `53924934`; rejected, worse than Ridge and Random Forest externally |
+
+## Local diagnostic model history
+
+| Date | Model | Local diagnostic RMSE | Notes |
+|---|---|---:|---|
+| 2026-06-21 | GAM-style additive spline `boundary_trajectory_slopes` | 14.8719 | Sampled target-zone grouped CV; not yet a Kaggle submission |

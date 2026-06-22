@@ -3,6 +3,7 @@
 ## [Unreleased]
 
 ### Changed
+- Ran the first GAM-style additive spline baseline and recorded that the best boundary/trajectory/slope additive model beats sampled endpoint hold under target-zone grouped CV.
 - Completed Phase 4 validation EDA and recorded the validation protocol for endpoint-hold baselines, fold descriptor balance, model fold metrics, and public leaderboard gap interpretation.
 - Completed Phase 3 feature-signal EDA and recorded the resulting assumptions for endpoint hold, unstable direct slope extrapolation, additive feature-family signal, GR availability, and cautious typewell residual use.
 - Completed Phase 2 geological/domain EDA and recorded the resulting assumptions for long trailing-zone extrapolation, GR missingness, typewell alignment, train-only formation caveats, and local-test overlap.
@@ -15,6 +16,7 @@
 - Generated and ran first baseline modeling notebooks; updated structure, status, experiments, and feature log with run IDs and RMSEs.
 
 ### Added
+- GAM-style modeling folder, executable additive spline baseline notebook, fold metrics, summary tables, residual diagnostics, report, model-comparison row, and run bundle.
 - Phase 4 EDA notebook execution artifacts: endpoint baseline table, fold assignment and descriptor-balance tables, model fold metrics, CV/leaderboard gap table, descriptor PCA table, diagnostic figures, findings report, and run bundle.
 - Phase 3 EDA notebook execution artifacts: bounded candidate feature sample preview, feature signal table, diagnostic feature-family probe tables, visible-test drift table, GR missingness table, diagnostic figures, findings report, and run bundle.
 - Phase 2 EDA notebook execution artifacts: train/test/typewell/formation summary tables, diagnostic figures, findings table, markdown report, and run bundle.

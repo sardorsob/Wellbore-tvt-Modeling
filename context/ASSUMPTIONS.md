@@ -171,3 +171,22 @@ The current sorted grouped folds have eval-row CV **0.003** and endpoint-RMSE ra
 Random Forest beats Ridge on public LB by **0.032** RMSE, while local CV ranks Random Forest worse by **0.300** RMSE. ElasticNet has the largest public-minus-CV gap at **0.300**.
 
 **Modeling implication:** Public LB should be a coarse external check only. Do not promote a modeling direction from small leaderboard gains unless local fold diagnostics and error analysis also support it.
+
+---
+
+## GAM-Style Modeling Addendum - 2026-06-21
+
+**Notebook:** `notebooks/modeling/04_gam/01_gam_spline_baseline.ipynb`
+**Run ID:** `2026-06-21__2007__gam_spline_baseline__8046b3f`
+
+### A18 - Smooth additive structure has useful signal
+
+The best GAM-style additive spline variant, `boundary_trajectory_slopes`, scored sampled grouped target-zone RMSE **14.8719**, compared with sampled endpoint-hold RMSE **15.5782**.
+
+**Modeling implication:** Smooth additive structure is a worthwhile bridge between linear baselines and boosted trees. Boundary, trajectory, and recent-slope features should be included in the next model family.
+
+### A19 - GAM results are target-zone diagnostic, not direct leaderboard proof
+
+This GAM-style run trained and validated on sampled target-zone rows from train wells, while some earlier baselines trained on known-zone rows and scored target-zone rows.
+
+**Modeling implication:** Treat the GAM result as strong evidence that target-zone feature construction matters, but create a self-contained Kaggle notebook before comparing it directly against public LB.

@@ -17,6 +17,7 @@ This follows decision `D003` in `context/DECISIONS.md`.
 - Report descriptor balance by fold: eval rows/fraction, GR missingness, recent slope, endpoint TVT/delta, trajectory length, and typewell alignment.
 - Interpret public LB as an external check. Phase 4 found Random Forest beats Ridge publicly by **0.032** RMSE while local CV ranks Random Forest worse by **0.300** RMSE.
 - Keep direct slope projection separate from slope-as-feature. Phase 4 full-row last-50 slope projection RMSE is **112.4817**.
+- Label target-zone-trained diagnostic runs separately from known-zone-trained baselines. The first GAM-style run uses sampled target-zone grouped CV and should not be treated as directly identical to earlier Ridge/Random Forest CV.
 
 ## Planned Refinement
 

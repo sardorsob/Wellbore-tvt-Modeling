@@ -112,6 +112,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: require endpoint-hold baseline, grouped fold-level metrics, descriptor-balance reporting, and leaderboard-gap interpretation in future reportable modeling notebooks.
 - Notes: Public LB remains useful as an external check, but should not be the optimization target.
 
+## 2026-06-21__2007__gam_spline_baseline__8046b3f
+
+- Task: first GAM-style baseline
+- Purpose: Test smooth additive spline models before LightGBM/XGBoost.
+- Config: notebook-local config in `notebooks/modeling/04_gam/01_gam_spline_baseline.ipynb`
+- Data version: local Kaggle download in `data/raw/train/`
+- Split / CV: 3 grouped well folds on sampled target-zone rows; deterministic cap of 140 target rows per well and 80,000 training rows per fold.
+- Model: best candidate `boundary_trajectory_slopes`, implemented as sklearn `SplineTransformer` plus Ridge.
+- Primary metric: sampled target-zone CV RMSE mean **14.8719**; RMSE std **0.5337**.
+- Secondary metrics: MAE mean **10.4898**; mean R2 **0.999423**. Sampled endpoint-hold RMSE **15.5782**; direct slope projection RMSE **104.6157**.
+- Artifacts: fold metrics CSV, summary CSV, variant table, residual sample, residual/RMSE figures, report, model comparison row, and run bundle under `artifacts/logs/runs/2026-06-21__2007__gam_spline_baseline__8046b3f/`
+- Decision: keep as the first additive-smooth modeling baseline. Consider a self-contained Kaggle notebook before moving fully to boosted trees.
+- Notes: Because this trains on sampled target-zone rows, compare directionally with older known-zone-trained Ridge/Random Forest results.
+
 ## Entry Format
 
 ```text

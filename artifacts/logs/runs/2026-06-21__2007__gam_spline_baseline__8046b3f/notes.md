@@ -1,0 +1,1 @@
+GAM-style spline baseline completed. Feature construction is notebook-local for later Kaggle submission portability.

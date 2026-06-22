@@ -1,0 +1,5 @@
+topic,finding,modeling_implication
+best_gam_variant,Best GAM-style variant is boundary_trajectory_slopes with sampled grouped RMSE 14.8719.,Use this as the first additive-smooth baseline before boosted-tree tuning.
+endpoint_comparison,Best GAM-style RMSE 14.8719 vs sampled endpoint-hold RMSE 15.5782.,A useful model must clear endpoint hold under the active validation protocol.
+slope_projection_check,Direct last-50 slope projection remains unstable with sampled RMSE 104.6157.,"Slope should remain a feature, not a standalone extrapolator."
+historical_reference,"Reference local CV: Ridge 15.7660, Random Forest 16.0655; this GAM run uses sampled target-zone CV, so compare directionally, not as a final leaderboard proxy.","If GAM is competitive, create a self-contained Kaggle notebook and rerun against the hidden-test workflow."

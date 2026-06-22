@@ -1,0 +1,10 @@
+max_target_rows_per_well: 140
+max_train_rows_per_fold: 80000
+n_splits: 3
+note: Notebook-local GAM-style additive spline regression; target-zone diagnostic
+  CV.
+ridge_alpha: 30.0
+seed: 42
+spline_degree: 3
+spline_knots: 7
+task: gam_spline_baseline

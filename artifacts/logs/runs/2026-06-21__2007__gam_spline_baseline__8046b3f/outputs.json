@@ -1,0 +1,18 @@
+{
+  "inputs": [
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\data\\raw\\train"
+  ],
+  "outputs": [
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\model__gam_spline_fold_metrics__2026-06-21.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\model__gam_spline_summary__2026-06-21.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\model__gam_spline_variants__2026-06-21.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\model__gam_spline_residual_sample__2026-06-21.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\model__gam_spline_findings__2026-06-21.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\reports\\model__gam_spline_baseline__2026-06-21.md",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\model_comparison.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\figures\\model__gam_spline_rmse_comparison__2026-06-21.png",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\figures\\model__gam_spline_fold_rmse__2026-06-21.png",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\figures\\model__gam_spline_best_residuals__2026-06-21.png",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\figures\\model__gam_spline_residual_by_boundary__2026-06-21.png"
+  ]
+}

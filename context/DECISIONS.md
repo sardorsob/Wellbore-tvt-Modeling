@@ -120,3 +120,16 @@
 **Rationale:** Phase 4 shows local CV and public LB can disagree on model ordering, and fold descriptor balance is not captured by one mean RMSE.
 **Consequences:** Modeling notebooks will be slightly more verbose, but model decisions should be more robust and less leaderboard-driven.
 **Follow-up:** Apply this protocol to the richer feature builder and the first LightGBM/XGBoost pass.
+
+---
+
+## D011 - Use notebook-local feature construction for submission-candidate models
+
+**Date:** 2026-06-21
+**Decision:** For models that may become Kaggle submissions, keep feature construction inline in the modeling notebook or duplicate it into the Kaggle notebook rather than depending on precomputed local artifacts or repo-only helpers.
+**Alternatives considered:**
+- Create a reusable production feature builder in `src/` and import it from every notebook.
+- Save processed feature matrices locally and submit predictions from those.
+**Rationale:** This is a Kaggle code competition. The notebook is rerun on hidden test data, so all inference-time feature logic must travel with the notebook.
+**Consequences:** Some feature code may be duplicated across submission notebooks, but submissions will be self-contained and reproducible.
+**Follow-up:** If a model is selected for Kaggle, create a self-contained Kaggle notebook with the same inline feature logic and no local artifact dependency.
