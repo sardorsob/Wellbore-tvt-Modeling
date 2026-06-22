@@ -1,0 +1,1 @@
+Phase 3 feature-signal EDA completed. Linear probes are diagnostic and use sampled target-zone rows from grouped held-out wells.

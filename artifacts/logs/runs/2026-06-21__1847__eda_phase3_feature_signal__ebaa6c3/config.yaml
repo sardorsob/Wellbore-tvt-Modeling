@@ -1,0 +1,7 @@
+max_export_rows_per_well: 50
+max_mi_rows: 80000
+max_target_rows_per_well: 250
+n_splits: 3
+note: Diagnostic target-zone feature screening; not a submission model.
+seed: 42
+task: phase3_feature_signal_eda

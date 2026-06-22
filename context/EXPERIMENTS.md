@@ -86,6 +86,19 @@ This file is the human-readable registry for reportable runs.
 - Decision: do not pursue vanilla KNN on the current simple scaled features; it is orders of magnitude worse than Ridge and Random Forest.
 - Notes: Runtime required sampled validation, so the score is not directly comparable to full-row tree/linear CV, but it is far enough away to reject this baseline. If revisiting neighbors, use well-local/stratified features, radius constraints, or clustered local models rather than global KNN.
 
+## 2026-06-21__1847__eda_phase3_feature_signal__ebaa6c3
+
+- Task: Phase 3 feature-signal EDA
+- Purpose: Screen boundary/endpoint, recent-slope, GR availability, typewell, and trajectory candidate features before boosted-tree tuning.
+- Config: notebook-local config in `notebooks/eda/03_phase3_feature_signal.ipynb`
+- Data version: local Kaggle download in `data/raw/train/` and visible example files in `data/raw/test/`
+- Split / CV: 3 grouped well folds on sampled target-zone rows for diagnostic linear probes; not a submission training protocol.
+- Primary result: all-candidate diagnostic probe RMSE **14.6236** vs endpoint-hold diagnostic RMSE **15.5815**.
+- Secondary results: last-50 slope projection RMSE **104.5322**; top absolute Spearman target-zone delta feature `tvt_slope_last_10` (**0.199**); top mutual-information feature `z_slope_last_100` (**0.514**).
+- Artifacts: bounded candidate feature sample preview, feature signal CSV, feature-group probe metrics/summary, visible-test drift table, GR missingness signal table, diagnostic figures, report, and run bundle under `artifacts/logs/runs/2026-06-21__1847__eda_phase3_feature_signal__ebaa6c3/`
+- Decision: implement a richer well-relative feature builder before serious LightGBM/XGBoost tuning.
+- Notes: Visible local test drift remains diagnostic only because those wells overlap train.
+
 ## Entry Format
 
 ```text

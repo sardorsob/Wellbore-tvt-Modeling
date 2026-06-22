@@ -1,7 +1,7 @@
 # Project Status
 
 **Last updated:** 2026-06-21
-**Current phase:** EDA feature-signal loop - Phase 2 geology/domain EDA complete
+**Current phase:** Feature engineering loop - Phase 3 feature-signal EDA complete
 
 ---
 
@@ -34,10 +34,11 @@
 - [x] Push and submit Random Forest Kaggle notebook version 1 (`ref=53924036`) - public LB **15.873**
 - [x] Run first KNN baseline (`2026-06-21__1348__neighbor_knn_regression__31e8e1a`) - sampled CV RMSE mean **448.4148**
 - [x] Run Phase 2 geological/domain EDA (`2026-06-21__1506__eda_phase2_geological_domain__542b1c1`) - long trailing-zone extrapolation, GR missingness, typewell alignment, and local-test overlap documented
+- [x] Run Phase 3 feature-signal EDA (`2026-06-21__1847__eda_phase3_feature_signal__ebaa6c3`) - endpoint hold, feature-family probes, GR availability, typewell residual signal, and visible-test caveats documented
 
 ## In progress
 
-- [ ] Phase 3 feature-signal EDA (`notebooks/eda/03_phase3_feature_signal.ipynb`)
+- [ ] Richer well-relative feature builder for boosted-tree and validation experiments
 - [ ] Export artifact figures per `CURSOR_RULES.md`
 - [ ] Verify Kaggle competition rules page before first submission (`kaggle/RULES_SUMMARY.md`)
 - [ ] Use public LB **15.873** as the current external baseline; avoid leaderboard-only tuning
@@ -46,7 +47,7 @@
 
 ## Next up
 
-1. Phase 3 feature-signal EDA: boundary features, recent-window slopes, GR availability, typewell alignment summaries, and target-zone position effects.
+1. Implement a richer well-relative feature builder based on Phase 3: endpoint hold, boundary distance, target-zone progress, trajectory, recent slopes, GR availability, and cautious typewell summaries.
 2. Phase 4 validation review: inspect whether held-out folds resemble the scoring setup and explain the Ridge vs Random Forest public/local disagreement.
 3. Try boosted-tree baseline (XGBoost or LightGBM) on richer well-relative features, then tune.
 4. Refine validation before making many leaderboard submissions from small public-LB gains

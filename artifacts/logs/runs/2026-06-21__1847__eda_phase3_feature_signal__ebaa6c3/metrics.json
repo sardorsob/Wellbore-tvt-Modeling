@@ -1,0 +1,11 @@
+{
+  "train_wells": 773.0,
+  "test_wells": 3.0,
+  "train_sample_rows": 193250.0,
+  "test_sample_rows": 750.0,
+  "export_sample_rows": 38650.0,
+  "best_probe_rmse": 14.62359728491383,
+  "endpoint_hold_rmse": 15.581521712590606,
+  "slope50_projection_rmse": 104.53217213203153,
+  "top_abs_spearman_delta": 0.19872849793709604
+}

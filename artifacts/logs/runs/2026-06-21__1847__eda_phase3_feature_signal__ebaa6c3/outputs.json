@@ -1,0 +1,21 @@
+{
+  "inputs": [
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\data\\raw\\train",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\data\\raw\\test"
+  ],
+  "outputs": [
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\eda__phase3_candidate_feature_sample_preview__2026-06-21.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\eda__phase3_candidate_feature_signal__2026-06-21.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\eda__phase3_feature_group_probe_metrics__2026-06-21.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\eda__phase3_feature_group_probe_summary__2026-06-21.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\eda__phase3_visible_test_drift__2026-06-21.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\eda__phase3_gr_missing_signal__2026-06-21.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\eda__phase3_findings__2026-06-21.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\reports\\eda__phase3_feature_signal__2026-06-21.md",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\figures\\eda__phase3_feature_signal_rank__2026-06-21.png",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\figures\\eda__phase3_group_probe_rmse__2026-06-21.png",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\figures\\eda__phase3_boundary_delta_curve__2026-06-21.png",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\figures\\eda__phase3_gr_missing_signal__2026-06-21.png",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\figures\\eda__phase3_typewell_residual_signal__2026-06-21.png"
+  ]
+}

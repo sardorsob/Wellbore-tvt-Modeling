@@ -94,3 +94,16 @@
 **Rationale:** Phase 2 confirms the task is dominated by long trailing-zone extrapolation. The current simple features are useful baselines, but the next lift is more likely to come from well-relative and boundary-aware signal than from tuning alone.
 **Consequences:** Boosted trees will start from a richer, more geologically informed feature set. Bayesian modeling is deferred until the generative story around boundary extrapolation, GR missingness, and typewell alignment is explicit.
 **Follow-up:** Run Phase 3 feature-signal EDA, then update `src/preprocessing/tabular.py` or add a richer feature builder before the first tuned LightGBM/XGBoost notebook.
+
+---
+
+## D009 - Build a richer well-relative feature builder before boosted-tree tuning
+
+**Date:** 2026-06-21
+**Decision:** Implement the next modeling feature pass around endpoint/boundary, trajectory, recent-slope, GR-availability, and cautious typewell summary features before serious LightGBM/XGBoost tuning.
+**Alternatives considered:**
+- Tune XGBoost/LightGBM on the existing 15 simple tabular features.
+- Use last-known slope projection as the next baseline.
+**Rationale:** Phase 3 shows all-candidate diagnostic probes beat endpoint hold (**14.6236** vs **15.5815** RMSE), while direct last-50 slope projection is unstable (**104.5322** RMSE). Feature-family combination looks more promising than one-feature extrapolation.
+**Consequences:** The next modeling notebook should include a reusable feature builder or carefully documented notebook-local feature construction before hyperparameter sweeps.
+**Follow-up:** Start with a richer deterministic feature builder and compare Ridge/Random Forest/LightGBM using the same grouped validation before Kaggle submission.

@@ -115,3 +115,34 @@ Mean GR missingness is **0.294** in train and **0.215** in the visible local tes
 
 **Assumption:** GR availability is not ignorable noise; it may reflect acquisition, processing, or interval-specific logging behavior.
 **Modeling implication:** Add explicit GR missingness indicators, within-window availability summaries, and imputation choices before boosted-tree or Bayesian models. For Bayesian work, consider whether missing GR should be modeled as observed-with-missingness rather than silently imputed.
+
+---
+
+## Phase 3 EDA Addendum - 2026-06-21
+
+**Notebook:** `notebooks/eda/03_phase3_feature_signal.ipynb`
+**Run ID:** `2026-06-21__1847__eda_phase3_feature_signal__ebaa6c3`
+
+### A11 - Endpoint hold is a strong diagnostic baseline
+
+On sampled train target-zone rows, predicting every target row as the last known `TVT_input` gives diagnostic grouped RMSE **15.5815**, close to the best reportable local Ridge baseline.
+
+**Modeling implication:** The target-zone delta from the boundary is often small enough that endpoint TVT must be treated as a first-class feature and baseline. Any richer model should prove it improves over endpoint hold, not only over interpolation.
+
+### A12 - Naive slope extrapolation is risky
+
+The last-50 known-zone slope projection gives diagnostic grouped RMSE **104.5322**, much worse than endpoint hold. Recent slopes are still signal-bearing in feature screening, but direct linear extrapolation from one recent slope is unstable.
+
+**Modeling implication:** Use recent slopes as contextual features or priors, not as standalone deterministic extrapolators. Bayesian models should place conservative priors on boundary slope continuation.
+
+### A13 - Candidate feature families carry additive target-zone signal
+
+The diagnostic target-zone linear probe improves from endpoint hold RMSE **15.5815** to all-candidate RMSE **14.6236**. The strongest univariate Spearman signal for target-zone delta is `tvt_slope_last_10` (**0.199** absolute), while the strongest mutual-information feature is `z_slope_last_100` (**0.514**).
+
+**Modeling implication:** Build the next production feature builder around boundary/endpoint, trajectory, recent-slope, GR-availability, and typewell features together. Do not rely on a single hand-picked raw feature.
+
+### A14 - Typewell residuals are weak as raw row-level signals
+
+`gr_minus_tw_proxy` has Spearman correlation **0.019** with target-zone delta in the Phase 3 sample.
+
+**Modeling implication:** Typewell information may still help through robust summaries and alignment scores, but raw row-level typewell residuals should not be over-weighted without validation.

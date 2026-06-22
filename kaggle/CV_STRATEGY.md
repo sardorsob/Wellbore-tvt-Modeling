@@ -18,6 +18,8 @@ This follows decision `D003` in `context/DECISIONS.md`.
 - Track validation RMSE variability across wells, not only global RMSE.
 - Add Phase 4 fold-similarity diagnostics: compare held-out folds on eval-zone fraction, GR missingness, endpoint TVT, recent slopes, trajectory length, and typewell alignment.
 - Investigate why Ridge beat Random Forest locally while Random Forest beat Ridge on public LB before making many boosted-tree leaderboard submissions.
+- Add an endpoint-hold diagnostic baseline to future validation reports. Phase 3 sampled target-zone RMSE was **15.5815**, so richer models should demonstrate improvement over this simple boundary baseline.
+- Track direct slope extrapolation separately from slope-as-feature. Phase 3 last-50 slope projection was unstable at **104.5322** sampled RMSE.
 
 ## Leakage Guardrails
 
