@@ -1,0 +1,6 @@
+topic,finding,modeling_implication
+best_scale_candidate,Best targeted scale candidate is hetero_boundary_progress_autodelta with sampled grouped RMSE 14.8626 and 80% coverage 0.780.,Use this result to decide whether heteroskedastic scale structure improves the Bayesian linear baseline enough to keep tuning.
+fixed_reference_comparison,The fixed Student-t reference scored RMSE 14.9129; best targeted scale delta is -0.0503.,"If the delta is small or positive, move scale complexity into HSGP/hierarchical models rather than standalone Bayesian linear notebooks."
+uncertainty_error_alignment,Best candidate mean Spearman correlation between posterior SD and absolute error is 0.315.,Low correlation means intervals are calibrated globally but weak at ranking difficult rows.
+well_bias_signal,The 90th percentile absolute well-level mean residual for the best candidate is 18.60 TVT units.,Persistent well-level signed bias supports hierarchical well/intercept structure after the HSGP baseline.
+hsgp_readiness,"Best targeted scale RMSE vs Huber GLM local reference is 0.0697, with coverage gap from nominal 80% of 0.020.",The next Bayesian notebook should add smooth residual functions rather than only changing linear likelihood scale.

@@ -1,0 +1,1 @@
+Posterior predictive diagnostics and targeted scale-model sweep completed before HSGP work.

@@ -214,3 +214,9 @@ The NumPyro/JAX Bayesian linear baseline found the best candidate was `bayes_stu
 The Bayesian linear tuning sweep found `student_t_fixed3_autodelta` as the best candidate with sampled grouped RMSE **14.8449**, improving the first Bayesian baseline by **0.1303** RMSE but still trailing the robust signed-delta Huber GLM diagnostic (**14.7928**). AutoNormal Student-t and Laplace variants clustered near **14.93**, while heteroskedastic extensions did not improve point RMSE in this sweep.
 
 **Modeling implication:** Keep fixed-tail Student-t likelihoods as the Bayesian default, but do not spend much more time on linear-only Bayesian tuning. The next Bayesian model should add structured residual variation, likely HSGP over boundary/progress/trajectory coordinates, while using the Student-t likelihood and conservative uncertainty diagnostics from these linear runs.
+
+### A24 - Targeted scale models help calibration more than point RMSE
+
+The posterior-diagnostics and targeted-scale sweep found `hetero_boundary_progress_autodelta` as the best targeted scale candidate with sampled grouped RMSE **14.8626**, 80% coverage **0.780**, and mean Spearman correlation **0.315** between posterior predictive SD and absolute error. This improves the fixed Student-t reference inside the same notebook by **0.0503** RMSE, but remains **0.0176** worse than the prior tuned Bayesian linear best and **0.0697** worse than the Huber GLM diagnostic. The 90th percentile absolute well-level mean residual remains **18.60** TVT units.
+
+**Modeling implication:** Boundary/progress-driven heteroskedasticity is useful for uncertainty diagnostics, but it is not enough as a standalone Bayesian-linear improvement. The next Bayesian model should add a smooth residual function with HSGP, and later hierarchical well effects should be considered because persistent well-level signed bias remains.

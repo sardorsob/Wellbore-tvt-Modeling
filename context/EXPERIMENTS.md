@@ -182,6 +182,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: keep as the best Bayesian linear point-RMSE baseline, but move next to HSGP or other structured residual models instead of further linear-only tuning.
 - Notes: Fixed-tail Student-t with AutoDelta beat AutoNormal and heteroskedastic variants for point RMSE in this sweep, while still providing posterior predictive interval diagnostics.
 
+## 2026-06-22__1254__bayesian_posterior_diagnostics_scale__6644c20
+
+- Task: Bayesian posterior predictive diagnostics and targeted scale modeling
+- Purpose: Diagnose residual bias, coverage, posterior SD/error alignment, and whether a focused heteroskedastic Student-t scale model improves the tuned Bayesian linear baseline before HSGP.
+- Config: notebook-local config in `notebooks/modeling/06_bayesian/03_bayesian_posterior_diagnostics_scale.ipynb`
+- Data version: local Kaggle download in `data/raw/train/`
+- Split / CV: 3 grouped well folds on sampled target-zone rows; deterministic cap of 140 target rows per well and 60,000 training rows per fold.
+- Model: best candidate `hetero_boundary_progress_autodelta`, a fixed-nu Student-t Bayesian linear model with boundary/progress-driven row-level scale fit by AutoDelta.
+- Primary metric: sampled target-zone CV RMSE mean **14.8626**; RMSE std **0.5019**.
+- Secondary metrics: empirical 80% interval coverage **0.780** with mean width **31.95** TVT units; posterior SD vs absolute error Spearman **0.315**; 90th percentile absolute well-level mean residual **18.60** TVT units.
+- Artifacts: fold metrics CSV, summary CSV, posterior diagnostics, residual sample, bin diagnostics, well diagnostics, diagnostic figures, report, model comparison row, and run bundle under `artifacts/logs/runs/2026-06-22__1254__bayesian_posterior_diagnostics_scale__6644c20/`
+- Decision: use the diagnostics to design HSGP next. Do not spend more notebook cycles on standalone Bayesian-linear heteroskedastic scale tuning unless HSGP results show a specific scale failure.
+- Notes: Boundary/progress scale improves the same-notebook fixed Student-t reference by **0.0503** RMSE, but remains **0.0176** worse than the prior tuned Bayesian best and **0.0697** worse than Huber GLM locally.
+
 ## Entry Format
 
 ```text

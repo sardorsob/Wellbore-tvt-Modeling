@@ -1,0 +1,10 @@
+best_candidate: hetero_boundary_progress_autodelta
+learning_rate: 0.02
+max_target_rows_per_well: 140
+max_train_rows_per_fold: 60000
+n_splits: 3
+note: Posterior predictive diagnostics and targeted heteroskedastic scale before HSGP.
+posterior_samples: 160
+seed: 42
+svi_steps: 1000
+task: bayesian_posterior_diagnostics_scale

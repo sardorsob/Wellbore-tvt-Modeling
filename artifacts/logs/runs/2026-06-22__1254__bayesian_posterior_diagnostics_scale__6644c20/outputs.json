@@ -1,0 +1,21 @@
+{
+  "inputs": [
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\data\\raw\\train"
+  ],
+  "outputs": [
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\model__bayesian_posterior_scale_fold_metrics__2026-06-22.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\model__bayesian_posterior_scale_summary__2026-06-22.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\model__bayesian_posterior_scale_posterior_diagnostics__2026-06-22.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\model__bayesian_posterior_scale_residual_sample__2026-06-22.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\model__bayesian_posterior_scale_bin_diagnostics__2026-06-22.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\model__bayesian_posterior_scale_well_diagnostics__2026-06-22.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\model__bayesian_posterior_scale_findings__2026-06-22.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\reports\\model__bayesian_posterior_scale__2026-06-22.md",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\model_comparison.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\figures\\model__bayesian_posterior_scale_rmse_comparison__2026-06-22.png",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\figures\\model__bayesian_posterior_scale_coverage_rmse_by_boundary__2026-06-22.png",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\figures\\model__bayesian_posterior_scale_residual_bias_by_progress__2026-06-22.png",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\figures\\model__bayesian_posterior_scale_sd_vs_abs_error__2026-06-22.png",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\figures\\model__bayesian_posterior_scale_well_bias_distribution__2026-06-22.png"
+  ]
+}

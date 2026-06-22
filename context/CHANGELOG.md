@@ -3,6 +3,7 @@
 ## [Unreleased]
 
 ### Changed
+- Ran Bayesian posterior predictive diagnostics with targeted heteroskedastic scale models and recorded that boundary/progress scale helps calibration but does not beat the tuned fixed Student-t Bayesian baseline.
 - Ran Bayesian linear tuning and recorded that fixed-tail Student-t AutoDelta improves the first Bayesian baseline but still trails the Huber GLM local diagnostic.
 - Ran the first NumPyro/JAX Bayesian linear robust baseline and recorded that heteroskedastic Student-t improves uncertainty calibration but not point-RMSE versus Huber/GAM.
 - Pushed and submitted the self-contained Huber GLM slope-core notebook; public LB scored **15.464**, worse than the fine-tuned GAM despite better local diagnostic RMSE.
@@ -22,6 +23,7 @@
 - Generated and ran first baseline modeling notebooks; updated structure, status, experiments, and feature log with run IDs and RMSEs.
 
 ### Added
+- Bayesian posterior diagnostics and targeted-scale notebook, bin/well diagnostics, calibration figures, report, model-comparison row, and run bundle.
 - Bayesian linear tuning notebook, posterior diagnostics, residual/coverage figures, report, model-comparison row, and run bundle.
 - Bayesian linear robust notebook, posterior predictive diagnostics, calibration figures, report, model-comparison row, and run bundle.
 - Self-contained Huber GLM Kaggle submission notebook, kernel metadata, and local validation CSV.

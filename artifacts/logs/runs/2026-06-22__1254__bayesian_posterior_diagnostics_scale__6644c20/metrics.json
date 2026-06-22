@@ -1,0 +1,13 @@
+{
+  "sample_rows": 108220.0,
+  "best_rmse": 14.862579228100058,
+  "best_rmse_std": 0.5019492958429468,
+  "best_coverage_80": 0.7801770076111764,
+  "best_width_80": 31.94542076164058,
+  "best_sd_abs_error_corr": 0.31468383504432124,
+  "fixed_reference_rmse": 14.91289235079173,
+  "endpoint_hold_rmse": 15.578175280473118,
+  "best_minus_previous_tuned_bayes": 0.017630894294910604,
+  "best_minus_huber_glm": 0.06973669970855312,
+  "well_bias_abs_q90": 18.60447993465291
+}
