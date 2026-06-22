@@ -1,0 +1,5 @@
+finding,value,evidence,implication
+best_candidate,huber_plus_hsgp_dps_m8,Best residual-HSGP sweep RMSE 14.3586.,Use this to decide whether to package a Kaggle notebook.
+gam_hsgp_delta,-0.02527863487685522,Best GAM+HSGP 46.0657 vs GAM mean-only 46.0910.,Negative means residual HSGP improved the public-leading GAM direction locally.
+huber_hsgp_delta,-0.05852940976042653,Best Huber+HSGP 14.3586 vs Huber mean-only 14.4172.,Negative means residual HSGP improved the locally strong Huber direction.
+public_baseline_context,15.055,Current best public LB is fine-tuned GAM 15.055; additive HSGP public LB is 15.255.,Only package if local diagnostics show a plausible gain over GAM mean-only.

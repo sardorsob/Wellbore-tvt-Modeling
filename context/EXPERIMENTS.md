@@ -224,6 +224,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: keep as the best HSGP result so far, but do not submit to Kaggle yet. Proceed to Huber/GAM residual HSGP because the additive residual geometry helps while the mean model still appears limiting.
 - Notes: Early additive SVI trials produced non-finite predictions; the stable run used lower-step clipped Adam and removed the unstable AutoNormal candidate from this first sweep.
 
+## 2026-06-22__1519__bayesian_hsgp_residual_on_gam_huber__fadbdba
+
+- Task: HSGP residuals on GAM and Huber means
+- Purpose: Test whether additive Hilbert-space residual corrections improve the current public-leading GAM direction and the strongest local robust Huber direction.
+- Config: notebook-local config in `notebooks/modeling/06_bayesian/06_hsgp_residual_on_gam_huber.ipynb`
+- Data version: local Kaggle download in `data/raw/train/`
+- Split / CV: 3 grouped well folds from the shared `np.array_split` protocol on sampled target-zone rows; deterministic cap of 140 target rows per well and 80,000 training rows per fold.
+- Model: best candidate `huber_plus_hsgp_dps_m8`, a Huber signed-delta mean model plus Student-t MAP additive Hilbert residual terms over `distance_log1p`, `eval_progress`, and `abs_projected_delta_10`.
+- Primary metric: sampled target-zone CV RMSE mean **14.3586**; RMSE std **0.5713**.
+- Secondary metrics: Huber mean-only scored **14.4172**, so the additive residual HSGP improved the same-notebook Huber reference by **0.0585** RMSE. The reconstructed GAM mean was unstable in this notebook and was not promoted.
+- Artifacts: fold metrics CSV, summary CSV, residual diagnostics, residual sample, diagnostic figures, report, model comparison row, and run bundle under `artifacts/logs/runs/2026-06-22__1519__bayesian_hsgp_residual_on_gam_huber__fadbdba/`
+- Decision: package a Kaggle-safe Huber + additive Hilbert residual notebook next if we want a public-LB read. Do not package the GAM-residual variant without first reproducing the exact public-GAM behavior in this notebook.
+- Notes: During development, an incorrect same-fold train/validation split and a missing trajectory-feature subset produced misleading intermediate results; both were corrected before recording the final metrics.
+
 ## Entry Format
 
 ```text

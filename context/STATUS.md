@@ -1,7 +1,7 @@
 # Project Status
 
 **Last updated:** 2026-06-22
-**Current phase:** Additive HSGP residual tuning complete
+**Current phase:** Huber residual HSGP diagnostic complete
 
 ---
 
@@ -48,6 +48,7 @@
 - [x] Run first NumPyro/JAX HSGP residual baseline (`2026-06-22__1358__bayesian_hsgp_residual_baseline__bd24319`) - best `hsgp_bp_m5_autodelta`, sampled target-zone CV RMSE mean **14.8997**
 - [x] Run additive NumPyro/JAX HSGP residual tuning (`2026-06-22__1425__bayesian_hsgp_additive_tuning__48601fe`) - best `additive_dps_m8_se_autodelta`, sampled target-zone CV RMSE mean **14.8235**
 - [x] Push self-contained additive HSGP Student-t MAP Kaggle notebook version 1 and submit output (`ref=53958582`) - public LB **15.255**
+- [x] Run HSGP residuals on GAM/Huber means (`2026-06-22__1519__bayesian_hsgp_residual_on_gam_huber__fadbdba`) - best `huber_plus_hsgp_dps_m8`, sampled target-zone CV RMSE mean **14.3586**
 
 ## In progress
 
@@ -55,15 +56,15 @@
 - [ ] Verify Kaggle competition rules page before first submission (`kaggle/RULES_SUMMARY.md`)
 - [ ] Use public LB **15.055** as the current external baseline; avoid leaderboard-only tuning
 - [ ] Investigate why Huber GLM beat GAM locally but scored worse publicly
-- [ ] Use additive HSGP diagnostics to design Huber/GAM residual HSGP variants
+- [ ] Package Huber + additive Hilbert residual as a Kaggle-safe notebook if we want a public-LB read
 - [ ] Investigate why local CV ranked Random Forest worse than Ridge while public LB ranked it better
 - [ ] Defer SVR/radius-neighbor work unless new well-local features make neighbor geometry plausible
 
 ## Next up
 
-1. Build a Huber/GAM residual HSGP notebook using the additive `distance_log1p + eval_progress + abs_projected_delta_10` geometry as the reference.
-2. Investigate local/public mismatch between Huber GLM (`14.7928` local, `15.464` public) and fine-tuned GAM (`14.8687` local, `15.055` public).
-3. Apply the Phase 4 validation protocol to LightGBM/XGBoost on the same notebook-local feature logic: endpoint baseline, grouped fold metrics, descriptor balance, and public-LB gap notes.
+1. Package and submit the Huber + additive Hilbert residual notebook if we want to test whether the large local gain survives public scoring.
+2. Investigate why the reconstructed spline GAM mean was unstable in `06_hsgp_residual_on_gam_huber.ipynb` despite the public GAM notebook scoring best externally.
+3. Start hierarchical HSGP in a separate folder after the Huber-residual public read, using well-level residual bias diagnostics.
 4. Refine validation before making many leaderboard submissions from small public-LB gains
 5. Revisit neighbors only with radius constraints, clusters, or richer local geologic features
 6. Set up Bayesian GP (NumpPyro) once the feature/split baseline is more stable
@@ -105,3 +106,4 @@
 | 2026-06-22 | Bayesian boundary/progress scale `hetero_boundary_progress_autodelta` | 14.8626 | Sampled target-zone grouped CV; improves same-notebook fixed scale reference and calibrates uncertainty, but does not beat tuned Bayesian fixed Student-t |
 | 2026-06-22 | Bayesian HSGP residual `hsgp_bp_m5_autodelta` | 14.8997 | Sampled target-zone grouped CV; improves same-notebook linear reference but does not beat tuned Bayesian fixed Student-t |
 | 2026-06-22 | Bayesian additive HSGP residual `additive_dps_m8_se_autodelta` | 14.8235 | Sampled target-zone grouped CV; best HSGP so far and beats tuned Bayesian fixed Student-t locally, but still trails robust Huber GLM |
+| 2026-06-22 | Huber + additive Hilbert residual `huber_plus_hsgp_dps_m8` | 14.3586 | Sampled target-zone grouped CV; strongest local diagnostic so far, but needs Kaggle public validation because Huber-only previously underperformed externally |

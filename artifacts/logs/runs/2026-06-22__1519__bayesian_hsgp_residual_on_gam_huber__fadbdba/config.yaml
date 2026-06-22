@@ -1,0 +1,19 @@
+best_candidate: huber_plus_hsgp_dps_m8
+gam:
+  alpha: 60.0
+  degree: 3
+  n_knots: 7
+hsgp_coordinates:
+- distance_log1p
+- eval_progress
+- abs_projected_delta_10
+hsgp_ell: 3.0
+hsgp_m: 8
+huber:
+  alpha: 0.0001
+  epsilon: 1.35
+max_target_rows_per_well: 140
+max_train_rows_per_fold: 80000
+n_splits: 3
+seed: 42
+task: bayesian_hsgp_residual_on_gam_huber

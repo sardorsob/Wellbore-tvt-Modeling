@@ -1,0 +1,17 @@
+{
+  "inputs": [
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\data\\raw\\train"
+  ],
+  "outputs": [
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\model__hsgp_residual_on_gam_huber_fold_metrics__2026-06-22.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\model__hsgp_residual_on_gam_huber_summary__2026-06-22.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\model__hsgp_residual_on_gam_huber_diagnostics__2026-06-22.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\model__hsgp_residual_on_gam_huber_residual_sample__2026-06-22.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\model__hsgp_residual_on_gam_huber_findings__2026-06-22.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\reports\\model__hsgp_residual_on_gam_huber__2026-06-22.md",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\figures\\model__hsgp_residual_on_gam_huber_rmse_comparison__2026-06-22.png",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\figures\\model__hsgp_residual_on_gam_huber_fold_rmse__2026-06-22.png",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\figures\\model__hsgp_residual_on_gam_huber_correction_boundary__2026-06-22.png",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\figures\\model__hsgp_residual_on_gam_huber_residual_slope_instability__2026-06-22.png"
+  ]
+}

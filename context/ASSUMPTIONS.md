@@ -232,3 +232,9 @@ The first HSGP residual sweep found `hsgp_bp_m5_autodelta` as the best candidate
 The additive HSGP sweep found `additive_dps_m8_se_autodelta` as the best candidate with sampled grouped RMSE **14.8235**, improving the same-notebook linear Student-t reference by **0.0698** RMSE and the first joint boundary/progress HSGP by **0.0762** RMSE. The useful extra coordinate was `abs_projected_delta_10`, suggesting residual structure around local slope-instability in addition to boundary distance and evaluation progress. The best additive HSGP still trails the Huber GLM local diagnostic by **0.0307** RMSE. Early SVI attempts produced non-finite losses until the notebook used a lower learning rate and clipped Adam gradients.
 
 **Modeling implication:** Additive one-dimensional HSGP terms are a better GP geometry than simply increasing joint basis count. The next HSGP should keep clipped/lower-step SVI and place the smooth residual around a stronger Huber or GAM mean rather than around the plain Bayesian linear mean.
+
+### A27 - Residual HSGP works better on the robust Huber mean than on the reconstructed GAM mean
+
+The residual-on-mean HSGP sweep found `huber_plus_hsgp_dps_m8` as the best candidate with sampled grouped RMSE **14.3586**, improving the same-notebook Huber mean-only reference by **0.0585** RMSE. The same additive residual geometry barely helped the reconstructed GAM mean and did not make the GAM direction locally competitive in this notebook, because one held-out fold was unstable for the spline mean.
+
+**Modeling implication:** The next promotion candidate should be a Kaggle-safe Huber + additive Hilbert residual notebook, not a GAM-residual notebook. Keep the additive `distance_log1p`, `eval_progress`, and `abs_projected_delta_10` residual geometry, but treat the GAM residual result as a validation warning until the exact public-GAM implementation is mirrored and rechecked.

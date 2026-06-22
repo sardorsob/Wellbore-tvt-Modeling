@@ -374,6 +374,15 @@ Wellbore-tvt-Modeling/
 
 ---
 
+### notebooks/modeling/06_bayesian/06_hsgp_residual_on_gam_huber.ipynb
+**Status:** Run - HSGP residuals on GAM and Huber means complete.
+**Purpose:** Test whether additive Hilbert residual corrections improve a tuned GAM-style spline mean and a robust Huber signed-delta mean.
+**Run ID:** `2026-06-22__1519__bayesian_hsgp_residual_on_gam_huber__fadbdba`
+**Results:** Best candidate `huber_plus_hsgp_dps_m8`; sampled target-zone grouped CV RMSE mean **14.3586**, RMSE std **0.5713**. It improved the same-notebook Huber mean-only reference by **0.0585** RMSE.
+**Decision:** Package the Huber + additive Hilbert residual for Kaggle if we want a public-LB read. Do not promote the GAM-residual variant until the reconstructed GAM instability is understood.
+
+---
+
 ### kaggle/linear_ridge_submission/linear_ridge_submission.ipynb
 **Status:** Pushed to Kaggle as private notebook version 2, completed, and submitted to the competition. Submission `53923555` scored **15.905** public LB. Version 1 errored due to an assumed input mount path.
 **Purpose:** Self-contained Kaggle submission notebook for the first `ridge_alpha_10` baseline.
@@ -512,6 +521,6 @@ Wellbore-tvt-Modeling/
 
 ## CURRENT STATUS
 
-**Phase:** Additive HSGP residual tuning complete - structural EDA and Phases 2-4 are complete; fine-tuned GAM remains best public LB; robust signed-delta GLM is the best local diagnostic.
+**Phase:** Huber residual HSGP diagnostic complete - structural EDA and Phases 2-4 are complete; fine-tuned GAM remains best public LB; Huber + additive Hilbert residual is the strongest local diagnostic.
 **Workflow posture:** Use `sardorsob/sardors-agentic-workflows` data-science gates: data gate, split/leakage gate, baseline gate, experiment loop, evaluation gate, artifact gate, handoff gate. Local reference copy lives under ignored `context/_external/`.
-**Next action:** Build Huber/GAM residual HSGP variants using the additive boundary/progress/slope-instability HSGP geometry as the reference, then investigate the Huber/GAM local-public mismatch and run LightGBM/XGBoost with the same notebook-local slope-core feature logic.
+**Next action:** Package Huber + additive Hilbert residual for Kaggle scoring or move to hierarchical HSGP in a separate folder, while preserving the note that reconstructed GAM residuals were unstable in the diagnostic notebook.
