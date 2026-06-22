@@ -47,6 +47,7 @@
 - [x] Push and submit Bayesian linear Student-t MAP Kaggle notebook version 1 (`ref=53957370`) - public LB **15.512**
 - [x] Run first NumPyro/JAX HSGP residual baseline (`2026-06-22__1358__bayesian_hsgp_residual_baseline__bd24319`) - best `hsgp_bp_m5_autodelta`, sampled target-zone CV RMSE mean **14.8997**
 - [x] Run additive NumPyro/JAX HSGP residual tuning (`2026-06-22__1425__bayesian_hsgp_additive_tuning__48601fe`) - best `additive_dps_m8_se_autodelta`, sampled target-zone CV RMSE mean **14.8235**
+- [x] Push self-contained additive HSGP Student-t MAP Kaggle notebook version 1 and submit output (`ref=53958582`) - public LB **15.255**
 
 ## In progress
 
@@ -90,6 +91,7 @@
 | 2026-06-22 | Fine-tuned GAM spline | 14.8687 | 15.055 | Submission `53932883`; new best public LB using slope-core boundary/trajectory/recent-slope features |
 | 2026-06-22 | Huber GLM slope-core | 14.7928 | 15.464 | Submission `53952950`; worse than GAM externally despite best local diagnostic |
 | 2026-06-22 | Bayesian linear Student-t MAP | 14.8449 | 15.512 | Submission `53957370`; useful Bayesian baseline, but worse than Huber and GAM externally |
+| 2026-06-22 | Additive HSGP Student-t MAP | 14.8235 | 15.255 | Submission `53958582`; beats Bayesian linear and Huber externally, but not fine-tuned GAM |
 
 ## Local diagnostic model history
 

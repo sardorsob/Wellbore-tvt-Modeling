@@ -105,6 +105,21 @@
 - Notes: External score is slightly worse than Huber GLM (`15.464`) and much worse than fine-tuned GAM (`15.055`). The Kaggle notebook uses a SciPy Student-t MAP implementation to avoid NumPyro dependency risk with internet disabled.
 - Decision: keep as the first valid Bayesian-linear public baseline and likelihood check, but do not promote it over GAM/Huber. Continue to HSGP for Bayesian residual mean structure.
 
+- Timestamp: 2026-06-22
+- Run ID: `2026-06-22__1425__bayesian_hsgp_additive_tuning__48601fe`
+- Git SHA: `1cffe9a`
+- Config: self-contained additive HSGP Student-t MAP notebook, slope-core boundary/trajectory/recent-slope features plus additive Hilbert sine bases over `distance_log1p`, `eval_progress`, and `abs_projected_delta_10`; `HSGP_M=8`, `HSGP_ELL=3.0`, `MAX_TARGET_ROWS_PER_WELL=140`, robust `/kaggle/input` data discovery
+- Local CV: additive HSGP candidate `additive_dps_m8_se_autodelta`, sampled target-zone grouped CV RMSE mean `14.8235`, CV RMSE std `0.5186`
+- Local submission file: `artifacts/reports/submission__hsgp_additive_student_t__2026-06-22.csv`
+- Kaggle notebook: `https://www.kaggle.com/code/sardorbsobirov/wellbore-additive-hsgp-student-t`
+- Kaggle kernel version: 1
+- Status: `KernelWorkerStatus.COMPLETE`
+- Public LB: `15.255`
+- Submission ref: `53958582`
+- Submission status: `SubmissionStatus.COMPLETE`
+- Notes: The Kaggle-safe additive HSGP approximation improves over Bayesian linear (`15.512`) and Huber GLM (`15.464`) externally, but remains worse than the fine-tuned GAM spline (`15.055`).
+- Decision: useful public validation that additive HSGP residual geometry helps. Do not promote over the fine-tuned GAM; continue planning Huber/GAM residual HSGP locally.
+
 Use this format for every submission:
 
 ```text

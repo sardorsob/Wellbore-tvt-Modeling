@@ -475,6 +475,17 @@ Wellbore-tvt-Modeling/
 
 ---
 
+### kaggle/hsgp_additive_submission/hsgp_additive_submission.ipynb
+**Status:** Pushed to Kaggle as private notebook version 1, completed, and submitted to the competition. Submission `53958582` scored **15.255** public LB.
+**Purpose:** Self-contained Kaggle submission notebook for the additive HSGP Student-t MAP approximation.
+**Inputs:** Competition dataset attached by `kernel-metadata.json` as `rogii-wellbore-geology-prediction`.
+**Local verification:** Ran top-to-bottom locally and wrote `artifacts/reports/submission__hsgp_additive_student_t__2026-06-22.csv` with **14,151** finite predictions matching `sample_submission.csv` id order.
+**Kaggle URL:** `https://www.kaggle.com/code/sardorbsobirov/wellbore-additive-hsgp-student-t`
+**Leaderboard:** Submission `53958582` public score **15.255**.
+**Decision:** Useful HSGP public validation, but not promoted over the fine-tuned GAM public LB **15.055**.
+
+---
+
 ### notebooks/modeling/05_bayesian_gp.ipynb
 **Status:** Not yet run — stub only.
 **Purpose:** NumpPyro Gaussian Process; posterior mean as prediction; uncertainty visualization.
