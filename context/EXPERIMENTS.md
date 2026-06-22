@@ -126,6 +126,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: keep as the first additive-smooth modeling baseline. Consider a self-contained Kaggle notebook before moving fully to boosted trees.
 - Notes: Because this trains on sampled target-zone rows, compare directionally with older known-zone-trained Ridge/Random Forest results.
 
+## 2026-06-21__2037__gam_spline_tuning__4e31e0e
+
+- Task: tuned GAM-style spline sweep
+- Purpose: Improve the first GAM candidate before deciding whether to spend a Kaggle submission attempt on this model family.
+- Config: notebook-local config in `notebooks/modeling/04_gam/02_gam_spline_tuning.ipynb`
+- Data version: local Kaggle download in `data/raw/train/`
+- Split / CV: 3 grouped well folds on sampled target-zone rows; deterministic cap of 140 target rows per well and 80,000 training rows per fold.
+- Model: best candidate `core_fine__delta_boundary__k7__d3__a60`, implemented as sklearn `SplineTransformer` plus Ridge on slope-core boundary/trajectory/recent-slope features.
+- Primary metric: sampled target-zone CV RMSE mean **14.8687**; RMSE std **0.5012**.
+- Secondary metrics: MAE mean **10.4828**; mean R2 **0.999423**. Sampled endpoint-hold RMSE **15.5782**; improvement over first GAM baseline **0.0032** RMSE.
+- Artifacts: fold metrics CSV, candidate summary CSV, feature-family and target summaries, residual sample, residual/RMSE figures, report, model comparison row, and run bundle under `artifacts/logs/runs/2026-06-21__2037__gam_spline_tuning__4e31e0e/`
+- Decision: keep as the current best GAM candidate, but treat the tiny gain over Phase 1 as a plateau signal. Submit only if we want a GAM-specific public-LB read; otherwise proceed to LightGBM/XGBoost with the same slope-core features.
+- Notes: GR and typewell feature-family additions under this additive Ridge-spline setup did not beat the slope-core family.
+
 ## Entry Format
 
 ```text

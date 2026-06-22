@@ -1,0 +1,5 @@
+topic,finding,modeling_implication
+best_tuned_gam,Best tuned candidate is core_fine__delta_boundary__k7__d3__a60 with sampled grouped RMSE 14.8687.,Use this candidate as the current GAM submission candidate if fold behavior is stable.
+phase1_comparison,Phase 2 best RMSE 14.8687 vs Phase 1 best boundary_trajectory_slopes RMSE 14.8719.,Submit only if the tuned model improves materially and does not concentrate gains in one fold.
+endpoint_comparison,Best tuned GAM RMSE 14.8687 vs endpoint-hold RMSE 15.5782.,Endpoint hold remains the minimum useful local hurdle for this diagnostic protocol.
+target_mode_signal,Best target mode by RMSE is delta_boundary; feature family leader is slopes_core.,Carry these choices into a self-contained Kaggle notebook before trying more complex GAM libraries.

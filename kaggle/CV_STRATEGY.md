@@ -18,6 +18,7 @@ This follows decision `D003` in `context/DECISIONS.md`.
 - Interpret public LB as an external check. Phase 4 found Random Forest beats Ridge publicly by **0.032** RMSE while local CV ranks Random Forest worse by **0.300** RMSE.
 - Keep direct slope projection separate from slope-as-feature. Phase 4 full-row last-50 slope projection RMSE is **112.4817**.
 - Label target-zone-trained diagnostic runs separately from known-zone-trained baselines. The first GAM-style run uses sampled target-zone grouped CV and should not be treated as directly identical to earlier Ridge/Random Forest CV.
+- Treat tuned GAM results as target-zone diagnostic evidence. The best tuned GAM improved the first GAM by only **0.0032** RMSE, so use Kaggle submission sparingly and avoid leaderboard-tuning tiny spline changes.
 
 ## Planned Refinement
 

@@ -1,0 +1,13 @@
+best_alpha: 60.0
+best_candidate: core_fine__delta_boundary__k7__d3__a60
+best_degree: 3
+best_feature_family: slopes_core
+best_n_knots: 7
+best_target_mode: delta_boundary
+candidate_count: 45
+max_target_rows_per_well: 140
+max_train_rows_per_fold: 80000
+n_splits: 3
+note: Notebook-local GAM-style spline tuning; target-zone diagnostic CV.
+seed: 42
+task: gam_spline_tuning

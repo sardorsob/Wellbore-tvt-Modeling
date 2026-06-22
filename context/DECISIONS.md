@@ -133,3 +133,17 @@
 **Rationale:** This is a Kaggle code competition. The notebook is rerun on hidden test data, so all inference-time feature logic must travel with the notebook.
 **Consequences:** Some feature code may be duplicated across submission notebooks, but submissions will be self-contained and reproducible.
 **Follow-up:** If a model is selected for Kaggle, create a self-contained Kaggle notebook with the same inline feature logic and no local artifact dependency.
+
+---
+
+## D012 - Pause GAM micro-tuning after the slope-core sweep
+
+**Date:** 2026-06-21
+**Decision:** Treat `core_fine__delta_boundary__k7__d3__a60` as the current best sklearn GAM-style candidate and avoid additional small spline/Ridge sweeps unless new feature families are introduced.
+**Alternatives considered:**
+- Continue fine-tuning knots, degree, alpha, and target definitions.
+- Switch immediately to a true GAM package such as `pygam`.
+- Submit the first GAM baseline without tuning.
+**Rationale:** The tuned sweep improved the first GAM baseline by only **0.0032** RMSE, while GR and typewell additions did not beat the slope-core feature family. More micro-tuning is unlikely to yield the next meaningful gain.
+**Consequences:** The GAM result remains useful as evidence for boundary/trajectory/recent-slope features, but the next larger modeling step should be either a self-contained GAM Kaggle read or boosted-tree modeling on the same feature logic.
+**Follow-up:** If submitting, create a Kaggle-safe notebook for `core_fine__delta_boundary__k7__d3__a60`; otherwise proceed to LightGBM/XGBoost.

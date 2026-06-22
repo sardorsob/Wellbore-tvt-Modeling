@@ -59,6 +59,8 @@ These are not yet promoted into reportable modeling runs unless listed in the fe
 - First GAM-style additive spline run used notebook-local features only, with no dependency on local precomputed artifacts.
 - Best variant used boundary, trajectory, and recent-slope features: `boundary_trajectory_slopes`.
 - Best sampled target-zone grouped RMSE was **14.8719**, beating sampled endpoint hold (**15.5782**).
+- Tuned GAM sweep improved the slope-core feature family only slightly: `core_fine__delta_boundary__k7__d3__a60` reached sampled target-zone grouped RMSE **14.8687**.
+- GR and typewell feature-family additions did not beat slope-core splines in the tuned additive Ridge-spline setup.
 - For any Kaggle submission, copy the inline feature construction into the Kaggle notebook and rerun there.
 
 ## Feature Log
@@ -75,3 +77,4 @@ Record feature additions here when they are used in reportable experiments:
 | 2026-06-21 | Phase 2 EDA feature candidates | `notebooks/eda/02_phase2_geological_domain.ipynb`, `artifacts/reports/eda__phase2_geological_domain__2026-06-21.md` | Guide the next richer feature builder before LightGBM/XGBoost and Bayesian models | Candidate-only; do not use train-only formation columns in submission models. Local visible test wells overlap train, so they are not valid hidden-test drift evidence. |
 | 2026-06-21 | Phase 3 feature-signal candidates | `notebooks/eda/03_phase3_feature_signal.ipynb`, `artifacts/reports/eda__phase3_feature_signal__2026-06-21.md` | Rank boundary, slope, GR, typewell, and trajectory feature families before boosted-tree tuning | Candidate-only; diagnostic probes train on sampled target-zone rows and are not a submission training protocol. |
 | 2026-06-21 | GAM-style additive spline features | `notebooks/modeling/04_gam/01_gam_spline_baseline.ipynb`, `artifacts/reports/model__gam_spline_baseline__2026-06-21.md` | Test smooth additive boundary/trajectory/slope structure before boosted trees | Feature construction is notebook-local for submission portability. Result is sampled target-zone CV, not yet public LB. |
+| 2026-06-21 | Tuned GAM slope-core features | `notebooks/modeling/04_gam/02_gam_spline_tuning.ipynb`, `artifacts/reports/model__gam_spline_tuning__2026-06-21.md` | Tune spline complexity and Ridge regularization before deciding whether to submit a GAM notebook | Best candidate still uses slope-core boundary/trajectory/recent-slope features. GR/typewell additions did not help under additive Ridge splines. |

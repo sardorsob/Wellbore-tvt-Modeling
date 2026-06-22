@@ -379,6 +379,15 @@ Wellbore-tvt-Modeling/
 
 ---
 
+### notebooks/modeling/04_gam/02_gam_spline_tuning.ipynb
+**Status:** Run - tuned GAM-style additive spline sweep complete.
+**Purpose:** Tune target definition, spline complexity, Ridge regularization, and controlled feature-family additions before deciding whether to submit a GAM model.
+**Run ID:** `2026-06-21__2037__gam_spline_tuning__4e31e0e`
+**Results:** Best candidate `core_fine__delta_boundary__k7__d3__a60`; sampled target-zone grouped CV RMSE mean **14.8687**, RMSE std **0.5012**. Improvement over first GAM baseline is only **0.0032** RMSE.
+**Decision:** Treat as current best GAM candidate but pause GAM micro-tuning unless new feature families are introduced. Submit only if a GAM-specific public-LB read is valuable before boosted trees.
+
+---
+
 ### notebooks/modeling/05_bayesian_gp.ipynb
 **Status:** Not yet run — stub only.
 **Purpose:** NumpPyro Gaussian Process; posterior mean as prediction; uncertainty visualization.
@@ -405,6 +414,6 @@ Wellbore-tvt-Modeling/
 
 ## CURRENT STATUS
 
-**Phase:** GAM-style modeling loop - structural EDA and Phases 2-4 are complete; first additive spline baseline is run; Random Forest remains the best public LB.
+**Phase:** GAM-style modeling loop - structural EDA and Phases 2-4 are complete; tuned additive spline candidate is run; Random Forest remains the best public LB.
 **Workflow posture:** Use `sardorsob/sardors-agentic-workflows` data-science gates: data gate, split/leakage gate, baseline gate, experiment loop, evaluation gate, artifact gate, handoff gate. Local reference copy lives under ignored `context/_external/`.
-**Next action:** Decide whether to create a self-contained Kaggle GAM-style notebook, then run LightGBM/XGBoost with the same notebook-local feature logic and Phase 4 validation protocol.
+**Next action:** Decide whether to create a self-contained Kaggle GAM-style notebook for `core_fine__delta_boundary__k7__d3__a60`, then run LightGBM/XGBoost with the same notebook-local feature logic and Phase 4 validation protocol.

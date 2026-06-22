@@ -1,7 +1,7 @@
 # Project Status
 
 **Last updated:** 2026-06-21
-**Current phase:** GAM-style modeling loop - first additive spline baseline complete
+**Current phase:** GAM-style modeling loop - tuned additive spline candidate complete
 
 ---
 
@@ -37,10 +37,11 @@
 - [x] Run Phase 3 feature-signal EDA (`2026-06-21__1847__eda_phase3_feature_signal__ebaa6c3`) - endpoint hold, feature-family probes, GR availability, typewell residual signal, and visible-test caveats documented
 - [x] Run Phase 4 validation EDA (`2026-06-21__1928__eda_phase4_validation__203566d`) - endpoint baseline, fold balance, local/public mismatch, and validation protocol documented
 - [x] Run first GAM-style additive spline baseline (`2026-06-21__2007__gam_spline_baseline__8046b3f`) - best `boundary_trajectory_slopes`, sampled target-zone CV RMSE mean **14.8719**
+- [x] Run tuned GAM-style additive spline sweep (`2026-06-21__2037__gam_spline_tuning__4e31e0e`) - best `core_fine__delta_boundary__k7__d3__a60`, sampled target-zone CV RMSE mean **14.8687**
 
 ## In progress
 
-- [ ] Decide whether to self-contain and submit the GAM-style model to Kaggle before boosted trees
+- [ ] Decide whether the tuned GAM is worth a Kaggle submission read despite only a small local gain over Phase 1
 - [ ] Export artifact figures per `CURSOR_RULES.md`
 - [ ] Verify Kaggle competition rules page before first submission (`kaggle/RULES_SUMMARY.md`)
 - [ ] Use public LB **15.873** as the current external baseline; avoid leaderboard-only tuning
@@ -49,7 +50,7 @@
 
 ## Next up
 
-1. Review GAM residuals and decide whether to create a self-contained Kaggle GAM-style submission notebook.
+1. If submitting GAM, create a self-contained Kaggle notebook for `core_fine__delta_boundary__k7__d3__a60`; otherwise move to boosted trees with the same slope-core features.
 2. Apply the Phase 4 validation protocol to LightGBM/XGBoost on the same notebook-local feature logic: endpoint baseline, grouped fold metrics, descriptor balance, and public-LB gap notes.
 3. Try boosted-tree baseline (XGBoost or LightGBM) on richer well-relative features, then tune.
 4. Refine validation before making many leaderboard submissions from small public-LB gains
@@ -82,3 +83,4 @@
 | Date | Model | Local diagnostic RMSE | Notes |
 |---|---|---:|---|
 | 2026-06-21 | GAM-style additive spline `boundary_trajectory_slopes` | 14.8719 | Sampled target-zone grouped CV; not yet a Kaggle submission |
+| 2026-06-21 | Tuned GAM-style spline `core_fine__delta_boundary__k7__d3__a60` | 14.8687 | Sampled target-zone grouped CV; +0.0032 RMSE vs first GAM, so useful but nearly plateaued |

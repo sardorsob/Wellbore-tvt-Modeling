@@ -190,3 +190,9 @@ The best GAM-style additive spline variant, `boundary_trajectory_slopes`, scored
 This GAM-style run trained and validated on sampled target-zone rows from train wells, while some earlier baselines trained on known-zone rows and scored target-zone rows.
 
 **Modeling implication:** Treat the GAM result as strong evidence that target-zone feature construction matters, but create a self-contained Kaggle notebook before comparing it directly against public LB.
+
+### A20 - GAM tuning mostly plateaus around slope-core splines
+
+The tuned GAM sweep tested **45** candidates across target definition, spline knots, spline degree, Ridge alpha, and feature-family additions. The best candidate was `core_fine__delta_boundary__k7__d3__a60` with sampled grouped target-zone RMSE **14.8687**, only **0.0032** better than the first GAM baseline.
+
+**Modeling implication:** More micro-tuning of sklearn additive splines is unlikely to be the next large gain. The strongest GAM evidence is that boundary, trajectory, and recent-slope features help; GR/typewell additions should be used cautiously unless a different model family can exploit them.
