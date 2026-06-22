@@ -168,6 +168,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: keep as the first Bayesian uncertainty baseline, but do not package for Kaggle yet because posterior-mean RMSE trails Huber GLM and tuned GAM diagnostics.
 - Notes: The heteroskedastic Student-t model improves uncertainty calibration and is a useful prior/likelihood reference before HSGP.
 
+## 2026-06-22__1231__bayesian_linear_tuning__4b66b91
+
+- Task: Bayesian linear tuning
+- Purpose: Test whether likelihood-tail, guide, and heteroskedastic-scale choices can improve the first NumPyro/JAX Bayesian linear baseline before moving to HSGP residual structure.
+- Config: notebook-local config in `notebooks/modeling/06_bayesian/02_bayesian_linear_tuning.ipynb`
+- Data version: local Kaggle download in `data/raw/train/`
+- Split / CV: 3 grouped well folds on sampled target-zone rows; deterministic cap of 140 target rows per well and 60,000 training rows per fold.
+- Model: best candidate `student_t_fixed3_autodelta`, a fixed-nu Student-t Bayesian linear model fit with AutoDelta/MAP-style variational inference on slope-core boundary/trajectory/recent-slope features.
+- Primary metric: sampled target-zone CV RMSE mean **14.8449**; RMSE std **0.5205**.
+- Secondary metrics: empirical 80% interval coverage **0.769** with mean width **31.12** TVT units. The tuned Bayesian best improves the first Bayesian baseline by **0.1303** RMSE but still trails the Huber GLM local reference by **0.0521** RMSE.
+- Artifacts: fold metrics CSV, summary CSV, posterior diagnostics, residual sample, diagnostic figures, report, model comparison row, and run bundle under `artifacts/logs/runs/2026-06-22__1231__bayesian_linear_tuning__4b66b91/`
+- Decision: keep as the best Bayesian linear point-RMSE baseline, but move next to HSGP or other structured residual models instead of further linear-only tuning.
+- Notes: Fixed-tail Student-t with AutoDelta beat AutoNormal and heteroskedastic variants for point RMSE in this sweep, while still providing posterior predictive interval diagnostics.
+
 ## Entry Format
 
 ```text

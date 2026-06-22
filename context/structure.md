@@ -338,6 +338,15 @@ Wellbore-tvt-Modeling/
 
 ---
 
+### notebooks/modeling/06_bayesian/02_bayesian_linear_tuning.ipynb
+**Status:** Run - Bayesian linear tuning sweep complete.
+**Purpose:** Tune fixed-tail Student-t, Laplace, heteroskedastic scale, and AutoDelta/AutoNormal guide choices before HSGP residual modeling.
+**Run ID:** `2026-06-22__1231__bayesian_linear_tuning__4b66b91`
+**Results:** Best candidate `student_t_fixed3_autodelta`; sampled target-zone grouped CV RMSE mean **14.8449**, RMSE std **0.5205**. Empirical 80% coverage **0.769** with mean width **31.12** TVT units.
+**Decision:** Keep as the best Bayesian linear point-RMSE baseline so far, but move next to HSGP or other structured residual models rather than more linear-only Bayesian tuning.
+
+---
+
 ### kaggle/linear_ridge_submission/linear_ridge_submission.ipynb
 **Status:** Pushed to Kaggle as private notebook version 2, completed, and submitted to the competition. Submission `53923555` scored **15.905** public LB. Version 1 errored due to an assumed input mount path.
 **Purpose:** Self-contained Kaggle submission notebook for the first `ridge_alpha_10` baseline.
@@ -454,6 +463,6 @@ Wellbore-tvt-Modeling/
 
 ## CURRENT STATUS
 
-**Phase:** Bayesian linear uncertainty baseline - structural EDA and Phases 2-4 are complete; fine-tuned GAM remains best public LB; robust signed-delta GLM is the best local diagnostic.
+**Phase:** Bayesian linear tuning complete - structural EDA and Phases 2-4 are complete; fine-tuned GAM remains best public LB; robust signed-delta GLM is the best local diagnostic.
 **Workflow posture:** Use `sardorsob/sardors-agentic-workflows` data-science gates: data gate, split/leakage gate, baseline gate, experiment loop, evaluation gate, artifact gate, handoff gate. Local reference copy lives under ignored `context/_external/`.
-**Next action:** Design the HSGP residual model using Bayesian linear diagnostics, then investigate the Huber/GAM local-public mismatch and run LightGBM/XGBoost with the same notebook-local slope-core feature logic.
+**Next action:** Design the HSGP residual model using the tuned fixed-tail Student-t Bayesian linear baseline, then investigate the Huber/GAM local-public mismatch and run LightGBM/XGBoost with the same notebook-local slope-core feature logic.

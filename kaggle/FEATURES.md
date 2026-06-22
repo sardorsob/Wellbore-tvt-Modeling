@@ -76,6 +76,8 @@ These are not yet promoted into reportable modeling runs unless listed in the fe
 - Best candidate was `bayes_student_t_heteroskedastic`, with sampled target-zone grouped RMSE **14.9752**.
 - Posterior predictive calibration was useful for a first pass: 80% coverage **0.783**, 95% coverage **0.933**.
 - Treat this as an uncertainty baseline for HSGP, not as a Kaggle submission candidate yet.
+- Bayesian linear tuning reused the same slope-core feature family and improved point RMSE to **14.8449** with `student_t_fixed3_autodelta`.
+- Heteroskedastic Bayesian variants did not beat the fixed-scale Student-t AutoDelta candidate in this sweep; reserve extra scale structure for models that also add residual geometry.
 
 ## Feature Log
 
@@ -94,3 +96,4 @@ Record feature additions here when they are used in reportable experiments:
 | 2026-06-21 | Tuned GAM slope-core features | `notebooks/modeling/04_gam/02_gam_spline_tuning.ipynb`, `artifacts/reports/model__gam_spline_tuning__2026-06-21.md` | Tune spline complexity and Ridge regularization before deciding whether to submit a GAM notebook | Best candidate still uses slope-core boundary/trajectory/recent-slope features. GR/typewell additions did not help under additive Ridge splines. |
 | 2026-06-22 | GLM robust signed-delta features | `notebooks/modeling/01_linear/04_glm_distribution_diagnostics.ipynb`, `artifacts/reports/model__glm_distribution_diagnostics__2026-06-22.md` | Test whether distribution/loss choice improves the slope-core feature baseline before Bayesian modeling | Same slope-core feature family as the GAM submission. Beta and Dirichlet are invalid target geometries for scalar TVT. |
 | 2026-06-22 | Bayesian slope-core uncertainty features | `notebooks/modeling/06_bayesian/01_bayesian_linear_robust.ipynb`, `artifacts/reports/model__bayesian_linear_robust__2026-06-22.md` | Establish Bayesian Normal/Student-t/heteroskedastic baseline before HSGP | Same slope-core feature family; posterior mean trails Huber/GAM but intervals provide HSGP calibration guidance. |
+| 2026-06-22 | Bayesian tuned slope-core features | `notebooks/modeling/06_bayesian/02_bayesian_linear_tuning.ipynb`, `artifacts/reports/model__bayesian_linear_tuning__2026-06-22.md` | Tune Bayesian likelihood tails, guides, and heteroskedastic scale before HSGP | Same slope-core feature family; fixed-tail Student-t AutoDelta is best Bayesian linear point-RMSE candidate but still not a Kaggle submission candidate over GAM. |

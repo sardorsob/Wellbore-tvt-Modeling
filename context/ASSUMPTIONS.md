@@ -208,3 +208,9 @@ The GLM distribution diagnostic found `delta_tvt_from_boundary` ranges from **-1
 The NumPyro/JAX Bayesian linear baseline found the best candidate was `bayes_student_t_heteroskedastic` with sampled grouped RMSE **14.9752**. Its posterior predictive intervals were reasonably calibrated for a first pass: **0.783** empirical coverage for 80% intervals and **0.933** for 95% intervals.
 
 **Modeling implication:** Bayesian linear regression is useful as an uncertainty and likelihood-calibration baseline, but its posterior mean is not yet a Kaggle candidate because it trails the Huber GLM local diagnostic and the fine-tuned GAM submission. HSGP work should build on the Student-t/heteroskedastic calibration idea while adding a smooth residual function to improve the mean.
+
+### A23 - Bayesian linear tuning favors robust MAP over extra scale complexity
+
+The Bayesian linear tuning sweep found `student_t_fixed3_autodelta` as the best candidate with sampled grouped RMSE **14.8449**, improving the first Bayesian baseline by **0.1303** RMSE but still trailing the robust signed-delta Huber GLM diagnostic (**14.7928**). AutoNormal Student-t and Laplace variants clustered near **14.93**, while heteroskedastic extensions did not improve point RMSE in this sweep.
+
+**Modeling implication:** Keep fixed-tail Student-t likelihoods as the Bayesian default, but do not spend much more time on linear-only Bayesian tuning. The next Bayesian model should add structured residual variation, likely HSGP over boundary/progress/trajectory coordinates, while using the Student-t likelihood and conservative uncertainty diagnostics from these linear runs.
