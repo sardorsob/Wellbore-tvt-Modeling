@@ -320,6 +320,15 @@ Wellbore-tvt-Modeling/
 
 ---
 
+### notebooks/modeling/01_linear/04_glm_distribution_diagnostics.ipynb
+**Status:** Run - GLM/robust distribution diagnostic complete.
+**Purpose:** Test Gaussian, robust, quantile, Gamma, Tweedie, and Poisson-style response assumptions before Bayesian modeling.
+**Run ID:** `2026-06-21__2147__glm_distribution_diagnostics__107a7d7`
+**Results:** Best candidate `robust_delta_huber`; sampled target-zone grouped CV RMSE mean **14.7928**, RMSE std **0.4716**. Gaussian Ridge on the same signed delta target scored **14.8398**; endpoint hold scored **15.5782**.
+**Decision:** Robust signed-delta modeling is promising and should be considered for a self-contained Kaggle submission. Beta and Dirichlet are not valid target geometries for this scalar TVT task.
+
+---
+
 ### kaggle/linear_ridge_submission/linear_ridge_submission.ipynb
 **Status:** Pushed to Kaggle as private notebook version 2, completed, and submitted to the competition. Submission `53923555` scored **15.905** public LB. Version 1 errored due to an assumed input mount path.
 **Purpose:** Self-contained Kaggle submission notebook for the first `ridge_alpha_10` baseline.
@@ -425,6 +434,6 @@ Wellbore-tvt-Modeling/
 
 ## CURRENT STATUS
 
-**Phase:** GAM-style modeling loop - structural EDA and Phases 2-4 are complete; fine-tuned GAM is submitted; GAM spline is the best public LB.
+**Phase:** GLM distribution diagnostics - structural EDA and Phases 2-4 are complete; fine-tuned GAM is submitted; robust signed-delta GLM is the best local diagnostic.
 **Workflow posture:** Use `sardorsob/sardors-agentic-workflows` data-science gates: data gate, split/leakage gate, baseline gate, experiment loop, evaluation gate, artifact gate, handoff gate. Local reference copy lives under ignored `context/_external/`.
-**Next action:** Run LightGBM/XGBoost with the same notebook-local slope-core feature logic and Phase 4 validation protocol.
+**Next action:** Decide whether to create a self-contained Huber GLM submission, then run LightGBM/XGBoost with the same notebook-local slope-core feature logic and Phase 4 validation protocol.

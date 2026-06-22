@@ -147,3 +147,17 @@
 **Rationale:** The tuned sweep improved the first GAM baseline by only **0.0032** RMSE, while GR and typewell additions did not beat the slope-core feature family. More micro-tuning is unlikely to yield the next meaningful gain.
 **Consequences:** The GAM result remains useful as evidence for boundary/trajectory/recent-slope features, but the next larger modeling step should be either a self-contained GAM Kaggle read or boosted-tree modeling on the same feature logic.
 **Follow-up:** If submitting, create a Kaggle-safe notebook for `core_fine__delta_boundary__k7__d3__a60`; otherwise proceed to LightGBM/XGBoost.
+
+---
+
+## D013 - Prefer robust signed-delta GLMs over proportion or count GLMs
+
+**Date:** 2026-06-22
+**Decision:** For the pre-Bayesian GLM path, model signed boundary deltas or endpoint residuals with Gaussian/robust/quantile-style continuous-response models before trying count or proportion families.
+**Alternatives considered:**
+- Fit Poisson models to raw `TVT`.
+- Fit Gamma/Tweedie models to raw `TVT` or shifted deltas.
+- Force Beta or Dirichlet models through normalization.
+**Rationale:** The target-zone delta is signed and heavy-tailed, while `TVT` is a scalar depth response. Huber on signed deltas scored **14.7928** sampled grouped RMSE, while raw positive-response GLMs were much worse and Beta/Dirichlet do not match the target geometry.
+**Consequences:** A Huber/robust signed-delta Kaggle notebook is a reasonable next external read. Bayesian models should start with Student-t or robust Gaussian residual assumptions rather than Beta, Dirichlet, or Poisson likelihoods.
+**Follow-up:** If promoting this result, create a self-contained Huber slope-core submission notebook and compare against the fine-tuned GAM public LB **15.055**.

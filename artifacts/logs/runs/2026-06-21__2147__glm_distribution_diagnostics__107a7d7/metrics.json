@@ -1,0 +1,9 @@
+{
+  "sample_rows": 108220.0,
+  "candidate_count": 10.0,
+  "best_rmse": 14.792842528391505,
+  "best_rmse_std": 0.4716397038980299,
+  "endpoint_hold_rmse": 15.578175280473118,
+  "best_minus_endpoint": -0.7853327520816134,
+  "best_minus_gam_reference": -0.07588982660435128
+}

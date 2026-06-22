@@ -196,3 +196,9 @@ This GAM-style run trained and validated on sampled target-zone rows from train 
 The tuned GAM sweep tested **45** candidates across target definition, spline knots, spline degree, Ridge alpha, and feature-family additions. The best candidate was `core_fine__delta_boundary__k7__d3__a60` with sampled grouped target-zone RMSE **14.8687**, only **0.0032** better than the first GAM baseline.
 
 **Modeling implication:** More micro-tuning of sklearn additive splines is unlikely to be the next large gain. The strongest GAM evidence is that boundary, trajectory, and recent-slope features help; GR/typewell additions should be used cautiously unless a different model family can exploit them.
+
+### A21 - Signed delta residuals favor robust continuous likelihoods
+
+The GLM distribution diagnostic found `delta_tvt_from_boundary` ranges from **-103.78** to **98.83**, is only **53.3%** positive, and has excess kurtosis **4.09**. The best diagnostic model was `robust_delta_huber` with sampled grouped RMSE **14.7928**, beating Gaussian Ridge on the same slope-core delta features (**14.8398**) and the tuned GAM diagnostic (**14.8687**).
+
+**Modeling implication:** For Bayesian work, prioritize Gaussian/Student-t/robust signed-continuous likelihoods for boundary deltas or endpoint residuals. Beta and Dirichlet are target-geometry mismatches, and positive raw-TVΤ Gamma/Tweedie/Poisson-style GLMs should not be the first probabilistic path.

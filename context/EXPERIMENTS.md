@@ -140,6 +140,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: keep as the current best GAM candidate, but treat the tiny gain over Phase 1 as a plateau signal. Submit only if we want a GAM-specific public-LB read; otherwise proceed to LightGBM/XGBoost with the same slope-core features.
 - Notes: GR and typewell feature-family additions under this additive Ridge-spline setup did not beat the slope-core family.
 
+## 2026-06-21__2147__glm_distribution_diagnostics__107a7d7
+
+- Task: GLM distribution diagnostics
+- Purpose: Test whether a general linear model with a different response distribution improves the slope-core target-zone diagnostic before Bayesian modeling.
+- Config: notebook-local config in `notebooks/modeling/01_linear/04_glm_distribution_diagnostics.ipynb`
+- Data version: local Kaggle download in `data/raw/train/`
+- Split / CV: 3 grouped well folds on sampled target-zone rows; deterministic cap of 140 target rows per well and 60,000 training rows per fold.
+- Model: best candidate `robust_delta_huber`, a Huber robust linear model on signed `delta_tvt_from_boundary` using slope-core boundary/trajectory/recent-slope features.
+- Primary metric: sampled target-zone CV RMSE mean **14.7928**; RMSE std **0.4716**.
+- Secondary metrics: Gaussian Ridge on the same delta target scored **14.8398**; median Quantile scored **14.8842**; endpoint hold scored **15.5782**. Raw positive-response Gamma/Tweedie models were much worse.
+- Artifacts: fold metrics CSV, summary CSV, candidate table, family-validity table, target diagnostics, residual sample, diagnostic figures, report, model comparison row, and run bundle under `artifacts/logs/runs/2026-06-21__2147__glm_distribution_diagnostics__107a7d7/`
+- Decision: treat robust signed-delta GLM as a promising next Kaggle candidate and as evidence for Student-t/robust Gaussian likelihoods in later Bayesian models.
+- Notes: Beta and Dirichlet were logged as invalid target geometries rather than fit, because the competition predicts one scalar depth response per row.
+
 ## Entry Format
 
 ```text

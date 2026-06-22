@@ -1,0 +1,10 @@
+best_candidate: robust_delta_huber
+best_family: robust_gaussian
+best_target_mode: delta_boundary
+candidate_count: 10
+max_target_rows_per_well: 140
+max_train_rows_per_fold: 60000
+n_splits: 3
+note: GLM/robust-likelihood diagnostics before Bayesian distribution choices.
+seed: 42
+task: glm_distribution_diagnostics

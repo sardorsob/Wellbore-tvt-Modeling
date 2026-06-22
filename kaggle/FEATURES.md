@@ -63,6 +63,13 @@ These are not yet promoted into reportable modeling runs unless listed in the fe
 - GR and typewell feature-family additions did not beat slope-core splines in the tuned additive Ridge-spline setup.
 - For any Kaggle submission, copy the inline feature construction into the Kaggle notebook and rerun there.
 
+## GLM Distribution Notes
+
+- The GLM diagnostic reused the same slope-core boundary/trajectory/recent-slope feature family without spline expansion.
+- Best candidate was `robust_delta_huber`, scoring sampled target-zone grouped RMSE **14.7928**.
+- The signed delta target is only **53.3%** positive and has heavy tails, so robust continuous losses are better matched than Beta, Dirichlet, Poisson, or raw-TVΤ Gamma-style assumptions.
+- If promoted to Kaggle, the Huber notebook should use the same notebook-local slope-core feature construction as the fine-tuned GAM submission.
+
 ## Feature Log
 
 Record feature additions here when they are used in reportable experiments:
@@ -78,3 +85,4 @@ Record feature additions here when they are used in reportable experiments:
 | 2026-06-21 | Phase 3 feature-signal candidates | `notebooks/eda/03_phase3_feature_signal.ipynb`, `artifacts/reports/eda__phase3_feature_signal__2026-06-21.md` | Rank boundary, slope, GR, typewell, and trajectory feature families before boosted-tree tuning | Candidate-only; diagnostic probes train on sampled target-zone rows and are not a submission training protocol. |
 | 2026-06-21 | GAM-style additive spline features | `notebooks/modeling/04_gam/01_gam_spline_baseline.ipynb`, `artifacts/reports/model__gam_spline_baseline__2026-06-21.md` | Test smooth additive boundary/trajectory/slope structure before boosted trees | Feature construction is notebook-local for submission portability. Result is sampled target-zone CV, not yet public LB. |
 | 2026-06-21 | Tuned GAM slope-core features | `notebooks/modeling/04_gam/02_gam_spline_tuning.ipynb`, `artifacts/reports/model__gam_spline_tuning__2026-06-21.md` | Tune spline complexity and Ridge regularization before deciding whether to submit a GAM notebook | Best candidate still uses slope-core boundary/trajectory/recent-slope features. GR/typewell additions did not help under additive Ridge splines. |
+| 2026-06-22 | GLM robust signed-delta features | `notebooks/modeling/01_linear/04_glm_distribution_diagnostics.ipynb`, `artifacts/reports/model__glm_distribution_diagnostics__2026-06-22.md` | Test whether distribution/loss choice improves the slope-core feature baseline before Bayesian modeling | Same slope-core feature family as the GAM submission. Beta and Dirichlet are invalid target geometries for scalar TVT. |

@@ -19,6 +19,7 @@ This follows decision `D003` in `context/DECISIONS.md`.
 - Keep direct slope projection separate from slope-as-feature. Phase 4 full-row last-50 slope projection RMSE is **112.4817**.
 - Label target-zone-trained diagnostic runs separately from known-zone-trained baselines. The first GAM-style run uses sampled target-zone grouped CV and should not be treated as directly identical to earlier Ridge/Random Forest CV.
 - Treat tuned GAM results as target-zone diagnostic evidence. The best tuned GAM improved the first GAM by only **0.0032** RMSE, so use Kaggle submission sparingly and avoid leaderboard-tuning tiny spline changes.
+- Treat robust signed-delta GLM results as target-zone diagnostic evidence until submitted. The Huber GLM scored **14.7928** locally, better than tuned GAM, but still needs a self-contained Kaggle read before external promotion.
 
 ## Planned Refinement
 

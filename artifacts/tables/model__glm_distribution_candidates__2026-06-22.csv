@@ -1,0 +1,11 @@
+candidate,family,target_mode,notes
+gaussian_delta_ridge_a30,gaussian,delta_boundary,Continuous signed delta with squared-error Gaussian mean model.
+gaussian_delta_tweedie_p0_a1,tweedie_power0_gaussian,delta_boundary,Tweedie power 0 is the normal-distribution GLM case for signed continuous deltas.
+robust_delta_huber,robust_gaussian,delta_boundary,Robust continuous signed delta model for heavy residual tails.
+median_delta_quantile_a0p001,quantile,delta_boundary,Median conditional delta model; robust but can underfit the mean RMSE objective.
+raw_tvt_poisson_log_a1,poisson_quasi,raw_tvt,"Positive-response log-link model; TVT is not count data, so this is a quasi-likelihood diagnostic only."
+raw_tvt_gamma_log_a1,gamma,raw_tvt,Positive continuous raw TVT with Gamma log-link.
+raw_tvt_tweedie_p1p5_a1,tweedie_positive,raw_tvt,Positive continuous compound-Poisson/Gamma-style TVT diagnostic.
+raw_tvt_tweedie_p2_a1,gamma_tweedie,raw_tvt,Tweedie power 2 matches Gamma variance structure for positive raw TVT.
+shifted_delta_gamma_log_a1,shifted_gamma,shifted_delta,Positive shifted delta; mathematically admissible but shift-dependent and less interpretable.
+shifted_delta_tweedie_p1p5_a1,shifted_tweedie_positive,shifted_delta,Positive shifted delta with Tweedie log-link; diagnostic only because the shift is fold-specific.

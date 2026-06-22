@@ -1,0 +1,9 @@
+family,fit_status,reason
+Gaussian,fit,Valid for signed continuous delta/residual targets.
+Huber,fit,Robust continuous-response loss for heavy-tailed residuals.
+Quantile,fit,Valid for conditional median of signed continuous deltas.
+Gamma,fit_on_positive_targets,"Valid for positive continuous raw TVT or shifted delta, but not signed residuals."
+Poisson,diagnostic_only,Requires nonnegative mean and is intended for counts; raw TVT is positive but continuous.
+Tweedie,fit,Power 0 covers Gaussian-like deltas; powers 1-2 cover positive skewed responses.
+Beta,not_fit,"Requires scalar values strictly in (0, 1); TVT and deltas are depth-unit responses."
+Dirichlet,not_fit,Requires composition vectors summing to one; this competition predicts one scalar TVT per row.

@@ -1,0 +1,5 @@
+topic,finding,modeling_implication
+best_glm_candidate,Best GLM/robust candidate is robust_delta_huber with sampled grouped RMSE 14.7928.,Use this result to decide whether GLM likelihood changes beat the current GAM spline baseline.
+gaussian_delta_reference,"Gaussian Ridge on slope-core delta scored RMSE 14.8398, compared with endpoint hold 15.5782.",A simple continuous signed-delta model remains a strong reference for later Bayesian likelihood choices.
+classic_glm_validity,"Beta and Dirichlet families are not fit because TVT is a scalar depth response, not a bounded probability or composition vector.",Prefer Gaussian/Student-t/robust or positive continuous families over count/proportion families for Bayesian modeling.
+gam_reference,Current submitted GAM spline has local diagnostic RMSE 14.8687 and public LB 15.055.,A GLM candidate should clear this local hurdle before becoming a Kaggle submission candidate.

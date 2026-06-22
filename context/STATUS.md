@@ -1,7 +1,7 @@
 # Project Status
 
 **Last updated:** 2026-06-22
-**Current phase:** GAM-style modeling loop - fine-tuned GAM submitted and scored
+**Current phase:** GLM distribution diagnostics complete after fine-tuned GAM submission
 
 ---
 
@@ -39,18 +39,20 @@
 - [x] Run first GAM-style additive spline baseline (`2026-06-21__2007__gam_spline_baseline__8046b3f`) - best `boundary_trajectory_slopes`, sampled target-zone CV RMSE mean **14.8719**
 - [x] Run tuned GAM-style additive spline sweep (`2026-06-21__2037__gam_spline_tuning__4e31e0e`) - best `core_fine__delta_boundary__k7__d3__a60`, sampled target-zone CV RMSE mean **14.8687**
 - [x] Push and submit fine-tuned GAM Kaggle notebook version 1 (`ref=53932883`) - public LB **15.055**
+- [x] Run GLM distribution diagnostic sweep (`2026-06-21__2147__glm_distribution_diagnostics__107a7d7`) - best `robust_delta_huber`, sampled target-zone CV RMSE mean **14.7928**
 
 ## In progress
 
 - [ ] Export artifact figures per `CURSOR_RULES.md`
 - [ ] Verify Kaggle competition rules page before first submission (`kaggle/RULES_SUMMARY.md`)
 - [ ] Use public LB **15.055** as the current external baseline; avoid leaderboard-only tuning
+- [ ] Decide whether to package `robust_delta_huber` as the next self-contained Kaggle submission
 - [ ] Investigate why local CV ranked Random Forest worse than Ridge while public LB ranked it better
 - [ ] Defer SVR/radius-neighbor work unless new well-local features make neighbor geometry plausible
 
 ## Next up
 
-1. Use the fine-tuned GAM submission as the external baseline, then test LightGBM/XGBoost with the same slope-core features and stricter fold diagnostics.
+1. Decide whether to submit the robust signed-delta Huber GLM, since it beats tuned GAM locally under the same target-zone diagnostic.
 2. Apply the Phase 4 validation protocol to LightGBM/XGBoost on the same notebook-local feature logic: endpoint baseline, grouped fold metrics, descriptor balance, and public-LB gap notes.
 3. Try boosted-tree baseline (XGBoost or LightGBM) on richer well-relative features, then tune.
 4. Refine validation before making many leaderboard submissions from small public-LB gains
@@ -85,3 +87,4 @@
 |---|---|---:|---|
 | 2026-06-21 | GAM-style additive spline `boundary_trajectory_slopes` | 14.8719 | Sampled target-zone grouped CV; not yet a Kaggle submission |
 | 2026-06-21 | Tuned GAM-style spline `core_fine__delta_boundary__k7__d3__a60` | 14.8687 | Sampled target-zone grouped CV; +0.0032 RMSE vs first GAM, so useful but nearly plateaued |
+| 2026-06-22 | Robust signed-delta Huber GLM `robust_delta_huber` | 14.7928 | Sampled target-zone grouped CV; supports robust/Student-t likelihood direction before Bayesian modeling |

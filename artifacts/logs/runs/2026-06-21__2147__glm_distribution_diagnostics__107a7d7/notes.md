@@ -1,0 +1,1 @@
+GLM distribution diagnostic completed. Beta and Dirichlet are logged as invalid target geometries for scalar TVT.
