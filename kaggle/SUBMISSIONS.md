@@ -90,6 +90,21 @@
 - Notes: Public score beats Ridge, Random Forest, and ElasticNet, but is worse than the fine-tuned GAM spline (`15.055`) despite stronger local diagnostic RMSE.
 - Decision: useful external check for robust signed-delta modeling, but not the current public-LB leader. Keep fine-tuned GAM as the external baseline and investigate local/public mismatch before promoting Huber.
 
+- Timestamp: 2026-06-22
+- Run ID: `2026-06-22__1231__bayesian_linear_tuning__4b66b91`
+- Git SHA: `f3d4b83`
+- Config: self-contained Bayesian linear Student-t MAP notebook, slope-core boundary/trajectory/recent-slope features, fixed `nu=3`, Student-t MAP objective with Normal priors, `MAX_TARGET_ROWS_PER_WELL=140`, robust `/kaggle/input` data discovery
+- Local CV: tuned Bayesian candidate `student_t_fixed3_autodelta`, sampled target-zone grouped CV RMSE mean `14.8449`, CV RMSE std `0.5205`
+- Local submission file: `artifacts/reports/submission__bayesian_linear_student_t__2026-06-22.csv`
+- Kaggle notebook: `https://www.kaggle.com/code/sardorbsobirov/wellbore-bayesian-linear-student-t`
+- Kaggle kernel version: 1
+- Status: `KernelWorkerStatus.COMPLETE`
+- Public LB: `15.512`
+- Submission ref: `53957370`
+- Submission status: `SubmissionStatus.COMPLETE`
+- Notes: External score is slightly worse than Huber GLM (`15.464`) and much worse than fine-tuned GAM (`15.055`). The Kaggle notebook uses a SciPy Student-t MAP implementation to avoid NumPyro dependency risk with internet disabled.
+- Decision: keep as the first valid Bayesian-linear public baseline and likelihood check, but do not promote it over GAM/Huber. Continue to HSGP for Bayesian residual mean structure.
+
 Use this format for every submission:
 
 ```text

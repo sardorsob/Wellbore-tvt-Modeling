@@ -44,6 +44,7 @@
 - [x] Run NumPyro/JAX Bayesian linear robust baseline (`2026-06-22__1211__bayesian_linear_robust__3855aa6`) - best `bayes_student_t_heteroskedastic`, sampled target-zone CV RMSE mean **14.9752**, 80% coverage **0.783**
 - [x] Run NumPyro/JAX Bayesian linear tuning sweep (`2026-06-22__1231__bayesian_linear_tuning__4b66b91`) - best `student_t_fixed3_autodelta`, sampled target-zone CV RMSE mean **14.8449**, 80% coverage **0.769**
 - [x] Run Bayesian posterior diagnostics and targeted scale sweep (`2026-06-22__1254__bayesian_posterior_diagnostics_scale__6644c20`) - best `hetero_boundary_progress_autodelta`, sampled target-zone CV RMSE mean **14.8626**, 80% coverage **0.780**
+- [x] Push and submit Bayesian linear Student-t MAP Kaggle notebook version 1 (`ref=53957370`) - public LB **15.512**
 
 ## In progress
 
@@ -86,6 +87,7 @@
 | 2026-06-21 | ElasticNet alpha 0.001 l1 0.2 | 15.7907 | 16.091 | Submission `53924934`; rejected, worse than Ridge and Random Forest externally |
 | 2026-06-22 | Fine-tuned GAM spline | 14.8687 | 15.055 | Submission `53932883`; new best public LB using slope-core boundary/trajectory/recent-slope features |
 | 2026-06-22 | Huber GLM slope-core | 14.7928 | 15.464 | Submission `53952950`; worse than GAM externally despite best local diagnostic |
+| 2026-06-22 | Bayesian linear Student-t MAP | 14.8449 | 15.512 | Submission `53957370`; useful Bayesian baseline, but worse than Huber and GAM externally |
 
 ## Local diagnostic model history
 

@@ -446,6 +446,17 @@ Wellbore-tvt-Modeling/
 
 ---
 
+### kaggle/bayesian_linear_submission/bayesian_linear_submission.ipynb
+**Status:** Pushed to Kaggle as private notebook version 1, completed, and submitted to the competition. Submission `53957370` scored **15.512** public LB.
+**Purpose:** Self-contained Kaggle submission notebook for the Bayesian linear fixed Student-t MAP candidate.
+**Inputs:** Competition dataset attached by `kernel-metadata.json` as `rogii-wellbore-geology-prediction`.
+**Local verification:** Ran top-to-bottom locally and wrote `artifacts/reports/submission__bayesian_linear_student_t__2026-06-22.csv` with **14,151** finite predictions matching `sample_submission.csv` id order.
+**Kaggle URL:** `https://www.kaggle.com/code/sardorbsobirov/wellbore-bayesian-linear-student-t`
+**Leaderboard:** Submission `53957370` public score **15.512**.
+**Decision:** Useful Bayesian-linear public baseline and robust-likelihood check, but not promoted over Huber GLM or fine-tuned GAM. Continue to HSGP for residual mean structure.
+
+---
+
 ### notebooks/modeling/05_bayesian_gp.ipynb
 **Status:** Not yet run — stub only.
 **Purpose:** NumpPyro Gaussian Process; posterior mean as prediction; uncertainty visualization.
