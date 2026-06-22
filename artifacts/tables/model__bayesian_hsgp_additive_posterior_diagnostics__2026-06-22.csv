@@ -1,0 +1,16 @@
+fold,candidate,final_loss,term_columns,basis_total,hsgp_residual_sd,alpha_mean,length_mean
+1,linear_t3_autodelta_reference,64596.53125,none,0,0.0,,
+1,additive_dp_m8_se_autodelta,64546.5,distance_log1p+eval_progress,16,1.127593755722046,0.4278032183647156,0.633854866027832
+1,additive_dph_m8_se_autodelta,64562.18359375,distance_log1p+eval_progress+horizontal_log1p,24,0.6768100261688232,0.32859453558921814,0.675626814365387
+1,additive_dps_m8_se_autodelta,64315.1484375,distance_log1p+eval_progress+abs_projected_delta_10,24,2.6507577896118164,0.4233078062534332,0.8692938089370728
+1,additive_dp_m10_matern32_autodelta,64457.8515625,distance_log1p+eval_progress,20,2.867065668106079,0.23410771787166595,0.7101211547851562
+2,linear_t3_autodelta_reference,64701.875,none,0,0.0,,
+2,additive_dp_m8_se_autodelta,64636.35546875,distance_log1p+eval_progress,16,4.568469047546387,0.40811678767204285,1.0016189813613892
+2,additive_dph_m8_se_autodelta,64670.8671875,distance_log1p+eval_progress+horizontal_log1p,24,0.8623586297035217,0.2402743399143219,0.8850013017654419
+2,additive_dps_m8_se_autodelta,64482.09765625,distance_log1p+eval_progress+abs_projected_delta_10,24,2.8986117839813232,0.342841774225235,0.7166873216629028
+2,additive_dp_m10_matern32_autodelta,64642.3828125,distance_log1p+eval_progress,20,1.2383029460906982,0.2556321918964386,0.8235912322998047
+3,linear_t3_autodelta_reference,64570.7265625,none,0,0.0,,
+3,additive_dp_m8_se_autodelta,64624.515625,distance_log1p+eval_progress,16,4.169380187988281,0.2814268171787262,1.0407062768936157
+3,additive_dph_m8_se_autodelta,64504.03125,distance_log1p+eval_progress+horizontal_log1p,24,3.8296444416046143,0.33058467507362366,0.6885235905647278
+3,additive_dps_m8_se_autodelta,64322.01953125,distance_log1p+eval_progress+abs_projected_delta_10,24,3.1278648376464844,0.42025256156921387,0.6873863935470581
+3,additive_dp_m10_matern32_autodelta,64441.90625,distance_log1p+eval_progress,20,2.912989616394043,0.44438284635543823,1.1192469596862793

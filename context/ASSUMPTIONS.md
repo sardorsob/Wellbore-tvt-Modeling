@@ -226,3 +226,9 @@ The posterior-diagnostics and targeted-scale sweep found `hetero_boundary_progre
 The first HSGP residual sweep found `hsgp_bp_m5_autodelta` as the best candidate with sampled grouped RMSE **14.8997**, improving the same-notebook linear Student-t reference by **0.0310** RMSE. However, it remains **0.0547** worse than the prior tuned Bayesian linear best (**14.8449**) and **0.1069** worse than the Huber GLM local diagnostic (**14.7928**). The best model used a small 2D boundary/progress basis with **25** functions; larger 2D basis (**49**) and a 3D boundary/progress/horizontal basis (**48**) did not improve RMSE.
 
 **Modeling implication:** Smooth residual structure exists, but the first HSGP coordinate/basis design is not enough. Next GP work should try additive HSGP terms, coordinate-specific priors, or residual-only modeling around the strongest robust mean rather than simply increasing basis count.
+
+### A26 - Additive HSGP residuals are useful but need a stronger mean model
+
+The additive HSGP sweep found `additive_dps_m8_se_autodelta` as the best candidate with sampled grouped RMSE **14.8235**, improving the same-notebook linear Student-t reference by **0.0698** RMSE and the first joint boundary/progress HSGP by **0.0762** RMSE. The useful extra coordinate was `abs_projected_delta_10`, suggesting residual structure around local slope-instability in addition to boundary distance and evaluation progress. The best additive HSGP still trails the Huber GLM local diagnostic by **0.0307** RMSE. Early SVI attempts produced non-finite losses until the notebook used a lower learning rate and clipped Adam gradients.
+
+**Modeling implication:** Additive one-dimensional HSGP terms are a better GP geometry than simply increasing joint basis count. The next HSGP should keep clipped/lower-step SVI and place the smooth residual around a stronger Huber or GAM mean rather than around the plain Bayesian linear mean.

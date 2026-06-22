@@ -3,6 +3,7 @@
 ## [Unreleased]
 
 ### Changed
+- Ran additive NumPyro/JAX HSGP residual tuning and recorded that one-dimensional boundary/progress/slope-instability smooth terms beat the first joint HSGP but still trail the Huber GLM local diagnostic.
 - Ran the first NumPyro/JAX HSGP residual baseline and recorded that a small boundary/progress HSGP improves its same-notebook linear reference but not the prior tuned Bayesian best.
 - Pushed and submitted the self-contained Bayesian linear Student-t MAP notebook; public LB scored **15.512**, worse than Huber GLM and fine-tuned GAM.
 - Ran Bayesian posterior predictive diagnostics with targeted heteroskedastic scale models and recorded that boundary/progress scale helps calibration but does not beat the tuned fixed Student-t Bayesian baseline.
@@ -25,6 +26,7 @@
 - Generated and ran first baseline modeling notebooks; updated structure, status, experiments, and feature log with run IDs and RMSEs.
 
 ### Added
+- Additive HSGP residual tuning notebook, posterior diagnostics, residual figures, report, model-comparison row, and run bundle.
 - HSGP residual baseline notebook, posterior diagnostics, residual figures, report, model-comparison row, and run bundle.
 - Self-contained Bayesian linear Student-t MAP Kaggle submission notebook, kernel metadata, and local validation CSV.
 - Bayesian posterior diagnostics and targeted-scale notebook, bin/well diagnostics, calibration figures, report, model-comparison row, and run bundle.

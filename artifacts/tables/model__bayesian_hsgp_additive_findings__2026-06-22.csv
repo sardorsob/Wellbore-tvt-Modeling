@@ -1,0 +1,6 @@
+topic,finding,modeling_implication
+best_additive_hsgp_candidate,Best additive HSGP candidate is additive_dps_m8_se_autodelta with sampled grouped RMSE 14.8235.,Use this as the first additive-HSGP reference before trying Huber/GAM residual means.
+linear_reference_delta,Best additive HSGP RMSE delta versus same-notebook linear reference is -0.0698.,A negative delta means additive smooth terms add value beyond the linear Student-t mean.
+joint_hsgp_delta,Best additive HSGP RMSE delta versus first joint HSGP is -0.0762.,This compares additive one-dimensional terms against the previous joint boundary/progress surface.
+bayesian_best_delta,Best additive HSGP RMSE delta versus prior tuned Bayesian best is -0.0214.,"If still positive, the next HSGP should change the mean model rather than only residual basis geometry."
+huber_reference_delta,Best additive HSGP RMSE delta versus Huber GLM local reference is 0.0307.,This decides whether to proceed to Huber/GAM residual HSGP before Kaggle packaging.

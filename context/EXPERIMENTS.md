@@ -210,6 +210,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: keep as the first HSGP baseline, but do not submit to Kaggle. Next GP work should test additive/coordinate-specific HSGP variants rather than only larger basis counts.
 - Notes: A 49-basis 2D HSGP and a 48-basis 3D boundary/progress/horizontal HSGP both underperformed the smaller 25-basis boundary/progress model.
 
+## 2026-06-22__1425__bayesian_hsgp_additive_tuning__48601fe
+
+- Task: Bayesian additive HSGP residual tuning
+- Purpose: Test additive one-dimensional HSGP residual terms over boundary distance, evaluation progress, trajectory distance, and slope-instability coordinates before moving to Huber/GAM residual HSGP.
+- Config: notebook-local config in `notebooks/modeling/06_bayesian/05_hsgp_additive_tuning.ipynb`
+- Data version: local Kaggle download in `data/raw/train/`
+- Split / CV: 3 grouped well folds on sampled target-zone rows; deterministic cap of 140 target rows per well and 50,000 training rows per fold.
+- Model: best candidate `additive_dps_m8_se_autodelta`, a fixed-nu Student-t Bayesian linear model with additive squared-exponential HSGP residuals over standardized `distance_log1p`, `eval_progress`, and `abs_projected_delta_10`, using 24 total one-dimensional basis functions.
+- Primary metric: sampled target-zone CV RMSE mean **14.8235**; RMSE std **0.5186**.
+- Secondary metrics: empirical 80% interval coverage **0.765** with mean width **30.97** TVT units; the best additive HSGP improved the same-notebook linear reference by **0.0698** RMSE and the first joint HSGP by **0.0762** RMSE, but still trailed the Huber GLM local reference by **0.0307** RMSE.
+- Artifacts: fold metrics CSV, summary CSV, posterior diagnostics, residual sample, diagnostic figures, report, model comparison row, and run bundle under `artifacts/logs/runs/2026-06-22__1425__bayesian_hsgp_additive_tuning__48601fe/`
+- Decision: keep as the best HSGP result so far, but do not submit to Kaggle yet. Proceed to Huber/GAM residual HSGP because the additive residual geometry helps while the mean model still appears limiting.
+- Notes: Early additive SVI trials produced non-finite predictions; the stable run used lower-step clipped Adam and removed the unstable AutoNormal candidate from this first sweep.
+
 ## Entry Format
 
 ```text

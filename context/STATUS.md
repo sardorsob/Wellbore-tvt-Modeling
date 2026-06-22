@@ -1,7 +1,7 @@
 # Project Status
 
 **Last updated:** 2026-06-22
-**Current phase:** First HSGP residual baseline complete
+**Current phase:** Additive HSGP residual tuning complete
 
 ---
 
@@ -46,6 +46,7 @@
 - [x] Run Bayesian posterior diagnostics and targeted scale sweep (`2026-06-22__1254__bayesian_posterior_diagnostics_scale__6644c20`) - best `hetero_boundary_progress_autodelta`, sampled target-zone CV RMSE mean **14.8626**, 80% coverage **0.780**
 - [x] Push and submit Bayesian linear Student-t MAP Kaggle notebook version 1 (`ref=53957370`) - public LB **15.512**
 - [x] Run first NumPyro/JAX HSGP residual baseline (`2026-06-22__1358__bayesian_hsgp_residual_baseline__bd24319`) - best `hsgp_bp_m5_autodelta`, sampled target-zone CV RMSE mean **14.8997**
+- [x] Run additive NumPyro/JAX HSGP residual tuning (`2026-06-22__1425__bayesian_hsgp_additive_tuning__48601fe`) - best `additive_dps_m8_se_autodelta`, sampled target-zone CV RMSE mean **14.8235**
 
 ## In progress
 
@@ -53,13 +54,13 @@
 - [ ] Verify Kaggle competition rules page before first submission (`kaggle/RULES_SUMMARY.md`)
 - [ ] Use public LB **15.055** as the current external baseline; avoid leaderboard-only tuning
 - [ ] Investigate why Huber GLM beat GAM locally but scored worse publicly
-- [ ] Use first HSGP diagnostics to design additive/coordinate-specific HSGP variants
+- [ ] Use additive HSGP diagnostics to design Huber/GAM residual HSGP variants
 - [ ] Investigate why local CV ranked Random Forest worse than Ridge while public LB ranked it better
 - [ ] Defer SVR/radius-neighbor work unless new well-local features make neighbor geometry plausible
 
 ## Next up
 
-1. Design additive or coordinate-specific HSGP variants using the 25-basis boundary/progress HSGP as the reference.
+1. Build a Huber/GAM residual HSGP notebook using the additive `distance_log1p + eval_progress + abs_projected_delta_10` geometry as the reference.
 2. Investigate local/public mismatch between Huber GLM (`14.7928` local, `15.464` public) and fine-tuned GAM (`14.8687` local, `15.055` public).
 3. Apply the Phase 4 validation protocol to LightGBM/XGBoost on the same notebook-local feature logic: endpoint baseline, grouped fold metrics, descriptor balance, and public-LB gap notes.
 4. Refine validation before making many leaderboard submissions from small public-LB gains
@@ -101,3 +102,4 @@
 | 2026-06-22 | Bayesian fixed Student-t linear `student_t_fixed3_autodelta` | 14.8449 | Sampled target-zone grouped CV; best Bayesian linear point-RMSE result so far, but still trails Huber GLM locally |
 | 2026-06-22 | Bayesian boundary/progress scale `hetero_boundary_progress_autodelta` | 14.8626 | Sampled target-zone grouped CV; improves same-notebook fixed scale reference and calibrates uncertainty, but does not beat tuned Bayesian fixed Student-t |
 | 2026-06-22 | Bayesian HSGP residual `hsgp_bp_m5_autodelta` | 14.8997 | Sampled target-zone grouped CV; improves same-notebook linear reference but does not beat tuned Bayesian fixed Student-t |
+| 2026-06-22 | Bayesian additive HSGP residual `additive_dps_m8_se_autodelta` | 14.8235 | Sampled target-zone grouped CV; best HSGP so far and beats tuned Bayesian fixed Student-t locally, but still trails robust Huber GLM |

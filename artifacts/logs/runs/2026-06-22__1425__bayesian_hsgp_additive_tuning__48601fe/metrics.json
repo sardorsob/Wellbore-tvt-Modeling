@@ -1,0 +1,11 @@
+{
+  "sample_rows": 108220.0,
+  "best_rmse": 14.823507514608005,
+  "best_rmse_std": 0.518565591840564,
+  "best_coverage_80": 0.7653651253280246,
+  "linear_reference_rmse": 14.893269129396321,
+  "best_minus_linear_reference": -0.069761614788316,
+  "best_minus_joint_hsgp": -0.07618799454201763,
+  "best_minus_previous_bayes": -0.021440819197142247,
+  "best_minus_huber_glm": 0.030664986216500267
+}

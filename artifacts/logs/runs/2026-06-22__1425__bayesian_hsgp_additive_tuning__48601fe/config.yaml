@@ -1,0 +1,11 @@
+best_candidate: additive_dps_m8_se_autodelta
+clip_norm: 5.0
+learning_rate: 0.006
+max_target_rows_per_well: 140
+max_train_rows_per_fold: 50000
+n_splits: 3
+note: Additive HSGP residual tuning before Huber/GAM residual HSGP.
+posterior_samples: 120
+seed: 42
+svi_steps: 800
+task: bayesian_hsgp_additive_tuning
