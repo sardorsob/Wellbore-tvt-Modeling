@@ -3,6 +3,7 @@
 ## [Unreleased]
 
 ### Changed
+- Pushed and submitted the self-contained fine-tuned GAM spline Kaggle notebook; public LB improved to **15.055**.
 - Ran a tuned GAM-style spline sweep and recorded that slope-core splines plateau around **14.8687** sampled target-zone CV RMSE.
 - Ran the first GAM-style additive spline baseline and recorded that the best boundary/trajectory/slope additive model beats sampled endpoint hold under target-zone grouped CV.
 - Completed Phase 4 validation EDA and recorded the validation protocol for endpoint-hold baselines, fold descriptor balance, model fold metrics, and public leaderboard gap interpretation.
@@ -17,6 +18,7 @@
 - Generated and ran first baseline modeling notebooks; updated structure, status, experiments, and feature log with run IDs and RMSEs.
 
 ### Added
+- Self-contained fine-tuned GAM spline Kaggle submission notebook, kernel metadata, and local validation CSV.
 - Tuned GAM-style spline notebook, candidate/fold/family/target summaries, residual diagnostics, report, model-comparison row, and run bundle.
 - GAM-style modeling folder, executable additive spline baseline notebook, fold metrics, summary tables, residual diagnostics, report, model-comparison row, and run bundle.
 - Phase 4 EDA notebook execution artifacts: endpoint baseline table, fold assignment and descriptor-balance tables, model fold metrics, CV/leaderboard gap table, descriptor PCA table, diagnostic figures, findings report, and run bundle.

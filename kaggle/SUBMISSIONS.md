@@ -60,6 +60,21 @@
 - Notes: External score is worse than both Ridge (`15.905`) and Random Forest (`15.873`), despite local CV being close to Ridge.
 - Decision: rejected as a promotion candidate; useful evidence that this ElasticNet variant does not generalize better to the public test wells.
 
+- Timestamp: 2026-06-22
+- Run ID: `2026-06-21__2037__gam_spline_tuning__4e31e0e`
+- Git SHA: `7c13dfa`
+- Config: self-contained fine-tuned GAM-style spline notebook, slope-core boundary/trajectory/recent-slope features, `SplineTransformer(n_knots=7, degree=3)`, `Ridge(alpha=60.0)`, `MAX_TARGET_ROWS_PER_WELL=140`, robust `/kaggle/input` data discovery
+- Local CV: tuned GAM candidate `core_fine__delta_boundary__k7__d3__a60`, sampled target-zone grouped CV RMSE mean `14.8687`, CV RMSE std `0.5012`
+- Local submission file: `artifacts/reports/submission__gam_spline_tuning__2026-06-21.csv`
+- Kaggle notebook: `https://www.kaggle.com/code/sardorbsobirov/wellbore-fine-tuned-gam-spline`
+- Kaggle kernel version: 1
+- Status: `KernelWorkerStatus.COMPLETE`
+- Public LB: `15.055`
+- Submission ref: `53932883`
+- Submission status: `SubmissionStatus.COMPLETE`
+- Notes: First self-contained target-zone-trained GAM submission. The public score improves substantially over Random Forest (`15.873`) and Ridge (`15.905`), even though Phase 2 tuning only improved the first GAM local diagnostic by `0.0032` RMSE.
+- Decision: current best public LB. Promote slope-core boundary/trajectory/recent-slope feature logic as the next modeling baseline for LightGBM/XGBoost and ensemble work.
+
 Use this format for every submission:
 
 ```text

@@ -1,7 +1,7 @@
 # Project Status
 
-**Last updated:** 2026-06-21
-**Current phase:** GAM-style modeling loop - tuned additive spline candidate complete
+**Last updated:** 2026-06-22
+**Current phase:** GAM-style modeling loop - fine-tuned GAM submitted and scored
 
 ---
 
@@ -38,19 +38,19 @@
 - [x] Run Phase 4 validation EDA (`2026-06-21__1928__eda_phase4_validation__203566d`) - endpoint baseline, fold balance, local/public mismatch, and validation protocol documented
 - [x] Run first GAM-style additive spline baseline (`2026-06-21__2007__gam_spline_baseline__8046b3f`) - best `boundary_trajectory_slopes`, sampled target-zone CV RMSE mean **14.8719**
 - [x] Run tuned GAM-style additive spline sweep (`2026-06-21__2037__gam_spline_tuning__4e31e0e`) - best `core_fine__delta_boundary__k7__d3__a60`, sampled target-zone CV RMSE mean **14.8687**
+- [x] Push and submit fine-tuned GAM Kaggle notebook version 1 (`ref=53932883`) - public LB **15.055**
 
 ## In progress
 
-- [ ] Decide whether the tuned GAM is worth a Kaggle submission read despite only a small local gain over Phase 1
 - [ ] Export artifact figures per `CURSOR_RULES.md`
 - [ ] Verify Kaggle competition rules page before first submission (`kaggle/RULES_SUMMARY.md`)
-- [ ] Use public LB **15.873** as the current external baseline; avoid leaderboard-only tuning
+- [ ] Use public LB **15.055** as the current external baseline; avoid leaderboard-only tuning
 - [ ] Investigate why local CV ranked Random Forest worse than Ridge while public LB ranked it better
 - [ ] Defer SVR/radius-neighbor work unless new well-local features make neighbor geometry plausible
 
 ## Next up
 
-1. If submitting GAM, create a self-contained Kaggle notebook for `core_fine__delta_boundary__k7__d3__a60`; otherwise move to boosted trees with the same slope-core features.
+1. Use the fine-tuned GAM submission as the external baseline, then test LightGBM/XGBoost with the same slope-core features and stricter fold diagnostics.
 2. Apply the Phase 4 validation protocol to LightGBM/XGBoost on the same notebook-local feature logic: endpoint baseline, grouped fold metrics, descriptor balance, and public-LB gap notes.
 3. Try boosted-tree baseline (XGBoost or LightGBM) on richer well-relative features, then tune.
 4. Refine validation before making many leaderboard submissions from small public-LB gains
@@ -77,6 +77,7 @@
 | 2026-06-21 | Ridge alpha 10 | 15.7660 | 15.905 | Submission `53923555`; first external baseline |
 | 2026-06-21 | Random Forest | 16.0655 | 15.873 | Submission `53924036`; current best public LB, but local CV disagrees with Ridge ordering |
 | 2026-06-21 | ElasticNet alpha 0.001 l1 0.2 | 15.7907 | 16.091 | Submission `53924934`; rejected, worse than Ridge and Random Forest externally |
+| 2026-06-22 | Fine-tuned GAM spline | 14.8687 | 15.055 | Submission `53932883`; new best public LB using slope-core boundary/trajectory/recent-slope features |
 
 ## Local diagnostic model history
 

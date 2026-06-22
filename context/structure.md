@@ -388,6 +388,17 @@ Wellbore-tvt-Modeling/
 
 ---
 
+### kaggle/gam_spline_tuning_submission/gam_spline_tuning_submission.ipynb
+**Status:** Pushed to Kaggle as private notebook version 1, completed, and submitted to the competition. Submission `53932883` scored **15.055** public LB.
+**Purpose:** Self-contained Kaggle submission notebook for the fine-tuned GAM-style spline candidate.
+**Inputs:** Competition dataset attached by `kernel-metadata.json` as `rogii-wellbore-geology-prediction`.
+**Local verification:** Ran top-to-bottom locally and wrote `artifacts/reports/submission__gam_spline_tuning__2026-06-21.csv` with **14,151** finite predictions matching `sample_submission.csv` id order.
+**Kaggle URL:** `https://www.kaggle.com/code/sardorbsobirov/wellbore-fine-tuned-gam-spline`
+**Leaderboard:** Submission `53932883` public score **15.055**.
+**Decision:** Current best public LB. Use the slope-core feature logic as the baseline for boosted trees and future ensembles.
+
+---
+
 ### notebooks/modeling/05_bayesian_gp.ipynb
 **Status:** Not yet run — stub only.
 **Purpose:** NumpPyro Gaussian Process; posterior mean as prediction; uncertainty visualization.
@@ -414,6 +425,6 @@ Wellbore-tvt-Modeling/
 
 ## CURRENT STATUS
 
-**Phase:** GAM-style modeling loop - structural EDA and Phases 2-4 are complete; tuned additive spline candidate is run; Random Forest remains the best public LB.
+**Phase:** GAM-style modeling loop - structural EDA and Phases 2-4 are complete; fine-tuned GAM is submitted; GAM spline is the best public LB.
 **Workflow posture:** Use `sardorsob/sardors-agentic-workflows` data-science gates: data gate, split/leakage gate, baseline gate, experiment loop, evaluation gate, artifact gate, handoff gate. Local reference copy lives under ignored `context/_external/`.
-**Next action:** Decide whether to create a self-contained Kaggle GAM-style notebook for `core_fine__delta_boundary__k7__d3__a60`, then run LightGBM/XGBoost with the same notebook-local feature logic and Phase 4 validation protocol.
+**Next action:** Run LightGBM/XGBoost with the same notebook-local slope-core feature logic and Phase 4 validation protocol.
