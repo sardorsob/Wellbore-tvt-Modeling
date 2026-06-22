@@ -3,6 +3,7 @@
 ## [Unreleased]
 
 ### Changed
+- Pushed and submitted the self-contained Huber + additive Hilbert residual notebook; public LB scored **14.514**, the current best external result.
 - Ran HSGP residual diagnostics on GAM/Huber means and recorded that Huber + additive Hilbert residuals reach **14.3586** local RMSE, while the reconstructed GAM residual path was unstable.
 - Pushed and submitted the self-contained additive HSGP Student-t MAP notebook; public LB scored **15.255**, better than Bayesian linear and Huber but worse than fine-tuned GAM.
 - Ran additive NumPyro/JAX HSGP residual tuning and recorded that one-dimensional boundary/progress/slope-instability smooth terms beat the first joint HSGP but still trail the Huber GLM local diagnostic.
@@ -28,6 +29,7 @@
 - Generated and ran first baseline modeling notebooks; updated structure, status, experiments, and feature log with run IDs and RMSEs.
 
 ### Added
+- Self-contained Huber + additive Hilbert residual Kaggle submission notebook, kernel metadata, and local validation CSV.
 - HSGP residual-on-GAM/Huber notebook, residual diagnostics, figures, report, model-comparison row, and run bundle.
 - Self-contained additive HSGP Student-t MAP Kaggle submission notebook, kernel metadata, and local validation CSV.
 - Additive HSGP residual tuning notebook, posterior diagnostics, residual figures, report, model-comparison row, and run bundle.

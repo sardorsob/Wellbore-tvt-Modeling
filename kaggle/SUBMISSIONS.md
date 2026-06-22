@@ -120,6 +120,21 @@
 - Notes: The Kaggle-safe additive HSGP approximation improves over Bayesian linear (`15.512`) and Huber GLM (`15.464`) externally, but remains worse than the fine-tuned GAM spline (`15.055`).
 - Decision: useful public validation that additive HSGP residual geometry helps. Do not promote over the fine-tuned GAM; continue planning Huber/GAM residual HSGP locally.
 
+- Timestamp: 2026-06-22
+- Run ID: `2026-06-22__1519__bayesian_hsgp_residual_on_gam_huber__fadbdba`
+- Git SHA: `029feb8`
+- Config: self-contained Huber + additive Hilbert residual notebook, expanded slope-core features with raw trajectory terms, `HuberRegressor(alpha=0.0001, epsilon=1.35)`, additive Hilbert sine bases over `distance_log1p`, `eval_progress`, and `abs_projected_delta_10`; `HSGP_M=8`, `HSGP_ELL=3.0`, `MAX_TARGET_ROWS_PER_WELL=140`, robust `/kaggle/input` data discovery
+- Local CV: diagnostic candidate `huber_plus_hsgp_dps_m8`, sampled target-zone grouped CV RMSE mean `14.3586`, CV RMSE std `0.5713`
+- Local submission file: `artifacts/reports/submission__huber_hsgp_residual__2026-06-22.csv`
+- Kaggle notebook: `https://www.kaggle.com/code/sardorbsobirov/wellbore-huber-hsgp-residual`
+- Kaggle kernel version: 1
+- Status: `KernelWorkerStatus.COMPLETE`
+- Public LB: `14.514`
+- Submission ref: `53960276`
+- Submission status: `SubmissionStatus.COMPLETE`
+- Notes: The Huber + additive Hilbert residual package improves the public LB from the fine-tuned GAM's **15.055** to **14.514**, and beats the prior additive HSGP score **15.255**. The local-to-public ordering is still imperfect, but this is the first meaningful external gain since GAM.
+- Decision: promote as the current best public submission. Continue to hierarchical/well-level structure because the score is still far from the top public range discussed by the user.
+
 Use this format for every submission:
 
 ```text

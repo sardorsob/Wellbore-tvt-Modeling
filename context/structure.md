@@ -495,6 +495,17 @@ Wellbore-tvt-Modeling/
 
 ---
 
+### kaggle/huber_hsgp_residual_submission/huber_hsgp_residual_submission.ipynb
+**Status:** Pushed to Kaggle as private notebook version 1, completed, and submitted to the competition. Submission `53960276` scored **14.514** public LB.
+**Purpose:** Self-contained Kaggle submission notebook for the Huber + additive Hilbert residual candidate.
+**Inputs:** Competition dataset attached by `kernel-metadata.json` as `rogii-wellbore-geology-prediction`.
+**Local verification:** Ran top-to-bottom locally and wrote `artifacts/reports/submission__huber_hsgp_residual__2026-06-22.csv` with **14,151** finite predictions matching `sample_submission.csv` id order.
+**Kaggle URL:** `https://www.kaggle.com/code/sardorbsobirov/wellbore-huber-hsgp-residual`
+**Leaderboard:** Submission `53960276` public score **14.514**.
+**Decision:** Current best public LB, but still far from the top public range; use it as the external baseline while moving to hierarchical/well-level modeling.
+
+---
+
 ### notebooks/modeling/05_bayesian_gp.ipynb
 **Status:** Not yet run — stub only.
 **Purpose:** NumpPyro Gaussian Process; posterior mean as prediction; uncertainty visualization.
@@ -523,4 +534,4 @@ Wellbore-tvt-Modeling/
 
 **Phase:** Huber residual HSGP diagnostic complete - structural EDA and Phases 2-4 are complete; fine-tuned GAM remains best public LB; Huber + additive Hilbert residual is the strongest local diagnostic.
 **Workflow posture:** Use `sardorsob/sardors-agentic-workflows` data-science gates: data gate, split/leakage gate, baseline gate, experiment loop, evaluation gate, artifact gate, handoff gate. Local reference copy lives under ignored `context/_external/`.
-**Next action:** Package Huber + additive Hilbert residual for Kaggle scoring or move to hierarchical HSGP in a separate folder, while preserving the note that reconstructed GAM residuals were unstable in the diagnostic notebook.
+**Next action:** Start hierarchical HSGP in a separate folder using well-level residual bias diagnostics, while treating Huber + additive Hilbert residual as the current external baseline.

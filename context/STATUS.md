@@ -49,22 +49,22 @@
 - [x] Run additive NumPyro/JAX HSGP residual tuning (`2026-06-22__1425__bayesian_hsgp_additive_tuning__48601fe`) - best `additive_dps_m8_se_autodelta`, sampled target-zone CV RMSE mean **14.8235**
 - [x] Push self-contained additive HSGP Student-t MAP Kaggle notebook version 1 and submit output (`ref=53958582`) - public LB **15.255**
 - [x] Run HSGP residuals on GAM/Huber means (`2026-06-22__1519__bayesian_hsgp_residual_on_gam_huber__fadbdba`) - best `huber_plus_hsgp_dps_m8`, sampled target-zone CV RMSE mean **14.3586**
+- [x] Push self-contained Huber + additive Hilbert residual Kaggle notebook version 1 and submit output (`ref=53960276`) - public LB **14.514**
 
 ## In progress
 
 - [ ] Export artifact figures per `CURSOR_RULES.md`
 - [ ] Verify Kaggle competition rules page before first submission (`kaggle/RULES_SUMMARY.md`)
-- [ ] Use public LB **15.055** as the current external baseline; avoid leaderboard-only tuning
+- [ ] Use public LB **14.514** as the current external baseline; avoid leaderboard-only tuning
 - [ ] Investigate why Huber GLM beat GAM locally but scored worse publicly
-- [ ] Package Huber + additive Hilbert residual as a Kaggle-safe notebook if we want a public-LB read
 - [ ] Investigate why local CV ranked Random Forest worse than Ridge while public LB ranked it better
 - [ ] Defer SVR/radius-neighbor work unless new well-local features make neighbor geometry plausible
 
 ## Next up
 
-1. Package and submit the Huber + additive Hilbert residual notebook if we want to test whether the large local gain survives public scoring.
-2. Investigate why the reconstructed spline GAM mean was unstable in `06_hsgp_residual_on_gam_huber.ipynb` despite the public GAM notebook scoring best externally.
-3. Start hierarchical HSGP in a separate folder after the Huber-residual public read, using well-level residual bias diagnostics.
+1. Start hierarchical HSGP in a separate folder, using well-level residual bias diagnostics, because Huber + Hilbert residual improved public LB but is still far from top public scores.
+2. Investigate why the Huber + Hilbert residual gain transferred externally while the Huber-only public score lagged GAM.
+3. Investigate why the reconstructed spline GAM mean was unstable in `06_hsgp_residual_on_gam_huber.ipynb` despite the public GAM notebook scoring best externally.
 4. Refine validation before making many leaderboard submissions from small public-LB gains
 5. Revisit neighbors only with radius constraints, clusters, or richer local geologic features
 6. Set up Bayesian GP (NumpPyro) once the feature/split baseline is more stable
@@ -93,6 +93,7 @@
 | 2026-06-22 | Huber GLM slope-core | 14.7928 | 15.464 | Submission `53952950`; worse than GAM externally despite best local diagnostic |
 | 2026-06-22 | Bayesian linear Student-t MAP | 14.8449 | 15.512 | Submission `53957370`; useful Bayesian baseline, but worse than Huber and GAM externally |
 | 2026-06-22 | Additive HSGP Student-t MAP | 14.8235 | 15.255 | Submission `53958582`; beats Bayesian linear and Huber externally, but not fine-tuned GAM |
+| 2026-06-22 | Huber + additive Hilbert residual | 14.3586 | 14.514 | Submission `53960276`; new best public LB, but still far from top public range |
 
 ## Local diagnostic model history
 
