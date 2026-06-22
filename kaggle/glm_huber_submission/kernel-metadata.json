@@ -1,0 +1,15 @@
+{
+  "id": "sardorbsobirov/wellbore-huber-glm-slope-core",
+  "title": "Wellbore Huber GLM Slope Core",
+  "code_file": "glm_huber_submission.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "competition_sources": [
+    "rogii-wellbore-geology-prediction"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": []
+}

@@ -1,7 +1,7 @@
 # Project Status
 
 **Last updated:** 2026-06-22
-**Current phase:** GLM distribution diagnostics complete after fine-tuned GAM submission
+**Current phase:** Huber GLM submitted; fine-tuned GAM remains best public LB
 
 ---
 
@@ -40,19 +40,20 @@
 - [x] Run tuned GAM-style additive spline sweep (`2026-06-21__2037__gam_spline_tuning__4e31e0e`) - best `core_fine__delta_boundary__k7__d3__a60`, sampled target-zone CV RMSE mean **14.8687**
 - [x] Push and submit fine-tuned GAM Kaggle notebook version 1 (`ref=53932883`) - public LB **15.055**
 - [x] Run GLM distribution diagnostic sweep (`2026-06-21__2147__glm_distribution_diagnostics__107a7d7`) - best `robust_delta_huber`, sampled target-zone CV RMSE mean **14.7928**
+- [x] Push and submit Huber GLM Kaggle notebook version 1 (`ref=53952950`) - public LB **15.464**
 
 ## In progress
 
 - [ ] Export artifact figures per `CURSOR_RULES.md`
 - [ ] Verify Kaggle competition rules page before first submission (`kaggle/RULES_SUMMARY.md`)
 - [ ] Use public LB **15.055** as the current external baseline; avoid leaderboard-only tuning
-- [ ] Decide whether to package `robust_delta_huber` as the next self-contained Kaggle submission
+- [ ] Investigate why Huber GLM beat GAM locally but scored worse publicly
 - [ ] Investigate why local CV ranked Random Forest worse than Ridge while public LB ranked it better
 - [ ] Defer SVR/radius-neighbor work unless new well-local features make neighbor geometry plausible
 
 ## Next up
 
-1. Decide whether to submit the robust signed-delta Huber GLM, since it beats tuned GAM locally under the same target-zone diagnostic.
+1. Investigate local/public mismatch between Huber GLM (`14.7928` local, `15.464` public) and fine-tuned GAM (`14.8687` local, `15.055` public).
 2. Apply the Phase 4 validation protocol to LightGBM/XGBoost on the same notebook-local feature logic: endpoint baseline, grouped fold metrics, descriptor balance, and public-LB gap notes.
 3. Try boosted-tree baseline (XGBoost or LightGBM) on richer well-relative features, then tune.
 4. Refine validation before making many leaderboard submissions from small public-LB gains
@@ -80,6 +81,7 @@
 | 2026-06-21 | Random Forest | 16.0655 | 15.873 | Submission `53924036`; current best public LB, but local CV disagrees with Ridge ordering |
 | 2026-06-21 | ElasticNet alpha 0.001 l1 0.2 | 15.7907 | 16.091 | Submission `53924934`; rejected, worse than Ridge and Random Forest externally |
 | 2026-06-22 | Fine-tuned GAM spline | 14.8687 | 15.055 | Submission `53932883`; new best public LB using slope-core boundary/trajectory/recent-slope features |
+| 2026-06-22 | Huber GLM slope-core | 14.7928 | 15.464 | Submission `53952950`; worse than GAM externally despite best local diagnostic |
 
 ## Local diagnostic model history
 

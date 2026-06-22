@@ -75,6 +75,21 @@
 - Notes: First self-contained target-zone-trained GAM submission. The public score improves substantially over Random Forest (`15.873`) and Ridge (`15.905`), even though Phase 2 tuning only improved the first GAM local diagnostic by `0.0032` RMSE.
 - Decision: current best public LB. Promote slope-core boundary/trajectory/recent-slope feature logic as the next modeling baseline for LightGBM/XGBoost and ensemble work.
 
+- Timestamp: 2026-06-22
+- Run ID: `2026-06-21__2147__glm_distribution_diagnostics__107a7d7`
+- Git SHA: `023c66b`
+- Config: self-contained Huber GLM notebook, slope-core boundary/trajectory/recent-slope features, `HuberRegressor(alpha=0.0001, epsilon=1.35, max_iter=1000)`, `MAX_TARGET_ROWS_PER_WELL=140`, robust `/kaggle/input` data discovery
+- Local CV: GLM diagnostic candidate `robust_delta_huber`, sampled target-zone grouped CV RMSE mean `14.7928`, CV RMSE std `0.4716`
+- Local submission file: `artifacts/reports/submission__glm_huber__2026-06-22.csv`
+- Kaggle notebook: `https://www.kaggle.com/code/sardorbsobirov/wellbore-huber-glm-slope-core`
+- Kaggle kernel version: 1
+- Status: `KernelWorkerStatus.COMPLETE`
+- Public LB: `15.464`
+- Submission ref: `53952950`
+- Submission status: `SubmissionStatus.COMPLETE`
+- Notes: Public score beats Ridge, Random Forest, and ElasticNet, but is worse than the fine-tuned GAM spline (`15.055`) despite stronger local diagnostic RMSE.
+- Decision: useful external check for robust signed-delta modeling, but not the current public-LB leader. Keep fine-tuned GAM as the external baseline and investigate local/public mismatch before promoting Huber.
+
 Use this format for every submission:
 
 ```text

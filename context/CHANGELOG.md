@@ -3,6 +3,7 @@
 ## [Unreleased]
 
 ### Changed
+- Pushed and submitted the self-contained Huber GLM slope-core notebook; public LB scored **15.464**, worse than the fine-tuned GAM despite better local diagnostic RMSE.
 - Ran GLM distribution diagnostics and recorded that robust signed-delta Huber regression beats the tuned GAM local diagnostic, while Beta/Dirichlet are invalid target geometries.
 - Pushed and submitted the self-contained fine-tuned GAM spline Kaggle notebook; public LB improved to **15.055**.
 - Ran a tuned GAM-style spline sweep and recorded that slope-core splines plateau around **14.8687** sampled target-zone CV RMSE.
@@ -19,6 +20,7 @@
 - Generated and ran first baseline modeling notebooks; updated structure, status, experiments, and feature log with run IDs and RMSEs.
 
 ### Added
+- Self-contained Huber GLM Kaggle submission notebook, kernel metadata, and local validation CSV.
 - GLM distribution diagnostic notebook, family-validity table, target diagnostics, residual/RMSE figures, report, model-comparison row, and run bundle.
 - Self-contained fine-tuned GAM spline Kaggle submission notebook, kernel metadata, and local validation CSV.
 - Tuned GAM-style spline notebook, candidate/fold/family/target summaries, residual diagnostics, report, model-comparison row, and run bundle.

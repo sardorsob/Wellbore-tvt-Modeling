@@ -5,6 +5,7 @@
 | Date | Ref | Notebook | Local CV RMSE | Public LB | Notes |
 |---|---|---|---:|---:|---|
 | 2026-06-22 | `53932883` | `sardorbsobirov/wellbore-fine-tuned-gam-spline` v1 | 14.8687 | 15.055 | Fine-tuned GAM spline submission using slope-core boundary/trajectory/recent-slope features. New best public LB; use as the current external baseline. |
+| 2026-06-22 | `53952950` | `sardorbsobirov/wellbore-huber-glm-slope-core` v1 | 14.7928 | 15.464 | Huber signed-delta GLM had the best local diagnostic so far but did not beat the fine-tuned GAM public LB; useful validation-mismatch signal. |
 | 2026-06-21 | `53924934` | `sardorbsobirov/wellbore-elasticnet-baseline` v1 | 15.7907 | 16.091 | ElasticNet was close to Ridge locally but worse externally; do not promote. |
 | 2026-06-21 | `53924036` | `sardorbsobirov/wellbore-random-forest-baseline` v1 | 16.0655 | 15.873 | First Random Forest submission. Public LB beats Ridge even though local CV is worse, so treat the improvement as tentative until validation is refined. |
 | 2026-06-21 | `53923555` | `sardorbsobirov/wellbore-linear-ridge-baseline` v2 | 15.7660 | 15.905 | First Ridge baseline. Public score is close to local grouped CV, but slightly worse. |
