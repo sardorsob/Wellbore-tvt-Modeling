@@ -2,7 +2,7 @@
 
 ## Current Status
 
-Status: draft, not yet frozen.
+Status: Phase 4 EDA complete; protocol is active for the next modeling loop, but still subject to refinement after richer-feature results.
 
 ## Current Plan
 
@@ -10,13 +10,21 @@ Use local validation that simulates the test setting by masking `TVT_input` in t
 
 This follows decision `D003` in `context/DECISIONS.md`.
 
+## Active Reporting Requirements
+
+- Report endpoint-hold RMSE alongside every reportable model. Phase 4 full-row endpoint-hold RMSE is **15.9099**.
+- Report grouped fold-level RMSE, MAE, and R2, not only mean RMSE.
+- Report descriptor balance by fold: eval rows/fraction, GR missingness, recent slope, endpoint TVT/delta, trajectory length, and typewell alignment.
+- Interpret public LB as an external check. Phase 4 found Random Forest beats Ridge publicly by **0.032** RMSE while local CV ranks Random Forest worse by **0.300** RMSE.
+- Keep direct slope projection separate from slope-as-feature. Phase 4 full-row last-50 slope projection RMSE is **112.4817**.
+
 ## Planned Refinement
 
 - Start with deterministic masked-zone validation for the interpolation baseline.
 - Add leave-one-well-out or grouped well-level CV before repeated leaderboard submissions.
 - Keep preprocessing fit inside the training fold only.
 - Track validation RMSE variability across wells, not only global RMSE.
-- Add Phase 4 fold-similarity diagnostics: compare held-out folds on eval-zone fraction, GR missingness, endpoint TVT, recent slopes, trajectory length, and typewell alignment.
+- Use descriptor-balanced grouped folds as a diagnostic comparison to the current sorted grouped folds.
 - Investigate why Ridge beat Random Forest locally while Random Forest beat Ridge on public LB before making many boosted-tree leaderboard submissions.
 - Add an endpoint-hold diagnostic baseline to future validation reports. Phase 3 sampled target-zone RMSE was **15.5815**, so richer models should demonstrate improvement over this simple boundary baseline.
 - Track direct slope extrapolation separately from slope-as-feature. Phase 3 last-50 slope projection was unstable at **104.5322** sampled RMSE.

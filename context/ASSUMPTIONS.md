@@ -146,3 +146,28 @@ The diagnostic target-zone linear probe improves from endpoint hold RMSE **15.58
 `gr_minus_tw_proxy` has Spearman correlation **0.019** with target-zone delta in the Phase 3 sample.
 
 **Modeling implication:** Typewell information may still help through robust summaries and alignment scores, but raw row-level typewell residuals should not be over-weighted without validation.
+
+---
+
+## Phase 4 EDA Addendum - 2026-06-21
+
+**Notebook:** `notebooks/eda/04_phase4_validation.ipynb`
+**Run ID:** `2026-06-21__1928__eda_phase4_validation__203566d`
+
+### A15 - Endpoint hold is the validation floor
+
+Full-row endpoint-hold RMSE is **15.9099**, essentially matching the earlier interpolation-style naive baseline. Direct last-50 slope projection is much worse at **112.4817** RMSE.
+
+**Modeling implication:** Every future reportable model should be compared against endpoint hold. A direct recent-slope extrapolator should remain a diagnostic anti-baseline, not a candidate model.
+
+### A16 - Fold balance must be reported, not assumed
+
+The current sorted grouped folds have eval-row CV **0.003** and endpoint-RMSE range **1.466**. Descriptor-balanced folds reduce eval-row CV to **0.001**, but endpoint-RMSE range rises to **2.428**, showing that balancing one descriptor family does not automatically balance error difficulty.
+
+**Modeling implication:** Validation reports should include descriptor balance and baseline difficulty by fold. No single local split should be treated as definitive.
+
+### A17 - Public leaderboard disagreement is a validation warning
+
+Random Forest beats Ridge on public LB by **0.032** RMSE, while local CV ranks Random Forest worse by **0.300** RMSE. ElasticNet has the largest public-minus-CV gap at **0.300**.
+
+**Modeling implication:** Public LB should be a coarse external check only. Do not promote a modeling direction from small leaderboard gains unless local fold diagnostics and error analysis also support it.

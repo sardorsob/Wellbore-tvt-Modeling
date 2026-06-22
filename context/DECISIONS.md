@@ -107,3 +107,16 @@
 **Rationale:** Phase 3 shows all-candidate diagnostic probes beat endpoint hold (**14.6236** vs **15.5815** RMSE), while direct last-50 slope projection is unstable (**104.5322** RMSE). Feature-family combination looks more promising than one-feature extrapolation.
 **Consequences:** The next modeling notebook should include a reusable feature builder or carefully documented notebook-local feature construction before hyperparameter sweeps.
 **Follow-up:** Start with a richer deterministic feature builder and compare Ridge/Random Forest/LightGBM using the same grouped validation before Kaggle submission.
+
+---
+
+## D010 - Validation reports must include baseline and fold diagnostics
+
+**Date:** 2026-06-21
+**Decision:** Future reportable modeling notebooks should include endpoint-hold baseline comparison, grouped fold-level metrics, descriptor-balance summaries, and public-LB gap interpretation before a model is promoted or submitted repeatedly.
+**Alternatives considered:**
+- Continue using only mean grouped CV RMSE.
+- Treat public leaderboard ordering as the tie-breaker.
+**Rationale:** Phase 4 shows local CV and public LB can disagree on model ordering, and fold descriptor balance is not captured by one mean RMSE.
+**Consequences:** Modeling notebooks will be slightly more verbose, but model decisions should be more robust and less leaderboard-driven.
+**Follow-up:** Apply this protocol to the richer feature builder and the first LightGBM/XGBoost pass.

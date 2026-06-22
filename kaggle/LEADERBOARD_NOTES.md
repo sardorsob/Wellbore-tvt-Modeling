@@ -13,6 +13,7 @@
 - Public leaderboard may not represent private leaderboard distribution.
 - Only 3 test wells are present locally, so public/private split behavior may be high variance.
 - Over-tuning to leaderboard submissions can degrade final private score.
+- Phase 4 validation EDA found public/local ordering disagreement: Random Forest beats Ridge publicly by **0.032** RMSE, while local CV ranks Random Forest worse by **0.300** RMSE.
 
 ## Interpretation Rules
 
@@ -20,3 +21,4 @@
 - When local CV and public LB disagree, inspect split design and feature behavior before trusting either ranking.
 - Treat single small leaderboard improvements as tentative until repeated by local validation.
 - Log rejected submissions as well as selected submissions.
+- Before promoting a model, check endpoint-hold baseline, fold-level errors, and fold descriptor balance from the active CV protocol.

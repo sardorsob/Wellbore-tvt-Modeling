@@ -1,0 +1,1 @@
+Phase 4 validation EDA completed. Recommends descriptor-balanced grouped folds plus endpoint-hold baseline reporting before boosted-tree submissions.

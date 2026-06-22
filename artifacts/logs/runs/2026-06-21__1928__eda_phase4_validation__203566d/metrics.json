@@ -1,0 +1,9 @@
+{
+  "train_wells": 773.0,
+  "endpoint_hold_rmse": 15.909852870734554,
+  "slope50_projection_rmse": 112.4817076673104,
+  "current_eval_rows_cv": 0.0033355429036880874,
+  "balanced_eval_rows_cv": 0.00104915591943698,
+  "random_forest_public_minus_cv": -0.19250629767113203,
+  "ridge_public_minus_cv": 0.13902252548539096
+}

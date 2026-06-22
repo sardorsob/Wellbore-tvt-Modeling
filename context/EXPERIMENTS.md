@@ -99,6 +99,19 @@ This file is the human-readable registry for reportable runs.
 - Decision: implement a richer well-relative feature builder before serious LightGBM/XGBoost tuning.
 - Notes: Visible local test drift remains diagnostic only because those wells overlap train.
 
+## 2026-06-21__1928__eda_phase4_validation__203566d
+
+- Task: Phase 4 validation EDA
+- Purpose: Audit the local validation protocol before richer feature engineering and boosted-tree tuning.
+- Config: notebook-local config in `notebooks/eda/04_phase4_validation.ipynb`
+- Data version: local Kaggle download in `data/raw/train/`, plus Phase 2/3 artifact tables and prior model metrics.
+- Split / CV: current sorted grouped well folds compared with descriptor-balanced grouped folds; no model submission trained.
+- Primary result: full-row endpoint-hold RMSE **15.9099**; direct last-50 slope projection RMSE **112.4817**.
+- Secondary results: current sorted fold eval-row CV **0.003** and endpoint-RMSE range **1.466**; descriptor-balanced fold eval-row CV **0.001** and endpoint-RMSE range **2.428**. Random Forest public LB beats Ridge by **0.032**, while local CV ranks Random Forest worse by **0.300**.
+- Artifacts: endpoint baseline table, fold assignments, fold descriptor summaries, fold variability, model fold metrics, CV/leaderboard gap table, descriptor PCA table, figures, report, and run bundle under `artifacts/logs/runs/2026-06-21__1928__eda_phase4_validation__203566d/`
+- Decision: require endpoint-hold baseline, grouped fold-level metrics, descriptor-balance reporting, and leaderboard-gap interpretation in future reportable modeling notebooks.
+- Notes: Public LB remains useful as an external check, but should not be the optimization target.
+
 ## Entry Format
 
 ```text

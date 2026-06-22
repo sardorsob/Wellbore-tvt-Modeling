@@ -1,0 +1,23 @@
+{
+  "inputs": [
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\data\\raw\\train",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\eda__phase2_train_well_summary__2026-06-21.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\eda__phase2_typewell_alignment__2026-06-21.csv"
+  ],
+  "outputs": [
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\eda__phase4_endpoint_baselines_by_well__2026-06-21.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\eda__phase4_fold_assignments__2026-06-21.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\eda__phase4_fold_descriptor_summary__2026-06-21.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\eda__phase4_fold_variability__2026-06-21.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\eda__phase4_model_fold_metrics__2026-06-21.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\eda__phase4_cv_leaderboard_gap__2026-06-21.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\eda__phase4_well_descriptor_pca__2026-06-21.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\eda__phase4_findings__2026-06-21.csv",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\reports\\eda__phase4_validation__2026-06-21.md",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\figures\\eda__phase4_model_fold_rmse__2026-06-21.png",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\figures\\eda__phase4_fold_balance__2026-06-21.png",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\figures\\eda__phase4_cv_vs_leaderboard__2026-06-21.png",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\figures\\eda__phase4_endpoint_vs_slope__2026-06-21.png",
+    "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\figures\\eda__phase4_descriptor_pca__2026-06-21.png"
+  ]
+}

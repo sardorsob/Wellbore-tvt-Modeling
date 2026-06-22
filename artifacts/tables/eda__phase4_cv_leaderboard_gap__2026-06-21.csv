@@ -1,0 +1,4 @@
+run_id,model_family,model_name,cv_rmse_mean,cv_rmse_std,train_time_s,n_features,notes,public_lb_rmse,submission_ref,lb_minus_cv,abs_lb_minus_cv
+2026-06-21__1310__tree_random_forest__4eb4a55,trees,random_forest,16.06550629767113,0.528198892403144,78.20490193367004,15,Random Forest; grouped well CV; deterministic row cap,15.873,53924036,-0.19250629767113203,0.19250629767113203
+2026-06-21__1218__linear_ols_ridge_lasso__14bef53,linear,ridge_alpha_10,15.765977474514608,0.5331361575834483,75.04263472557068,15,OLS/Ridge/Lasso NumPy sweep; grouped well CV,15.905,53923555,0.13902252548539096,0.13902252548539096
+2026-06-21__1412__linear_elasticnet_huber_quantile__448574b,linear,elasticnet_alpha_0p001_l1_0p2,15.79067351611956,0.5575220413961632,613.4634413719177,15,ElasticNet / Huber / median Quantile sklearn sweep; grouped well CV,16.091,53924934,0.3003264838804416,0.3003264838804416

@@ -3,6 +3,7 @@
 ## [Unreleased]
 
 ### Changed
+- Completed Phase 4 validation EDA and recorded the validation protocol for endpoint-hold baselines, fold descriptor balance, model fold metrics, and public leaderboard gap interpretation.
 - Completed Phase 3 feature-signal EDA and recorded the resulting assumptions for endpoint hold, unstable direct slope extrapolation, additive feature-family signal, GR availability, and cautious typewell residual use.
 - Completed Phase 2 geological/domain EDA and recorded the resulting assumptions for long trailing-zone extrapolation, GR missingness, typewell alignment, train-only formation caveats, and local-test overlap.
 - Recorded the ElasticNet Kaggle submission and leaderboard result (`ref=53924934`, public LB `16.091`), including the decision not to promote it.
@@ -14,6 +15,7 @@
 - Generated and ran first baseline modeling notebooks; updated structure, status, experiments, and feature log with run IDs and RMSEs.
 
 ### Added
+- Phase 4 EDA notebook execution artifacts: endpoint baseline table, fold assignment and descriptor-balance tables, model fold metrics, CV/leaderboard gap table, descriptor PCA table, diagnostic figures, findings report, and run bundle.
 - Phase 3 EDA notebook execution artifacts: bounded candidate feature sample preview, feature signal table, diagnostic feature-family probe tables, visible-test drift table, GR missingness table, diagnostic figures, findings report, and run bundle.
 - Phase 2 EDA notebook execution artifacts: train/test/typewell/formation summary tables, diagnostic figures, findings table, markdown report, and run bundle.
 - Self-contained Kaggle ElasticNet submission notebook and locally validated submission CSV.

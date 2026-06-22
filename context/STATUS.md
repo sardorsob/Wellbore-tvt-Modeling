@@ -1,7 +1,7 @@
 # Project Status
 
 **Last updated:** 2026-06-21
-**Current phase:** Feature engineering loop - Phase 3 feature-signal EDA complete
+**Current phase:** Feature engineering loop - Phase 4 validation EDA complete
 
 ---
 
@@ -35,6 +35,7 @@
 - [x] Run first KNN baseline (`2026-06-21__1348__neighbor_knn_regression__31e8e1a`) - sampled CV RMSE mean **448.4148**
 - [x] Run Phase 2 geological/domain EDA (`2026-06-21__1506__eda_phase2_geological_domain__542b1c1`) - long trailing-zone extrapolation, GR missingness, typewell alignment, and local-test overlap documented
 - [x] Run Phase 3 feature-signal EDA (`2026-06-21__1847__eda_phase3_feature_signal__ebaa6c3`) - endpoint hold, feature-family probes, GR availability, typewell residual signal, and visible-test caveats documented
+- [x] Run Phase 4 validation EDA (`2026-06-21__1928__eda_phase4_validation__203566d`) - endpoint baseline, fold balance, local/public mismatch, and validation protocol documented
 
 ## In progress
 
@@ -48,7 +49,7 @@
 ## Next up
 
 1. Implement a richer well-relative feature builder based on Phase 3: endpoint hold, boundary distance, target-zone progress, trajectory, recent slopes, GR availability, and cautious typewell summaries.
-2. Phase 4 validation review: inspect whether held-out folds resemble the scoring setup and explain the Ridge vs Random Forest public/local disagreement.
+2. Apply the Phase 4 validation protocol to Ridge/Random Forest/LightGBM on richer features: endpoint baseline, grouped fold metrics, descriptor balance, and public-LB gap notes.
 3. Try boosted-tree baseline (XGBoost or LightGBM) on richer well-relative features, then tune.
 4. Refine validation before making many leaderboard submissions from small public-LB gains
 5. Revisit neighbors only with radius constraints, clusters, or richer local geologic features

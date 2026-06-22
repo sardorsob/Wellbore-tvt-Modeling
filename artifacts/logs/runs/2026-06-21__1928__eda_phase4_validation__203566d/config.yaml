@@ -1,0 +1,7 @@
+fold_schemes:
+- current_sorted
+- balanced_descriptor
+n_splits: 3
+note: Validation diagnostics only; no Kaggle submission model trained.
+seed: 42
+task: phase4_validation_eda
