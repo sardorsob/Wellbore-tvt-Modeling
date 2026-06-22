@@ -1,0 +1,10 @@
+best_candidate: bayes_student_t_heteroskedastic
+learning_rate: 0.02
+max_target_rows_per_well: 140
+max_train_rows_per_fold: 60000
+n_splits: 3
+note: NumPyro/JAX Bayesian linear baseline before HSGP.
+posterior_samples: 160
+seed: 42
+svi_steps: 1200
+task: bayesian_linear_robust

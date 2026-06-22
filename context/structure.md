@@ -329,6 +329,15 @@ Wellbore-tvt-Modeling/
 
 ---
 
+### notebooks/modeling/06_bayesian/01_bayesian_linear_robust.ipynb
+**Status:** Run - first NumPyro/JAX Bayesian linear uncertainty baseline complete.
+**Purpose:** Compare Normal, Student-t, and heteroskedastic Student-t Bayesian linear models on slope-core target-zone features before HSGP.
+**Run ID:** `2026-06-22__1211__bayesian_linear_robust__3855aa6`
+**Results:** Best candidate `bayes_student_t_heteroskedastic`; sampled target-zone grouped CV RMSE mean **14.9752**, RMSE std **0.5352**. Empirical 80% coverage **0.783** and 95% coverage **0.933**.
+**Decision:** Keep as an uncertainty and likelihood-calibration baseline. Do not package for Kaggle yet because posterior-mean RMSE trails Huber GLM and tuned GAM local diagnostics.
+
+---
+
 ### kaggle/linear_ridge_submission/linear_ridge_submission.ipynb
 **Status:** Pushed to Kaggle as private notebook version 2, completed, and submitted to the competition. Submission `53923555` scored **15.905** public LB. Version 1 errored due to an assumed input mount path.
 **Purpose:** Self-contained Kaggle submission notebook for the first `ridge_alpha_10` baseline.
@@ -445,6 +454,6 @@ Wellbore-tvt-Modeling/
 
 ## CURRENT STATUS
 
-**Phase:** Huber GLM submission - structural EDA and Phases 2-4 are complete; fine-tuned GAM remains best public LB; robust signed-delta GLM is the best local diagnostic.
+**Phase:** Bayesian linear uncertainty baseline - structural EDA and Phases 2-4 are complete; fine-tuned GAM remains best public LB; robust signed-delta GLM is the best local diagnostic.
 **Workflow posture:** Use `sardorsob/sardors-agentic-workflows` data-science gates: data gate, split/leakage gate, baseline gate, experiment loop, evaluation gate, artifact gate, handoff gate. Local reference copy lives under ignored `context/_external/`.
-**Next action:** Investigate the Huber/GAM local-public mismatch, then run LightGBM/XGBoost with the same notebook-local slope-core feature logic and Phase 4 validation protocol.
+**Next action:** Design the HSGP residual model using Bayesian linear diagnostics, then investigate the Huber/GAM local-public mismatch and run LightGBM/XGBoost with the same notebook-local slope-core feature logic.

@@ -1,0 +1,1 @@
+Bayesian linear robust baseline completed with NumPyro SVI and posterior predictive diagnostics.

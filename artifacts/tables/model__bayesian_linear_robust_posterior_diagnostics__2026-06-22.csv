@@ -1,0 +1,10 @@
+fold,candidate,mean_final_loss,mean_sigma_row,mean_nu
+1,bayes_normal_linear,82959.75,,
+1,bayes_student_t_linear,77997.5859375,,3.2262206077575684
+1,bayes_student_t_heteroskedastic,74099.953125,0.6853438019752502,4.070353031158447
+2,bayes_normal_linear,82202.328125,,
+2,bayes_student_t_linear,78048.171875,,3.250767469406128
+2,bayes_student_t_heteroskedastic,75761.6328125,0.7074211239814758,4.044085502624512
+3,bayes_normal_linear,86309.21875,,
+3,bayes_student_t_linear,77558.0234375,,3.223168134689331
+3,bayes_student_t_heteroskedastic,73810.328125,0.6973837614059448,4.11127233505249

@@ -1,0 +1,4 @@
+topic,finding,modeling_implication
+best_bayesian_candidate,Best Bayesian linear candidate is bayes_student_t_heteroskedastic with sampled grouped RMSE 14.9752.,Compare the posterior mean against Huber GLM and GAM before considering Kaggle packaging.
+uncertainty_calibration,Best candidate 80% coverage is 0.783 with mean 80% interval width 32.72 TVT units.,Use coverage and width to decide whether Bayesian uncertainty is calibrated enough for HSGP priors.
+robust_likelihood_context,Huber GLM local RMSE reference is 14.7928; fine-tuned GAM public LB is 15.055.,A Bayesian model needs either better RMSE or better calibrated uncertainty to justify added complexity.

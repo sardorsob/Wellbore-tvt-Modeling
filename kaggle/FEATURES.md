@@ -70,6 +70,13 @@ These are not yet promoted into reportable modeling runs unless listed in the fe
 - The signed delta target is only **53.3%** positive and has heavy tails, so robust continuous losses are better matched than Beta, Dirichlet, Poisson, or raw-TVΤ Gamma-style assumptions.
 - If promoted to Kaggle, the Huber notebook should use the same notebook-local slope-core feature construction as the fine-tuned GAM submission.
 
+## Bayesian Linear Notes
+
+- First NumPyro/JAX Bayesian linear run reused the slope-core boundary/trajectory/recent-slope feature family.
+- Best candidate was `bayes_student_t_heteroskedastic`, with sampled target-zone grouped RMSE **14.9752**.
+- Posterior predictive calibration was useful for a first pass: 80% coverage **0.783**, 95% coverage **0.933**.
+- Treat this as an uncertainty baseline for HSGP, not as a Kaggle submission candidate yet.
+
 ## Feature Log
 
 Record feature additions here when they are used in reportable experiments:
@@ -86,3 +93,4 @@ Record feature additions here when they are used in reportable experiments:
 | 2026-06-21 | GAM-style additive spline features | `notebooks/modeling/04_gam/01_gam_spline_baseline.ipynb`, `artifacts/reports/model__gam_spline_baseline__2026-06-21.md` | Test smooth additive boundary/trajectory/slope structure before boosted trees | Feature construction is notebook-local for submission portability. Result is sampled target-zone CV, not yet public LB. |
 | 2026-06-21 | Tuned GAM slope-core features | `notebooks/modeling/04_gam/02_gam_spline_tuning.ipynb`, `artifacts/reports/model__gam_spline_tuning__2026-06-21.md` | Tune spline complexity and Ridge regularization before deciding whether to submit a GAM notebook | Best candidate still uses slope-core boundary/trajectory/recent-slope features. GR/typewell additions did not help under additive Ridge splines. |
 | 2026-06-22 | GLM robust signed-delta features | `notebooks/modeling/01_linear/04_glm_distribution_diagnostics.ipynb`, `artifacts/reports/model__glm_distribution_diagnostics__2026-06-22.md` | Test whether distribution/loss choice improves the slope-core feature baseline before Bayesian modeling | Same slope-core feature family as the GAM submission. Beta and Dirichlet are invalid target geometries for scalar TVT. |
+| 2026-06-22 | Bayesian slope-core uncertainty features | `notebooks/modeling/06_bayesian/01_bayesian_linear_robust.ipynb`, `artifacts/reports/model__bayesian_linear_robust__2026-06-22.md` | Establish Bayesian Normal/Student-t/heteroskedastic baseline before HSGP | Same slope-core feature family; posterior mean trails Huber/GAM but intervals provide HSGP calibration guidance. |

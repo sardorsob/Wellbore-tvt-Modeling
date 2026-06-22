@@ -202,3 +202,9 @@ The tuned GAM sweep tested **45** candidates across target definition, spline kn
 The GLM distribution diagnostic found `delta_tvt_from_boundary` ranges from **-103.78** to **98.83**, is only **53.3%** positive, and has excess kurtosis **4.09**. The best diagnostic model was `robust_delta_huber` with sampled grouped RMSE **14.7928**, beating Gaussian Ridge on the same slope-core delta features (**14.8398**) and the tuned GAM diagnostic (**14.8687**).
 
 **Modeling implication:** For Bayesian work, prioritize Gaussian/Student-t/robust signed-continuous likelihoods for boundary deltas or endpoint residuals. Beta and Dirichlet are target-geometry mismatches, and positive raw-TVΤ Gamma/Tweedie/Poisson-style GLMs should not be the first probabilistic path.
+
+### A22 - First Bayesian linear baseline improves uncertainty, not RMSE
+
+The NumPyro/JAX Bayesian linear baseline found the best candidate was `bayes_student_t_heteroskedastic` with sampled grouped RMSE **14.9752**. Its posterior predictive intervals were reasonably calibrated for a first pass: **0.783** empirical coverage for 80% intervals and **0.933** for 95% intervals.
+
+**Modeling implication:** Bayesian linear regression is useful as an uncertainty and likelihood-calibration baseline, but its posterior mean is not yet a Kaggle candidate because it trails the Huber GLM local diagnostic and the fine-tuned GAM submission. HSGP work should build on the Student-t/heteroskedastic calibration idea while adding a smooth residual function to improve the mean.

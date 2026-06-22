@@ -154,6 +154,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: treat robust signed-delta GLM as a promising next Kaggle candidate and as evidence for Student-t/robust Gaussian likelihoods in later Bayesian models.
 - Notes: Beta and Dirichlet were logged as invalid target geometries rather than fit, because the competition predicts one scalar depth response per row.
 
+## 2026-06-22__1211__bayesian_linear_robust__3855aa6
+
+- Task: Bayesian linear robust baseline
+- Purpose: Establish a NumPyro/JAX Bayesian linear baseline with posterior predictive uncertainty before moving to Hilbert-space Gaussian process residual models.
+- Config: notebook-local config in `notebooks/modeling/06_bayesian/01_bayesian_linear_robust.ipynb`
+- Data version: local Kaggle download in `data/raw/train/`
+- Split / CV: 3 grouped well folds on sampled target-zone rows; deterministic cap of 140 target rows per well and 60,000 training rows per fold.
+- Model: best candidate `bayes_student_t_heteroskedastic`, a Student-t Bayesian linear model with row-level scale depending on boundary distance, evaluation progress, horizontal distance, and normalized MD.
+- Primary metric: sampled target-zone CV RMSE mean **14.9752**; RMSE std **0.5352**.
+- Secondary metrics: empirical 80% interval coverage **0.783** with mean width **32.72** TVT units; empirical 95% coverage **0.933** with mean width **57.79** TVT units. Endpoint hold scored **15.5782**; Huber GLM local reference scored **14.7928**.
+- Artifacts: fold metrics CSV, summary CSV, posterior diagnostics, residual sample, diagnostic figures, report, model comparison row, and run bundle under `artifacts/logs/runs/2026-06-22__1211__bayesian_linear_robust__3855aa6/`
+- Decision: keep as the first Bayesian uncertainty baseline, but do not package for Kaggle yet because posterior-mean RMSE trails Huber GLM and tuned GAM diagnostics.
+- Notes: The heteroskedastic Student-t model improves uncertainty calibration and is a useful prior/likelihood reference before HSGP.
+
 ## Entry Format
 
 ```text

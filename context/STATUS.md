@@ -1,7 +1,7 @@
 # Project Status
 
 **Last updated:** 2026-06-22
-**Current phase:** Huber GLM submitted; fine-tuned GAM remains best public LB
+**Current phase:** Bayesian linear uncertainty baseline complete
 
 ---
 
@@ -41,6 +41,7 @@
 - [x] Push and submit fine-tuned GAM Kaggle notebook version 1 (`ref=53932883`) - public LB **15.055**
 - [x] Run GLM distribution diagnostic sweep (`2026-06-21__2147__glm_distribution_diagnostics__107a7d7`) - best `robust_delta_huber`, sampled target-zone CV RMSE mean **14.7928**
 - [x] Push and submit Huber GLM Kaggle notebook version 1 (`ref=53952950`) - public LB **15.464**
+- [x] Run NumPyro/JAX Bayesian linear robust baseline (`2026-06-22__1211__bayesian_linear_robust__3855aa6`) - best `bayes_student_t_heteroskedastic`, sampled target-zone CV RMSE mean **14.9752**, 80% coverage **0.783**
 
 ## In progress
 
@@ -48,14 +49,15 @@
 - [ ] Verify Kaggle competition rules page before first submission (`kaggle/RULES_SUMMARY.md`)
 - [ ] Use public LB **15.055** as the current external baseline; avoid leaderboard-only tuning
 - [ ] Investigate why Huber GLM beat GAM locally but scored worse publicly
+- [ ] Use Bayesian linear diagnostics to design the next HSGP residual model
 - [ ] Investigate why local CV ranked Random Forest worse than Ridge while public LB ranked it better
 - [ ] Defer SVR/radius-neighbor work unless new well-local features make neighbor geometry plausible
 
 ## Next up
 
-1. Investigate local/public mismatch between Huber GLM (`14.7928` local, `15.464` public) and fine-tuned GAM (`14.8687` local, `15.055` public).
-2. Apply the Phase 4 validation protocol to LightGBM/XGBoost on the same notebook-local feature logic: endpoint baseline, grouped fold metrics, descriptor balance, and public-LB gap notes.
-3. Try boosted-tree baseline (XGBoost or LightGBM) on richer well-relative features, then tune.
+1. Design an HSGP residual model using the Bayesian linear Student-t/heteroskedastic baseline as the mean and likelihood reference.
+2. Investigate local/public mismatch between Huber GLM (`14.7928` local, `15.464` public) and fine-tuned GAM (`14.8687` local, `15.055` public).
+3. Apply the Phase 4 validation protocol to LightGBM/XGBoost on the same notebook-local feature logic: endpoint baseline, grouped fold metrics, descriptor balance, and public-LB gap notes.
 4. Refine validation before making many leaderboard submissions from small public-LB gains
 5. Revisit neighbors only with radius constraints, clusters, or richer local geologic features
 6. Set up Bayesian GP (NumpPyro) once the feature/split baseline is more stable
@@ -90,3 +92,4 @@
 | 2026-06-21 | GAM-style additive spline `boundary_trajectory_slopes` | 14.8719 | Sampled target-zone grouped CV; not yet a Kaggle submission |
 | 2026-06-21 | Tuned GAM-style spline `core_fine__delta_boundary__k7__d3__a60` | 14.8687 | Sampled target-zone grouped CV; +0.0032 RMSE vs first GAM, so useful but nearly plateaued |
 | 2026-06-22 | Robust signed-delta Huber GLM `robust_delta_huber` | 14.7928 | Sampled target-zone grouped CV; supports robust/Student-t likelihood direction before Bayesian modeling |
+| 2026-06-22 | Bayesian heteroskedastic Student-t linear `bayes_student_t_heteroskedastic` | 14.9752 | Sampled target-zone grouped CV; useful uncertainty baseline, not a point-RMSE promotion candidate |

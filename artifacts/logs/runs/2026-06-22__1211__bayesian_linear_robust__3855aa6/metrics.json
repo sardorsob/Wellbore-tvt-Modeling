@@ -1,0 +1,10 @@
+{
+  "sample_rows": 108220.0,
+  "best_rmse": 14.975233756558557,
+  "best_rmse_std": 0.5351782110559435,
+  "best_coverage_80": 0.7834933777450291,
+  "best_coverage_95": 0.9327873079072065,
+  "endpoint_hold_rmse": 15.578175280473118,
+  "best_minus_endpoint": -0.602941523914561,
+  "best_minus_huber_glm": 0.18239122816705233
+}
