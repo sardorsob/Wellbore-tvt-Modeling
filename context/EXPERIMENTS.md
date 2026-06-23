@@ -252,6 +252,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: no Kaggle submission until local diagnostics show a meaningful gain or a clear public-generalization hypothesis.
 - Notes: Hierarchy should use test-safe descriptors rather than raw well-ID effects, because hidden Kaggle wells may be unseen.
 
+## 2026-06-22__hierarchical_residual_bias_audit
+
+- Task: hierarchical residual-bias audit
+- Purpose: Diagnose whether the current Huber + additive Hilbert residual model leaves well-level residual structure that justifies contextual partial pooling.
+- Config: notebook-local config in `notebooks/modeling/07_hierarchical/00_residual_bias_audit.ipynb`
+- Data version: local Kaggle download in `data/raw/train/`, plus sampled out-of-fold residuals from `model__hsgp_residual_on_gam_huber_residual_sample__2026-06-22.csv`
+- Split / CV: inherited sampled grouped well-fold residuals from `huber_plus_hsgp_dps_m8`; diagnostic-only, no refit and no submission.
+- Model: current best Huber + additive Hilbert residual candidate audited for well-level signed bias and descriptor correlations.
+- Primary metric: median absolute well mean residual **6.890** TVT units; p90 **18.929**; max **56.454** across **773** wells.
+- Secondary metrics: strongest descriptor signal is max boundary distance vs. MAE Spearman **0.175**; fold mean residuals are **-0.052**, **0.408**, and **0.450**.
+- Artifacts: well summary, descriptor correlations, fold summary, findings, comparison row, markdown report, and run bundle under `artifacts/logs/runs/2026-06-22__hierarchical_residual_bias_audit/`
+- Decision: continue to `01_empirical_bayes_offsets.ipynb`, but make the first correction small, contextual, and shrinkage-controlled.
+- Notes: Descriptor signal is real but weak; this supports testing contextual offsets, not raw well-ID random effects.
+
 ## Entry Format
 
 ```text

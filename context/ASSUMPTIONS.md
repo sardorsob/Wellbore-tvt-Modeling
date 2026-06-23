@@ -244,3 +244,11 @@ The residual-on-mean HSGP sweep found `huber_plus_hsgp_dps_m8` as the best candi
 The next hierarchical modeling track should not start with raw train-well random effects as the primary prediction mechanism. Hidden Kaggle wells may be unseen, so well-level effects must be inferred from test-safe descriptors such as known-zone summaries, boundary geometry, trajectory shape, GR availability, and residual diagnostics.
 
 **Modeling implication:** Start hierarchy with residual bias audits and empirical Bayes/contextual offsets. Only move to full hierarchical HSGP after simpler partial-pooling models show grouped-CV gains that are explainable by test-safe well descriptors.
+
+### A29 - Residual bias exists, but descriptor signal is modest
+
+The hierarchical residual-bias audit found material well-level signed residual variation in the current Huber + additive Hilbert residual model. Across **773** held-out wells in the sampled residual artifact, the median absolute well mean residual is **6.890** TVT units, the 90th percentile is **18.929**, and the max is **56.454**. Fold-level mean residuals are small (**-0.052**, **0.408**, **0.450**), so the issue is more well-local than global fold bias.
+
+The strongest descriptor association is modest: max boundary distance vs. MAE Spearman **0.175**, with related distance/log-distance and XY-span descriptors also near **0.16-0.17**.
+
+**Modeling implication:** Proceed to empirical Bayes/contextual offsets, but keep corrections conservative and shrinkage-controlled. Boundary distance and trajectory span should enter first; raw well-ID effects remain unsafe.

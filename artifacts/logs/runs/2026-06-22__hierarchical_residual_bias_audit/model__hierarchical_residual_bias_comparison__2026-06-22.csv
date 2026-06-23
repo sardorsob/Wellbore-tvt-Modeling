@@ -1,0 +1,2 @@
+date,model,local_rmse,public_lb_reference,decision,notes
+2026-06-22,hierarchical_residual_bias_audit,14.3586,14.514,diagnostic_only_continue_to_contextual_offsets,Audit uses sampled out-of-fold residuals from huber_plus_hsgp_dps_m8; no new predictions submitted.

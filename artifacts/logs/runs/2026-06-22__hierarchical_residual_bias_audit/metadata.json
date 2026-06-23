@@ -1,0 +1,10 @@
+{
+  "run_id": "2026-06-22__hierarchical_residual_bias_audit",
+  "candidate": "huber_plus_hsgp_dps_m8",
+  "residual_path": "C:\\Users\\sardo\\OneDrive\\Desktop\\Classes\\Projects\\Wellbore-tvt-Modeling\\artifacts\\tables\\model__hsgp_residual_on_gam_huber_residual_sample__2026-06-22.csv",
+  "n_rows": 5400,
+  "n_wells": 773,
+  "local_reference_rmse": 14.3586,
+  "public_reference_rmse": 14.514,
+  "decision": "continue_to_contextual_offsets"
+}

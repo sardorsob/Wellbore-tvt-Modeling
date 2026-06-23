@@ -2,6 +2,8 @@
 
 ## 2026-06-22
 
+- Added and ran `notebooks/modeling/07_hierarchical/00_residual_bias_audit.ipynb`; exported well summary, descriptor correlations, fold summary, findings, comparison row, report, and run bundle.
+- Recorded A29: residual bias exists after Huber + additive Hilbert residuals, but descriptor signal is modest, so the next empirical Bayes offsets should be conservative.
 - Distributed the hierarchical modeling plan across existing context files instead of keeping a standalone roadmap document.
 - Added D014 for the staged contextual hierarchy decision and R8/R9 for hierarchy-specific risks.
 - Updated `context/STATUS.md` with the hierarchical task ladder, promotion gates, and next modeling steps.
