@@ -82,3 +82,29 @@
 **Mitigation:**
 - Notebook writes intermediate results to disk.
 - Final cell checks `/kaggle/working/submission.csv` exists and is valid.
+
+---
+
+## R8 - Hierarchical well effects fail on hidden wells
+
+**Risk:** Raw well-ID random effects or multitask GP task effects can improve local grouped validation but fail on hidden Kaggle wells that were not observed during training.
+**Likelihood:** High if hierarchy is keyed directly by train well ID.
+**Impact:** Public/private leaderboard regression despite attractive local RMSE.
+**Mitigation:**
+- Make hierarchy contextual: infer well-level corrections from test-safe known-zone summaries, boundary geometry, trajectory descriptors, GR availability, and residual diagnostics.
+- Start with residual-bias audits and empirical Bayes offsets before full hierarchical HSGP.
+- Require grouped-well validation and fold-level residual diagnostics before Kaggle submission.
+- Shrink uncertain well-level corrections toward zero or the global mean.
+
+---
+
+## R9 - Full hierarchical HSGP becomes too slow or opaque
+
+**Risk:** A full hierarchical Hilbert-space GP with multiple additive terms, well-level priors, and Student-t likelihood can be slow enough that iteration quality drops, or complex enough that failures are hard to diagnose.
+**Likelihood:** Medium to high.
+**Impact:** Wasted notebook cycles, non-finite optimization, or leaderboard submissions with unclear failure modes.
+**Mitigation:**
+- Keep the first hierarchy notebooks simple: residual audit, empirical Bayes offsets, contextual Huber hierarchy, then Hilbert residual.
+- Use the stable lower-step clipped optimization settings from additive HSGP tuning.
+- Do not increase basis count or hierarchy depth without a diagnostic reason.
+- Package for Kaggle only after local diagnostics show a meaningful gain or a clear public-generalization hypothesis.

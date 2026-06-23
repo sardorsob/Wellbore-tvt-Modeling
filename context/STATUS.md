@@ -1,7 +1,7 @@
 # Project Status
 
 **Last updated:** 2026-06-22
-**Current phase:** Hierarchical modeling roadmap drafted
+**Current phase:** Hierarchical modeling plan distributed across context files
 
 ---
 
@@ -56,7 +56,7 @@
 - [ ] Export artifact figures per `CURSOR_RULES.md`
 - [ ] Verify Kaggle competition rules page before first submission (`kaggle/RULES_SUMMARY.md`)
 - [ ] Use public LB **14.514** as the current external baseline; avoid leaderboard-only tuning
-- [ ] Follow the staged hierarchy plan in `context/HIERARCHICAL_MODELING_ROADMAP.md`
+- [ ] Follow D014 staged hierarchy plan: residual audit, contextual offsets, contextual Huber hierarchy, then Hilbert residual
 - [ ] Investigate why Huber GLM beat GAM locally but scored worse publicly
 - [ ] Investigate why local CV ranked Random Forest worse than Ridge while public LB ranked it better
 - [ ] Defer SVR/radius-neighbor work unless new well-local features make neighbor geometry plausible
@@ -71,6 +71,23 @@
 6. Investigate why the reconstructed spline GAM mean was unstable in `06_hsgp_residual_on_gam_huber.ipynb` despite the public GAM notebook scoring best externally.
 7. Refine validation before making many leaderboard submissions from small public-LB gains
 8. Revisit neighbors only with radius constraints, clusters, or richer local geologic features
+
+## Hierarchical task ladder
+
+- [ ] `notebooks/modeling/07_hierarchical/00_residual_bias_audit.ipynb`: export well residual summary, descriptor correlations, fold summary, and markdown report.
+- [ ] `notebooks/modeling/07_hierarchical/01_empirical_bayes_offsets.ipynb`: test global shrinkage, contextual well intercepts, contextual progress slopes, and residual correction shrinkage.
+- [ ] `notebooks/modeling/07_hierarchical/02_contextual_hierarchical_huber.ipynb`: fold contextual well effects into the robust signed-delta Huber mean.
+- [ ] `notebooks/modeling/07_hierarchical/03_hierarchical_residual_slope.ipynb`: model residual trend over `eval_progress` and `distance_log1p` with conservative partial pooling.
+- [ ] `notebooks/modeling/07_hierarchical/04_contextual_hierarchy_hilbert_residual.ipynb`: combine the best contextual hierarchy with additive Hilbert residuals over `distance_log1p`, `eval_progress`, and `abs_projected_delta_10`.
+- [ ] `notebooks/modeling/07_hierarchical/05_multitask_gp_screen.ipynb`: screen low-rank/coregionalized GP ideas using descriptor-based tasks, not raw well IDs.
+- [ ] `notebooks/modeling/07_hierarchical/06_hierarchical_hsgp_full.ipynb`: attempt full hierarchical HSGP only after the simpler hierarchy notebooks prove transferable signal.
+
+## Hierarchical promotion gates
+
+- Continue past residual audit only if well-level residual bias or slope bias is material and partly explainable by test-safe descriptors.
+- Promote empirical Bayes offsets only if grouped CV improves by at least **0.05 RMSE** and no fold gets materially worse.
+- Package a hierarchy + Hilbert residual Kaggle notebook only if local CV improves by at least **0.10 RMSE** or fixes a known public-generalization issue.
+- Every hierarchy notebook should export fold metrics, candidate summary, residual sample, well-level diagnostics, markdown report, model comparison row, and run bundle.
 
 ## Blockers
 

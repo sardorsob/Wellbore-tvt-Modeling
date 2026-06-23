@@ -238,6 +238,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: package a Kaggle-safe Huber + additive Hilbert residual notebook next if we want a public-LB read. Do not package the GAM-residual variant without first reproducing the exact public-GAM behavior in this notebook.
 - Notes: During development, an incorrect same-fold train/validation split and a missing trajectory-feature subset produced misleading intermediate results; both were corrected before recording the final metrics.
 
+## Planned - 07_hierarchical modeling track
+
+- Task: staged hierarchical modeling
+- Purpose: Test whether persistent residual structure from the current Huber + additive Hilbert residual model is transferable through contextual well-level partial pooling.
+- Config: notebook-local configs under `notebooks/modeling/07_hierarchical/`
+- Data version: local Kaggle download in `data/raw/train/`; submission notebooks must remain self-contained and rerunnable on hidden test wells.
+- Split / CV: grouped well folds with endpoint-hold baseline, fold diagnostics, and descriptor summaries.
+- Model: start with residual-bias audit and empirical Bayes/contextual offsets; defer full hierarchical HSGP until simpler hierarchy proves useful.
+- Primary metric: grouped target-zone RMSE against current local diagnostic reference **14.3586** and public LB reference **14.514**.
+- Secondary metrics: fold RMSE spread, well-level signed residual bias, residual trend over `eval_progress`, descriptor correlation with residual bias, and public/generalization rationale.
+- Artifacts: each notebook exports fold metrics, candidate summary, residual sample, well-level diagnostics, markdown report, model comparison row, and run bundle.
+- Decision: no Kaggle submission until local diagnostics show a meaningful gain or a clear public-generalization hypothesis.
+- Notes: Hierarchy should use test-safe descriptors rather than raw well-ID effects, because hidden Kaggle wells may be unseen.
+
 ## Entry Format
 
 ```text

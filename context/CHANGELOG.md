@@ -2,9 +2,10 @@
 
 ## 2026-06-22
 
-- Added `context/HIERARCHICAL_MODELING_ROADMAP.md` with a staged plan for residual audits, contextual partial pooling, and eventual hierarchical HSGP.
-- Updated `context/STATUS.md` to make residual-bias auditing the next modeling step before full hierarchical GP work.
-- Added assumption A28: hierarchy must be contextual, not raw well-ID effects, to transfer to hidden Kaggle wells.
+- Distributed the hierarchical modeling plan across existing context files instead of keeping a standalone roadmap document.
+- Added D014 for the staged contextual hierarchy decision and R8/R9 for hierarchy-specific risks.
+- Updated `context/STATUS.md` with the hierarchical task ladder, promotion gates, and next modeling steps.
+- Added assumption A28 and a planned `07_hierarchical` experiments entry.
 
 ## [Unreleased]
 

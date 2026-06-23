@@ -161,3 +161,18 @@
 **Rationale:** The target-zone delta is signed and heavy-tailed, while `TVT` is a scalar depth response. Huber on signed deltas scored **14.7928** sampled grouped RMSE, while raw positive-response GLMs were much worse and Beta/Dirichlet do not match the target geometry.
 **Consequences:** A Huber/robust signed-delta Kaggle notebook is a reasonable next external read. Bayesian models should start with Student-t or robust Gaussian residual assumptions rather than Beta, Dirichlet, or Poisson likelihoods.
 **Follow-up:** If promoting this result, create a self-contained Huber slope-core submission notebook and compare against the fine-tuned GAM public LB **15.055**.
+
+---
+
+## D014 - Build hierarchy through contextual partial pooling before full HSGP
+
+**Date:** 2026-06-22
+**Decision:** Start the hierarchical modeling track with residual-bias diagnostics and contextual partial-pooling models before attempting a full hierarchical Hilbert-space Gaussian process.
+**Alternatives considered:**
+- Build a full hierarchical HSGP immediately with well-level random effects, additive HSGP terms, and hierarchical priors over length scales/amplitudes.
+- Detour to LightGBM/XGBoost on the current slope-core and residual features before doing more Bayesian hierarchy work.
+- Keep micro-tuning the existing Huber + additive Hilbert residual model.
+**Rationale:** The current best public model is Huber + additive Hilbert residual with public LB **14.514**, and the best local diagnostic is `huber_plus_hsgp_dps_m8` with sampled grouped RMSE **14.3586**. The useful gain came from a robust signed-delta mean plus additive residual geometry, not from raw GP complexity. Direct train-well random effects can overfit grouped validation and fail on hidden Kaggle wells, so hierarchy should be inferred from test-safe well descriptors: known-zone summaries, boundary geometry, trajectory shape, GR availability, and residual diagnostics.
+**Research basis:** HSGP references emphasize basis/boundary diagnostics and reduced-rank approximation checks; GP multitask/coregionalization references are useful later but require care because hidden wells may be unseen tasks. Stan-style hierarchical regression and posterior predictive checks support building from simpler partial-pooling pieces before larger Bayesian structures.
+**Consequences:** Create `notebooks/modeling/07_hierarchical/` as the hierarchical track, but start with `00_residual_bias_audit.ipynb` and `01_empirical_bayes_offsets.ipynb`. Defer full hierarchical HSGP until contextual hierarchy proves transferable under grouped-well validation.
+**Follow-up:** Use the notebook ladder recorded in `context/STATUS.md`; update `context/ASSUMPTIONS.md`, `context/EXPERIMENTS.md`, and `context/RISKS.md` after each hierarchical run.
