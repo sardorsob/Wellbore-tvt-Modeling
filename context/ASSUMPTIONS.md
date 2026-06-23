@@ -238,3 +238,9 @@ The additive HSGP sweep found `additive_dps_m8_se_autodelta` as the best candida
 The residual-on-mean HSGP sweep found `huber_plus_hsgp_dps_m8` as the best candidate with sampled grouped RMSE **14.3586**, improving the same-notebook Huber mean-only reference by **0.0585** RMSE. The same additive residual geometry barely helped the reconstructed GAM mean and did not make the GAM direction locally competitive in this notebook, because one held-out fold was unstable for the spline mean.
 
 **Modeling implication:** The next promotion candidate should be a Kaggle-safe Huber + additive Hilbert residual notebook, not a GAM-residual notebook. Keep the additive `distance_log1p`, `eval_progress`, and `abs_projected_delta_10` residual geometry, but treat the GAM residual result as a validation warning until the exact public-GAM implementation is mirrored and rechecked.
+
+### A28 - Hierarchy must be contextual to transfer to hidden wells
+
+The next hierarchical modeling track should not start with raw train-well random effects as the primary prediction mechanism. Hidden Kaggle wells may be unseen, so well-level effects must be inferred from test-safe descriptors such as known-zone summaries, boundary geometry, trajectory shape, GR availability, and residual diagnostics.
+
+**Modeling implication:** Start hierarchy with residual bias audits and empirical Bayes/contextual offsets. Only move to full hierarchical HSGP after simpler partial-pooling models show grouped-CV gains that are explainable by test-safe well descriptors.

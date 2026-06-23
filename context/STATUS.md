@@ -1,7 +1,7 @@
 # Project Status
 
 **Last updated:** 2026-06-22
-**Current phase:** Huber residual HSGP diagnostic complete
+**Current phase:** Hierarchical modeling roadmap drafted
 
 ---
 
@@ -56,18 +56,21 @@
 - [ ] Export artifact figures per `CURSOR_RULES.md`
 - [ ] Verify Kaggle competition rules page before first submission (`kaggle/RULES_SUMMARY.md`)
 - [ ] Use public LB **14.514** as the current external baseline; avoid leaderboard-only tuning
+- [ ] Follow the staged hierarchy plan in `context/HIERARCHICAL_MODELING_ROADMAP.md`
 - [ ] Investigate why Huber GLM beat GAM locally but scored worse publicly
 - [ ] Investigate why local CV ranked Random Forest worse than Ridge while public LB ranked it better
 - [ ] Defer SVR/radius-neighbor work unless new well-local features make neighbor geometry plausible
 
 ## Next up
 
-1. Start hierarchical HSGP in a separate folder, using well-level residual bias diagnostics, because Huber + Hilbert residual improved public LB but is still far from top public scores.
-2. Investigate why the Huber + Hilbert residual gain transferred externally while the Huber-only public score lagged GAM.
-3. Investigate why the reconstructed spline GAM mean was unstable in `06_hsgp_residual_on_gam_huber.ipynb` despite the public GAM notebook scoring best externally.
-4. Refine validation before making many leaderboard submissions from small public-LB gains
-5. Revisit neighbors only with radius constraints, clusters, or richer local geologic features
-6. Set up Bayesian GP (NumpPyro) once the feature/split baseline is more stable
+1. Create `notebooks/modeling/07_hierarchical/` and run `00_residual_bias_audit.ipynb` before any hierarchical HSGP implementation.
+2. Prototype empirical Bayes/contextual well offsets only if the residual audit shows material well-level bias that is explainable by test-safe descriptors.
+3. Add contextual hierarchy to the Huber mean before combining it with the additive Hilbert residual.
+4. Defer full hierarchical HSGP until simpler partial-pooling notebooks prove transferable signal.
+5. Investigate why the Huber + Hilbert residual gain transferred externally while the Huber-only public score lagged GAM.
+6. Investigate why the reconstructed spline GAM mean was unstable in `06_hsgp_residual_on_gam_huber.ipynb` despite the public GAM notebook scoring best externally.
+7. Refine validation before making many leaderboard submissions from small public-LB gains
+8. Revisit neighbors only with radius constraints, clusters, or richer local geologic features
 
 ## Blockers
 

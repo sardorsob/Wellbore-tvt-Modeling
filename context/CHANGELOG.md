@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-06-22
+
+- Added `context/HIERARCHICAL_MODELING_ROADMAP.md` with a staged plan for residual audits, contextual partial pooling, and eventual hierarchical HSGP.
+- Updated `context/STATUS.md` to make residual-bias auditing the next modeling step before full hierarchical GP work.
+- Added assumption A28: hierarchy must be contextual, not raw well-ID effects, to transfer to hidden Kaggle wells.
+
 ## [Unreleased]
 
 ### Changed
