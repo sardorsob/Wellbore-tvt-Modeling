@@ -1,0 +1,2 @@
+date,model,local_rmse,local_rmse_std,delta_vs_sample_baseline,delta_vs_full_huber_hilbert_reference,public_lb_reference,decision,notes
+2026-06-23,context_poly2_ridge_a2000_s025,14.732181573898202,0.47571429577242663,-0.006363445944920443,0.37358157389820335,14.514,do_not_promote_yet,Contextual descriptor-by-row residual correction on sampled out-of-fold residuals; no Kaggle submission.

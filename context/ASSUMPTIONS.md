@@ -264,3 +264,9 @@ The empirical Bayes offset screen tested global bias shrinkage, descriptor-predi
 The residual-shape screen tested empirical-Bayes progress bins, boundary-distance bins, slope-instability bins, additive bins, 2D progress-distance bins, Ridge row-shape corrections, polynomial Ridge, smooth progress splines, and robust Huber row-shape corrections. The best candidate was `row_linear_ridge_a100_s025` with sampled RMSE **14.7382**, only **0.0003** better than the same-sample no-shape baseline (**14.7385**).
 
 **Modeling implication:** Do not promote shallow row/progress residual-shape hierarchy. Together with A30, this suggests the next gain is unlikely to come from post-hoc residual correction on the bounded residual sample. Prefer stronger feature construction, better validation alignment, or a model that changes the main mean structure rather than adding tiny residual offsets.
+
+### A32 - Contextual descriptor interactions show weak signal but still fail promotion
+
+The contextual hierarchical Huber screen tested descriptor main effects, descriptor-by-row interactions, quadratic contextual surfaces, and robust contextual row interactions. The best candidate, `context_poly2_ridge_a2000_s025`, scored sampled RMSE **14.7322**, improving the same-sample no-context baseline (**14.7385**) by **0.0064** RMSE. This is the strongest of the shallow hierarchy screens so far, but it remains far below the **0.05** RMSE promotion gate.
+
+**Modeling implication:** Contextual interactions may contain weak transferable signal, but not enough as a post-hoc residual correction. Do not promote to Kaggle or full hierarchy. Revisit only after stronger feature construction or a mean-model redesign.

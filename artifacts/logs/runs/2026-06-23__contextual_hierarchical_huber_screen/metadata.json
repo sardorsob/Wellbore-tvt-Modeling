@@ -1,0 +1,10 @@
+{
+  "run_id": "2026-06-23__contextual_hierarchical_huber_screen",
+  "best_candidate": "context_poly2_ridge_a2000_s025",
+  "best_rmse": 14.732181573898202,
+  "best_delta_vs_sample_baseline": -0.006363445944920443,
+  "best_delta_vs_full_reference": 0.37358157389820335,
+  "reference_rmse": 14.3586,
+  "public_reference_rmse": 14.514,
+  "decision": "do_not_promote_yet"
+}

@@ -294,6 +294,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: do not promote residual-shape corrections to Kaggle or full hierarchy.
 - Notes: This is another useful negative result: shallow post-hoc residual corrections are not producing meaningful same-sample RMSE gains.
 
+## 2026-06-23__contextual_hierarchical_huber_screen
+
+- Task: contextual hierarchical Huber interaction screen
+- Purpose: Test whether test-safe well descriptors can modulate row-level residual shape through regularized contextual interactions.
+- Config: notebook-local config in `notebooks/modeling/07_hierarchical/02_contextual_hierarchical_huber.ipynb`
+- Data version: local Kaggle download in `data/raw/train/`, plus sampled out-of-fold residuals and Stage 1 well descriptors.
+- Split / CV: fold-held-out residual sample; each contextual correction trains only on other folds and scores the held-out fold.
+- Model: best candidate `context_poly2_ridge_a2000_s025`, a quadratic contextual residual surface over row coordinates and well descriptors with strong Ridge regularization and 75% shrinkage to zero.
+- Primary metric: sampled RMSE **14.7322**, **0.0064** better than the same-sample no-context baseline (**14.7385**).
+- Secondary metrics: descriptor main effects, linear descriptor-by-row interactions, and robust contextual Huber variants did not clear the hierarchy gate; median absolute well-bias delta for the best arm was **0.0143**.
+- Artifacts: fold metrics, summary, residual sample, well diagnostics, findings, comparison row, markdown report, and run bundle under `artifacts/logs/runs/2026-06-23__contextual_hierarchical_huber_screen/`
+- Decision: do not promote contextual hierarchy yet because the gain is below the **0.05** RMSE gate.
+- Notes: This is weak positive signal, not a production candidate. It argues for stronger features or mean-model redesign rather than deeper post-hoc residual stacking.
+
 ## Entry Format
 
 ```text

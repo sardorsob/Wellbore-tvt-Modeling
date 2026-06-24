@@ -1,0 +1,4 @@
+finding,value,modeling_implication
+best_candidate,context_poly2_ridge_a2000_s025 RMSE 14.7322 vs sample baseline 14.7385,Promote only if contextual interactions clear the hierarchy gate.
+sample_baseline_delta,best candidate delta -0.0064,Negative means descriptor-by-row context improved the same residual frame.
+well_bias_change,median absolute well-bias delta 0.0143,Context should not reduce row RMSE by moving bias between wells.
