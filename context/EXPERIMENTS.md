@@ -322,6 +322,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: promote alignment features only if they improve same-sample RMSE by at least **0.05** or produce a clear external-generalization hypothesis.
 - Notes: Candidate features include best-lag GR/typewell correlation, known-zone trajectory similarity, boundary/progress pseudo-zone labels, typewell-transferred TVT deltas, and distance-to-analog summaries. DTW-style features are allowed only if computed fold-safely and without target-zone TVT leakage.
 
+## 2026-06-23__typewell_alignment_feature_screen
+
+- Task: typewell and analog alignment feature screen
+- Purpose: Test whether research-guided typewell, lag-alignment, and nearest-analog features explain residuals left by the current Huber + additive Hilbert model.
+- Config: notebook-local config in `notebooks/modeling/08_alignment/00_typewell_alignment_feature_screen.ipynb`
+- Data version: local Kaggle download in `data/raw/train/`, plus sampled out-of-fold residuals from `model__hsgp_residual_on_gam_huber_residual_sample__2026-06-22.csv`
+- Split / CV: fold-held-out residual sample; each analog template is built from training folds only and excludes the validation fold.
+- Model: best candidate `analog_direct_s010`, a 10 percent shrink toward the nearest analog well's transferred target-zone delta.
+- Primary metric: sampled RMSE **14.6966**, improving the same-sample no-alignment baseline (**14.7385**) by **0.0419** RMSE.
+- Secondary metrics: fold RMSEs **14.2058**, **14.9742**, and **14.9098**; median absolute well-bias delta **-0.0988**; strongest feature/residual correlation `analog_delta_minus_baseline_delta` **0.0680**.
+- Artifacts: fold metrics, summary, residual sample, well diagnostics, descriptors, feature correlations, findings, comparison row, markdown report, and run bundle under `artifacts/logs/runs/2026-06-23__typewell_alignment_feature_screen/`
+- Decision: do not promote to Kaggle yet because the gain is just below the **0.05** feature-screen gate, but continue alignment modeling because this is much stronger than prior shallow hierarchy screens.
+- Notes: The result supports multi-analog, distance-weighted, pseudo-zone, or robust-blended analog features next; direct fixed-shrink transfer is probably too crude to be the final form.
+
 ## Entry Format
 
 ```text

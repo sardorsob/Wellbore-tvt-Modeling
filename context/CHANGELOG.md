@@ -11,6 +11,9 @@
 
 ## 2026-06-23
 
+- Added and ran `notebooks/modeling/08_alignment/00_typewell_alignment_feature_screen.ipynb`.
+- Recorded A37: nearest-analog target-zone transfer improved the same residual sample by **0.0419** RMSE, just below the feature-screen promotion gate.
+- Updated status and experiments to continue alignment modeling with multi-analog or pseudo-zone analog features instead of submitting the first direct-transfer screen.
 - Added and ran `notebooks/modeling/07_hierarchical/01_empirical_bayes_offsets.ipynb`.
 - Recorded A30: simple contextual well offsets do not improve enough; best same-sample gain was only **0.0008** RMSE and descriptor-based offsets worsened RMSE.
 - Updated status and experiments to mark empirical Bayes offsets as a negative screen, not a promotion candidate.

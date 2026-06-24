@@ -300,3 +300,9 @@ The HSGP papers and GP references support reduced-rank approximations, but the p
 Geostatistical references suggest modeling deterministic predictions plus spatially correlated residuals. The current hierarchy audit found well-local residual bias, but not yet a formal spatial variogram or residual correlation over surface coordinates, TVT boundary coordinates, or trajectory descriptors.
 
 **Modeling implication:** Before building kriging or spatial GP residuals, run a residual spatial-correlation screen on out-of-fold residuals. Promote that path only if residual semivariance or nearest-neighbor residual correlation is strong under grouped-well validation.
+
+### A37 - Direct analog transfer is the first alignment signal worth extending
+
+The first typewell/analog alignment screen found `analog_direct_s010` as the best candidate with sampled RMSE **14.6966**, improving the same-sample no-alignment baseline (**14.7385**) by **0.0419** RMSE. This is below the **0.05** feature-screen gate, but materially stronger than the prior shallow hierarchy gains. The strongest feature/residual association was `analog_delta_minus_baseline_delta` with correlation **0.0680**, and median absolute well-bias delta improved by **-0.0988**.
+
+**Modeling implication:** Do not submit this direct analog residual correction yet, but continue the alignment track. The next attempt should make analog transfer less crude: multiple analogs, distance-weighted analog deltas, pseudo-zone-specific analogs, and robust blending into the Huber mean rather than a fixed 10 percent residual correction.

@@ -67,7 +67,7 @@
 
 ## Next up
 
-1. Start a research-guided alignment track: fold-safe typewell/analog similarity, pseudo-stratigraphic zones, and GR/trajectory alignment summaries.
+1. Extend the alignment track from direct nearest-analog transfer to multi-analog and pseudo-zone-specific analog features; the first screen improved **0.0419 RMSE**, just below the **0.05** gate.
 2. Do not promote simple empirical Bayes contextual intercept offsets; descriptor-predicted well offsets worsened sampled RMSE.
 3. Do not promote residual-shape corrections; row/progress/distance/slope-instability screens failed the **0.05 RMSE** gate.
 4. Do not promote contextual Huber interactions; the best contextual polynomial surface improved only **0.0064 RMSE**, below the **0.05** gate.
@@ -89,7 +89,7 @@
 
 ## Alignment / geologic feature task ladder
 
-- [ ] `notebooks/modeling/08_alignment/00_typewell_alignment_feature_screen.ipynb`: screen fold-safe typewell/analog features against Huber and Huber + Hilbert references.
+- [x] `notebooks/modeling/08_alignment/00_typewell_alignment_feature_screen.ipynb`: screen fold-safe typewell/analog features against Huber and Huber + Hilbert references.
 - [ ] `notebooks/modeling/08_alignment/01_pseudo_zone_huber.ipynb`: test pseudo-stratigraphic zones and zone-specific robust means.
 - [ ] `notebooks/modeling/08_alignment/02_spatial_residual_correlation.ipynb`: test whether residuals justify regression kriging or spatial GP residuals.
 - [ ] `notebooks/modeling/08_alignment/03_alignment_hsgp_residual.ipynb`: add HSGP residuals only if alignment features improve the robust mean or expose stable nonstationary structure.

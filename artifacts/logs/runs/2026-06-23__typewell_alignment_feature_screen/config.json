@@ -1,0 +1,105 @@
+{
+  "run_id": "2026-06-23__typewell_alignment_feature_screen",
+  "target_candidate": "huber_plus_hsgp_dps_m8",
+  "offset_clip": 12.0,
+  "candidates": [
+    {
+      "name": "baseline_no_alignment",
+      "kind": "baseline",
+      "alpha": 0.0,
+      "shrink": 0.0,
+      "prior": "zero residual correction"
+    },
+    {
+      "name": "analog_direct_s005",
+      "kind": "analog_direct",
+      "alpha": 0.0,
+      "shrink": 0.05,
+      "prior": "five percent shrink toward nearest analog transferred delta"
+    },
+    {
+      "name": "analog_direct_s010",
+      "kind": "analog_direct",
+      "alpha": 0.0,
+      "shrink": 0.1,
+      "prior": "ten percent shrink toward nearest analog transferred delta"
+    },
+    {
+      "name": "alignment_main_ridge_a500_s025",
+      "kind": "alignment_main",
+      "alpha": 500.0,
+      "shrink": 0.25,
+      "prior": "alignment descriptors with strong ridge and 75 percent shrinkage"
+    },
+    {
+      "name": "alignment_main_ridge_a1500_s025",
+      "kind": "alignment_main",
+      "alpha": 1500.0,
+      "shrink": 0.25,
+      "prior": "alignment descriptors with very strong ridge and 75 percent shrinkage"
+    },
+    {
+      "name": "alignment_row_ridge_a1000_s025",
+      "kind": "alignment_row",
+      "alpha": 1000.0,
+      "shrink": 0.25,
+      "prior": "row plus alignment descriptors with strong ridge"
+    },
+    {
+      "name": "alignment_row_poly2_a2500_s015",
+      "kind": "alignment_poly2",
+      "alpha": 2500.0,
+      "shrink": 0.15,
+      "prior": "small quadratic alignment surface with heavy shrinkage"
+    },
+    {
+      "name": "alignment_row_huber_a010_s025",
+      "kind": "alignment_huber",
+      "alpha": 0.1,
+      "shrink": 0.25,
+      "prior": "robust alignment residual correction"
+    }
+  ],
+  "row_features": [
+    "eval_progress",
+    "distance_log1p",
+    "abs_projected_delta_10"
+  ],
+  "alignment_features": [
+    "known_rows",
+    "known_tvt_span",
+    "known_md_span",
+    "known_gr_mean_last300",
+    "known_gr_std_last300",
+    "known_gr_slope_last300",
+    "typewell_corr_last300",
+    "typewell_mae_last300",
+    "typewell_best_lag_corr",
+    "typewell_best_lag_tvt",
+    "typewell_best_lag_mae",
+    "xy_span_known",
+    "z_drop_known",
+    "last_known_tvt"
+  ],
+  "analog_features": [
+    "analog_distance",
+    "analog_delta_pred",
+    "analog_delta_minus_baseline_delta",
+    "analog_last_tvt_diff",
+    "analog_typewell_corr_diff"
+  ],
+  "analog_descriptor_features": [
+    "known_tvt_span",
+    "known_md_span",
+    "known_gr_mean_last300",
+    "known_gr_std_last300",
+    "known_gr_slope_last300",
+    "typewell_corr_last300",
+    "typewell_best_lag_corr",
+    "typewell_best_lag_tvt",
+    "xy_span_known",
+    "z_drop_known"
+  ],
+  "local_reference_rmse": 14.3586,
+  "public_reference_rmse": 14.514
+}

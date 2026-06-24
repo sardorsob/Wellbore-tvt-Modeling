@@ -1,0 +1,5 @@
+finding,value,modeling_implication
+best_candidate,analog_direct_s010 RMSE 14.6966 vs sample baseline 14.7385,Promote only if alignment features clear the 0.05 RMSE feature-screen gate.
+sample_baseline_delta,best candidate delta -0.0419,Small deltas mean alignment should be redesigned before Bayesian hierarchy consumes it.
+well_bias_change,median absolute well-bias delta -0.0988,Negative is good; positive means alignment corrections add noise at the well level.
+strongest_alignment_correlation,analog_delta_minus_baseline_delta corr 0.0680,Use this as the first clue for the next alignment-feature redesign.
