@@ -1,0 +1,145 @@
+{
+  "run_id": "2026-06-23__spatial_residual_correlation",
+  "target_candidate": "huber_plus_hsgp_dps_m8",
+  "offset_clip": 8.0,
+  "candidates": [
+    {
+      "name": "baseline_no_spatial",
+      "kind": "baseline",
+      "k": 0,
+      "shrink": 0.0
+    },
+    {
+      "name": "spatial_knn_k1_s050",
+      "kind": "knn",
+      "k": 1,
+      "shrink": 0.05
+    },
+    {
+      "name": "spatial_knn_k1_s100",
+      "kind": "knn",
+      "k": 1,
+      "shrink": 0.1
+    },
+    {
+      "name": "spatial_knn_k1_s200",
+      "kind": "knn",
+      "k": 1,
+      "shrink": 0.2
+    },
+    {
+      "name": "spatial_knn_k1_s350",
+      "kind": "knn",
+      "k": 1,
+      "shrink": 0.35
+    },
+    {
+      "name": "spatial_knn_k3_s050",
+      "kind": "knn",
+      "k": 3,
+      "shrink": 0.05
+    },
+    {
+      "name": "spatial_knn_k3_s100",
+      "kind": "knn",
+      "k": 3,
+      "shrink": 0.1
+    },
+    {
+      "name": "spatial_knn_k3_s200",
+      "kind": "knn",
+      "k": 3,
+      "shrink": 0.2
+    },
+    {
+      "name": "spatial_knn_k3_s350",
+      "kind": "knn",
+      "k": 3,
+      "shrink": 0.35
+    },
+    {
+      "name": "spatial_knn_k5_s050",
+      "kind": "knn",
+      "k": 5,
+      "shrink": 0.05
+    },
+    {
+      "name": "spatial_knn_k5_s100",
+      "kind": "knn",
+      "k": 5,
+      "shrink": 0.1
+    },
+    {
+      "name": "spatial_knn_k5_s200",
+      "kind": "knn",
+      "k": 5,
+      "shrink": 0.2
+    },
+    {
+      "name": "spatial_knn_k5_s350",
+      "kind": "knn",
+      "k": 5,
+      "shrink": 0.35
+    },
+    {
+      "name": "spatial_knn_k8_s050",
+      "kind": "knn",
+      "k": 8,
+      "shrink": 0.05
+    },
+    {
+      "name": "spatial_knn_k8_s100",
+      "kind": "knn",
+      "k": 8,
+      "shrink": 0.1
+    },
+    {
+      "name": "spatial_knn_k8_s200",
+      "kind": "knn",
+      "k": 8,
+      "shrink": 0.2
+    },
+    {
+      "name": "spatial_knn_k8_s350",
+      "kind": "knn",
+      "k": 8,
+      "shrink": 0.35
+    },
+    {
+      "name": "spatial_knn_k12_s050",
+      "kind": "knn",
+      "k": 12,
+      "shrink": 0.05
+    },
+    {
+      "name": "spatial_knn_k12_s100",
+      "kind": "knn",
+      "k": 12,
+      "shrink": 0.1
+    },
+    {
+      "name": "spatial_knn_k12_s200",
+      "kind": "knn",
+      "k": 12,
+      "shrink": 0.2
+    },
+    {
+      "name": "spatial_knn_k12_s350",
+      "kind": "knn",
+      "k": 12,
+      "shrink": 0.35
+    }
+  ],
+  "spatial_features": [
+    "surface_x",
+    "surface_y",
+    "last_known_x",
+    "last_known_y",
+    "last_known_tvt",
+    "known_md_span",
+    "known_tvt_span",
+    "xy_span_known"
+  ],
+  "local_reference_rmse": 14.3586,
+  "public_reference_rmse": 14.514
+}

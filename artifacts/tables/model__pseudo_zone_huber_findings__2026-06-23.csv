@@ -1,0 +1,5 @@
+finding,value,modeling_implication
+best_candidate,ridge_zone_a100_s050 RMSE 14.7004 vs sample baseline 14.7385,Promote only if pseudo-zone analog heads clear the 0.05 RMSE gate and fold diagnostics are stable.
+sample_baseline_delta,best candidate delta -0.0381,"If positive versus fixed analog shrink, learned heads are overfitting or under-shrunk."
+well_bias_change,median absolute well-bias delta -0.0374,Negative is good; positive means pseudo-zone heads add well-level noise.
+best_zone_delta,z2 delta -0.0629,Shows where analog transfer is most useful across evaluation progress.

@@ -135,6 +135,21 @@
 - Notes: The Huber + additive Hilbert residual package improves the public LB from the fine-tuned GAM's **15.055** to **14.514**, and beats the prior additive HSGP score **15.255**. The local-to-public ordering is still imperfect, but this is the first meaningful external gain since GAM.
 - Decision: promote as the current best public submission. Continue to hierarchical/well-level structure because the score is still far from the top public range discussed by the user.
 
+- Timestamp: 2026-06-23
+- Run ID: `2026-06-23__alignment_hsgp_residual`
+- Git SHA: package commit containing this entry
+- Config: self-contained Huber + additive Hilbert residual notebook plus direct log-plus-trajectory nearest-analog gate; `HuberRegressor(alpha=0.0001, epsilon=1.35)`, additive Hilbert sine bases over `distance_log1p`, `eval_progress`, and `abs_projected_delta_10`, analog descriptors from recent GR shape/typewell lag/TVT span/XY span/vertical drop, progress-gated analog shrink schedule `z0=0.025`, `z1=0.025`, `z2=0.075`, `z3=0.100`
+- Local CV: residual-sample diagnostic candidate `direct_analog_gate`, sampled RMSE `14.6383` vs same-sample Huber + Hilbert baseline `14.7385`; note this is not directly comparable to the full local reference `14.3586`
+- Local submission file: `artifacts/reports/submission__huber_hilbert_analog__2026-06-23.csv`
+- Kaggle notebook: `sardorbsobirov/wellbore-huber-hilbert-analog`
+- Kaggle kernel version: pending
+- Status: local notebook validation complete; Kaggle run pending
+- Public LB: pending
+- Submission ref: pending
+- Submission status: pending
+- Notes: This packages the first above-gate alignment idea into a rerunnable code-competition notebook. The analog layer is recomputed inside the notebook from training wells only and writes `/kaggle/working/submission.csv` on Kaggle.
+- Decision: ready for Kaggle push/run/submission when the user wants an external read.
+
 Use this format for every submission:
 
 ```text

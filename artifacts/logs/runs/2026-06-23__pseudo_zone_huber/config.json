@@ -1,0 +1,108 @@
+{
+  "run_id": "2026-06-23__pseudo_zone_huber",
+  "target_candidate": "huber_plus_hsgp_dps_m8",
+  "analog_source_candidate": "weighted_k1_s050",
+  "offset_clip": 12.0,
+  "candidates": [
+    {
+      "name": "baseline_no_analog_head",
+      "kind": "baseline",
+      "alpha": 0.0,
+      "shrink": 0.0
+    },
+    {
+      "name": "fixed_nearest_s005",
+      "kind": "fixed",
+      "shrink": 0.05
+    },
+    {
+      "name": "fixed_nearest_s010",
+      "kind": "fixed",
+      "shrink": 0.1
+    },
+    {
+      "name": "fixed_nearest_s015",
+      "kind": "fixed",
+      "shrink": 0.15
+    },
+    {
+      "name": "ridge_zone_a100_s050",
+      "kind": "ridge",
+      "alpha": 100.0,
+      "shrink": 0.5
+    },
+    {
+      "name": "ridge_zone_a300_s050",
+      "kind": "ridge",
+      "alpha": 300.0,
+      "shrink": 0.5
+    },
+    {
+      "name": "ridge_zone_a1000_s050",
+      "kind": "ridge",
+      "alpha": 1000.0,
+      "shrink": 0.5
+    },
+    {
+      "name": "ridge_poly2_a1000_s035",
+      "kind": "ridge_poly2",
+      "alpha": 1000.0,
+      "shrink": 0.35
+    },
+    {
+      "name": "huber_zone_a005_s050",
+      "kind": "huber",
+      "alpha": 0.05,
+      "shrink": 0.5
+    },
+    {
+      "name": "huber_zone_a010_s050",
+      "kind": "huber",
+      "alpha": 0.1,
+      "shrink": 0.5
+    },
+    {
+      "name": "huber_zone_a050_s050",
+      "kind": "huber",
+      "alpha": 0.5,
+      "shrink": 0.5
+    },
+    {
+      "name": "zone_local_ridge_a100_s075",
+      "kind": "zone_local_ridge",
+      "alpha": 100.0,
+      "shrink": 0.75
+    },
+    {
+      "name": "zone_local_huber_a010_s075",
+      "kind": "zone_local_huber",
+      "alpha": 0.1,
+      "shrink": 0.75
+    }
+  ],
+  "features": [
+    "eval_progress",
+    "distance_log1p",
+    "abs_projected_delta_10",
+    "analog_gap_clipped",
+    "analog_gap_abs",
+    "analog_gap_sign",
+    "zone_z0",
+    "zone_z1",
+    "zone_z2",
+    "zone_z3",
+    "analog_gap__x__zone_z0",
+    "analog_gap__x__zone_z1",
+    "analog_gap__x__zone_z2",
+    "analog_gap__x__zone_z3",
+    "progress__x__zone_z0",
+    "progress__x__zone_z1",
+    "progress__x__zone_z2",
+    "progress__x__zone_z3",
+    "analog_gap__x__progress",
+    "analog_gap__x__distance_log1p",
+    "analog_gap__x__slope_instability"
+  ],
+  "local_reference_rmse": 14.3586,
+  "public_reference_rmse": 14.514
+}

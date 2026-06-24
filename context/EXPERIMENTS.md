@@ -336,6 +336,90 @@ This file is the human-readable registry for reportable runs.
 - Decision: do not promote to Kaggle yet because the gain is just below the **0.05** feature-screen gate, but continue alignment modeling because this is much stronger than prior shallow hierarchy screens.
 - Notes: The result supports multi-analog, distance-weighted, pseudo-zone, or robust-blended analog features next; direct fixed-shrink transfer is probably too crude to be the final form.
 
+## 2026-06-23__multi_analog_zone_blend
+
+- Task: multi-analog and pseudo-zone blend screen
+- Purpose: Test whether the nearest-analog transfer signal improves when using distance-weighted multi-analog deltas or pseudo-zone-specific blend coefficients.
+- Config: notebook-local config in `notebooks/modeling/08_alignment/01_multi_analog_zone_blend.ipynb`
+- Data version: local Kaggle download in `data/raw/train/`, residual sample from `model__hsgp_residual_on_gam_huber_residual_sample__2026-06-22.csv`, and descriptors from `model__typewell_alignment_feature_descriptors__2026-06-23.csv`
+- Split / CV: fold-held-out residual sample; each analog set is built from training folds only, and training wells exclude themselves when estimating analog deltas.
+- Model: best candidate `weighted_k12_s150`, a 15 percent fixed shrink toward a distance-weighted average of the 12 nearest analog wells.
+- Primary metric: sampled mean-fold RMSE **14.7034**, with same-notebook global-baseline delta **-0.0405** RMSE.
+- Secondary metrics: fold RMSEs **14.3908**, **14.8355**, and **14.8840**; median absolute well-bias delta **-0.0870**.
+- Artifacts: fold metrics, summary, residual sample, well diagnostics, beta table, findings, comparison row, markdown report, and run bundle under `artifacts/logs/runs/2026-06-23__multi_analog_zone_blend/`
+- Decision: do not promote to Kaggle; the multi-analog blend confirms analog signal but does not beat the simpler nearest-analog direct-transfer screen.
+- Notes: Avoid simply increasing analog count. Next alignment work should improve analog selection or feed nearest-analog delta into the robust mean model rather than applying a fixed post-hoc residual correction.
+
+## 2026-06-23__pseudo_zone_huber
+
+- Task: pseudo-zone Huber with nearest-analog delta
+- Purpose: Test whether nearest-analog transfer should be learned through robust pseudo-zone residual heads instead of fixed shrinkage.
+- Config: notebook-local config in `notebooks/modeling/08_alignment/02_pseudo_zone_huber.ipynb`
+- Data version: residual sample from `model__hsgp_residual_on_gam_huber_residual_sample__2026-06-22.csv` and nearest-analog gap from `model__multi_analog_zone_blend_residual_sample__2026-06-23.csv`
+- Split / CV: fold-held-out residual sample; residual heads train on other folds only.
+- Model: best candidate `ridge_zone_a100_s050`, a Ridge residual head over row geometry, nearest-analog gap, pseudo-zone indicators, and interactions with 50 percent shrinkage.
+- Primary metric: sampled RMSE **14.7004**, improving the same-sample no-analog-head baseline (**14.7385**) by **0.0381** RMSE.
+- Secondary metrics: zone RMSE deltas were `z0` **-0.0032**, `z1` **-0.0133**, `z2` **-0.0629**, and `z3` **-0.0543**; median absolute well-bias delta **-0.0374**.
+- Artifacts: fold metrics, summary, residual sample, well diagnostics, zone summary, findings, comparison row, markdown report, and run bundle under `artifacts/logs/runs/2026-06-23__pseudo_zone_huber/`
+- Decision: do not promote to Kaggle; learned pseudo-zone heads do not beat fixed nearest-analog shrink, but the late-zone gains justify a progress-gated analog correction screen.
+- Notes: The signal is not uniformly useful across the target zone. Treat nearest-analog correction as a late extrapolation aid, not a near-boundary correction.
+
+## 2026-06-23__progress_gated_analog
+
+- Task: progress-gated nearest-analog correction
+- Purpose: Test whether late-zone-specific shrinkage schedules improve the nearest-analog transfer signal identified by the pseudo-zone Huber diagnostics.
+- Config: notebook-local config in `notebooks/modeling/08_alignment/03_progress_gated_analog.ipynb`
+- Data version: residual sample from `model__hsgp_residual_on_gam_huber_residual_sample__2026-06-22.csv` and nearest-analog gap from `model__multi_analog_zone_blend_residual_sample__2026-06-23.csv`
+- Split / CV: fold-held-out residual sample; schedules are evaluated by fold against the same residual baseline.
+- Model: best candidate `grid_025_025_075_100`, a monotone progress-gated shrinkage schedule with `z0=0.025`, `z1=0.025`, `z2=0.075`, and `z3=0.100`.
+- Primary metric: sampled RMSE **14.6966**, improving the same-sample no-gate baseline (**14.7385**) by **0.0420** RMSE.
+- Secondary metrics: zone RMSE deltas were `z0` **-0.0012**, `z1` **-0.0016**, `z2` **-0.0482**, and `z3` **-0.0682**; median absolute well-bias delta **-0.0888**.
+- Artifacts: fold metrics, summary, residual sample, well diagnostics, zone summary, findings, comparison row, markdown report, and run bundle under `artifacts/logs/runs/2026-06-23__progress_gated_analog/`
+- Decision: do not promote to Kaggle yet; progress gating confirms the late-zone analog pattern but only marginally beats fixed nearest-analog shrink.
+- Notes: Further schedule tuning is unlikely to be the next large gain. Prefer spatial residual-correlation diagnostics or better analog selection criteria.
+
+## 2026-06-23__spatial_residual_correlation
+
+- Task: spatial residual-correlation screen
+- Purpose: Test whether residuals from the current Huber + additive Hilbert model justify regression kriging, spatial KNN well-bias correction, or spatial GP residual modeling.
+- Config: notebook-local config in `notebooks/modeling/08_alignment/04_spatial_residual_correlation.ipynb`
+- Data version: local Kaggle download in `data/raw/train/`, plus residual sample from `model__hsgp_residual_on_gam_huber_residual_sample__2026-06-22.csv`
+- Split / CV: fold-held-out residual sample; spatial KNN references are built from training folds only.
+- Model: best candidate `spatial_knn_k12_s200`, a conservative 20 percent shrink toward the distance-weighted mean residual of 12 nearest wells in spatial/trajectory descriptor space.
+- Primary metric: sampled RMSE **14.7144**, improving the same-sample no-spatial baseline (**14.7385**) by **0.0241** RMSE.
+- Secondary metrics: nearest-neighbor well-mean residual correlation **0.0422**; median absolute well-bias delta **-0.0073**; semivariance is highest in the farthest descriptor-distance bin.
+- Artifacts: fold metrics, summary, residual sample, well diagnostics, neighbor diagnostics, variogram tables, findings, comparison row, markdown report, and run bundle under `artifacts/logs/runs/2026-06-23__spatial_residual_correlation/`
+- Decision: do not promote to kriging or spatial GP yet; the current descriptor-space residual correlation is too weak.
+- Notes: Spatial modeling may still be useful with better geology-aware coordinates, but the next practical move should refine analog selection rather than build a full spatial residual model.
+
+## 2026-06-23__analog_selection_refinement
+
+- Task: analog selection refinement
+- Purpose: Test whether nearest-analog transfer improves when analogs are selected by log-shape, typewell-alignment, trajectory, or hybrid descriptor geometry rather than the first broad descriptor set.
+- Config: notebook-local config in `notebooks/modeling/08_alignment/05_analog_selection_refinement.ipynb`
+- Data version: residual sample from `model__hsgp_residual_on_gam_huber_residual_sample__2026-06-22.csv` and descriptors from `model__typewell_alignment_feature_descriptors__2026-06-23.csv`
+- Split / CV: fold-held-out residual sample; analogs are selected from training folds only.
+- Model: best candidate `log_plus_trajectory_k1_progress_gate`, using one nearest analog selected by recent GR shape, typewell alignment, TVT span, XY span, and vertical drop, then applying the progress-gated analog schedule.
+- Primary metric: sampled RMSE **14.6383**, improving the same-sample no-refined-analog baseline (**14.7385**) by **0.1003** RMSE.
+- Secondary metrics: family bests were `log_plus_trajectory` **14.6383**, `baseline_hybrid` **14.6402**, `log_shape` **14.6508**, `late_extrapolation` **14.6857**, `trajectory_depth` **14.6863**, and `typewell_quality` **14.6931**. Zone deltas for the best candidate were `z0` **-0.0053**, `z1` **-0.0214**, `z2` **-0.1147**, and `z3` **-0.1906**.
+- Artifacts: fold metrics, summary, residual sample, well diagnostics, zone summary, selection diagnostics, family summary, findings, comparison row, markdown report, and run bundle under `artifacts/logs/runs/2026-06-23__analog_selection_refinement/`
+- Decision: promote this modeling idea to the next pipeline stage because it clears the **0.05** RMSE gate. Do not submit the residual-sample correction directly; implement the same fold-safe logic in a full Huber/Hilbert or alignment-HSGP notebook.
+- Notes: During execution, a duplicate `last_known_tvt` descriptor column caused a pandas duplicate-label arithmetic error. The notebook now de-duplicates descriptor columns before merge.
+
+## 2026-06-23__alignment_hsgp_residual
+
+- Task: alignment-aware Hilbert residual screen
+- Purpose: Test whether the above-gate log-plus-trajectory analog selector still improves after the current Huber + additive Hilbert residual model, and whether learned smooth/RBF residual heads improve over direct analog transfer.
+- Config: notebook-local config in `notebooks/modeling/08_alignment/06_alignment_hsgp_residual.ipynb`
+- Data version: residual sample from `model__hsgp_residual_on_gam_huber_residual_sample__2026-06-22.csv` and analog-selection residual sample from `model__analog_selection_refinement_residual_sample__2026-06-23.csv`
+- Split / CV: fold-held-out residual sample; analog signal comes from the fold-safe log-plus-trajectory selection screen.
+- Model: best candidate `direct_analog_gate`, applying the refined nearest-analog progress-gated correction directly on top of the current Huber + Hilbert predictions.
+- Primary metric: sampled RMSE **14.6383**, improving the same-sample Huber + Hilbert baseline (**14.7385**) by **0.1003** RMSE.
+- Secondary metrics: learned analog Ridge, Huber, polynomial, and RBF residual heads all trailed direct transfer. Zone deltas were `z0` **-0.0053**, `z1` **-0.0214**, `z2` **-0.1147**, and `z3` **-0.1906**; median absolute well-bias delta **-0.0963**.
+- Artifacts: fold metrics, summary, residual sample, well diagnostics, zone summary, findings, comparison row, markdown report, and run bundle under `artifacts/logs/runs/2026-06-23__alignment_hsgp_residual/`
+- Decision: package a Kaggle-safe direct analog-gated Huber + Hilbert candidate next. Do not add an extra learned residual head yet.
+- Notes: This is still a residual-sample diagnostic; Kaggle packaging must recompute analog descriptors and nearest-analog transfer inside the notebook.
+
 ## Entry Format
 
 ```text

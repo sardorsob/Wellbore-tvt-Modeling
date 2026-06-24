@@ -306,3 +306,39 @@ Geostatistical references suggest modeling deterministic predictions plus spatia
 The first typewell/analog alignment screen found `analog_direct_s010` as the best candidate with sampled RMSE **14.6966**, improving the same-sample no-alignment baseline (**14.7385**) by **0.0419** RMSE. This is below the **0.05** feature-screen gate, but materially stronger than the prior shallow hierarchy gains. The strongest feature/residual association was `analog_delta_minus_baseline_delta` with correlation **0.0680**, and median absolute well-bias delta improved by **-0.0988**.
 
 **Modeling implication:** Do not submit this direct analog residual correction yet, but continue the alignment track. The next attempt should make analog transfer less crude: multiple analogs, distance-weighted analog deltas, pseudo-zone-specific analogs, and robust blending into the Huber mean rather than a fixed 10 percent residual correction.
+
+### A38 - Multi-analog averaging smooths useful nearest-analog signal
+
+The multi-analog zone-blend screen found `weighted_k12_s150` as the best candidate with sampled mean-fold RMSE **14.7034** and same-notebook global-baseline delta **-0.0405** RMSE. This confirms analog transfer is still useful, but it did not beat the simpler nearest-analog `analog_direct_s010` result (**14.6966**). Pseudo-zone beta blending also trailed fixed-shrink analog transfer.
+
+**Modeling implication:** Do not keep widening analog neighborhoods blindly. The next alignment move should improve analog selection quality rather than average more wells: stratigraphic/pseudo-zone matching, feature-specific neighbor constraints, robust local analog selection, or a Huber mean model that uses the nearest-analog delta as a primary feature instead of a post-hoc correction.
+
+### A39 - Learned pseudo-zone analog heads help late zones but do not beat fixed analog shrink
+
+The pseudo-zone Huber/Ridge head screen found `ridge_zone_a100_s050` as the best candidate with sampled RMSE **14.7004**, improving the same-sample baseline (**14.7385**) by **0.0381** RMSE. This remains worse than the simpler nearest-analog `analog_direct_s010` result (**14.6966**). Zone diagnostics show the analog head is most useful later in the target zone: `z2` improved by **0.0629** RMSE and `z3` by **0.0543**, while `z0` barely moved (**0.0032**).
+
+**Modeling implication:** Do not promote learned pseudo-zone analog heads yet. The next improvement should gate analog correction by evaluation progress: small or zero correction near the boundary, stronger nearest-analog correction in late target-zone rows, and possibly a late-zone-specific HSGP or robust mean feature.
+
+### A40 - Progress gating confirms the late-zone pattern but does not unlock a larger gain
+
+The progress-gated analog sweep found `grid_025_025_075_100` as the best schedule with sampled RMSE **14.6966**, improving the same-sample baseline (**14.7385**) by **0.0420** RMSE. The schedule uses small shrinkage in early rows (`z0=0.025`, `z1=0.025`) and stronger shrinkage later (`z2=0.075`, `z3=0.100`). This is directionally consistent with A39 but only marginally better than fixed nearest-analog shrink.
+
+**Modeling implication:** Gating by progress is sensible but not sufficient. The next alignment improvement should change analog selection or feature geometry: stratigraphic/log-shape constrained nearest analogs, residual spatial-correlation diagnostics, or using the analog delta inside a full Huber/Hilbert submission pipeline rather than more residual-sample schedule tuning.
+
+### A41 - Spatial residual correlation is weak under current descriptors
+
+The spatial residual-correlation screen found nearest-neighbor well-mean residual correlation **0.0422** using surface, known-zone endpoint, TVT-span, and trajectory descriptors. The best spatial KNN correction, `spatial_knn_k12_s200`, scored sampled RMSE **14.7144**, improving the same-sample baseline (**14.7385**) by only **0.0241** RMSE. Semivariance generally increased in the farthest descriptor-distance bin, but the signal is too weak for immediate regression kriging or spatial GP promotion.
+
+**Modeling implication:** Do not build a kriging or spatial GP candidate yet. If spatial modeling returns, it should use stronger geology-aware coordinates or be combined with better analog/log-shape selection; the current descriptor-space residual field is not strong enough.
+
+### A42 - Log-plus-trajectory analog selection clears the alignment promotion gate
+
+The analog-selection refinement screen found `log_plus_trajectory_k1_progress_gate` as the best candidate with sampled RMSE **14.6383**, improving the same-sample baseline (**14.7385**) by **0.1003** RMSE. This is the first alignment result to clear the **0.05** gate. The best feature set combines recent GR shape, typewell lag/correlation, TVT span, XY span, and vertical drop; using one nearest analog with the progress-gated schedule beat multi-analog averaging.
+
+**Modeling implication:** Promote the log-plus-trajectory nearest-analog selection idea into the next candidate pipeline. The next notebook should make this Kaggle-safe by recomputing analog descriptors inside the notebook and combining the analog delta with the Huber + additive Hilbert residual model, or by using it as the alignment feature for the next HSGP residual.
+
+### A43 - Alignment signal is carried by direct analog transfer, not learned residual heads
+
+The alignment-aware Hilbert residual screen found `direct_analog_gate` as the best candidate with sampled RMSE **14.6383**, matching the analog-selection refinement result and improving the same-sample Huber + Hilbert baseline (**14.7385**) by **0.1003** RMSE. Learned Ridge, Huber, polynomial, and RBF residual heads all trailed direct analog transfer.
+
+**Modeling implication:** Do not add another smooth residual layer around the analog signal yet. The next useful step is a self-contained Kaggle-safe Huber + Hilbert + direct analog-gate submission candidate, with analog descriptors and selection recomputed inside the notebook.

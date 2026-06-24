@@ -1,0 +1,5 @@
+finding,value,modeling_implication
+best_candidate,direct_analog_gate RMSE 14.6383 vs sample baseline 14.7385,Promote to Kaggle-safe packaging only if alignment-aware residuals beat the direct analog correction and stay above the gate.
+sample_baseline_delta,best candidate delta -0.1003,This measures whether analog selection remains useful after the Huber + Hilbert residual model.
+best_kind,direct_analog,Identifies whether direct analog transfer or learned smooth residual heads carry the signal.
+well_bias_change,median absolute well-bias delta -0.0963,Negative is good; positive means the alignment residual correction adds well-level noise.

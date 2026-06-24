@@ -1,0 +1,5 @@
+finding,value,modeling_implication
+best_candidate,log_plus_trajectory_k1_progress_gate RMSE 14.6383 vs sample baseline 14.7385,Promote selection refinement only if it clears the 0.05 RMSE gate or gives a strong Kaggle-safe hypothesis.
+sample_baseline_delta,best candidate delta -0.1003,Compare against prior nearest-analog fixed/gated results around -0.042 RMSE.
+best_feature_set,log_plus_trajectory with k=1 and schedule=progress_gate,Identifies the analog-selection geometry worth carrying forward.
+well_bias_change,median absolute well-bias delta -0.0963,Negative is good; positive means selection adds well-level noise.

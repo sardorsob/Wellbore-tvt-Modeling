@@ -67,7 +67,7 @@
 
 ## Next up
 
-1. Extend the alignment track from direct nearest-analog transfer to multi-analog and pseudo-zone-specific analog features; the first screen improved **0.0419 RMSE**, just below the **0.05** gate.
+1. Push/run the self-contained Huber/Hilbert analog Kaggle candidate when ready; local packaging and submission CSV validation are complete.
 2. Do not promote simple empirical Bayes contextual intercept offsets; descriptor-predicted well offsets worsened sampled RMSE.
 3. Do not promote residual-shape corrections; row/progress/distance/slope-instability screens failed the **0.05 RMSE** gate.
 4. Do not promote contextual Huber interactions; the best contextual polynomial surface improved only **0.0064 RMSE**, below the **0.05** gate.
@@ -90,9 +90,13 @@
 ## Alignment / geologic feature task ladder
 
 - [x] `notebooks/modeling/08_alignment/00_typewell_alignment_feature_screen.ipynb`: screen fold-safe typewell/analog features against Huber and Huber + Hilbert references.
-- [ ] `notebooks/modeling/08_alignment/01_pseudo_zone_huber.ipynb`: test pseudo-stratigraphic zones and zone-specific robust means.
-- [ ] `notebooks/modeling/08_alignment/02_spatial_residual_correlation.ipynb`: test whether residuals justify regression kriging or spatial GP residuals.
-- [ ] `notebooks/modeling/08_alignment/03_alignment_hsgp_residual.ipynb`: add HSGP residuals only if alignment features improve the robust mean or expose stable nonstationary structure.
+- [x] `notebooks/modeling/08_alignment/01_multi_analog_zone_blend.ipynb`: test distance-weighted multi-analog transfer and pseudo-zone-specific blending.
+- [x] `notebooks/modeling/08_alignment/02_pseudo_zone_huber.ipynb`: test pseudo-stratigraphic zones and zone-specific robust means with nearest-analog delta as a model feature.
+- [x] `notebooks/modeling/08_alignment/03_progress_gated_analog.ipynb`: test late-zone-gated nearest-analog corrections and tuned shrinkage schedules.
+- [x] `notebooks/modeling/08_alignment/04_spatial_residual_correlation.ipynb`: test whether residuals justify regression kriging or spatial GP residuals.
+- [x] `notebooks/modeling/08_alignment/05_analog_selection_refinement.ipynb`: refine nearest analog selection using log-shape, late-zone performance, and descriptor constraints.
+- [x] `notebooks/modeling/08_alignment/06_alignment_hsgp_residual.ipynb`: add log-plus-trajectory analog features to the Huber + additive Hilbert residual path.
+- [x] `kaggle/huber_hilbert_analog_submission/`: package a self-contained Kaggle candidate with direct analog-gated correction.
 
 ## Hierarchical promotion gates
 
@@ -126,6 +130,7 @@
 | 2026-06-22 | Bayesian linear Student-t MAP | 14.8449 | 15.512 | Submission `53957370`; useful Bayesian baseline, but worse than Huber and GAM externally |
 | 2026-06-22 | Additive HSGP Student-t MAP | 14.8235 | 15.255 | Submission `53958582`; beats Bayesian linear and Huber externally, but not fine-tuned GAM |
 | 2026-06-22 | Huber + additive Hilbert residual | 14.3586 | 14.514 | Submission `53960276`; new best public LB, but still far from top public range |
+| 2026-06-23 | Huber + additive Hilbert + analog gate | 14.6383 diagnostic residual-sample | pending | Self-contained notebook locally validated; public LB pending Kaggle run/submission |
 
 ## Local diagnostic model history
 

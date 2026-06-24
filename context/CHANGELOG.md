@@ -11,6 +11,19 @@
 
 ## 2026-06-23
 
+- Added self-contained `kaggle/huber_hilbert_analog_submission/` notebook and locally validated a 14,151-row submission CSV.
+- Added and ran `notebooks/modeling/08_alignment/06_alignment_hsgp_residual.ipynb`.
+- Recorded A43: direct analog transfer carries the alignment signal; learned residual heads do not improve on it.
+- Added and ran `notebooks/modeling/08_alignment/05_analog_selection_refinement.ipynb`.
+- Recorded A42: log-plus-trajectory nearest-analog selection clears the alignment promotion gate with **0.1003** same-sample RMSE gain.
+- Added and ran `notebooks/modeling/08_alignment/04_spatial_residual_correlation.ipynb`.
+- Recorded A41: spatial residual correlation is weak under current descriptors, so kriging/spatial GP is deferred.
+- Added and ran `notebooks/modeling/08_alignment/03_progress_gated_analog.ipynb`.
+- Recorded A40: progress-gated analog correction confirms the late-zone pattern but does not unlock a larger gain.
+- Added and ran `notebooks/modeling/08_alignment/02_pseudo_zone_huber.ipynb`.
+- Recorded A39: learned pseudo-zone analog heads help late target-zone rows but do not beat fixed nearest-analog shrink.
+- Added and ran `notebooks/modeling/08_alignment/01_multi_analog_zone_blend.ipynb`.
+- Recorded A38: distance-weighted multi-analog transfer is useful but does not beat the simpler nearest-analog direct-transfer screen.
 - Added and ran `notebooks/modeling/08_alignment/00_typewell_alignment_feature_screen.ipynb`.
 - Recorded A37: nearest-analog target-zone transfer improved the same residual sample by **0.0419** RMSE, just below the feature-screen promotion gate.
 - Updated status and experiments to continue alignment modeling with multi-analog or pseudo-zone analog features instead of submitting the first direct-transfer screen.

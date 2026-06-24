@@ -1,0 +1,99 @@
+{
+  "run_id": "2026-06-23__alignment_hsgp_residual",
+  "target_candidate": "huber_plus_hsgp_dps_m8",
+  "analog_candidate": "log_plus_trajectory_k1_progress_gate",
+  "offset_clip": 14.0,
+  "candidates": [
+    {
+      "name": "baseline_huber_hilbert",
+      "kind": "baseline",
+      "alpha": 0.0,
+      "shrink": 0.0
+    },
+    {
+      "name": "direct_analog_gate",
+      "kind": "direct_analog",
+      "alpha": 0.0,
+      "shrink": 1.0
+    },
+    {
+      "name": "analog_row_ridge_a300_s050",
+      "kind": "analog_row_ridge",
+      "alpha": 300.0,
+      "shrink": 0.5
+    },
+    {
+      "name": "analog_row_ridge_a1000_s050",
+      "kind": "analog_row_ridge",
+      "alpha": 1000.0,
+      "shrink": 0.5
+    },
+    {
+      "name": "analog_row_huber_a010_s050",
+      "kind": "analog_row_huber",
+      "alpha": 0.1,
+      "shrink": 0.5
+    },
+    {
+      "name": "analog_poly2_ridge_a1500_s035",
+      "kind": "analog_poly2_ridge",
+      "alpha": 1500.0,
+      "shrink": 0.35
+    },
+    {
+      "name": "analog_rbf_m64_g025_a300_s035",
+      "kind": "analog_rbf_ridge",
+      "alpha": 300.0,
+      "gamma": 0.25,
+      "components": 64,
+      "shrink": 0.35
+    },
+    {
+      "name": "analog_rbf_m96_g050_a500_s025",
+      "kind": "analog_rbf_ridge",
+      "alpha": 500.0,
+      "gamma": 0.5,
+      "components": 96,
+      "shrink": 0.25
+    },
+    {
+      "name": "analog_rbf_m128_g075_a800_s025",
+      "kind": "analog_rbf_ridge",
+      "alpha": 800.0,
+      "gamma": 0.75,
+      "components": 128,
+      "shrink": 0.25
+    }
+  ],
+  "feature_columns": [
+    "eval_progress",
+    "distance_log1p",
+    "abs_projected_delta_10",
+    "analog_gap_clipped",
+    "analog_gap_abs",
+    "analog_shrink",
+    "analog_correction",
+    "analog_distance",
+    "zone_z0",
+    "zone_z1",
+    "zone_z2",
+    "zone_z3",
+    "analog_gap__x__progress",
+    "analog_gap__x__distance_log1p",
+    "analog_gap__x__slope_instability",
+    "analog_correction__x__progress",
+    "analog_correction__x__zone_z0",
+    "analog_correction__x__zone_z1",
+    "analog_correction__x__zone_z2",
+    "analog_correction__x__zone_z3"
+  ],
+  "rbf_columns": [
+    "eval_progress",
+    "distance_log1p",
+    "abs_projected_delta_10",
+    "analog_gap_clipped",
+    "analog_correction"
+  ],
+  "local_reference_rmse": 14.3586,
+  "public_reference_rmse": 14.514
+}

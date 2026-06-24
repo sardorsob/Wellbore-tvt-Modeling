@@ -1,0 +1,261 @@
+{
+  "run_id": "2026-06-23__multi_analog_zone_blend",
+  "target_candidate": "huber_plus_hsgp_dps_m8",
+  "offset_clip": 12.0,
+  "candidates": [
+    {
+      "name": "weighted_k1_s050",
+      "kind": "fixed_shrink",
+      "k": 1,
+      "shrink": 0.05
+    },
+    {
+      "name": "weighted_k1_s100",
+      "kind": "fixed_shrink",
+      "k": 1,
+      "shrink": 0.1
+    },
+    {
+      "name": "weighted_k1_s150",
+      "kind": "fixed_shrink",
+      "k": 1,
+      "shrink": 0.15
+    },
+    {
+      "name": "weighted_k1_s200",
+      "kind": "fixed_shrink",
+      "k": 1,
+      "shrink": 0.2
+    },
+    {
+      "name": "weighted_k3_s050",
+      "kind": "fixed_shrink",
+      "k": 3,
+      "shrink": 0.05
+    },
+    {
+      "name": "weighted_k3_s100",
+      "kind": "fixed_shrink",
+      "k": 3,
+      "shrink": 0.1
+    },
+    {
+      "name": "weighted_k3_s150",
+      "kind": "fixed_shrink",
+      "k": 3,
+      "shrink": 0.15
+    },
+    {
+      "name": "weighted_k3_s200",
+      "kind": "fixed_shrink",
+      "k": 3,
+      "shrink": 0.2
+    },
+    {
+      "name": "weighted_k5_s050",
+      "kind": "fixed_shrink",
+      "k": 5,
+      "shrink": 0.05
+    },
+    {
+      "name": "weighted_k5_s100",
+      "kind": "fixed_shrink",
+      "k": 5,
+      "shrink": 0.1
+    },
+    {
+      "name": "weighted_k5_s150",
+      "kind": "fixed_shrink",
+      "k": 5,
+      "shrink": 0.15
+    },
+    {
+      "name": "weighted_k5_s200",
+      "kind": "fixed_shrink",
+      "k": 5,
+      "shrink": 0.2
+    },
+    {
+      "name": "weighted_k8_s050",
+      "kind": "fixed_shrink",
+      "k": 8,
+      "shrink": 0.05
+    },
+    {
+      "name": "weighted_k8_s100",
+      "kind": "fixed_shrink",
+      "k": 8,
+      "shrink": 0.1
+    },
+    {
+      "name": "weighted_k8_s150",
+      "kind": "fixed_shrink",
+      "k": 8,
+      "shrink": 0.15
+    },
+    {
+      "name": "weighted_k8_s200",
+      "kind": "fixed_shrink",
+      "k": 8,
+      "shrink": 0.2
+    },
+    {
+      "name": "weighted_k12_s050",
+      "kind": "fixed_shrink",
+      "k": 12,
+      "shrink": 0.05
+    },
+    {
+      "name": "weighted_k12_s100",
+      "kind": "fixed_shrink",
+      "k": 12,
+      "shrink": 0.1
+    },
+    {
+      "name": "weighted_k12_s150",
+      "kind": "fixed_shrink",
+      "k": 12,
+      "shrink": 0.15
+    },
+    {
+      "name": "weighted_k12_s200",
+      "kind": "fixed_shrink",
+      "k": 12,
+      "shrink": 0.2
+    },
+    {
+      "name": "zone_beta_k1_cap100",
+      "kind": "zone_beta",
+      "k": 1,
+      "cap": 0.1
+    },
+    {
+      "name": "zone_beta_k1_cap150",
+      "kind": "zone_beta",
+      "k": 1,
+      "cap": 0.15
+    },
+    {
+      "name": "zone_beta_k1_cap200",
+      "kind": "zone_beta",
+      "k": 1,
+      "cap": 0.2
+    },
+    {
+      "name": "zone_beta_k1_cap250",
+      "kind": "zone_beta",
+      "k": 1,
+      "cap": 0.25
+    },
+    {
+      "name": "zone_beta_k3_cap100",
+      "kind": "zone_beta",
+      "k": 3,
+      "cap": 0.1
+    },
+    {
+      "name": "zone_beta_k3_cap150",
+      "kind": "zone_beta",
+      "k": 3,
+      "cap": 0.15
+    },
+    {
+      "name": "zone_beta_k3_cap200",
+      "kind": "zone_beta",
+      "k": 3,
+      "cap": 0.2
+    },
+    {
+      "name": "zone_beta_k3_cap250",
+      "kind": "zone_beta",
+      "k": 3,
+      "cap": 0.25
+    },
+    {
+      "name": "zone_beta_k5_cap100",
+      "kind": "zone_beta",
+      "k": 5,
+      "cap": 0.1
+    },
+    {
+      "name": "zone_beta_k5_cap150",
+      "kind": "zone_beta",
+      "k": 5,
+      "cap": 0.15
+    },
+    {
+      "name": "zone_beta_k5_cap200",
+      "kind": "zone_beta",
+      "k": 5,
+      "cap": 0.2
+    },
+    {
+      "name": "zone_beta_k5_cap250",
+      "kind": "zone_beta",
+      "k": 5,
+      "cap": 0.25
+    },
+    {
+      "name": "zone_beta_k8_cap100",
+      "kind": "zone_beta",
+      "k": 8,
+      "cap": 0.1
+    },
+    {
+      "name": "zone_beta_k8_cap150",
+      "kind": "zone_beta",
+      "k": 8,
+      "cap": 0.15
+    },
+    {
+      "name": "zone_beta_k8_cap200",
+      "kind": "zone_beta",
+      "k": 8,
+      "cap": 0.2
+    },
+    {
+      "name": "zone_beta_k8_cap250",
+      "kind": "zone_beta",
+      "k": 8,
+      "cap": 0.25
+    },
+    {
+      "name": "zone_beta_k12_cap100",
+      "kind": "zone_beta",
+      "k": 12,
+      "cap": 0.1
+    },
+    {
+      "name": "zone_beta_k12_cap150",
+      "kind": "zone_beta",
+      "k": 12,
+      "cap": 0.15
+    },
+    {
+      "name": "zone_beta_k12_cap200",
+      "kind": "zone_beta",
+      "k": 12,
+      "cap": 0.2
+    },
+    {
+      "name": "zone_beta_k12_cap250",
+      "kind": "zone_beta",
+      "k": 12,
+      "cap": 0.25
+    }
+  ],
+  "analog_descriptor_features": [
+    "known_tvt_span",
+    "known_md_span",
+    "known_gr_mean_last300",
+    "known_gr_std_last300",
+    "known_gr_slope_last300",
+    "typewell_corr_last300",
+    "typewell_best_lag_corr",
+    "typewell_best_lag_tvt",
+    "xy_span_known",
+    "z_drop_known"
+  ],
+  "local_reference_rmse": 14.3586,
+  "public_reference_rmse": 14.514
+}

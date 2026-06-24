@@ -1,0 +1,5 @@
+finding,value,modeling_implication
+nearest_residual_corr,0.0422,Positive correlation supports spatial/descriptor residual pooling; near zero argues against kriging.
+best_candidate,spatial_knn_k12_s200 RMSE 14.7144 vs sample baseline 14.7385,Promote spatial residual correction only if grouped RMSE improves clearly and folds are stable.
+sample_baseline_delta,best candidate delta -0.0241,Small or positive deltas mean spatial residual structure is diagnostic-only for now.
+well_bias_change,median absolute well-bias delta -0.0073,Negative is good; positive means spatial corrections add well-level noise.

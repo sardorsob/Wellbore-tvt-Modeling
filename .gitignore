@@ -52,6 +52,9 @@ artifacts/models/*.pth
 artifacts/models/*.ckpt
 # Keep: artifacts/models/*.yaml (metadata)
 
+# Raw row-level residual dumps can exceed GitHub's file-size limit.
+artifacts/**/model__*_residual_sample__*.csv
+
 # ── Large logs ──────────────────────────────────────────────────────────────────
 *.log
 nohup.out
