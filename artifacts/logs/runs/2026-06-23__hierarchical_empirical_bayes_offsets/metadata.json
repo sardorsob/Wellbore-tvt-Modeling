@@ -1,0 +1,10 @@
+{
+  "run_id": "2026-06-23__hierarchical_empirical_bayes_offsets",
+  "best_candidate": "global_bias_shrink_050",
+  "best_rmse": 14.737752701754255,
+  "best_delta_vs_sample_baseline": -0.0007923180888678161,
+  "best_delta_vs_full_reference": 0.37915270175425597,
+  "reference_rmse": 14.3586,
+  "public_reference_rmse": 14.514,
+  "decision": "do_not_promote_yet"
+}

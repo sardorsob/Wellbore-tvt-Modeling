@@ -1,0 +1,4 @@
+finding,value,modeling_implication
+best_candidate,global_bias_shrink_050 RMSE 14.7378 vs baseline sample RMSE 14.7385,Promote only if improvement is meaningful and fold-stable.
+sample_baseline_delta,best candidate delta vs sample no-offset baseline -0.0008,Negative means the offset improves the same sampled residual frame.
+best_bias_change,median absolute well-bias delta -0.0891,Offset should reduce well bias without worsening row-level RMSE.

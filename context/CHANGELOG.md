@@ -9,6 +9,12 @@
 - Updated `context/STATUS.md` with the hierarchical task ladder, promotion gates, and next modeling steps.
 - Added assumption A28 and a planned `07_hierarchical` experiments entry.
 
+## 2026-06-23
+
+- Added and ran `notebooks/modeling/07_hierarchical/01_empirical_bayes_offsets.ipynb`.
+- Recorded A30: simple contextual well offsets do not improve enough; best same-sample gain was only **0.0008** RMSE and descriptor-based offsets worsened RMSE.
+- Updated status and experiments to mark empirical Bayes offsets as a negative screen, not a promotion candidate.
+
 ## [Unreleased]
 
 ### Changed

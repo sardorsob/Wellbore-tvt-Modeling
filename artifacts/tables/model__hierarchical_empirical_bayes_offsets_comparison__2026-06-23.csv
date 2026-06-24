@@ -1,0 +1,2 @@
+date,model,local_rmse,local_rmse_std,delta_vs_sample_baseline,delta_vs_full_huber_hilbert_reference,public_lb_reference,decision,notes
+2026-06-23,global_bias_shrink_050,14.737752701754255,0.48428599415463847,-0.0007923180888678161,0.37915270175425597,14.514,do_not_promote_yet,Empirical-Bayes contextual offset on sampled out-of-fold residuals; no Kaggle submission.

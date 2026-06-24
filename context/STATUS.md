@@ -1,7 +1,7 @@
 # Project Status
 
 **Last updated:** 2026-06-22
-**Current phase:** Hierarchical residual-bias audit complete
+**Current phase:** Empirical Bayes offset screen complete
 
 ---
 
@@ -51,6 +51,7 @@
 - [x] Run HSGP residuals on GAM/Huber means (`2026-06-22__1519__bayesian_hsgp_residual_on_gam_huber__fadbdba`) - best `huber_plus_hsgp_dps_m8`, sampled target-zone CV RMSE mean **14.3586**
 - [x] Push self-contained Huber + additive Hilbert residual Kaggle notebook version 1 and submit output (`ref=53960276`) - public LB **14.514**
 - [x] Run hierarchical residual-bias audit (`2026-06-22__hierarchical_residual_bias_audit`) - median absolute well mean residual **6.890**, p90 **18.929**, max **56.454** TVT units
+- [x] Run hierarchical empirical Bayes offset screen (`2026-06-23__hierarchical_empirical_bayes_offsets`) - best `global_bias_shrink_050`, sampled RMSE **14.7378**, only **0.0008** better than same-sample no-offset baseline
 
 ## In progress
 
@@ -64,18 +65,19 @@
 
 ## Next up
 
-1. Run `01_empirical_bayes_offsets.ipynb` with small shrinkage-controlled contextual offsets, led by boundary-distance and trajectory-span descriptors.
-2. Add contextual hierarchy to the Huber mean only if empirical Bayes offsets improve grouped CV without fold regression.
-3. Defer full hierarchical HSGP until simpler partial-pooling notebooks prove transferable signal.
-4. Investigate why the Huber + Hilbert residual gain transferred externally while the Huber-only public score lagged GAM.
-5. Investigate why the reconstructed spline GAM mean was unstable in `06_hsgp_residual_on_gam_huber.ipynb` despite the public GAM notebook scoring best externally.
-6. Refine validation before making many leaderboard submissions from small public-LB gains.
-7. Revisit neighbors only with radius constraints, clusters, or richer local geologic features.
+1. Do not promote simple empirical Bayes contextual intercept offsets; descriptor-predicted well offsets worsened sampled RMSE.
+2. Run a more targeted hierarchical residual-slope screen only if it uses row/progress structure beyond the failed well-intercept descriptor offsets.
+3. Defer contextual Huber hierarchy until a stronger transferable descriptor family appears.
+4. Defer full hierarchical HSGP until simpler partial-pooling notebooks prove transferable signal.
+5. Investigate why the Huber + Hilbert residual gain transferred externally while the Huber-only public score lagged GAM.
+6. Investigate why the reconstructed spline GAM mean was unstable in `06_hsgp_residual_on_gam_huber.ipynb` despite the public GAM notebook scoring best externally.
+7. Refine validation before making many leaderboard submissions from small public-LB gains.
+8. Revisit neighbors only with radius constraints, clusters, or richer local geologic features.
 
 ## Hierarchical task ladder
 
 - [x] `notebooks/modeling/07_hierarchical/00_residual_bias_audit.ipynb`: export well residual summary, descriptor correlations, fold summary, and markdown report.
-- [ ] `notebooks/modeling/07_hierarchical/01_empirical_bayes_offsets.ipynb`: test global shrinkage, contextual well intercepts, contextual progress slopes, and residual correction shrinkage.
+- [x] `notebooks/modeling/07_hierarchical/01_empirical_bayes_offsets.ipynb`: test global shrinkage, contextual well intercepts, contextual progress slopes, and residual correction shrinkage.
 - [ ] `notebooks/modeling/07_hierarchical/02_contextual_hierarchical_huber.ipynb`: fold contextual well effects into the robust signed-delta Huber mean.
 - [ ] `notebooks/modeling/07_hierarchical/03_hierarchical_residual_slope.ipynb`: model residual trend over `eval_progress` and `distance_log1p` with conservative partial pooling.
 - [ ] `notebooks/modeling/07_hierarchical/04_contextual_hierarchy_hilbert_residual.ipynb`: combine the best contextual hierarchy with additive Hilbert residuals over `distance_log1p`, `eval_progress`, and `abs_projected_delta_10`.

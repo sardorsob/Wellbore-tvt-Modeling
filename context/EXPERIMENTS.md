@@ -266,6 +266,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: continue to `01_empirical_bayes_offsets.ipynb`, but make the first correction small, contextual, and shrinkage-controlled.
 - Notes: Descriptor signal is real but weak; this supports testing contextual offsets, not raw well-ID random effects.
 
+## 2026-06-23__hierarchical_empirical_bayes_offsets
+
+- Task: hierarchical empirical Bayes offset screen
+- Purpose: Test whether conservative contextual residual offsets improve the current Huber + additive Hilbert residual predictions.
+- Config: notebook-local config in `notebooks/modeling/07_hierarchical/01_empirical_bayes_offsets.ipynb`
+- Data version: local Kaggle download in `data/raw/train/`, plus sampled out-of-fold residuals and Stage 1 well descriptors.
+- Split / CV: fold-held-out residual sample; each offset arm trains only on other folds and scores the held-out fold.
+- Model: best candidate `global_bias_shrink_050`, a 50% shrunk global residual correction. Descriptor-based well intercept, progress-slope, robust intercept, and row-context Ridge arms were also tested.
+- Primary metric: sampled RMSE **14.7378**, only **0.0008** better than the same-sample no-offset baseline (**14.7385**).
+- Secondary metrics: descriptor-based arms worsened sampled RMSE by **0.0069** to **0.0219**; median absolute well-bias delta for the best arm was **-0.0891**.
+- Artifacts: fold metrics, summary, residual sample, well diagnostics, findings, comparison row, markdown report, and run bundle under `artifacts/logs/runs/2026-06-23__hierarchical_empirical_bayes_offsets/`
+- Decision: do not promote empirical Bayes contextual offsets to Kaggle or to contextual Huber hierarchy yet.
+- Notes: The full local reference RMSE **14.3586** comes from the prior model's broader diagnostic, while this screen uses the bounded residual sample whose no-offset RMSE is **14.7385**. Interpret deltas against the same-sample baseline.
+
 ## Entry Format
 
 ```text

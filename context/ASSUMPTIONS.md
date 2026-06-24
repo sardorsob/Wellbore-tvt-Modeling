@@ -252,3 +252,9 @@ The hierarchical residual-bias audit found material well-level signed residual v
 The strongest descriptor association is modest: max boundary distance vs. MAE Spearman **0.175**, with related distance/log-distance and XY-span descriptors also near **0.16-0.17**.
 
 **Modeling implication:** Proceed to empirical Bayes/contextual offsets, but keep corrections conservative and shrinkage-controlled. Boundary distance and trajectory span should enter first; raw well-ID effects remain unsafe.
+
+### A30 - Simple contextual well offsets do not explain enough residual structure
+
+The empirical Bayes offset screen tested global bias shrinkage, descriptor-predicted well intercepts, descriptor-predicted intercept plus progress slope, robust intercepts, and row-context Ridge offsets. The best candidate was `global_bias_shrink_050` with sampled RMSE **14.7378**, only **0.0008** better than the same-sample no-offset baseline (**14.7385**). Descriptor-based well offsets worsened sampled RMSE.
+
+**Modeling implication:** Do not promote simple contextual well-intercept hierarchy. The residual bias is real, but the current known-zone descriptors do not predict it strongly enough. Future hierarchy should either target row/progress residual shape more directly or add stronger geology/trajectory descriptors before another contextual-offset attempt.
