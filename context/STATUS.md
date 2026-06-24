@@ -67,14 +67,15 @@
 
 ## Next up
 
-1. Do not promote simple empirical Bayes contextual intercept offsets; descriptor-predicted well offsets worsened sampled RMSE.
-2. Do not promote residual-shape corrections; row/progress/distance/slope-instability screens failed the **0.05 RMSE** gate.
-3. Do not promote contextual Huber interactions; the best contextual polynomial surface improved only **0.0064 RMSE**, below the **0.05** gate.
-4. Defer full hierarchical HSGP until simpler partial-pooling notebooks prove transferable signal.
-5. Investigate why the Huber + Hilbert residual gain transferred externally while the Huber-only public score lagged GAM.
-6. Investigate why the reconstructed spline GAM mean was unstable in `06_hsgp_residual_on_gam_huber.ipynb` despite the public GAM notebook scoring best externally.
-7. Refine validation before making many leaderboard submissions from small public-LB gains.
-8. Revisit neighbors only with radius constraints, clusters, or richer local geologic features.
+1. Start a research-guided alignment track: fold-safe typewell/analog similarity, pseudo-stratigraphic zones, and GR/trajectory alignment summaries.
+2. Do not promote simple empirical Bayes contextual intercept offsets; descriptor-predicted well offsets worsened sampled RMSE.
+3. Do not promote residual-shape corrections; row/progress/distance/slope-instability screens failed the **0.05 RMSE** gate.
+4. Do not promote contextual Huber interactions; the best contextual polynomial surface improved only **0.0064 RMSE**, below the **0.05** gate.
+5. Defer full hierarchical HSGP until alignment or stronger geologic descriptors give hierarchy something transferable to pool over.
+6. Investigate why the Huber + Hilbert residual gain transferred externally while the Huber-only public score lagged GAM.
+7. Investigate why the reconstructed spline GAM mean was unstable in `06_hsgp_residual_on_gam_huber.ipynb` despite the public GAM notebook scoring best externally.
+8. Refine validation before making many leaderboard submissions from small public-LB gains.
+9. Revisit neighbors only with radius constraints, clusters, or richer local geologic features.
 
 ## Hierarchical task ladder
 
@@ -85,6 +86,13 @@
 - [ ] `notebooks/modeling/07_hierarchical/04_contextual_hierarchy_hilbert_residual.ipynb`: combine the best contextual hierarchy with additive Hilbert residuals over `distance_log1p`, `eval_progress`, and `abs_projected_delta_10`.
 - [ ] `notebooks/modeling/07_hierarchical/05_multitask_gp_screen.ipynb`: screen low-rank/coregionalized GP ideas using descriptor-based tasks, not raw well IDs.
 - [ ] `notebooks/modeling/07_hierarchical/06_hierarchical_hsgp_full.ipynb`: attempt full hierarchical HSGP only after the simpler hierarchy notebooks prove transferable signal.
+
+## Alignment / geologic feature task ladder
+
+- [ ] `notebooks/modeling/08_alignment/00_typewell_alignment_feature_screen.ipynb`: screen fold-safe typewell/analog features against Huber and Huber + Hilbert references.
+- [ ] `notebooks/modeling/08_alignment/01_pseudo_zone_huber.ipynb`: test pseudo-stratigraphic zones and zone-specific robust means.
+- [ ] `notebooks/modeling/08_alignment/02_spatial_residual_correlation.ipynb`: test whether residuals justify regression kriging or spatial GP residuals.
+- [ ] `notebooks/modeling/08_alignment/03_alignment_hsgp_residual.ipynb`: add HSGP residuals only if alignment features improve the robust mean or expose stable nonstationary structure.
 
 ## Hierarchical promotion gates
 

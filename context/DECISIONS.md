@@ -176,3 +176,18 @@
 **Research basis:** HSGP references emphasize basis/boundary diagnostics and reduced-rank approximation checks; GP multitask/coregionalization references are useful later but require care because hidden wells may be unseen tasks. Stan-style hierarchical regression and posterior predictive checks support building from simpler partial-pooling pieces before larger Bayesian structures.
 **Consequences:** Create `notebooks/modeling/07_hierarchical/` as the hierarchical track, but start with `00_residual_bias_audit.ipynb` and `01_empirical_bayes_offsets.ipynb`. Defer full hierarchical HSGP until contextual hierarchy proves transferable under grouped-well validation.
 **Follow-up:** Use the notebook ladder recorded in `context/STATUS.md`; update `context/ASSUMPTIONS.md`, `context/EXPERIMENTS.md`, and `context/RISKS.md` after each hierarchical run.
+
+---
+
+## D015 - Pivot from shallow residual hierarchy to geologic alignment features
+
+**Date:** 2026-06-23
+**Decision:** Pause the next full hierarchical HSGP attempt and run a research-guided alignment/segmentation feature screen first. Prioritize typewell/analog similarity, pseudo-stratigraphic zone features, and fold-safe GR/trajectory alignment summaries before adding more Bayesian hierarchy.
+**Alternatives considered:**
+- Continue directly to `04_contextual_hierarchy_hilbert_residual.ipynb`.
+- Build a full multitask/coregionalized GP keyed by well identity.
+- Tune the current Huber + additive Hilbert residual basis and shrinkage parameters.
+**Rationale:** Three shallow hierarchy screens produced gains below the promotion gate, while well-log and GP references suggest the missing structure is more likely in alignment, segmentation, nonstationarity, and geologic analogs than in another small post-hoc residual correction.
+**Research basis:** Top-picking recommender systems use known tops and nearby/analog wells; well-tops-guided modeling supports stratigraphic segmentation; DTW references support explicit log-shape alignment; HSGP/GP references point toward basis diagnostics, robust likelihoods, and nonstationary or multitask structure only after the feature geometry is clear.
+**Consequences:** Create an alignment-focused modeling track before deeper hierarchy. Any future hierarchical GP should consume fold-safe alignment and pseudo-zone descriptors rather than raw well IDs or weak residual descriptors alone.
+**Follow-up:** Add `notebooks/modeling/08_alignment/00_typewell_alignment_feature_screen.ipynb` or equivalent, export artifacts, and record whether alignment features beat the current Huber/Hilbert local reference or at least improve a same-sample diagnostic by **0.05 RMSE**.

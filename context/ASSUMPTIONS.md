@@ -270,3 +270,33 @@ The residual-shape screen tested empirical-Bayes progress bins, boundary-distanc
 The contextual hierarchical Huber screen tested descriptor main effects, descriptor-by-row interactions, quadratic contextual surfaces, and robust contextual row interactions. The best candidate, `context_poly2_ridge_a2000_s025`, scored sampled RMSE **14.7322**, improving the same-sample no-context baseline (**14.7385**) by **0.0064** RMSE. This is the strongest of the shallow hierarchy screens so far, but it remains far below the **0.05** RMSE promotion gate.
 
 **Modeling implication:** Contextual interactions may contain weak transferable signal, but not enough as a post-hoc residual correction. Do not promote to Kaggle or full hierarchy. Revisit only after stronger feature construction or a mean-model redesign.
+
+---
+
+## Research-Guided Bayesian/Geologic Modeling Addendum - 2026-06-23
+
+**Research sources:** Pisel et al. top-picking recommender system (https://arxiv.org/abs/2202.08869), Chaki et al. well-tops-guided reservoir property prediction (https://arxiv.org/abs/1509.07079), Herrera and van der Baan seismic-to-well ties / DTW alignment (https://arxiv.org/abs/1209.0201), Riutort-Mayol et al. Hilbert-space GP approximation (https://arxiv.org/abs/2004.11408), Rasmussen and Williams GPML (https://www.gaussianprocess.org/gpml/), PyMC GP covariance and HSGP docs (https://www.pymc.io/projects/docs/en/stable/api/gp.html), GPyTorch multitask GP example (https://docs.gpytorch.ai/en/stable/examples/03_Multitask_Exact_GPs/Multitask_GP_Regression.html), GPflow coregionalization example (https://gpflow.github.io/GPflow/develop/notebooks/advanced/coregionalisation.html), Snoek et al. input warping (https://arxiv.org/abs/1402.0929), Jylanki et al. Student-t likelihood GP (https://arxiv.org/abs/1106.4431), PyKrige docs (https://geostat-framework.readthedocs.io/projects/pykrige/en/stable/), GSTools docs (https://geostat-framework.readthedocs.io/projects/gstools/en/stable/), tslearn DTW docs (https://tslearn.readthedocs.io/en/stable/user_guide/dtw.html).
+
+### A33 - Post-hoc residual hierarchy has plateaued
+
+The first three hierarchy screens improved the bounded residual sample by **0.0008**, **0.0003**, and **0.0064** RMSE. These deltas are real enough to keep as diagnostics, but too small to justify a deeper hierarchical HSGP as the immediate next step.
+
+**Modeling implication:** Stop stacking small residual corrections on the current residual sample until a stronger geologic feature or mean-structure hypothesis is introduced. Use the hierarchy results as evidence about what did not transfer, not as a reason to add raw complexity.
+
+### A34 - Typewell and well-log alignment should be treated as a feature-construction problem
+
+Well-top recommender and DTW alignment references both point toward comparing a target well against nearby or analogous wells through known intervals, trajectory geometry, and log-shape similarity. The current notebooks use only cautious typewell summaries, not alignment features that describe lag, stretch, local correlation, or nearest analog behavior.
+
+**Modeling implication:** The next practical experiment should screen typewell/analog alignment features before further Bayesian hierarchy: best-lag correlation, rolling GR similarity, known-zone trajectory similarity, pseudo-zone labels, and typewell-transferred TVT deltas. All alignment features must be computed inside each validation fold using training wells only.
+
+### A35 - Future GP work should prefer Matern, additive, warped, or multitask structure over larger squared-exponential bases
+
+The HSGP papers and GP references support reduced-rank approximations, but the prior experiments show that simply increasing basis count did not improve RMSE. Geology is likely nonstationary across boundary distance, progress, and log-shape regimes, while heavy-tailed residuals remain important.
+
+**Modeling implication:** If we return to GP modeling, keep Student-t or robust likelihoods, try Matern 3/2 or 5/2 kernels, consider input warping over progress/distance, and only use multitask/coregionalized GP ideas with descriptor-defined tasks that can exist for hidden wells.
+
+### A36 - Regression kriging is plausible only after a spatial residual test
+
+Geostatistical references suggest modeling deterministic predictions plus spatially correlated residuals. The current hierarchy audit found well-local residual bias, but not yet a formal spatial variogram or residual correlation over surface coordinates, TVT boundary coordinates, or trajectory descriptors.
+
+**Modeling implication:** Before building kriging or spatial GP residuals, run a residual spatial-correlation screen on out-of-fold residuals. Promote that path only if residual semivariance or nearest-neighbor residual correlation is strong under grouped-well validation.

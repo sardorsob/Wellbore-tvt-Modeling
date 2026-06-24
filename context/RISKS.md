@@ -108,3 +108,16 @@
 - Use the stable lower-step clipped optimization settings from additive HSGP tuning.
 - Do not increase basis count or hierarchy depth without a diagnostic reason.
 - Package for Kaggle only after local diagnostics show a meaningful gain or a clear public-generalization hypothesis.
+
+---
+
+## R10 - Alignment and analog-well features can leak fold or hidden-test information
+
+**Risk:** Typewell, nearest-well, DTW, pseudo-zone, or residual-kriging features can accidentally use held-out wells, visible test rows, hidden test structure, or target-zone TVT values when building analog descriptors.
+**Likelihood:** Medium to high if implemented quickly.
+**Impact:** Inflated local CV, public/private leaderboard regression, or invalid Kaggle submission logic.
+**Mitigation:**
+- Build alignment references inside each grouped fold from training wells only.
+- For Kaggle submissions, derive test-well descriptors only from test-safe known-zone rows and competition-provided auxiliary files.
+- Never use target-zone `TVT` or residuals from the scored well to construct prediction features.
+- Add notebook assertions that alignment maps, pseudo-zone templates, and residual-spatial references exclude validation well IDs during CV.

@@ -23,6 +23,7 @@
 ## [Unreleased]
 
 ### Changed
+- Recorded the 2026-06-23 research pass across geologic alignment, well-top recommender systems, DTW/log alignment, HSGP/GP kernels, multitask GP, Student-t GP likelihoods, and geostatistical residual modeling; updated assumptions, risks, decisions, and task ladders to pivot from shallow residual hierarchy to fold-safe typewell/analog feature screening.
 - Pushed and submitted the self-contained Huber + additive Hilbert residual notebook; public LB scored **14.514**, the current best external result.
 - Ran HSGP residual diagnostics on GAM/Huber means and recorded that Huber + additive Hilbert residuals reach **14.3586** local RMSE, while the reconstructed GAM residual path was unstable.
 - Pushed and submitted the self-contained additive HSGP Student-t MAP notebook; public LB scored **15.255**, better than Bayesian linear and Huber but worse than fine-tuned GAM.

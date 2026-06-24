@@ -308,6 +308,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: do not promote contextual hierarchy yet because the gain is below the **0.05** RMSE gate.
 - Notes: This is weak positive signal, not a production candidate. It argues for stronger features or mean-model redesign rather than deeper post-hoc residual stacking.
 
+## Planned - 08_alignment geologic feature track
+
+- Task: typewell and analog alignment feature screen
+- Purpose: Test whether research-guided geologic alignment features explain residual structure better than shallow post-hoc hierarchy.
+- Config: notebook-local config in `notebooks/modeling/08_alignment/00_typewell_alignment_feature_screen.ipynb`
+- Data version: local Kaggle download in `data/raw/train/`; submission candidates must recompute all features inside the notebook on hidden test wells.
+- Split / CV: grouped well folds; alignment references and analog templates must be built from training folds only.
+- Model: start with robust signed-delta Huber/Ridge means plus alignment descriptors; only add Hilbert residuals after a same-sample gain is confirmed.
+- Primary metric: grouped target-zone RMSE against the same-notebook no-alignment Huber reference and the current local diagnostic reference **14.3586**.
+- Secondary metrics: fold RMSE spread, alignment-feature ablations, descriptor leakage assertions, well-level residual bias change, and public-generalization rationale.
+- Artifacts: fold metrics, candidate summary, feature-family ablation table, residual sample, alignment diagnostics, markdown report, model comparison row, and run bundle.
+- Decision: promote alignment features only if they improve same-sample RMSE by at least **0.05** or produce a clear external-generalization hypothesis.
+- Notes: Candidate features include best-lag GR/typewell correlation, known-zone trajectory similarity, boundary/progress pseudo-zone labels, typewell-transferred TVT deltas, and distance-to-analog summaries. DTW-style features are allowed only if computed fold-safely and without target-zone TVT leakage.
+
 ## Entry Format
 
 ```text
