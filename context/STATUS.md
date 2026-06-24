@@ -67,7 +67,7 @@
 
 ## Next up
 
-1. Push/run the self-contained Huber/Hilbert analog Kaggle candidate when ready; local packaging and submission CSV validation are complete.
+1. Wait for Kaggle score on Huber/Hilbert analog submission `53999839`; notebook version 1 completed and submitted, public LB is pending.
 2. Do not promote simple empirical Bayes contextual intercept offsets; descriptor-predicted well offsets worsened sampled RMSE.
 3. Do not promote residual-shape corrections; row/progress/distance/slope-instability screens failed the **0.05 RMSE** gate.
 4. Do not promote contextual Huber interactions; the best contextual polynomial surface improved only **0.0064 RMSE**, below the **0.05** gate.
@@ -130,7 +130,7 @@
 | 2026-06-22 | Bayesian linear Student-t MAP | 14.8449 | 15.512 | Submission `53957370`; useful Bayesian baseline, but worse than Huber and GAM externally |
 | 2026-06-22 | Additive HSGP Student-t MAP | 14.8235 | 15.255 | Submission `53958582`; beats Bayesian linear and Huber externally, but not fine-tuned GAM |
 | 2026-06-22 | Huber + additive Hilbert residual | 14.3586 | 14.514 | Submission `53960276`; new best public LB, but still far from top public range |
-| 2026-06-23 | Huber + additive Hilbert + analog gate | 14.6383 diagnostic residual-sample | pending | Self-contained notebook locally validated; public LB pending Kaggle run/submission |
+| 2026-06-24 | Huber + additive Hilbert + analog gate | 14.6383 diagnostic residual-sample | pending | Submission `53999839`; Kaggle notebook v1 completed and scoring is pending |
 
 ## Local diagnostic model history
 

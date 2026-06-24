@@ -4,7 +4,7 @@
 
 | Date | Ref | Notebook | Local CV RMSE | Public LB | Notes |
 |---|---|---|---:|---:|---|
-| 2026-06-23 | pending | `sardorbsobirov/wellbore-huber-hilbert-analog` local package | 14.6383 diagnostic residual-sample | pending | Self-contained Huber + additive Hilbert plus direct log-plus-trajectory analog gate. Locally validated submission CSV; public run pending. |
+| 2026-06-24 | `53999839` | `sardorbsobirov/wellbore-huber-hilbert-analog` v1 | 14.6383 diagnostic residual-sample | pending | Self-contained Huber + additive Hilbert plus direct log-plus-trajectory analog gate. Kaggle version 1 completed and submitted; public score pending. |
 | 2026-06-22 | `53960276` | `sardorbsobirov/wellbore-huber-hsgp-residual` v1 | 14.3586 | 14.514 | Huber signed-delta mean plus additive Hilbert residual over boundary/progress/slope-instability coordinates. New best public LB, but still far from the top public range. |
 | 2026-06-22 | `53932883` | `sardorbsobirov/wellbore-fine-tuned-gam-spline` v1 | 14.8687 | 15.055 | Fine-tuned GAM spline submission using slope-core boundary/trajectory/recent-slope features. New best public LB; use as the current external baseline. |
 | 2026-06-22 | `53958582` | `sardorbsobirov/wellbore-additive-hsgp-student-t` v1 | 14.8235 | 15.255 | Kaggle-safe additive HSGP Student-t MAP approximation. Beats Bayesian linear and Huber externally, but still trails the fine-tuned GAM public LB. |

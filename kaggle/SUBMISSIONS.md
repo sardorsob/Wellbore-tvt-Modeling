@@ -142,13 +142,13 @@
 - Local CV: residual-sample diagnostic candidate `direct_analog_gate`, sampled RMSE `14.6383` vs same-sample Huber + Hilbert baseline `14.7385`; note this is not directly comparable to the full local reference `14.3586`
 - Local submission file: `artifacts/reports/submission__huber_hilbert_analog__2026-06-23.csv`
 - Kaggle notebook: `sardorbsobirov/wellbore-huber-hilbert-analog`
-- Kaggle kernel version: pending
-- Status: local notebook validation complete; Kaggle run pending
+- Kaggle kernel version: 1
+- Status: `KernelWorkerStatus.COMPLETE`
 - Public LB: pending
-- Submission ref: pending
-- Submission status: pending
-- Notes: This packages the first above-gate alignment idea into a rerunnable code-competition notebook. The analog layer is recomputed inside the notebook from training wells only and writes `/kaggle/working/submission.csv` on Kaggle.
-- Decision: ready for Kaggle push/run/submission when the user wants an external read.
+- Submission ref: `53999839`
+- Submission status: `SubmissionStatus.PENDING`
+- Notes: This packages the first above-gate alignment idea into a rerunnable code-competition notebook. The analog layer is recomputed inside the notebook from training wells only and writes `/kaggle/working/submission.csv` on Kaggle. Kaggle version 1 completed and produced **14,151** prediction rows; scoring is still pending.
+- Decision: wait for the public LB score before deciding whether the analog-gate path should be extended or rolled back.
 
 Use this format for every submission:
 
