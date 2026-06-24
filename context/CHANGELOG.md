@@ -14,6 +14,9 @@
 - Added and ran `notebooks/modeling/07_hierarchical/01_empirical_bayes_offsets.ipynb`.
 - Recorded A30: simple contextual well offsets do not improve enough; best same-sample gain was only **0.0008** RMSE and descriptor-based offsets worsened RMSE.
 - Updated status and experiments to mark empirical Bayes offsets as a negative screen, not a promotion candidate.
+- Added and ran `notebooks/modeling/07_hierarchical/03_hierarchical_residual_slope.ipynb`.
+- Recorded A31: shallow residual-shape corrections do not improve enough; best same-sample gain was only **0.0003** RMSE.
+- Updated status and experiments to mark residual-shape hierarchy as a negative screen, not a promotion candidate.
 
 ## [Unreleased]
 

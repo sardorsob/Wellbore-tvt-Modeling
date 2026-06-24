@@ -1,0 +1,2 @@
+date,model,local_rmse,local_rmse_std,delta_vs_sample_baseline,delta_vs_full_huber_hilbert_reference,public_lb_reference,decision,notes
+2026-06-23,row_linear_ridge_a100_s025,14.73824135612201,0.49120789443627516,-0.0003036637211124571,0.37964135612201133,14.514,do_not_promote_yet,Residual-shape correction on sampled out-of-fold residuals; no Kaggle submission.

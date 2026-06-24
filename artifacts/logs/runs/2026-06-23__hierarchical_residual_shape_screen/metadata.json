@@ -1,0 +1,10 @@
+{
+  "run_id": "2026-06-23__hierarchical_residual_shape_screen",
+  "best_candidate": "row_linear_ridge_a100_s025",
+  "best_rmse": 14.73824135612201,
+  "best_delta_vs_sample_baseline": -0.0003036637211124571,
+  "best_delta_vs_full_reference": 0.37964135612201133,
+  "reference_rmse": 14.3586,
+  "public_reference_rmse": 14.514,
+  "decision": "do_not_promote_yet"
+}

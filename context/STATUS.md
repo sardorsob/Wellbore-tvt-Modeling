@@ -1,7 +1,7 @@
 # Project Status
 
 **Last updated:** 2026-06-22
-**Current phase:** Empirical Bayes offset screen complete
+**Current phase:** Hierarchical residual-shape screen complete
 
 ---
 
@@ -52,6 +52,7 @@
 - [x] Push self-contained Huber + additive Hilbert residual Kaggle notebook version 1 and submit output (`ref=53960276`) - public LB **14.514**
 - [x] Run hierarchical residual-bias audit (`2026-06-22__hierarchical_residual_bias_audit`) - median absolute well mean residual **6.890**, p90 **18.929**, max **56.454** TVT units
 - [x] Run hierarchical empirical Bayes offset screen (`2026-06-23__hierarchical_empirical_bayes_offsets`) - best `global_bias_shrink_050`, sampled RMSE **14.7378**, only **0.0008** better than same-sample no-offset baseline
+- [x] Run hierarchical residual-shape screen (`2026-06-23__hierarchical_residual_shape_screen`) - best `row_linear_ridge_a100_s025`, sampled RMSE **14.7382**, only **0.0003** better than same-sample no-shape baseline
 
 ## In progress
 
@@ -66,7 +67,7 @@
 ## Next up
 
 1. Do not promote simple empirical Bayes contextual intercept offsets; descriptor-predicted well offsets worsened sampled RMSE.
-2. Run a more targeted hierarchical residual-slope screen only if it uses row/progress structure beyond the failed well-intercept descriptor offsets.
+2. Do not promote residual-shape corrections; row/progress/distance/slope-instability screens failed the **0.05 RMSE** gate.
 3. Defer contextual Huber hierarchy until a stronger transferable descriptor family appears.
 4. Defer full hierarchical HSGP until simpler partial-pooling notebooks prove transferable signal.
 5. Investigate why the Huber + Hilbert residual gain transferred externally while the Huber-only public score lagged GAM.
@@ -79,7 +80,7 @@
 - [x] `notebooks/modeling/07_hierarchical/00_residual_bias_audit.ipynb`: export well residual summary, descriptor correlations, fold summary, and markdown report.
 - [x] `notebooks/modeling/07_hierarchical/01_empirical_bayes_offsets.ipynb`: test global shrinkage, contextual well intercepts, contextual progress slopes, and residual correction shrinkage.
 - [ ] `notebooks/modeling/07_hierarchical/02_contextual_hierarchical_huber.ipynb`: fold contextual well effects into the robust signed-delta Huber mean.
-- [ ] `notebooks/modeling/07_hierarchical/03_hierarchical_residual_slope.ipynb`: model residual trend over `eval_progress` and `distance_log1p` with conservative partial pooling.
+- [x] `notebooks/modeling/07_hierarchical/03_hierarchical_residual_slope.ipynb`: model residual trend over `eval_progress` and `distance_log1p` with conservative partial pooling.
 - [ ] `notebooks/modeling/07_hierarchical/04_contextual_hierarchy_hilbert_residual.ipynb`: combine the best contextual hierarchy with additive Hilbert residuals over `distance_log1p`, `eval_progress`, and `abs_projected_delta_10`.
 - [ ] `notebooks/modeling/07_hierarchical/05_multitask_gp_screen.ipynb`: screen low-rank/coregionalized GP ideas using descriptor-based tasks, not raw well IDs.
 - [ ] `notebooks/modeling/07_hierarchical/06_hierarchical_hsgp_full.ipynb`: attempt full hierarchical HSGP only after the simpler hierarchy notebooks prove transferable signal.

@@ -280,6 +280,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: do not promote empirical Bayes contextual offsets to Kaggle or to contextual Huber hierarchy yet.
 - Notes: The full local reference RMSE **14.3586** comes from the prior model's broader diagnostic, while this screen uses the bounded residual sample whose no-offset RMSE is **14.7385**. Interpret deltas against the same-sample baseline.
 
+## 2026-06-23__hierarchical_residual_shape_screen
+
+- Task: hierarchical residual-shape screen
+- Purpose: Test whether row/progress/boundary/slope-instability residual-shape corrections improve the current Huber + additive Hilbert residual predictions.
+- Config: notebook-local config in `notebooks/modeling/07_hierarchical/03_hierarchical_residual_slope.ipynb`
+- Data version: local Kaggle download in `data/raw/train/`, plus sampled out-of-fold residuals from the current best model.
+- Split / CV: fold-held-out residual sample; each correction trains only on other folds and scores the held-out fold.
+- Model: best candidate `row_linear_ridge_a100_s025`, a regularized linear residual-shape correction over `eval_progress`, `distance_log1p`, and `abs_projected_delta_10` with 75% shrinkage to zero.
+- Primary metric: sampled RMSE **14.7382**, only **0.0003** better than the same-sample no-shape baseline (**14.7385**).
+- Secondary metrics: binned progress/distance/slope-instability corrections and spline/polynomial variants did not clear the hierarchy gate; median absolute well-bias delta for the best arm was **-0.0065**.
+- Artifacts: fold metrics, summary, residual sample, well diagnostics, findings, comparison row, markdown report, and run bundle under `artifacts/logs/runs/2026-06-23__hierarchical_residual_shape_screen/`
+- Decision: do not promote residual-shape corrections to Kaggle or full hierarchy.
+- Notes: This is another useful negative result: shallow post-hoc residual corrections are not producing meaningful same-sample RMSE gains.
+
 ## Entry Format
 
 ```text

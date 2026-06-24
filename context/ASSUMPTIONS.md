@@ -258,3 +258,9 @@ The strongest descriptor association is modest: max boundary distance vs. MAE Sp
 The empirical Bayes offset screen tested global bias shrinkage, descriptor-predicted well intercepts, descriptor-predicted intercept plus progress slope, robust intercepts, and row-context Ridge offsets. The best candidate was `global_bias_shrink_050` with sampled RMSE **14.7378**, only **0.0008** better than the same-sample no-offset baseline (**14.7385**). Descriptor-based well offsets worsened sampled RMSE.
 
 **Modeling implication:** Do not promote simple contextual well-intercept hierarchy. The residual bias is real, but the current known-zone descriptors do not predict it strongly enough. Future hierarchy should either target row/progress residual shape more directly or add stronger geology/trajectory descriptors before another contextual-offset attempt.
+
+### A31 - Shallow residual-shape corrections also fail the hierarchy gate
+
+The residual-shape screen tested empirical-Bayes progress bins, boundary-distance bins, slope-instability bins, additive bins, 2D progress-distance bins, Ridge row-shape corrections, polynomial Ridge, smooth progress splines, and robust Huber row-shape corrections. The best candidate was `row_linear_ridge_a100_s025` with sampled RMSE **14.7382**, only **0.0003** better than the same-sample no-shape baseline (**14.7385**).
+
+**Modeling implication:** Do not promote shallow row/progress residual-shape hierarchy. Together with A30, this suggests the next gain is unlikely to come from post-hoc residual correction on the bounded residual sample. Prefer stronger feature construction, better validation alignment, or a model that changes the main mean structure rather than adding tiny residual offsets.
