@@ -66,7 +66,8 @@
 - Generated and ran first baseline modeling notebooks; updated structure, status, experiments, and feature log with run IDs and RMSEs.
 
 ### Added
-- Kaggle notebook version 1 submission for Huber + additive Hilbert plus direct analog gate (`ref=53999839`); Kaggle run completed with 14,151 prediction rows and public score pending.
+- Validation mismatch audit notebook, exported transfer/analog/decision tables, run bundle, and report after analog-gate public LB **14.603** failed to beat Huber + Hilbert **14.514**.
+- Kaggle notebook version 1 submission for Huber + additive Hilbert plus direct analog gate (`ref=53999839`); Kaggle run completed with 14,151 prediction rows and public LB **14.603**.
 - Self-contained Huber + additive Hilbert residual Kaggle submission notebook, kernel metadata, and local validation CSV.
 - HSGP residual-on-GAM/Huber notebook, residual diagnostics, figures, report, model-comparison row, and run bundle.
 - Self-contained additive HSGP Student-t MAP Kaggle submission notebook, kernel metadata, and local validation CSV.

@@ -342,3 +342,9 @@ The analog-selection refinement screen found `log_plus_trajectory_k1_progress_ga
 The alignment-aware Hilbert residual screen found `direct_analog_gate` as the best candidate with sampled RMSE **14.6383**, matching the analog-selection refinement result and improving the same-sample Huber + Hilbert baseline (**14.7385**) by **0.1003** RMSE. Learned Ridge, Huber, polynomial, and RBF residual heads all trailed direct analog transfer.
 
 **Modeling implication:** Do not add another smooth residual layer around the analog signal yet. The next useful step is a self-contained Kaggle-safe Huber + Hilbert + direct analog-gate submission candidate, with analog descriptors and selection recomputed inside the notebook.
+
+### A44 - The analog-gate gain did not transfer publicly
+
+The Kaggle-safe Huber + additive Hilbert plus direct analog-gate submission scored **14.603** public LB, worse than the ungated Huber + additive Hilbert submission at **14.514**. This reverses the bounded residual-sample diagnostic, where the analog gate improved same-sample RMSE by **0.1003**. The validation mismatch audit found mixed analog well-bias behavior, with mean distance-bin improvement share around **0.555**.
+
+**Modeling implication:** Pause deeper hierarchy and particle/state-space modeling. The immediate bottleneck is validation transfer rather than model expressiveness. Next work should create stricter CV folds that stress far-analog wells, clustered/geologic separation, and high-extrapolation cases before LightGBM/XGBoost or additional Bayesian models.

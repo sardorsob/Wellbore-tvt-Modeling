@@ -1,0 +1,7 @@
+{
+  "current_public_baseline": 14.514,
+  "analog_public_score": 14.603,
+  "analog_submission_ref": 53999839,
+  "promotion_gate_rmse": 0.05,
+  "strict_cv_gate_rmse": 0.1
+}

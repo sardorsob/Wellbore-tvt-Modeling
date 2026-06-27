@@ -1,0 +1,9 @@
+model,family,local_rmse,local_basis,public_lb,ref,public_rank,local_rank_within_basis,public_minus_local,public_delta_vs_huber_hilbert,promote_public,interpretation
+huber_plus_hilbert_residual,robust_hilbert,14.3586,sampled_grouped_cv,14.514,53960276,1.0,1.0,0.1554000000000002,0.0,False,current public baseline
+huber_hilbert_direct_analog_gate,alignment,14.6383,bounded_residual_sample,14.603,53999839,2.0,1.0,-0.03529999999999944,0.08900000000000041,False,local analog gain did not transfer publicly
+fine_tuned_gam_spline,gam,14.8687,sampled_grouped_cv,15.055,53932883,3.0,5.0,0.18629999999999924,0.5410000000000004,False,historical baseline
+additive_hsgp_student_t,bayesian_hsgp,14.8235,sampled_grouped_cv,15.255,53958582,4.0,3.0,0.43150000000000155,0.7410000000000014,False,historical baseline
+huber_glm_slope_core,robust_glm,14.7928,sampled_grouped_cv,15.464,53952950,5.0,2.0,0.6712000000000007,0.9500000000000011,False,historical baseline
+bayesian_linear_student_t,bayesian_linear,14.8449,sampled_grouped_cv,15.512,53957370,6.0,4.0,0.6670999999999996,0.9980000000000011,False,historical baseline
+random_forest,tree,16.0655,grouped_cv,15.873,53924036,7.0,2.0,-0.19250000000000078,1.359,False,historical baseline
+ridge_alpha10,linear,15.766,grouped_cv,15.905,53923555,8.0,1.0,0.13899999999999935,1.391,False,historical baseline

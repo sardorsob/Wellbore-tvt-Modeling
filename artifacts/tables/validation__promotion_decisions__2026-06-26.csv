@@ -1,0 +1,8 @@
+track,evidence,local_delta_rmse,public_delta_rmse,decision,reason
+hierarchy,empirical Bayes offsets,-0.0008,,pause,gain is far below 0.05 RMSE gate
+hierarchy,residual shape screen,-0.0003,,pause,gain is far below 0.05 RMSE gate
+hierarchy,contextual Huber interactions,-0.0064,,pause,weak local positive signal but not enough for deeper hierarchy
+alignment,direct analog gate,-0.1003,0.08900000000000041,do_not_promote,local gain did not transfer; public score worsened by 0.089
+particle_state_space,latent trajectory idea,,,defer,model class is plausible but validation mismatch is the current bottleneck
+validation,local/public rank mismatch,,,promote_next,stricter CV is needed before boosted trees or deeper Bayesian models
+boosted_trees,rich feature learner after strict CV,,,next_model_family,try flexible interactions only after validation controls are fixed

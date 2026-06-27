@@ -60,6 +60,7 @@
 - [ ] Export artifact figures per `CURSOR_RULES.md`
 - [ ] Verify Kaggle competition rules page before first submission (`kaggle/RULES_SUMMARY.md`)
 - [ ] Use public LB **14.514** as the current external baseline; avoid leaderboard-only tuning
+- [x] Build validation mismatch audit after analog-gate public score **14.603** failed to beat Huber + Hilbert **14.514**
 - [ ] Follow D014 staged hierarchy plan: residual audit, contextual offsets, contextual Huber hierarchy, then Hilbert residual
 - [ ] Investigate why Huber GLM beat GAM locally but scored worse publicly
 - [ ] Investigate why local CV ranked Random Forest worse than Ridge while public LB ranked it better
@@ -67,7 +68,7 @@
 
 ## Next up
 
-1. Wait for Kaggle score on Huber/Hilbert analog submission `53999839`; notebook version 1 completed and submitted, public LB is pending.
+1. Build `01_stricter_cv_fold_design.ipynb` with cluster, far-analog, and high-extrapolation folds.
 2. Do not promote simple empirical Bayes contextual intercept offsets; descriptor-predicted well offsets worsened sampled RMSE.
 3. Do not promote residual-shape corrections; row/progress/distance/slope-instability screens failed the **0.05 RMSE** gate.
 4. Do not promote contextual Huber interactions; the best contextual polynomial surface improved only **0.0064 RMSE**, below the **0.05** gate.
@@ -76,6 +77,14 @@
 7. Investigate why the reconstructed spline GAM mean was unstable in `06_hsgp_residual_on_gam_huber.ipynb` despite the public GAM notebook scoring best externally.
 8. Refine validation before making many leaderboard submissions from small public-LB gains.
 9. Revisit neighbors only with radius constraints, clusters, or richer local geologic features.
+
+## Validation / boosted-tree task ladder
+
+- [x] `notebooks/modeling/09_validation/00_local_public_mismatch_audit.ipynb`: compare local diagnostics, public scores, analog transfer behavior, and promotion decisions.
+- [ ] `notebooks/modeling/09_validation/01_stricter_cv_fold_design.ipynb`: design cluster/far-analog/high-extrapolation folds that better punish fragile analog gains.
+- [ ] `notebooks/modeling/02_trees/06_lightgbm_strict_cv.ipynb`: tune LightGBM only after strict folds and feature families are fixed.
+- [ ] `notebooks/modeling/02_trees/07_xgboost_strict_cv.ipynb`: compare XGBoost against LightGBM under the same strict folds.
+- [ ] Package a boosted-tree Kaggle notebook only if strict-CV improvement clears **0.10 RMSE** or explains an existing public/local mismatch.
 
 ## Hierarchical task ladder
 
@@ -130,7 +139,7 @@
 | 2026-06-22 | Bayesian linear Student-t MAP | 14.8449 | 15.512 | Submission `53957370`; useful Bayesian baseline, but worse than Huber and GAM externally |
 | 2026-06-22 | Additive HSGP Student-t MAP | 14.8235 | 15.255 | Submission `53958582`; beats Bayesian linear and Huber externally, but not fine-tuned GAM |
 | 2026-06-22 | Huber + additive Hilbert residual | 14.3586 | 14.514 | Submission `53960276`; new best public LB, but still far from top public range |
-| 2026-06-24 | Huber + additive Hilbert + analog gate | 14.6383 diagnostic residual-sample | pending | Submission `53999839`; Kaggle notebook v1 completed and scoring is pending |
+| 2026-06-24 | Huber + additive Hilbert + analog gate | 14.6383 diagnostic residual-sample | 14.603 | Submission `53999839`; failed to beat Huber + Hilbert `14.514`, so do not promote |
 
 ## Local diagnostic model history
 

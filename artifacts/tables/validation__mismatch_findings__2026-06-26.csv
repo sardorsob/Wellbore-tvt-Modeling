@@ -1,0 +1,6 @@
+finding,value,implication
+Current public baseline remains Huber + additive Hilbert residual,14.514,Keep 14.514 as the external score to beat.
+Analog gate worsened public LB despite local diagnostic gain,public delta 0.089; local gain 0.1003,Do not promote analog gate; investigate validation mismatch.
+Analog well bias improvement is mixed,mean distance-bin improvement share 0.555,Analog quality needs stricter holdout tests before reuse.
+Hierarchy gains are below gate,0.0003 to 0.0064 RMSE in shallow screens,Pause hierarchy until stronger descriptors or strict folds justify it.
+Particle/state-space models are deferred,no validation evidence yet,"Consider later as latent trajectory modeling, not before CV repair."

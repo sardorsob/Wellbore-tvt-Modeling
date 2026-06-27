@@ -144,11 +144,11 @@
 - Kaggle notebook: `sardorbsobirov/wellbore-huber-hilbert-analog`
 - Kaggle kernel version: 1
 - Status: `KernelWorkerStatus.COMPLETE`
-- Public LB: pending
+- Public LB: `14.603`
 - Submission ref: `53999839`
-- Submission status: `SubmissionStatus.PENDING`
-- Notes: This packages the first above-gate alignment idea into a rerunnable code-competition notebook. The analog layer is recomputed inside the notebook from training wells only and writes `/kaggle/working/submission.csv` on Kaggle. Kaggle version 1 completed and produced **14,151** prediction rows; scoring is still pending.
-- Decision: wait for the public LB score before deciding whether the analog-gate path should be extended or rolled back.
+- Submission status: `SubmissionStatus.COMPLETE`
+- Notes: This packages the first above-gate alignment idea into a rerunnable code-competition notebook. The analog layer is recomputed inside the notebook from training wells only and writes `/kaggle/working/submission.csv` on Kaggle. Kaggle version 1 completed and produced **14,151** prediction rows.
+- Decision: do not promote over Huber + additive Hilbert residual (`14.514`). Treat the result as validation-mismatch evidence because the bounded local residual-sample gain did not transfer publicly.
 
 Use this format for every submission:
 

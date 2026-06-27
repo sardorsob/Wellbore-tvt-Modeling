@@ -420,6 +420,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: package a Kaggle-safe direct analog-gated Huber + Hilbert candidate next. Do not add an extra learned residual head yet.
 - Notes: This is still a residual-sample diagnostic; Kaggle packaging must recompute analog descriptors and nearest-analog transfer inside the notebook.
 
+## 2026-06-26__validation_mismatch_audit
+
+- Task: local/public validation mismatch audit
+- Purpose: Determine whether the next move should be deeper hierarchy, particle/state-space models, or validation repair after the analog-gated Huber + Hilbert candidate failed to improve public LB.
+- Config: notebook-local config in `notebooks/modeling/09_validation/00_local_public_mismatch_audit.ipynb`
+- Data version: existing model summary, fold, well, selection, and Kaggle submission tracker artifacts through analog submission `53999839`.
+- Split / CV: diagnostic audit only; no new predictive fit.
+- Model: no model fit. The audit compares public transfer, local diagnostic basis, analog distance bins, well-bias deltas, and promotion decisions.
+- Primary metric: analog-gated candidate public LB **14.603**, worse than Huber + additive Hilbert public baseline **14.514** by **0.089** RMSE.
+- Secondary metrics: bounded residual-sample analog gain was **0.1003 RMSE**, but mean analog distance-bin well-bias improvement share was only about **0.555**.
+- Artifacts: transfer table, analog distance-bin table, worst-well sample, findings, promotion decisions, markdown report, and run bundle under `artifacts/logs/runs/2026-06-26__validation_mismatch_audit/`
+- Decision: pause deeper hierarchy and particle/state-space modeling. Build stricter CV folds before LightGBM/XGBoost or further Bayesian complexity.
+- Notes: The analog result is useful negative evidence: feature construction may still matter, but the current bounded residual sample is too optimistic for promotion decisions.
+
 ## Entry Format
 
 ```text
