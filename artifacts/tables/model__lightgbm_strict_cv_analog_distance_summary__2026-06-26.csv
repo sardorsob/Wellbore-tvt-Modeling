@@ -1,0 +1,2 @@
+candidate,fold_column,rmse_mean,rmse_std,mae_mean,last_known_hold_rmse_mean,best_iteration_mean,n_valid_rows,rmse_delta_vs_last_known_hold,strict_cv_margin_vs_public_baseline
+lgbm_medium_l2,analog_distance_fold,13.445267916509486,0.8339626281229525,9.625008094756131,15.58330524480228,1158.6666666666667,123680,-2.1380373282927945,-1.068732083490513

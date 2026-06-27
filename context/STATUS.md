@@ -82,7 +82,7 @@
 
 - [x] `notebooks/modeling/09_validation/00_local_public_mismatch_audit.ipynb`: compare local diagnostics, public scores, analog transfer behavior, and promotion decisions.
 - [x] `notebooks/modeling/09_validation/01_stricter_cv_fold_design.ipynb`: design cluster/far-analog/high-extrapolation folds that better punish fragile analog gains.
-- [ ] `notebooks/modeling/02_trees/06_lightgbm_strict_cv.ipynb`: tune LightGBM only after strict folds and feature families are fixed.
+- [x] `notebooks/modeling/02_trees/06_lightgbm_strict_cv.ipynb`: tune LightGBM only after strict folds and feature families are fixed.
 - [ ] `notebooks/modeling/02_trees/07_xgboost_strict_cv.ipynb`: compare XGBoost against LightGBM under the same strict folds.
 - [ ] Package a boosted-tree Kaggle notebook only if strict-CV improvement clears **0.10 RMSE** or explains an existing public/local mismatch.
 
@@ -154,6 +154,7 @@
 | 2026-06-22 | Bayesian HSGP residual `hsgp_bp_m5_autodelta` | 14.8997 | Sampled target-zone grouped CV; improves same-notebook linear reference but does not beat tuned Bayesian fixed Student-t |
 | 2026-06-22 | Bayesian additive HSGP residual `additive_dps_m8_se_autodelta` | 14.8235 | Sampled target-zone grouped CV; best HSGP so far and beats tuned Bayesian fixed Student-t locally, but still trails robust Huber GLM |
 | 2026-06-22 | Huber + additive Hilbert residual `huber_plus_hsgp_dps_m8` | 14.3586 | Sampled target-zone grouped CV; strongest local diagnostic so far, but needs Kaggle public validation because Huber-only previously underperformed externally |
+| 2026-06-26 | LightGBM strict CV `lgbm_medium_l2` | 13.2363 | Strict sampled CV on `strict_hybrid_fold`; analog-distance stress test RMSE **13.4453**; promising but needs reproducibility/tuning before Kaggle |
 
 ## Validation artifacts
 

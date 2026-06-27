@@ -219,3 +219,17 @@
 **Rationale:** `strict_hybrid_fold` keeps the fold design practical for model tuning with row imbalance **1.000** and well imbalance **1.024**, while still spreading combined analog/extrapolation stress. `analog_distance_fold` has the highest strictness score and should be used as a follow-up stress test for promising candidates, but it is less appropriate as the first tuning split because it isolates one failure mode too strongly.
 **Consequences:** Boosted-tree notebooks should read the strict fold assignment table and report results for `strict_hybrid_fold` first. Any candidate that looks strong should also be checked on `analog_distance_fold`, `descriptor_cluster_fold`, and `extrapolation_fold` before Kaggle packaging.
 **Follow-up:** Start `notebooks/modeling/02_trees/06_lightgbm_strict_cv.ipynb` with the strict fold table and compare against current public baseline logic.
+
+---
+
+## D018 - Continue boosted trees but require a confirmation pass before Kaggle
+
+**Date:** 2026-06-26
+**Decision:** Continue the boosted-tree track after the first strict-CV LightGBM result, but do not package or submit it to Kaggle until one confirmation pass is complete.
+**Alternatives considered:**
+- Immediately package the LightGBM strict-CV winner for Kaggle.
+- Abandon trees and return to Bayesian hierarchy.
+- Move directly to XGBoost without recording the LightGBM promotion gate.
+**Rationale:** `lgbm_medium_l2` scored **13.2363** on `strict_hybrid_fold` and **13.4453** on `analog_distance_fold`, both much better than the same-row last-known hold baseline. However, the analog-gate result already showed that local diagnostics can overstate public transfer, and this LightGBM screen uses sampled target rows rather than a full hidden-test rerun.
+**Consequences:** The next step should be either a LightGBM reproducibility/tuning pass with varied row caps/seeds or an XGBoost strict-CV comparison using the same fold assignment table. Kaggle packaging should wait until the result is stable across at least one confirmation axis.
+**Follow-up:** Run `notebooks/modeling/02_trees/07_xgboost_strict_cv.ipynb` or a LightGBM tuning notebook that varies row cap, learning rate, leaf count, and regularization under `strict_hybrid_fold` plus `analog_distance_fold`.

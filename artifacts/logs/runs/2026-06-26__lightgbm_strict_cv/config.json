@@ -1,0 +1,8 @@
+{
+  "fold_column": "strict_hybrid_fold",
+  "stress_fold_column": "analog_distance_fold",
+  "max_target_rows_per_well": 160,
+  "random_state": 20260626,
+  "current_public_baseline": 14.514,
+  "strict_cv_promotion_gate": 0.1
+}

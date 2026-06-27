@@ -448,6 +448,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: use `strict_hybrid_fold` for first LightGBM/XGBoost strict-CV modeling, then stress-test promising candidates with `analog_distance_fold`, `descriptor_cluster_fold`, and `extrapolation_fold`.
 - Notes: The fold table is intentionally reusable by downstream notebooks; do not recompute arbitrary random folds inside boosted-tree notebooks.
 
+## 2026-06-26__lightgbm_strict_cv
+
+- Task: LightGBM strict-CV screen
+- Purpose: Test whether boosted trees can learn nonlinear feature interactions under the stricter validation protocol after the analog-gate public miss.
+- Config: notebook-local config in `notebooks/modeling/02_trees/06_lightgbm_strict_cv.ipynb`
+- Data version: local raw train horizontal wells, strict fold assignments, typewell/alignment descriptors, and deterministic target-row sampling capped at **160** target rows per well.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; stress evaluation for the best candidate on `analog_distance_fold`.
+- Model: best candidate `lgbm_medium_l2`, LightGBM Huber objective over signed TVT delta from each well's last known TVT.
+- Primary metric: sampled `strict_hybrid_fold` RMSE **13.2363**, std **0.8224**, versus same-row last-known hold RMSE **15.5734**.
+- Secondary metrics: `analog_distance_fold` stress RMSE **13.4453**, std **0.8340**, versus same-row last-known hold RMSE **15.5833**. Fold RMSEs were **12.8483**, **13.0894**, and **14.3981**.
+- Artifacts: summary, fold metrics, analog-distance stress metrics, feature importance, zone and analog-bin summaries, well diagnostics, feature preview, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-06-26__lightgbm_strict_cv/`
+- Decision: continue boosted-tree modeling. Prepare Kaggle-safe LightGBM only after one reproducibility/tuning pass or XGBoost comparison confirms the strict-CV result.
+- Notes: Public LB and sampled strict CV are not directly comparable, so do not submit solely because the strict-CV RMSE is numerically below **14.514**.
+
 ## Entry Format
 
 ```text

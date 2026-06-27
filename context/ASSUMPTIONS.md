@@ -354,3 +354,9 @@ The Kaggle-safe Huber + additive Hilbert plus direct analog-gate submission scor
 The strict CV fold design produced four candidate well-level fold columns: `descriptor_cluster_fold`, `analog_distance_fold`, `extrapolation_fold`, and `strict_hybrid_fold`. The strictest diagnostic split was `analog_distance_fold`, but the recommended default is `strict_hybrid_fold` because it preserves practical fold balance while spreading high-stress wells. Its row imbalance is **1.000**, well imbalance is **1.024**, and mean nearest-training descriptor distance is **2.436**.
 
 **Modeling implication:** Use `strict_hybrid_fold` for the first LightGBM/XGBoost strict-CV run. Treat `analog_distance_fold`, `descriptor_cluster_fold`, and `extrapolation_fold` as stress tests for any model that appears better than the Huber + Hilbert baseline under the default strict split.
+
+### A46 - LightGBM is the first strong strict-CV tree result
+
+The LightGBM strict-CV screen found `lgbm_medium_l2` as the best candidate with sampled `strict_hybrid_fold` RMSE **13.2363** and last-known hold RMSE **15.5734** on the same rows. The same configuration scored **13.4453** RMSE on the stricter `analog_distance_fold`, with hold RMSE **15.5833**. The model leaned on extrapolation stress, last-known TVT, formation distances, GR summaries, typewell error features, and selected analog distance.
+
+**Modeling implication:** Boosted trees are worth continuing. Do not push to Kaggle immediately; first run a reproducibility/tuning pass or XGBoost comparison under the same strict folds to confirm this is not a sampled-row artifact.
