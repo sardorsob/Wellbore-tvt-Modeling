@@ -159,11 +159,11 @@
 - Kaggle notebook: `https://www.kaggle.com/code/sardorbsobirov/wellbore-lightgbm-strict-cv`
 - Kaggle kernel version: 1
 - Status: `KernelWorkerStatus.COMPLETE`
-- Public LB: pending
+- Public LB: `14.687`
 - Submission ref: `54097453`
-- Submission status: `SubmissionStatus.PENDING`
+- Submission status: `SubmissionStatus.COMPLETE`
 - Notes: Kaggle version 1 completed successfully, used `/kaggle/input/competitions/rogii-wellbore-geology-prediction`, trained on **170,060** sampled rows with **31** inference-safe features, and produced **14,151** prediction rows with no missing `tvt` values.
-- Decision: pending public score. Treat as an external transfer check for the strict-CV LightGBM signal, not proof of promotion until scoring completes and is compared against Huber + additive Hilbert public LB **14.514**.
+- Decision: do not promote over Huber + additive Hilbert public LB **14.514**. The inference-safe LightGBM package scored worse than the current baseline, which confirms that the full strict-CV tree result does not transfer automatically after removing local-only formation-distance features.
 
 Use this format for every submission:
 

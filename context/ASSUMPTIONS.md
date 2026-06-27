@@ -360,3 +360,9 @@ The strict CV fold design produced four candidate well-level fold columns: `desc
 The LightGBM strict-CV screen found `lgbm_medium_l2` as the best candidate with sampled `strict_hybrid_fold` RMSE **13.2363** and last-known hold RMSE **15.5734** on the same rows. The same configuration scored **13.4453** RMSE on the stricter `analog_distance_fold`, with hold RMSE **15.5833**. The model leaned on extrapolation stress, last-known TVT, formation distances, GR summaries, typewell error features, and selected analog distance.
 
 **Modeling implication:** Boosted trees are worth continuing. Do not push to Kaggle immediately; first run a reproducibility/tuning pass or XGBoost comparison under the same strict folds to confirm this is not a sampled-row artifact.
+
+### A47 - XGBoost improves the strict-CV tree signal but depends partly on train-only formation proxies
+
+The XGBoost strict-CV screen found `xgb_pseudohuber_shallow_robust` as the best candidate with sampled `strict_hybrid_fold` RMSE **12.7504** and analog-distance stress RMSE **12.9116**. This improves over the LightGBM strict-CV reference by **0.4859** RMSE and over the LightGBM analog-distance stress reference by **0.5337** RMSE. The best model's top features include robust row geometry (`md_from_start`, `distance_log1p`, `row_idx_original`), extrapolation stress, and formation-distance features such as `abs_dist_to_BUDA` and `dist_to_BUDA`. The inference-safe LightGBM Kaggle package scored **14.687**, worse than Huber + Hilbert **14.514**, which shows that removing formation features creates a major transfer gap.
+
+**Modeling implication:** Boosted trees are now the highest-priority modeling path toward the 10 RMSE goal. The next step should be an inference-safe XGBoost/LightGBM feature variant that replaces or removes formation-distance features before Kaggle packaging, then compares the gap against this upper-bound local result.

@@ -39,6 +39,7 @@
 ## [Unreleased]
 
 ### Changed
+- Recorded the inference-safe LightGBM Kaggle result (`ref=54097453`, public LB **14.687**) as a transfer miss versus Huber + Hilbert **14.514**.
 - Recorded the 2026-06-23 research pass across geologic alignment, well-top recommender systems, DTW/log alignment, HSGP/GP kernels, multitask GP, Student-t GP likelihoods, and geostatistical residual modeling; updated assumptions, risks, decisions, and task ladders to pivot from shallow residual hierarchy to fold-safe typewell/analog feature screening.
 - Pushed and submitted the self-contained Huber + additive Hilbert residual notebook; public LB scored **14.514**, the current best external result.
 - Ran HSGP residual diagnostics on GAM/Huber means and recorded that Huber + additive Hilbert residuals reach **14.3586** local RMSE, while the reconstructed GAM residual path was unstable.
@@ -66,7 +67,8 @@
 - Generated and ran first baseline modeling notebooks; updated structure, status, experiments, and feature log with run IDs and RMSEs.
 
 ### Added
-- Self-contained inference-safe LightGBM strict-CV Kaggle package under `kaggle/lightgbm_strict_submission/`; Kaggle version 1 completed with 14,151 prediction rows and submission `54097453` is pending public score.
+- XGBoost strict-CV notebook, stress-fold diagnostics, feature importance, residual sample, reports, model-comparison row, and run bundle. Best `xgb_pseudohuber_shallow_robust` scored **12.7504** on `strict_hybrid_fold` and **12.9116** on `analog_distance_fold`.
+- Self-contained inference-safe LightGBM strict-CV Kaggle package under `kaggle/lightgbm_strict_submission/`; Kaggle version 1 completed with 14,151 prediction rows and submission `54097453` scored public LB **14.687**.
 - LightGBM strict-CV notebook, stress-fold diagnostics, feature importance, reports, model-comparison row, and run bundle. Best `lgbm_medium_l2` scored **13.2363** on `strict_hybrid_fold` and **13.4453** on `analog_distance_fold`.
 - Strict CV fold-design notebook, fold-assignment tables, descriptor/stress diagnostics, report, and run bundle. Recommended `strict_hybrid_fold` for first boosted-tree strict CV and `analog_distance_fold` as the strictest diagnostic stress test.
 - Validation mismatch audit notebook, exported transfer/analog/decision tables, run bundle, and report after analog-gate public LB **14.603** failed to beat Huber + Hilbert **14.514**.

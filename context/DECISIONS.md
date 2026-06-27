@@ -245,5 +245,19 @@
 - Submit the local strict-CV notebook directly with formation-distance features.
 - Return to Bayesian hierarchy without testing whether the strict-CV boosted-tree gain transfers externally.
 **Rationale:** The strict-CV LightGBM result is large enough locally (`strict_hybrid_fold` RMSE **13.2363**, `analog_distance_fold` RMSE **13.4453**) to justify one leaderboard read, but the Kaggle package must exclude local-only formation columns that are absent from hidden test files. This means the submission tests an inference-safe approximation of the local LightGBM idea, not the exact local feature set.
-**Consequences:** Record submission `54097453` as pending until public scoring completes. If it improves the public LB, pursue boosted-tree tuning and XGBoost comparison under the strict folds. If it misses, treat the gap as more evidence that local strict-CV still needs stronger hidden-test transfer checks.
-**Follow-up:** Poll `kaggle competitions submissions rogii-wellbore-geology-prediction`, update Kaggle trackers with the final public score, then choose between `02_trees/07_xgboost_strict_cv.ipynb` and a LightGBM inference-safe tuning pass.
+**Consequences:** Submission `54097453` completed with public LB **14.687**, worse than Huber + additive Hilbert **14.514**. Treat the gap as evidence that full-feature strict-CV tree gains need stronger hidden-test-safe feature transfer before Kaggle promotion.
+**Follow-up:** Build inference-safe boosted-tree tuning that removes train-only formation-distance columns and replaces them with typewell, analog, pseudo-zone, or trajectory-derived proxies.
+
+---
+
+## D020 - Promote XGBoost to inference-safe boosted-tree tuning
+
+**Date:** 2026-06-27
+**Decision:** Promote XGBoost as the next boosted-tree direction, but do not package the local strict-CV notebook directly for Kaggle because it uses formation-distance features that are absent from hidden test files.
+**Alternatives considered:**
+- Package the local XGBoost strict-CV winner immediately.
+- Continue tuning LightGBM only.
+- Return to Bayesian hierarchy after one boosted-tree confirmation.
+**Rationale:** `xgb_pseudohuber_shallow_robust` scored **12.7504** on `strict_hybrid_fold` and **12.9116** on `analog_distance_fold`, beating the LightGBM strict and stress references by about **0.49** and **0.53** RMSE. This is the largest local diagnostic improvement since Huber + Hilbert. However, top features include `abs_dist_to_BUDA` and `dist_to_BUDA`, so direct Kaggle packaging would leak reliance on train-only columns that hidden test wells do not expose.
+**Consequences:** The next notebook should test an inference-safe boosted-tree variant: remove formation-distance features, replace them with typewell/analog/pseudo-zone proxies, and compare against the full-feature XGBoost upper-bound result. Package to Kaggle only if the inference-safe variant stays meaningfully better than Huber + Hilbert **14.514** and the inference-safe LightGBM public score **14.687**.
+**Follow-up:** Build `notebooks/modeling/02_trees/08_xgboost_inference_safe_tuning.ipynb` or an equivalent boosted-tree feature-ablation notebook using `strict_hybrid_fold` plus `analog_distance_fold`.

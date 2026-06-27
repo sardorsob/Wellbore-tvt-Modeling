@@ -470,11 +470,25 @@ This file is the human-readable registry for reportable runs.
 - Data version: Kaggle competition input on remote run; local mirror under `data/raw/` for validation.
 - Split / CV: no new CV fit in the package; training uses all available training wells and recomputed descriptors, while the local score basis remains `2026-06-26__lightgbm_strict_cv`.
 - Model: `lightgbm_medium_l2_inference_safe`
-- Primary metric: Kaggle submission `54097453` is pending public score.
+- Primary metric: Kaggle submission `54097453` public LB **14.687**.
 - Secondary metrics: local package execution and Kaggle version 1 both produced **14,151** rows with `id,tvt`, no missing predictions; Kaggle log reports **170,060** training rows and **31** features.
 - Artifacts: Kaggle package under `kaggle/lightgbm_strict_submission/`, local validation output under `kaggle/lightgbm_strict_submission/artifacts/reports/`, downloaded remote output under `.tmp_kaggle_config/lightgbm_strict_output/`.
-- Decision: wait for public LB before promoting. If it beats **14.514**, inspect feature importance and public/local gap before deciding whether to tune LightGBM or move to XGBoost.
-- Notes: The package hardens data discovery for both `/kaggle/input` and local parent-directory validation, and adds a fallback for analog-distance descriptors so hidden reruns do not fail on empty descriptor columns.
+- Decision: do not promote over Huber + additive Hilbert public LB **14.514**. The package is still useful negative evidence because the inference-safe LightGBM score is much worse than the full-feature strict-CV local result.
+- Notes: The package hardens data discovery for both `/kaggle/input` and local parent-directory validation, and adds a fallback for analog-distance descriptors so hidden reruns do not fail on empty descriptor columns. The public miss strengthens the case for explicit inference-safe tree feature engineering rather than direct packaging of full-feature strict-CV winners.
+
+## 2026-06-27__xgboost_strict_cv
+
+- Task: XGBoost strict-CV screen
+- Purpose: Test whether the boosted-tree gain from LightGBM survives a different tree learner and robust objective under the same strict validation protocol.
+- Config: notebook-local config in `notebooks/modeling/02_trees/07_xgboost_strict_cv.ipynb`; candidates included squared-error medium/deep regularized trees and pseudo-Huber medium/shallow robust trees.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell/alignment descriptors, formation-distance features, and deterministic target-row sampling capped at **160** target rows per well.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; stress evaluation for the best candidate on `analog_distance_fold`.
+- Model: best candidate `xgb_pseudohuber_shallow_robust`, XGBoost histogram trees with pseudo-Huber objective over signed TVT delta from each well's last known TVT.
+- Primary metric: sampled `strict_hybrid_fold` RMSE **12.7504**, std **0.7300**, versus same-row last-known hold RMSE **15.5734**.
+- Secondary metrics: `analog_distance_fold` stress RMSE **12.9116**, std **0.9691**, versus same-row last-known hold RMSE **15.5833**. This beats the LightGBM strict reference by **0.4859** RMSE and the LightGBM stress reference by **0.5337** RMSE.
+- Artifacts: summary, fold metrics, analog-distance stress metrics, feature importance, zone and analog-bin summaries, residual sample, well diagnostics, feature preview, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-06-27__xgboost_strict_cv/`.
+- Decision: promote boosted-tree work, but do not package this local notebook directly because top features include train-only formation-distance columns. Next step is inference-safe XGBoost/LightGBM tuning that replaces or removes formation-distance features.
+- Notes: Top features for the best candidate include `md_from_start`, `extrapolation_stress_score`, `distance_log1p`, `row_idx_original`, `abs_dist_to_BUDA`, and `dist_to_BUDA`.
 
 ## Entry Format
 
