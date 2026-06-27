@@ -233,3 +233,17 @@
 **Rationale:** `lgbm_medium_l2` scored **13.2363** on `strict_hybrid_fold` and **13.4453** on `analog_distance_fold`, both much better than the same-row last-known hold baseline. However, the analog-gate result already showed that local diagnostics can overstate public transfer, and this LightGBM screen uses sampled target rows rather than a full hidden-test rerun.
 **Consequences:** The next step should be either a LightGBM reproducibility/tuning pass with varied row caps/seeds or an XGBoost strict-CV comparison using the same fold assignment table. Kaggle packaging should wait until the result is stable across at least one confirmation axis.
 **Follow-up:** Run `notebooks/modeling/02_trees/07_xgboost_strict_cv.ipynb` or a LightGBM tuning notebook that varies row cap, learning rate, leaf count, and regularization under `strict_hybrid_fold` plus `analog_distance_fold`.
+
+---
+
+## D019 - Use one LightGBM Kaggle submission as an external transfer check
+
+**Date:** 2026-06-27
+**Decision:** Submit a self-contained, inference-safe LightGBM strict-CV notebook to Kaggle as an external transfer check, while keeping Huber + additive Hilbert residual public LB **14.514** as the active baseline until the LightGBM public score completes.
+**Alternatives considered:**
+- Wait for XGBoost or a LightGBM reproducibility pass before any Kaggle submission.
+- Submit the local strict-CV notebook directly with formation-distance features.
+- Return to Bayesian hierarchy without testing whether the strict-CV boosted-tree gain transfers externally.
+**Rationale:** The strict-CV LightGBM result is large enough locally (`strict_hybrid_fold` RMSE **13.2363**, `analog_distance_fold` RMSE **13.4453**) to justify one leaderboard read, but the Kaggle package must exclude local-only formation columns that are absent from hidden test files. This means the submission tests an inference-safe approximation of the local LightGBM idea, not the exact local feature set.
+**Consequences:** Record submission `54097453` as pending until public scoring completes. If it improves the public LB, pursue boosted-tree tuning and XGBoost comparison under the strict folds. If it misses, treat the gap as more evidence that local strict-CV still needs stronger hidden-test transfer checks.
+**Follow-up:** Poll `kaggle competitions submissions rogii-wellbore-geology-prediction`, update Kaggle trackers with the final public score, then choose between `02_trees/07_xgboost_strict_cv.ipynb` and a LightGBM inference-safe tuning pass.

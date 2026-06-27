@@ -459,8 +459,22 @@ This file is the human-readable registry for reportable runs.
 - Primary metric: sampled `strict_hybrid_fold` RMSE **13.2363**, std **0.8224**, versus same-row last-known hold RMSE **15.5734**.
 - Secondary metrics: `analog_distance_fold` stress RMSE **13.4453**, std **0.8340**, versus same-row last-known hold RMSE **15.5833**. Fold RMSEs were **12.8483**, **13.0894**, and **14.3981**.
 - Artifacts: summary, fold metrics, analog-distance stress metrics, feature importance, zone and analog-bin summaries, well diagnostics, feature preview, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-06-26__lightgbm_strict_cv/`
-- Decision: continue boosted-tree modeling. Prepare Kaggle-safe LightGBM only after one reproducibility/tuning pass or XGBoost comparison confirms the strict-CV result.
-- Notes: Public LB and sampled strict CV are not directly comparable, so do not submit solely because the strict-CV RMSE is numerically below **14.514**.
+- Decision: continue boosted-tree modeling. A Kaggle-safe LightGBM package was submitted as an external transfer check at user request; promotion still depends on the public score and comparison against Huber + additive Hilbert public LB **14.514**.
+- Notes: The Kaggle package excludes local-only formation-distance columns and uses **31** inference-safe row/descriptor features. Kaggle version 1 completed and submission `54097453` is pending public score.
+
+## 2026-06-27__lightgbm_strict_kaggle_package
+
+- Task: boosted-tree Kaggle packaging
+- Purpose: Convert the strict-CV LightGBM candidate into a self-contained code-competition notebook that trains and writes `/kaggle/working/submission.csv`.
+- Config: `kaggle/lightgbm_strict_submission/lightgbm_strict_submission.ipynb`, `LGBMRegressor(objective="huber", n_estimators=1200, learning_rate=0.03, num_leaves=63, max_depth=10, min_child_samples=80, reg_lambda=2.0)`, deterministic target-row sampling capped at **220** rows per well.
+- Data version: Kaggle competition input on remote run; local mirror under `data/raw/` for validation.
+- Split / CV: no new CV fit in the package; training uses all available training wells and recomputed descriptors, while the local score basis remains `2026-06-26__lightgbm_strict_cv`.
+- Model: `lightgbm_medium_l2_inference_safe`
+- Primary metric: Kaggle submission `54097453` is pending public score.
+- Secondary metrics: local package execution and Kaggle version 1 both produced **14,151** rows with `id,tvt`, no missing predictions; Kaggle log reports **170,060** training rows and **31** features.
+- Artifacts: Kaggle package under `kaggle/lightgbm_strict_submission/`, local validation output under `kaggle/lightgbm_strict_submission/artifacts/reports/`, downloaded remote output under `.tmp_kaggle_config/lightgbm_strict_output/`.
+- Decision: wait for public LB before promoting. If it beats **14.514**, inspect feature importance and public/local gap before deciding whether to tune LightGBM or move to XGBoost.
+- Notes: The package hardens data discovery for both `/kaggle/input` and local parent-directory validation, and adds a fallback for analog-distance descriptors so hidden reruns do not fail on empty descriptor columns.
 
 ## Entry Format
 

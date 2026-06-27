@@ -4,6 +4,7 @@
 
 | Date | Ref | Notebook | Local CV RMSE | Public LB | Notes |
 |---|---|---|---:|---:|---|
+| 2026-06-27 | `54097453` | `sardorbsobirov/wellbore-lightgbm-strict-cv` v1 | 13.2363 strict-hybrid; 13.4453 analog-distance stress | pending | Self-contained inference-safe LightGBM package completed on Kaggle and submitted. Score pending; compare against Huber + Hilbert `14.514` before promotion. |
 | 2026-06-24 | `53999839` | `sardorbsobirov/wellbore-huber-hilbert-analog` v1 | 14.6383 diagnostic residual-sample | 14.603 | Self-contained Huber + additive Hilbert plus direct log-plus-trajectory analog gate. Public score worsened vs Huber + Hilbert `14.514`, so do not promote. |
 | 2026-06-22 | `53960276` | `sardorbsobirov/wellbore-huber-hsgp-residual` v1 | 14.3586 | 14.514 | Huber signed-delta mean plus additive Hilbert residual over boundary/progress/slope-instability coordinates. New best public LB, but still far from the top public range. |
 | 2026-06-22 | `53932883` | `sardorbsobirov/wellbore-fine-tuned-gam-spline` v1 | 14.8687 | 15.055 | Fine-tuned GAM spline submission using slope-core boundary/trajectory/recent-slope features. New best public LB; use as the current external baseline. |

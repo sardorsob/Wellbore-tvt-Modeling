@@ -150,6 +150,21 @@
 - Notes: This packages the first above-gate alignment idea into a rerunnable code-competition notebook. The analog layer is recomputed inside the notebook from training wells only and writes `/kaggle/working/submission.csv` on Kaggle. Kaggle version 1 completed and produced **14,151** prediction rows.
 - Decision: do not promote over Huber + additive Hilbert residual (`14.514`). Treat the result as validation-mismatch evidence because the bounded local residual-sample gain did not transfer publicly.
 
+- Timestamp: 2026-06-27
+- Run ID: `2026-06-26__lightgbm_strict_cv`
+- Git SHA: package commit containing this entry
+- Config: self-contained LightGBM strict-CV package, `objective="huber"`, `n_estimators=1200`, `learning_rate=0.03`, `num_leaves=63`, `max_depth=10`, `reg_lambda=2.0`, `MAX_TARGET_ROWS_PER_WELL=220`; inference-safe row geometry and descriptor features only, with local-only formation columns excluded for Kaggle hidden-test compatibility.
+- Local CV: strict-CV candidate `lgbm_medium_l2`, `strict_hybrid_fold` RMSE **13.2363**, analog-distance stress RMSE **13.4453**; same-row last-known hold RMSE about **15.58**.
+- Local submission file: Kaggle kernel output `/kaggle/working/submission.csv`; local validation output `kaggle/lightgbm_strict_submission/artifacts/reports/submission__lightgbm_strict__2026-06-26.csv`.
+- Kaggle notebook: `https://www.kaggle.com/code/sardorbsobirov/wellbore-lightgbm-strict-cv`
+- Kaggle kernel version: 1
+- Status: `KernelWorkerStatus.COMPLETE`
+- Public LB: pending
+- Submission ref: `54097453`
+- Submission status: `SubmissionStatus.PENDING`
+- Notes: Kaggle version 1 completed successfully, used `/kaggle/input/competitions/rogii-wellbore-geology-prediction`, trained on **170,060** sampled rows with **31** inference-safe features, and produced **14,151** prediction rows with no missing `tvt` values.
+- Decision: pending public score. Treat as an external transfer check for the strict-CV LightGBM signal, not proof of promotion until scoring completes and is compared against Huber + additive Hilbert public LB **14.514**.
+
 Use this format for every submission:
 
 ```text

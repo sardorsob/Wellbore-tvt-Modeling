@@ -66,6 +66,7 @@
 - Generated and ran first baseline modeling notebooks; updated structure, status, experiments, and feature log with run IDs and RMSEs.
 
 ### Added
+- Self-contained inference-safe LightGBM strict-CV Kaggle package under `kaggle/lightgbm_strict_submission/`; Kaggle version 1 completed with 14,151 prediction rows and submission `54097453` is pending public score.
 - LightGBM strict-CV notebook, stress-fold diagnostics, feature importance, reports, model-comparison row, and run bundle. Best `lgbm_medium_l2` scored **13.2363** on `strict_hybrid_fold` and **13.4453** on `analog_distance_fold`.
 - Strict CV fold-design notebook, fold-assignment tables, descriptor/stress diagnostics, report, and run bundle. Recommended `strict_hybrid_fold` for first boosted-tree strict CV and `analog_distance_fold` as the strictest diagnostic stress test.
 - Validation mismatch audit notebook, exported transfer/analog/decision tables, run bundle, and report after analog-gate public LB **14.603** failed to beat Huber + Hilbert **14.514**.
