@@ -66,6 +66,7 @@
 - Generated and ran first baseline modeling notebooks; updated structure, status, experiments, and feature log with run IDs and RMSEs.
 
 ### Added
+- Strict CV fold-design notebook, fold-assignment tables, descriptor/stress diagnostics, report, and run bundle. Recommended `strict_hybrid_fold` for first boosted-tree strict CV and `analog_distance_fold` as the strictest diagnostic stress test.
 - Validation mismatch audit notebook, exported transfer/analog/decision tables, run bundle, and report after analog-gate public LB **14.603** failed to beat Huber + Hilbert **14.514**.
 - Kaggle notebook version 1 submission for Huber + additive Hilbert plus direct analog gate (`ref=53999839`); Kaggle run completed with 14,151 prediction rows and public LB **14.603**.
 - Self-contained Huber + additive Hilbert residual Kaggle submission notebook, kernel metadata, and local validation CSV.

@@ -348,3 +348,9 @@ The alignment-aware Hilbert residual screen found `direct_analog_gate` as the be
 The Kaggle-safe Huber + additive Hilbert plus direct analog-gate submission scored **14.603** public LB, worse than the ungated Huber + additive Hilbert submission at **14.514**. This reverses the bounded residual-sample diagnostic, where the analog gate improved same-sample RMSE by **0.1003**. The validation mismatch audit found mixed analog well-bias behavior, with mean distance-bin improvement share around **0.555**.
 
 **Modeling implication:** Pause deeper hierarchy and particle/state-space modeling. The immediate bottleneck is validation transfer rather than model expressiveness. Next work should create stricter CV folds that stress far-analog wells, clustered/geologic separation, and high-extrapolation cases before LightGBM/XGBoost or additional Bayesian models.
+
+### A45 - Strict hybrid folds are the next default validation protocol
+
+The strict CV fold design produced four candidate well-level fold columns: `descriptor_cluster_fold`, `analog_distance_fold`, `extrapolation_fold`, and `strict_hybrid_fold`. The strictest diagnostic split was `analog_distance_fold`, but the recommended default is `strict_hybrid_fold` because it preserves practical fold balance while spreading high-stress wells. Its row imbalance is **1.000**, well imbalance is **1.024**, and mean nearest-training descriptor distance is **2.436**.
+
+**Modeling implication:** Use `strict_hybrid_fold` for the first LightGBM/XGBoost strict-CV run. Treat `analog_distance_fold`, `descriptor_cluster_fold`, and `extrapolation_fold` as stress tests for any model that appears better than the Huber + Hilbert baseline under the default strict split.

@@ -205,3 +205,17 @@
 **Rationale:** The analog-gated Huber + Hilbert candidate improved the bounded local residual sample by **0.1003 RMSE**, but the public score was **14.603**, worse than the ungated Huber + Hilbert public baseline **14.514**. Earlier shallow hierarchy screens improved local diagnostics by only **0.0008**, **0.0003**, and **0.0064 RMSE**. This pattern suggests validation mismatch and fragile feature transfer are the current bottlenecks, not insufficient model complexity.
 **Consequences:** Create a validation-focused modeling track before deeper Bayesian work. The next notebook should compare local diagnostics, public leaderboard scores, fold/well descriptors, analog distance/quality, and promotion gates. Future LightGBM/XGBoost work should use stricter folds informed by this audit.
 **Follow-up:** Add `notebooks/modeling/09_validation/00_local_public_mismatch_audit.ipynb`, export mismatch tables and a report, then define stricter CV folds before boosted-tree tuning.
+
+---
+
+## D017 - Use strict hybrid folds as the default boosted-tree validation split
+
+**Date:** 2026-06-26
+**Decision:** Use `strict_hybrid_fold` from `validation__strict_cv_fold_assignments__2026-06-26.csv` as the default validation split for the next LightGBM/XGBoost notebooks.
+**Alternatives considered:**
+- Use `analog_distance_fold` as the default because it is the strictest diagnostic stress test.
+- Use `descriptor_cluster_fold` as the default because it maximizes descriptor separation.
+- Continue with the earlier grouped-well folds.
+**Rationale:** `strict_hybrid_fold` keeps the fold design practical for model tuning with row imbalance **1.000** and well imbalance **1.024**, while still spreading combined analog/extrapolation stress. `analog_distance_fold` has the highest strictness score and should be used as a follow-up stress test for promising candidates, but it is less appropriate as the first tuning split because it isolates one failure mode too strongly.
+**Consequences:** Boosted-tree notebooks should read the strict fold assignment table and report results for `strict_hybrid_fold` first. Any candidate that looks strong should also be checked on `analog_distance_fold`, `descriptor_cluster_fold`, and `extrapolation_fold` before Kaggle packaging.
+**Follow-up:** Start `notebooks/modeling/02_trees/06_lightgbm_strict_cv.ipynb` with the strict fold table and compare against current public baseline logic.

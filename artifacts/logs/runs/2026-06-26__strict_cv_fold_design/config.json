@@ -1,0 +1,7 @@
+{
+  "n_folds": 3,
+  "n_descriptor_clusters": 9,
+  "analog_candidate": "log_plus_trajectory_k1_progress_gate",
+  "recommended_fold_column": "strict_hybrid_fold",
+  "random_state": 20260626
+}

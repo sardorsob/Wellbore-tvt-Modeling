@@ -68,7 +68,7 @@
 
 ## Next up
 
-1. Build `01_stricter_cv_fold_design.ipynb` with cluster, far-analog, and high-extrapolation folds.
+1. Start `02_trees/06_lightgbm_strict_cv.ipynb` using `strict_hybrid_fold` from `validation__strict_cv_fold_assignments__2026-06-26.csv`.
 2. Do not promote simple empirical Bayes contextual intercept offsets; descriptor-predicted well offsets worsened sampled RMSE.
 3. Do not promote residual-shape corrections; row/progress/distance/slope-instability screens failed the **0.05 RMSE** gate.
 4. Do not promote contextual Huber interactions; the best contextual polynomial surface improved only **0.0064 RMSE**, below the **0.05** gate.
@@ -81,7 +81,7 @@
 ## Validation / boosted-tree task ladder
 
 - [x] `notebooks/modeling/09_validation/00_local_public_mismatch_audit.ipynb`: compare local diagnostics, public scores, analog transfer behavior, and promotion decisions.
-- [ ] `notebooks/modeling/09_validation/01_stricter_cv_fold_design.ipynb`: design cluster/far-analog/high-extrapolation folds that better punish fragile analog gains.
+- [x] `notebooks/modeling/09_validation/01_stricter_cv_fold_design.ipynb`: design cluster/far-analog/high-extrapolation folds that better punish fragile analog gains.
 - [ ] `notebooks/modeling/02_trees/06_lightgbm_strict_cv.ipynb`: tune LightGBM only after strict folds and feature families are fixed.
 - [ ] `notebooks/modeling/02_trees/07_xgboost_strict_cv.ipynb`: compare XGBoost against LightGBM under the same strict folds.
 - [ ] Package a boosted-tree Kaggle notebook only if strict-CV improvement clears **0.10 RMSE** or explains an existing public/local mismatch.
@@ -154,3 +154,9 @@
 | 2026-06-22 | Bayesian HSGP residual `hsgp_bp_m5_autodelta` | 14.8997 | Sampled target-zone grouped CV; improves same-notebook linear reference but does not beat tuned Bayesian fixed Student-t |
 | 2026-06-22 | Bayesian additive HSGP residual `additive_dps_m8_se_autodelta` | 14.8235 | Sampled target-zone grouped CV; best HSGP so far and beats tuned Bayesian fixed Student-t locally, but still trails robust Huber GLM |
 | 2026-06-22 | Huber + additive Hilbert residual `huber_plus_hsgp_dps_m8` | 14.3586 | Sampled target-zone grouped CV; strongest local diagnostic so far, but needs Kaggle public validation because Huber-only previously underperformed externally |
+
+## Validation artifacts
+
+| Date | Artifact | Recommendation | Notes |
+|---|---|---|---|
+| 2026-06-26 | `validation__strict_cv_fold_assignments__2026-06-26.csv` | Use `strict_hybrid_fold` for first strict-CV modeling | Row imbalance **1.000**, well imbalance **1.024**; use `analog_distance_fold` as strictest diagnostic stress test |

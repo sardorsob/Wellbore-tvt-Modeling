@@ -1,0 +1,6 @@
+finding,value,implication
+Default fold design,strict_hybrid_fold,Use this fold column first for LightGBM/XGBoost strict CV.
+Strictest diagnostic design,analog_distance_fold,Use as an additional stress test when a model looks promising.
+Hybrid row imbalance,1.000,Hybrid folds preserve usable training/validation size balance.
+Hybrid nearest-train descriptor distance,"mean 2.436, max 6.660",Folds are stricter than random well splits but still feasible.
+High-stress wells are explicit,40 sampled wells exported,Later model errors can be inspected against a stable stress set.

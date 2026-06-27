@@ -434,6 +434,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: pause deeper hierarchy and particle/state-space modeling. Build stricter CV folds before LightGBM/XGBoost or further Bayesian complexity.
 - Notes: The analog result is useful negative evidence: feature construction may still matter, but the current bounded residual sample is too optimistic for promotion decisions.
 
+## 2026-06-26__strict_cv_fold_design
+
+- Task: strict CV fold design
+- Purpose: Create reusable well-level folds that stress descriptor clusters, far-analog wells, and high-extrapolation wells before boosted-tree tuning.
+- Config: notebook-local config in `notebooks/modeling/09_validation/01_stricter_cv_fold_design.ipynb`
+- Data version: local raw train horizontal wells, typewell alignment descriptors, analog-selection diagnostics, and alignment well diagnostics.
+- Split / CV: no model fit. The notebook exports four deterministic fold assignment columns: `descriptor_cluster_fold`, `analog_distance_fold`, `extrapolation_fold`, and `strict_hybrid_fold`.
+- Model: no prediction model. KMeans descriptor clusters, analog-distance quantile buckets, extrapolation-stress quantile buckets, and a greedy balanced hybrid assignment.
+- Primary metric: recommended default `strict_hybrid_fold` has row imbalance **1.000**, well imbalance **1.024**, and mean nearest-training descriptor distance **2.436**.
+- Secondary metrics: strictest diagnostic design is `analog_distance_fold` with strictness score **7.326**; `descriptor_cluster_fold` score **6.659**; `extrapolation_fold` score **5.945**; `strict_hybrid_fold` score **5.774**.
+- Artifacts: fold assignments, well descriptors, fold summaries, design scores, nearest-train distances, stress-well sample, findings, markdown report, and run bundle under `artifacts/logs/runs/2026-06-26__strict_cv_fold_design/`
+- Decision: use `strict_hybrid_fold` for first LightGBM/XGBoost strict-CV modeling, then stress-test promising candidates with `analog_distance_fold`, `descriptor_cluster_fold`, and `extrapolation_fold`.
+- Notes: The fold table is intentionally reusable by downstream notebooks; do not recompute arbitrary random folds inside boosted-tree notebooks.
+
 ## Entry Format
 
 ```text
