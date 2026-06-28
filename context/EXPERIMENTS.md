@@ -518,6 +518,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: do not package this notebook to Kaggle yet. Best legal tuning improved local strict CV only marginally, and proxy-formation features underperformed safe base.
 - Notes: The experiment confirms direct formation distance is valuable, but the current proxy approach does not transfer that signal. Next work should try residual stacking or a stronger hidden-test-safe structural proxy instead of more of the same proxy-formation recipe.
 
+## 2026-06-28__xgboost_residual_stacking
+
+- Task: inference-safe XGBoost residual stacking
+- Purpose: Test whether nested out-of-fold residual models can improve the current inference-safe XGBoost path without leaking held-out fold residuals.
+- Config: notebook-local config in `notebooks/modeling/02_trees/09_xgboost_residual_stacking.ipynb`; deterministic target-row sampling capped at **120** rows per well; base model `pseudo_shallow_more_trees` safe/typewell XGBoost; residual stackers included progress-bin bias, Ridge, Huber, and small XGBoost residual heads.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell/alignment descriptors, and inference-safe row/typewell features only.
+- Split / CV: nested OOF stacking under `strict_hybrid_fold`, followed by the same nested design under `analog_distance_fold`.
+- Model: best stacker `ridge_residual_s025`, a median-imputed and standardized Ridge residual correction shrunk to **25%** of predicted residual.
+- Primary metric: `strict_hybrid_fold` RMSE **13.2548**, improving base-only XGBoost **13.4178** by **0.1630** RMSE.
+- Secondary metrics: `analog_distance_fold` stress RMSE **13.5632**, improving stress base-only **13.7424** by **0.1792** RMSE. Reproducibility rerun matched the key metrics.
+- Artifacts: summary, fold metrics, analog-distance stress metrics, zone and analog-bin summaries, well diagnostics, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-06-28__xgboost_residual_stacking/`.
+- Decision: promote to Kaggle packaging next. This is the first post-XGBoost local improvement that clears both strict-CV and analog-distance stress gates.
+- Notes: The residual signal is strongest outside the earliest progress zone; late target-zone rows improved by roughly **0.23** RMSE in the strict split, while the first quartile slightly worsened. Preserve shrinkage in the Kaggle package to avoid over-correcting early rows.
+
 ## Entry Format
 
 ```text

@@ -372,3 +372,9 @@ The XGBoost strict-CV screen found `xgb_pseudohuber_shallow_robust` as the best 
 The inference-safe XGBoost tuning screen found `safe_typewell` as the best legal feature set with sampled `strict_hybrid_fold` RMSE **13.4178** and `analog_distance_fold` stress RMSE **13.7533**. The fold-safe proxy-formation feature set scored **13.5503**, worse than safe base (**13.4399**) by **0.1103** RMSE. The oracle direct-formation diagnostic still scored **12.9597**, which confirms the direct formation-distance signal is real but not captured by the current proxy model.
 
 **Modeling implication:** Do not package the current proxy-formation recipe. The next tree-side improvement should use residual stacking, stronger typewell/stratigraphic structural proxies, or a submission-safe way to infer formation context that is more than a generic XGBoost proxy over safe descriptors.
+
+### A49 - Nested residual stacking finds transferable post-XGBoost residual shape
+
+The XGBoost residual-stacking screen found `ridge_residual_s025` as the best stacker. It improved `strict_hybrid_fold` RMSE from base-only **13.4178** to **13.2548** and improved `analog_distance_fold` stress RMSE from **13.7424** to **13.5632**. The residual stacker was trained on inner out-of-fold residuals inside each outer fold, and a reproducibility rerun matched the key metrics.
+
+**Modeling implication:** Promote Ridge residual stacking into a self-contained Kaggle package next. Keep the residual correction shrunk and inference-safe; the first progress quartile slightly worsened while later rows improved, so the package should preserve conservative shrinkage and monitor early-zone behavior.

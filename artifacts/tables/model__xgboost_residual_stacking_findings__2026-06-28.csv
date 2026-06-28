@@ -1,0 +1,11 @@
+finding,value
+best_stacker,ridge_residual_s025
+best_strict_rmse,13.2548
+base_only_strict_rmse,13.4178
+best_minus_base_rmse,-0.1630
+selected_stress_rmse,13.5632
+stress_base_only_rmse,13.7424
+selected_stress_minus_base_rmse,-0.1792
+best_minus_previous_legal_xgb_rmse,-0.1630
+recommendation,package_next
+recommendation_reason,"Nested residual stacking cleared both strict-CV and analog-distance stress promotion gates, and the reproducibility rerun matched the key metrics."
