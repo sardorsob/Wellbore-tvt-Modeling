@@ -1,0 +1,12 @@
+finding,value
+best_legal_model,pseudo_shallow_more_trees__safe_typewell
+best_legal_strict_rmse,13.4178
+best_legal_stress_rmse,13.7533
+best_legal_feature_set,safe_typewell
+safe_base_rmse,13.4399
+best_proxy_rmse,13.5503
+proxy_minus_base_rmse,0.1103
+oracle_direct_rmse,12.9597
+legal_minus_oracle_rmse,0.4581
+recommendation,do_not_package_yet
+recommendation_reason,"Best legal tuning improved local strict CV only marginally, while proxy-formation features underperformed safe base."

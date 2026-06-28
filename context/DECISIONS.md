@@ -261,3 +261,17 @@
 **Rationale:** `xgb_pseudohuber_shallow_robust` scored **12.7504** on `strict_hybrid_fold` and **12.9116** on `analog_distance_fold`, beating the LightGBM strict and stress references by about **0.49** and **0.53** RMSE. This is the largest local diagnostic improvement since Huber + Hilbert. However, top features include `abs_dist_to_BUDA` and `dist_to_BUDA`, so direct Kaggle packaging would leak reliance on train-only columns that hidden test wells do not expose.
 **Consequences:** The first inference-safe XGBoost package scored public LB **14.472**, beating Huber + Hilbert **14.514** and inference-safe LightGBM **14.687**. Treat XGBoost as the active external baseline, but do not assume the full-feature local RMSE will transfer without hidden-test-safe formation proxies.
 **Follow-up:** Build `notebooks/modeling/02_trees/08_xgboost_inference_safe_tuning.ipynb` or an equivalent boosted-tree feature-ablation notebook using `strict_hybrid_fold` plus `analog_distance_fold`, then package only candidates with a clear local rationale beyond single-leaderboard movement.
+
+---
+
+## D021 - Do not package the first proxy-formation XGBoost tuning pass
+
+**Date:** 2026-06-28
+**Decision:** Do not submit `08_xgboost_inference_safe_tuning.ipynb` to Kaggle yet.
+**Alternatives considered:**
+- Package the best legal `safe_typewell` candidate because it slightly beat safe base locally.
+- Package the proxy-formation candidate because it was designed to mimic the full-feature formation-distance signal.
+- Package the oracle direct-formation diagnostic.
+**Rationale:** The best legal model, `pseudo_shallow_more_trees__safe_typewell`, scored **13.4178** on `strict_hybrid_fold` and **13.7533** on `analog_distance_fold`, only **0.0222** better than safe base locally. The proxy-formation feature set scored **13.5503**, worse than safe base by **0.1103** RMSE. The oracle direct-formation diagnostic scored **12.9597**, but those direct formation features are not hidden-test-safe.
+**Consequences:** Keep XGBoost as the active boosted-tree direction, but move away from this exact formation-proxy recipe. Treat the oracle gap as evidence that stronger structural/geologic proxy features are needed rather than as a Kaggle packaging candidate.
+**Follow-up:** Try residual stacking around the public-best inference-safe XGBoost path or build a stronger submission-safe stratigraphic proxy before the next Kaggle push.

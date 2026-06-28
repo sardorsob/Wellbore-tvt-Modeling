@@ -1,0 +1,12 @@
+{
+  "fold_column": "strict_hybrid_fold",
+  "stress_fold_column": "analog_distance_fold",
+  "max_target_rows_per_well": 120,
+  "random_state": 20260628,
+  "current_public_baseline": 14.472,
+  "xgb_full_feature_rmse": 12.7504,
+  "xgb_full_feature_stress_rmse": 12.9116,
+  "xgb_public_inference_safe": 14.472,
+  "lightgbm_public_inference_safe": 14.687,
+  "promotion_gate_vs_public": 0.05
+}

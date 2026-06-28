@@ -504,6 +504,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: promote as the current best public submission. The inference-safe XGBoost package beats Huber + additive Hilbert **14.514** and LightGBM inference-safe **14.687**, so boosted-tree tuning should continue.
 - Notes: This package intentionally mirrors the LightGBM inference-safe feature set so public comparison isolates model engine/objective differences rather than feature availability. The public gain is small but important because it transfers without train-only formation features.
 
+## 2026-06-28__xgboost_inference_safe_tuning
+
+- Task: inference-safe XGBoost tuning
+- Purpose: Test whether the full-feature XGBoost gain can be recovered with Kaggle-legal typewell features and fold-safe predicted formation-distance proxies.
+- Config: notebook-local config in `notebooks/modeling/02_trees/08_xgboost_inference_safe_tuning.ipynb`; deterministic target-row sampling capped at **120** rows per well, bounded XGBoost thread count, pseudo-Huber and squared-error candidates.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell/alignment descriptors, and fold-safe proxy formation features derived from safe row/typewell inputs.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; best legal candidate stress-tested on `analog_distance_fold`; direct formation features retained only as an oracle diagnostic.
+- Model: best legal candidate `pseudo_shallow_more_trees__safe_typewell`, XGBoost histogram trees with pseudo-Huber objective over signed TVT delta from each well's last known TVT.
+- Primary metric: sampled `strict_hybrid_fold` RMSE **13.4178**, versus safe-base RMSE **13.4399**.
+- Secondary metrics: `analog_distance_fold` stress RMSE **13.7533**. Fold-safe proxy-formation features scored **13.5503**, worse than safe base by **0.1103** RMSE. Oracle direct-formation diagnostic scored **12.9597**, leaving a **0.4581** RMSE gap from the best legal model.
+- Artifacts: feature preview, proxy quality, summary, fold metrics, analog-distance stress metrics, feature importance, residual sample, well diagnostics, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-06-28__xgboost_inference_safe_tuning/`.
+- Decision: do not package this notebook to Kaggle yet. Best legal tuning improved local strict CV only marginally, and proxy-formation features underperformed safe base.
+- Notes: The experiment confirms direct formation distance is valuable, but the current proxy approach does not transfer that signal. Next work should try residual stacking or a stronger hidden-test-safe structural proxy instead of more of the same proxy-formation recipe.
+
 ## Entry Format
 
 ```text

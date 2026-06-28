@@ -58,6 +58,7 @@
 - [x] Push and submit inference-safe LightGBM Kaggle notebook version 1 (`ref=54097453`) - public LB **14.687**
 - [x] Run strict-CV XGBoost screen (`2026-06-27__xgboost_strict_cv`) - best `xgb_pseudohuber_shallow_robust`, strict-hybrid RMSE **12.7504**, analog-distance stress RMSE **12.9116**
 - [x] Push and submit inference-safe XGBoost Kaggle notebook version 1 (`ref=54129475`) - public LB **14.472**
+- [x] Run inference-safe XGBoost tuning screen (`2026-06-28__xgboost_inference_safe_tuning`) - best legal `pseudo_shallow_more_trees__safe_typewell`, strict-hybrid RMSE **13.4178**, analog-distance stress RMSE **13.7533**; do not package yet
 
 ## In progress
 
@@ -72,10 +73,10 @@
 
 ## Next up
 
-1. Tune inference-safe XGBoost features and hyperparameters against the new public baseline **14.472**, while avoiding direct leaderboard-only optimization.
-2. Do not promote simple empirical Bayes contextual intercept offsets; descriptor-predicted well offsets worsened sampled RMSE.
-3. Do not promote residual-shape corrections; row/progress/distance/slope-instability screens failed the **0.05 RMSE** gate.
-4. Do not promote contextual Huber interactions; the best contextual polynomial surface improved only **0.0064 RMSE**, below the **0.05** gate.
+1. Try residual stacking or a stronger hidden-test-safe structural proxy around the current XGBoost public baseline **14.472**.
+2. Do not package the current proxy-formation XGBoost tuning pass; proxy features scored worse than safe base locally.
+3. Use the oracle direct-formation gap as a design target for better stratigraphic/typewell features, not as a Kaggle-safe feature set.
+4. Do not promote simple empirical Bayes contextual intercept offsets; descriptor-predicted well offsets worsened sampled RMSE.
 5. Defer full hierarchical HSGP until alignment or stronger geologic descriptors give hierarchy something transferable to pool over.
 6. Investigate why the Huber + Hilbert residual gain transferred externally while the Huber-only public score lagged GAM.
 7. Investigate why the reconstructed spline GAM mean was unstable in `06_hsgp_residual_on_gam_huber.ipynb` despite the public GAM notebook scoring best externally.
