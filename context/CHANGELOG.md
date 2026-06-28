@@ -39,6 +39,7 @@
 ## [Unreleased]
 
 ### Changed
+- Recorded the inference-safe XGBoost Kaggle result (`ref=54129475`, public LB **14.472**) as the new best public submission.
 - Recorded the inference-safe LightGBM Kaggle result (`ref=54097453`, public LB **14.687**) as a transfer miss versus Huber + Hilbert **14.514**.
 - Recorded the 2026-06-23 research pass across geologic alignment, well-top recommender systems, DTW/log alignment, HSGP/GP kernels, multitask GP, Student-t GP likelihoods, and geostatistical residual modeling; updated assumptions, risks, decisions, and task ladders to pivot from shallow residual hierarchy to fold-safe typewell/analog feature screening.
 - Pushed and submitted the self-contained Huber + additive Hilbert residual notebook; public LB scored **14.514**, the current best external result.
@@ -67,6 +68,7 @@
 - Generated and ran first baseline modeling notebooks; updated structure, status, experiments, and feature log with run IDs and RMSEs.
 
 ### Added
+- Self-contained inference-safe XGBoost strict-CV Kaggle package under `kaggle/xgboost_strict_submission/`; Kaggle version 1 completed with 14,151 prediction rows and submission `54129475` scored public LB **14.472**.
 - XGBoost strict-CV notebook, stress-fold diagnostics, feature importance, residual sample, reports, model-comparison row, and run bundle. Best `xgb_pseudohuber_shallow_robust` scored **12.7504** on `strict_hybrid_fold` and **12.9116** on `analog_distance_fold`.
 - Self-contained inference-safe LightGBM strict-CV Kaggle package under `kaggle/lightgbm_strict_submission/`; Kaggle version 1 completed with 14,151 prediction rows and submission `54097453` scored public LB **14.687**.
 - LightGBM strict-CV notebook, stress-fold diagnostics, feature importance, reports, model-comparison row, and run bundle. Best `lgbm_medium_l2` scored **13.2363** on `strict_hybrid_fold` and **13.4453** on `analog_distance_fold`.

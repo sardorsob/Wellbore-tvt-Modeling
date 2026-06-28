@@ -4,6 +4,7 @@
 
 | Date | Ref | Notebook | Local CV RMSE | Public LB | Notes |
 |---|---|---|---:|---:|---|
+| 2026-06-28 | `54129475` | `sardorbsobirov/wellbore-xgboost-strict-cv` v1 | 12.7504 strict-hybrid; 12.9116 analog-distance stress | 14.472 | Self-contained inference-safe XGBoost pseudo-Huber package improves over Huber + Hilbert `14.514` and LightGBM inference-safe `14.687`; promote as current best public LB. |
 | 2026-06-27 | `54097453` | `sardorbsobirov/wellbore-lightgbm-strict-cv` v1 | 13.2363 strict-hybrid; 13.4453 analog-distance stress | 14.687 | Self-contained inference-safe LightGBM package completed but worsened vs Huber + Hilbert `14.514`, confirming that the strict-CV tree gain does not transfer automatically after removing local-only formation features. |
 | 2026-06-24 | `53999839` | `sardorbsobirov/wellbore-huber-hilbert-analog` v1 | 14.6383 diagnostic residual-sample | 14.603 | Self-contained Huber + additive Hilbert plus direct log-plus-trajectory analog gate. Public score worsened vs Huber + Hilbert `14.514`, so do not promote. |
 | 2026-06-22 | `53960276` | `sardorbsobirov/wellbore-huber-hsgp-residual` v1 | 14.3586 | 14.514 | Huber signed-delta mean plus additive Hilbert residual over boundary/progress/slope-instability coordinates. New best public LB, but still far from the top public range. |

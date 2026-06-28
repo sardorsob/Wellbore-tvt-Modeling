@@ -490,6 +490,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: promote boosted-tree work, but do not package this local notebook directly because top features include train-only formation-distance columns. Next step is inference-safe XGBoost/LightGBM tuning that replaces or removes formation-distance features.
 - Notes: Top features for the best candidate include `md_from_start`, `extrapolation_stress_score`, `distance_log1p`, `row_idx_original`, `abs_dist_to_BUDA`, and `dist_to_BUDA`.
 
+## 2026-06-28__xgboost_strict_kaggle_package
+
+- Task: boosted-tree Kaggle packaging
+- Purpose: Convert the XGBoost strict-CV candidate into a self-contained code-competition notebook that trains and writes `/kaggle/working/submission.csv`.
+- Config: `kaggle/xgboost_strict_submission/xgboost_strict_submission.ipynb`, `XGBRegressor(objective="reg:pseudohubererror", n_estimators=800, learning_rate=0.04, max_depth=4, min_child_weight=120, subsample=0.80, colsample_bytree=0.80, reg_lambda=8.0)`, deterministic target-row sampling capped at **220** rows per well.
+- Data version: Kaggle competition input on remote run; local mirror under `data/raw/` for validation.
+- Split / CV: no new CV fit in the package; training uses all available training wells and recomputed descriptors, while the local score basis remains `2026-06-27__xgboost_strict_cv`.
+- Model: `xgb_pseudohuber_shallow_robust_inference_safe`
+- Primary metric: Kaggle submission `54129475` public LB **14.472**.
+- Secondary metrics: local package execution and Kaggle version 1 both produced **14,151** rows with `id,tvt`, no missing predictions; Kaggle log reports **170,060** training rows and **31** inference-safe features.
+- Artifacts: Kaggle package under `kaggle/xgboost_strict_submission/`, local validation output under `kaggle/xgboost_strict_submission/artifacts/reports/`, downloaded remote output under `.tmp_kaggle_config/xgboost_strict_output/`.
+- Decision: promote as the current best public submission. The inference-safe XGBoost package beats Huber + additive Hilbert **14.514** and LightGBM inference-safe **14.687**, so boosted-tree tuning should continue.
+- Notes: This package intentionally mirrors the LightGBM inference-safe feature set so public comparison isolates model engine/objective differences rather than feature availability. The public gain is small but important because it transfers without train-only formation features.
+
 ## Entry Format
 
 ```text

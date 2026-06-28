@@ -165,6 +165,21 @@
 - Notes: Kaggle version 1 completed successfully, used `/kaggle/input/competitions/rogii-wellbore-geology-prediction`, trained on **170,060** sampled rows with **31** inference-safe features, and produced **14,151** prediction rows with no missing `tvt` values.
 - Decision: do not promote over Huber + additive Hilbert public LB **14.514**. The inference-safe LightGBM package scored worse than the current baseline, which confirms that the full strict-CV tree result does not transfer automatically after removing local-only formation-distance features.
 
+- Timestamp: 2026-06-28
+- Run ID: `2026-06-27__xgboost_strict_cv`
+- Git SHA: package commit containing this entry
+- Config: self-contained XGBoost strict-CV package, `objective="reg:pseudohubererror"`, `n_estimators=800`, `learning_rate=0.04`, `max_depth=4`, `min_child_weight=120`, `reg_lambda=8.0`, `MAX_TARGET_ROWS_PER_WELL=220`; inference-safe row geometry and descriptor features only, with local-only formation columns excluded for Kaggle hidden-test compatibility.
+- Local CV: full-feature strict-CV candidate `xgb_pseudohuber_shallow_robust`, `strict_hybrid_fold` RMSE **12.7504**, analog-distance stress RMSE **12.9116**; this Kaggle package is the inference-safe feature subset version.
+- Local submission file: Kaggle kernel output `/kaggle/working/submission.csv`; local validation output `kaggle/xgboost_strict_submission/artifacts/reports/submission__xgboost_strict__2026-06-27.csv`.
+- Kaggle notebook: `https://www.kaggle.com/code/sardorbsobirov/wellbore-xgboost-strict-cv`
+- Kaggle kernel version: 1
+- Status: `KernelWorkerStatus.COMPLETE`
+- Public LB: `14.472`
+- Submission ref: `54129475`
+- Submission status: `SubmissionStatus.COMPLETE`
+- Notes: Kaggle version 1 completed successfully, used `/kaggle/input/competitions/rogii-wellbore-geology-prediction`, trained on **170,060** sampled rows with **31** inference-safe features, and produced **14,151** prediction rows with no missing `tvt` values.
+- Decision: promote as the current best public submission. It improves over Huber + additive Hilbert **14.514** despite using only inference-safe features, so XGBoost pseudo-Huber tree tuning is the next priority.
+
 Use this format for every submission:
 
 ```text

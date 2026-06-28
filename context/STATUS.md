@@ -1,7 +1,7 @@
 # Project Status
 
-**Last updated:** 2026-06-27
-**Current phase:** XGBoost strict-CV complete; LightGBM Kaggle transfer miss recorded
+**Last updated:** 2026-06-28
+**Current phase:** XGBoost inference-safe submission is current best public LB
 
 ---
 
@@ -57,12 +57,13 @@
 - [x] Run strict-CV LightGBM screen (`2026-06-26__lightgbm_strict_cv`) - best `lgbm_medium_l2`, strict-hybrid RMSE **13.2363**, analog-distance stress RMSE **13.4453**
 - [x] Push and submit inference-safe LightGBM Kaggle notebook version 1 (`ref=54097453`) - public LB **14.687**
 - [x] Run strict-CV XGBoost screen (`2026-06-27__xgboost_strict_cv`) - best `xgb_pseudohuber_shallow_robust`, strict-hybrid RMSE **12.7504**, analog-distance stress RMSE **12.9116**
+- [x] Push and submit inference-safe XGBoost Kaggle notebook version 1 (`ref=54129475`) - public LB **14.472**
 
 ## In progress
 
 - [ ] Export artifact figures per `CURSOR_RULES.md`
 - [ ] Verify Kaggle competition rules page before first submission (`kaggle/RULES_SUMMARY.md`)
-- [ ] Use public LB **14.514** as the current external baseline; LightGBM submission `54097453` scored **14.687** and did not promote
+- [ ] Use public LB **14.472** as the current external baseline; XGBoost submission `54129475` is the current best public result
 - [x] Build validation mismatch audit after analog-gate public score **14.603** failed to beat Huber + Hilbert **14.514**
 - [ ] Follow D014 staged hierarchy plan: residual audit, contextual offsets, contextual Huber hierarchy, then Hilbert residual
 - [ ] Investigate why Huber GLM beat GAM locally but scored worse publicly
@@ -71,7 +72,7 @@
 
 ## Next up
 
-1. Build an inference-safe boosted-tree tuning notebook that removes train-only formation-distance features and measures the gap versus XGBoost's full-feature strict-CV RMSE **12.7504**.
+1. Tune inference-safe XGBoost features and hyperparameters against the new public baseline **14.472**, while avoiding direct leaderboard-only optimization.
 2. Do not promote simple empirical Bayes contextual intercept offsets; descriptor-predicted well offsets worsened sampled RMSE.
 3. Do not promote residual-shape corrections; row/progress/distance/slope-instability screens failed the **0.05 RMSE** gate.
 4. Do not promote contextual Huber interactions; the best contextual polynomial surface improved only **0.0064 RMSE**, below the **0.05** gate.
@@ -89,6 +90,7 @@
 - [x] `notebooks/modeling/02_trees/07_xgboost_strict_cv.ipynb`: compare XGBoost against LightGBM under the same strict folds.
 - [ ] `notebooks/modeling/02_trees/08_xgboost_inference_safe_tuning.ipynb`: test XGBoost without train-only formation columns and add hidden-test-safe analog/typewell proxies.
 - [x] `kaggle/lightgbm_strict_submission/`: package and submit the inference-safe LightGBM strict-CV candidate as an external transfer check.
+- [x] `kaggle/xgboost_strict_submission/`: package and submit the inference-safe XGBoost strict-CV candidate as an external transfer check.
 
 ## Hierarchical task ladder
 
@@ -145,6 +147,7 @@
 | 2026-06-22 | Huber + additive Hilbert residual | 14.3586 | 14.514 | Submission `53960276`; new best public LB, but still far from top public range |
 | 2026-06-24 | Huber + additive Hilbert + analog gate | 14.6383 diagnostic residual-sample | 14.603 | Submission `53999839`; failed to beat Huber + Hilbert `14.514`, so do not promote |
 | 2026-06-27 | LightGBM strict-CV inference-safe | 13.2363 strict-hybrid; 13.4453 analog-distance stress | 14.687 | Submission `54097453`; did not beat Huber + Hilbert `14.514` |
+| 2026-06-28 | XGBoost strict-CV inference-safe | 12.7504 strict-hybrid; 12.9116 analog-distance stress | 14.472 | Submission `54129475`; current best public LB |
 
 ## Local diagnostic model history
 
