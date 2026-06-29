@@ -289,3 +289,17 @@
 **Rationale:** `ridge_residual_s025` improved strict-CV RMSE from **13.4178** to **13.2548** and analog-distance stress RMSE from **13.7424** to **13.5632**. Both improvements clear the **0.05 RMSE** gate. The XGBoost residual head worsened strict CV, while Huber was close but slightly worse than Ridge. The result was reproduced with a clean rerun.
 **Consequences:** Build a self-contained Kaggle notebook that trains the base XGBoost model and a nested/residual Ridge correction using only hidden-test-safe row, descriptor, and typewell features. Preserve the **25%** residual shrinkage unless a packaging validation run proves a safer schedule.
 **Follow-up:** Create `kaggle/xgboost_residual_stack_submission/`, validate local output shape, push to Kaggle, and submit only if the notebook writes `/kaggle/working/submission.csv` successfully.
+
+---
+
+## D023 - Reject residual stacking after public transfer miss
+
+**Date:** 2026-06-29
+**Decision:** Do not promote the XGBoost Ridge residual-stack package over the current XGBoost strict inference-safe baseline.
+**Alternatives considered:**
+- Keep tuning residual shrinkage after the public miss.
+- Treat the local strict/stress gains as stronger evidence than the public score.
+- Revert to the current XGBoost strict inference-safe package as the active public baseline.
+**Rationale:** The residual-stack package completed on Kaggle version 2 and submission `54157692` scored **14.583**, worse than the current XGBoost strict inference-safe public LB **14.472**. This happened despite local strict-CV improvement of **0.1630** RMSE and analog-distance stress improvement of **0.1792** RMSE. The mismatch indicates that the residual head learned local residual shape that did not transfer to the public rerun distribution.
+**Consequences:** Keep `54129475` / **14.472** as the active public benchmark. Treat generic post-hoc residual stacking as fragile unless a future residual feature has a stronger geologic mechanism or passes a validation design calibrated against public transfer.
+**Follow-up:** Focus next on hidden-test-safe feature geometry, stratigraphic/typewell structure, or validation recalibration rather than another generic residual stacker.

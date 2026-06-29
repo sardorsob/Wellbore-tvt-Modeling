@@ -180,6 +180,21 @@
 - Notes: Kaggle version 1 completed successfully, used `/kaggle/input/competitions/rogii-wellbore-geology-prediction`, trained on **170,060** sampled rows with **31** inference-safe features, and produced **14,151** prediction rows with no missing `tvt` values.
 - Decision: promote as the current best public submission. It improves over Huber + additive Hilbert **14.514** despite using only inference-safe features, so XGBoost pseudo-Huber tree tuning is the next priority.
 
+- Timestamp: 2026-06-29
+- Run ID: `2026-06-28__xgboost_residual_stacking`
+- Git SHA: package commit containing this entry
+- Config: self-contained XGBoost plus Ridge residual-stack package, base `XGBRegressor(objective="reg:pseudohubererror", n_estimators=700, learning_rate=0.03, max_depth=4, min_child_weight=100, reg_lambda=7.0)`, well-level OOF base residuals over **3** stable folds, `Ridge(alpha=200.0)` residual head with **25%** shrinkage, `MAX_TARGET_ROWS_PER_WELL=120`; inference-safe row, descriptor, and typewell features only.
+- Local CV: nested residual stack `ridge_residual_s025`, `strict_hybrid_fold` RMSE **13.2548** versus base-only **13.4178**; `analog_distance_fold` stress RMSE **13.5632** versus base-only **13.7424**.
+- Local submission file: `artifacts/reports/submission__xgboost_residual_stack__2026-06-28.csv`; Kaggle kernel output `/kaggle/working/submission.csv`.
+- Kaggle notebook: `https://www.kaggle.com/code/sardorbsobirov/wellbore-xgboost-residual-stack`
+- Kaggle kernel version: 2
+- Status: `KernelWorkerStatus.COMPLETE`
+- Public LB: `14.583`
+- Submission ref: `54157692`
+- Submission status: `SubmissionStatus.COMPLETE`
+- Notes: Version 1 failed before execution because the generated notebook lacked kernelspec metadata. Version 2 completed successfully, used `/kaggle/input/competitions/rogii-wellbore-geology-prediction`, trained on **92,760** sampled rows with **36** base features and **22** residual features, and produced **14,151** prediction rows with no missing `tvt` values. The public score is worse than the current XGBoost strict inference-safe baseline **14.472** despite strong local strict/stress gains.
+- Decision: do not promote over XGBoost strict inference-safe. Treat this as another validation-transfer warning: nested residual stacking captured local residual structure but over-corrected or failed to transfer to the hidden public rerun.
+
 Use this format for every submission:
 
 ```text

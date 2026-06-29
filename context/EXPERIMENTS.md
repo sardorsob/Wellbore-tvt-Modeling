@@ -529,8 +529,8 @@ This file is the human-readable registry for reportable runs.
 - Primary metric: `strict_hybrid_fold` RMSE **13.2548**, improving base-only XGBoost **13.4178** by **0.1630** RMSE.
 - Secondary metrics: `analog_distance_fold` stress RMSE **13.5632**, improving stress base-only **13.7424** by **0.1792** RMSE. Reproducibility rerun matched the key metrics.
 - Artifacts: summary, fold metrics, analog-distance stress metrics, zone and analog-bin summaries, well diagnostics, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-06-28__xgboost_residual_stacking/`.
-- Decision: promote to Kaggle packaging next. This is the first post-XGBoost local improvement that clears both strict-CV and analog-distance stress gates.
-- Notes: The residual signal is strongest outside the earliest progress zone; late target-zone rows improved by roughly **0.23** RMSE in the strict split, while the first quartile slightly worsened. Preserve shrinkage in the Kaggle package to avoid over-correcting early rows.
+- Decision: promoted to Kaggle packaging for one external probe, but do not promote after the public result. Kaggle submission `54157692` scored **14.583**, worse than the current XGBoost strict inference-safe public LB **14.472**.
+- Notes: The residual signal is strongest outside the earliest progress zone; late target-zone rows improved by roughly **0.23** RMSE in the strict split, while the first quartile slightly worsened. The public miss suggests residual correction is still validation-fragile even when it clears `analog_distance_fold`.
 
 ## Entry Format
 

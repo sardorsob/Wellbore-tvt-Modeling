@@ -15,7 +15,7 @@ Run id: `2026-06-28__xgboost_residual_stacking`
 
 ## Decision
 
-Recommendation: `package_next`.
+Recommendation: `do_not_promote_after_public_score`.
 
 Nested residual stacking cleared both strict-CV and analog-distance stress promotion gates, and the reproducibility rerun matched the key metrics.
 
@@ -26,3 +26,7 @@ The stackers are trained on inner out-of-fold residuals inside each held-out fol
 ## Next Move
 
 Package the Ridge residual stacker for Kaggle as the next external validation probe.
+## External Validation
+
+Kaggle package version 2 completed and submission `54157692` scored public LB `14.583`, worse than the current XGBoost strict inference-safe baseline `14.472`. Do not promote this residual stacker as the active best.
+

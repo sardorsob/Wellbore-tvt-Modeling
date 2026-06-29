@@ -7,5 +7,7 @@ selected_stress_rmse,13.5632
 stress_base_only_rmse,13.7424
 selected_stress_minus_base_rmse,-0.1792
 best_minus_previous_legal_xgb_rmse,-0.1630
-recommendation,package_next
-recommendation_reason,"Nested residual stacking cleared both strict-CV and analog-distance stress promotion gates, and the reproducibility rerun matched the key metrics."
+recommendation,do_not_promote_after_public_score
+recommendation_reason,"Kaggle submission 54157692 scored 14.583 public LB, worse than current XGBoost strict inference-safe 14.472 despite local strict/stress gains."
+public_lb_rmse,14.583
+submission_ref,54157692

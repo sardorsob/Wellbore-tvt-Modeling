@@ -68,6 +68,7 @@
 - Generated and ran first baseline modeling notebooks; updated structure, status, experiments, and feature log with run IDs and RMSEs.
 
 ### Added
+- Self-contained XGBoost Ridge residual-stack Kaggle package under `kaggle/xgboost_residual_stack_submission/`; Kaggle version 2 completed with 14,151 prediction rows and submission `54157692` scored public LB **14.583**, worse than current XGBoost strict inference-safe **14.472**.
 - Nested XGBoost residual-stacking notebook, strict/stress nested OOF diagnostics, reports, model-comparison row, and run bundle. Best `ridge_residual_s025` scored **13.2548** strict-hybrid RMSE and **13.5632** analog-distance stress RMSE, clearing both promotion gates for the next Kaggle package.
 - Inference-safe XGBoost tuning notebook, proxy-formation diagnostics, legal/oracle feature-set comparison, stress-fold metrics, report, model-comparison row, and run bundle. Best legal `safe_typewell` candidate scored **13.4178** strict-hybrid RMSE and **13.7533** analog-distance stress RMSE; proxy-formation features underperformed safe base, so no Kaggle package was promoted.
 - Self-contained inference-safe XGBoost strict-CV Kaggle package under `kaggle/xgboost_strict_submission/`; Kaggle version 1 completed with 14,151 prediction rows and submission `54129475` scored public LB **14.472**.

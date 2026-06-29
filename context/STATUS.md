@@ -60,6 +60,7 @@
 - [x] Push and submit inference-safe XGBoost Kaggle notebook version 1 (`ref=54129475`) - public LB **14.472**
 - [x] Run inference-safe XGBoost tuning screen (`2026-06-28__xgboost_inference_safe_tuning`) - best legal `pseudo_shallow_more_trees__safe_typewell`, strict-hybrid RMSE **13.4178**, analog-distance stress RMSE **13.7533**; do not package yet
 - [x] Run nested XGBoost residual-stacking screen (`2026-06-28__xgboost_residual_stacking`) - best `ridge_residual_s025`, strict-hybrid RMSE **13.2548**, analog-distance stress RMSE **13.5632**; promote to Kaggle package next
+- [x] Push and submit XGBoost Ridge residual-stack Kaggle notebook version 2 (`ref=54157692`) - public LB **14.583**, worse than current best **14.472**
 
 ## In progress
 
@@ -74,8 +75,8 @@
 
 ## Next up
 
-1. Package `ridge_residual_s025` as a self-contained Kaggle notebook and submit it as the next external validation probe against public baseline **14.472**.
-2. Preserve conservative **25%** residual shrinkage in the Kaggle package unless local package validation proves a safer gate.
+1. Keep XGBoost strict inference-safe submission `54129475` / public LB **14.472** as the active benchmark.
+2. Do not continue generic residual stacking immediately; the Ridge residual package scored **14.583** publicly despite local strict/stress gains.
 3. Do not package the current proxy-formation XGBoost tuning pass; proxy features scored worse than safe base locally.
 4. Use the oracle direct-formation gap as a design target for better stratigraphic/typewell features, not as a Kaggle-safe feature set.
 5. Defer full hierarchical HSGP until alignment or stronger geologic descriptors give hierarchy something transferable to pool over.
@@ -150,6 +151,7 @@
 | 2026-06-24 | Huber + additive Hilbert + analog gate | 14.6383 diagnostic residual-sample | 14.603 | Submission `53999839`; failed to beat Huber + Hilbert `14.514`, so do not promote |
 | 2026-06-27 | LightGBM strict-CV inference-safe | 13.2363 strict-hybrid; 13.4453 analog-distance stress | 14.687 | Submission `54097453`; did not beat Huber + Hilbert `14.514` |
 | 2026-06-28 | XGBoost strict-CV inference-safe | 12.7504 strict-hybrid; 12.9116 analog-distance stress | 14.472 | Submission `54129475`; current best public LB |
+| 2026-06-29 | XGBoost Ridge residual stack | 13.2548 strict-hybrid; 13.5632 analog-distance stress | 14.583 | Submission `54157692`; failed to beat XGBoost strict inference-safe `14.472` |
 
 ## Local diagnostic model history
 

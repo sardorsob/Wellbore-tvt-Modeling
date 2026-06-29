@@ -378,3 +378,9 @@ The inference-safe XGBoost tuning screen found `safe_typewell` as the best legal
 The XGBoost residual-stacking screen found `ridge_residual_s025` as the best stacker. It improved `strict_hybrid_fold` RMSE from base-only **13.4178** to **13.2548** and improved `analog_distance_fold` stress RMSE from **13.7424** to **13.5632**. The residual stacker was trained on inner out-of-fold residuals inside each outer fold, and a reproducibility rerun matched the key metrics.
 
 **Modeling implication:** Promote Ridge residual stacking into a self-contained Kaggle package next. Keep the residual correction shrunk and inference-safe; the first progress quartile slightly worsened while later rows improved, so the package should preserve conservative shrinkage and monitor early-zone behavior.
+
+### A50 - Residual-stacking gains remain validation-fragile
+
+The Ridge residual-stack Kaggle package scored public LB **14.583** (`ref=54157692`), worse than the current XGBoost strict inference-safe baseline **14.472**, despite improving both `strict_hybrid_fold` and `analog_distance_fold` locally. The package used only inference-safe row, descriptor, and typewell features, trained base OOF residuals over stable well folds, and produced a valid **14,151** row submission.
+
+**Modeling implication:** Do not keep stacking generic residual heads without a stronger reason. Next improvements should focus on hidden-test-safe feature geometry, public-transfer diagnostics, and calibration of validation folds against leaderboard behavior rather than more post-hoc residual correction.
