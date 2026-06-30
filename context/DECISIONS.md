@@ -303,3 +303,17 @@
 **Rationale:** The residual-stack package completed on Kaggle version 2 and submission `54157692` scored **14.583**, worse than the current XGBoost strict inference-safe public LB **14.472**. This happened despite local strict-CV improvement of **0.1630** RMSE and analog-distance stress improvement of **0.1792** RMSE. The mismatch indicates that the residual head learned local residual shape that did not transfer to the public rerun distribution.
 **Consequences:** Keep `54129475` / **14.472** as the active public benchmark. Treat generic post-hoc residual stacking as fragile unless a future residual feature has a stronger geologic mechanism or passes a validation design calibrated against public transfer.
 **Follow-up:** Focus next on hidden-test-safe feature geometry, stratigraphic/typewell structure, or validation recalibration rather than another generic residual stacker.
+
+---
+
+## D024 - Pivot the next modeling cycle to stratigraphic transfer features
+
+**Date:** 2026-06-30
+**Decision:** Pause generic residual stacking and model-class hopping until we run a domain-driven stratigraphic-transfer audit and feature screen.
+**Alternatives considered:**
+- Keep tuning XGBoost residual heads because local strict-CV RMSE moved.
+- Jump to a hierarchical GP/HSGP immediately.
+- Submit another tree package with small hyperparameter changes.
+**Rationale:** Deep domain review and our own results agree that the missing signal is formation-relative state. Direct formation-distance features helped local XGBoost strongly, but legal proxies did not transfer enough, and two locally promising residual/analog corrections missed publicly. Formation-top and well-log correlation literature support sequence alignment, top/proximity uncertainty, and log motif matching as the next source of hidden-test-safe signal.
+**Consequences:** The next notebook should measure and build fold-safe stratigraphic-state features before another Kaggle submission. The notebook should record whether typewell/known-zone alignment uncertainty explains public-miss-like wells, and only then feed those features into XGBoost/LightGBM/Huber/HSGP candidates.
+**Follow-up:** Create the next alignment/validation notebook around DTW/log-shape alignment, pseudo-top uncertainty, known-zone boundary behavior, and stress-slice validation. Require a clear strict-fold and stress-slice gain before packaging.

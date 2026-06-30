@@ -384,3 +384,33 @@ The XGBoost residual-stacking screen found `ridge_residual_s025` as the best sta
 The Ridge residual-stack Kaggle package scored public LB **14.583** (`ref=54157692`), worse than the current XGBoost strict inference-safe baseline **14.472**, despite improving both `strict_hybrid_fold` and `analog_distance_fold` locally. The package used only inference-safe row, descriptor, and typewell features, trained base OOF residuals over stable well folds, and produced a valid **14,151** row submission.
 
 **Modeling implication:** Do not keep stacking generic residual heads without a stronger reason. Next improvements should focus on hidden-test-safe feature geometry, public-transfer diagnostics, and calibration of validation folds against leaderboard behavior rather than more post-hoc residual correction.
+
+### A51 - TVT prediction is primarily a stratigraphic-state problem
+
+Domain references on well geometry, formation-top picking, and well-log correlation support treating `TVT` as a formation-relative coordinate, not just a smooth row-level response over `MD`, `X`, `Y`, `Z`, and `GR`. The strongest local tree diagnostics also point this way: direct distances to named formations were among the best XGBoost features, while submission-safe proxies only recovered a small part of that signal. References reviewed: Pisel et al. on well-top recommendation (`https://arxiv.org/abs/2202.08869`), Chaki et al. on well-tops-guided reservoir property prediction (`https://arxiv.org/abs/1509.07079`), SLB Oilfield Glossary geometry terms (`https://glossary.slb.com/`).
+
+**Modeling implication:** The next feature work should infer latent stratigraphic state from test-safe evidence: known-zone `TVT_input`, trajectory shape, typewell/log motif alignment, boundary behavior, and uncertainty in the implied top/zone position. Do not spend the next cycle on another generic residual learner unless it uses this state explicitly.
+
+### A52 - Gamma-ray logs are useful alignment evidence but ambiguous on their own
+
+Gamma ray helps distinguish lithology, but similar log motifs can recur across formations and local GR values lose phase/stretch information. Literature on log correlation and dynamic time warping supports using sequence alignment, lag/stretch, and alignment uncertainty rather than only scalar GR windows. References reviewed: Herrera and van der Baan on DTW for seismic-to-well ties (`https://arxiv.org/abs/1209.0201`) and tslearn DTW documentation (`https://tslearn.readthedocs.io/en/stable/user_guide/dtw.html`).
+
+**Modeling implication:** Build features that summarize alignment quality over known-zone sequences: DTW distance to typewell/template windows, inferred lag, stretch/compression, segment correlation, recent motif mismatch, and ambiguity between the best and second-best alignments. These must be recomputed fold-safely and use only known-zone rows for held-out/test wells.
+
+### A53 - Horizontal-well/geosteering context favors constrained trajectory corrections
+
+Horizontal wells can move laterally through dipping or structurally complex stratigraphy. In that setting, row-independent prediction can fit average patterns but miss boundary crossings, local bed dip, and formation-relative progress. The repeated local/public mismatch suggests the hidden test may be stressing exactly those transitions.
+
+**Modeling implication:** Prefer candidate models/features that preserve within-well continuity and relative position: monotone or softly monotone `TVT` paths, boundary-distance interactions, segment-level offsets/slopes, and postprocessing that removes unrealistic local jumps. Any such constraints must be tested against wells where true target-zone `TVT` sometimes bends or changes slope, not only smooth examples.
+
+### A54 - Public leaderboard misses are evidence of validation-regime mismatch
+
+The Huber + analog gate and XGBoost residual stack both improved local diagnostics but failed to beat the simpler public baselines. This is unlikely to be only random noise; it means the current strict folds are still not reproducing the hidden stratigraphic-transfer problem well enough.
+
+**Modeling implication:** Add a validation audit before the next model package. Candidate folds/stress slices should condition on inferred stratigraphic novelty, typewell alignment uncertainty, known-zone length, GR missingness, target-zone extrapolation distance, and analog-quality scores. Public LB should remain an external check, but it should not be the first place these failure modes are discovered.
+
+### A55 - Formation-top inference should be modeled as uncertain, not replaced by hard pseudo-labels
+
+The direct formation-distance oracle gap is real, but hidden test wells do not expose the same train-only formation columns. A hard pseudo-formation classifier could overfit badly if it assigns confident wrong tops. Formation-top and log-correlation literature both point toward ranked candidates and uncertainty, not only one chosen top.
+
+**Modeling implication:** If pseudo-top or pseudo-zone features are added, export uncertainty features too: top candidate distance, probability/margin, entropy, best-vs-second alignment score, and whether the target zone lies near a likely boundary. Trees can use these uncertainty summaries; Bayesian models can later turn them into priors or hierarchical shrinkage terms.

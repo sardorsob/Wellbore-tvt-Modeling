@@ -39,6 +39,8 @@
 ## [Unreleased]
 
 ### Changed
+- Recorded a 2026-06-30 domain research reset focused on TVT as a stratigraphic-state prediction problem, including formation-top uncertainty, log/DTW alignment, geosteering-style continuity, and validation-regime mismatch.
+- Added decision `D024`, assumptions `A51`-`A55`, risk `R11`, stratigraphic-transfer CV requirements, glossary terms, and a feature backlog for the next alignment/validation notebook.
 - Recorded the inference-safe XGBoost Kaggle result (`ref=54129475`, public LB **14.472**) as the new best public submission.
 - Recorded the inference-safe LightGBM Kaggle result (`ref=54097453`, public LB **14.687**) as a transfer miss versus Huber + Hilbert **14.514**.
 - Recorded the 2026-06-23 research pass across geologic alignment, well-top recommender systems, DTW/log alignment, HSGP/GP kernels, multitask GP, Student-t GP likelihoods, and geostatistical residual modeling; updated assumptions, risks, decisions, and task ladders to pivot from shallow residual hierarchy to fold-safe typewell/analog feature screening.

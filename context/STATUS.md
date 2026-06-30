@@ -153,6 +153,18 @@
 | 2026-06-28 | XGBoost strict-CV inference-safe | 12.7504 strict-hybrid; 12.9116 analog-distance stress | 14.472 | Submission `54129475`; current best public LB |
 | 2026-06-29 | XGBoost Ridge residual stack | 13.2548 strict-hybrid; 13.5632 analog-distance stress | 14.583 | Submission `54157692`; failed to beat XGBoost strict inference-safe `14.472` |
 
+## 2026-06-30 Domain Research Pivot
+
+Current public-best baseline remains XGBoost strict inference-safe at **14.472**. The latest research pass and public misses indicate that the next bottleneck is not another generic model class, but hidden-test-safe recovery of stratigraphic state.
+
+Immediate next work:
+
+- Build a stratigraphic-transfer audit notebook before another Kaggle submission.
+- Measure typewell/log-alignment quality with DTW/correlation/lag/stretch features using known-zone rows only.
+- Add pseudo-top or pseudo-zone uncertainty features rather than hard pseudo-formation labels.
+- Re-score XGBoost/LightGBM/Huber candidates on `strict_hybrid_fold`, `analog_distance_fold`, and high-stress slices for poor alignment, high extrapolation, and short known zones.
+- Package only if the new feature family clears both global strict-CV and stress-slice promotion gates.
+
 ## Local diagnostic model history
 
 | Date | Model | Local diagnostic RMSE | Notes |

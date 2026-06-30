@@ -121,3 +121,16 @@
 - For Kaggle submissions, derive test-well descriptors only from test-safe known-zone rows and competition-provided auxiliary files.
 - Never use target-zone `TVT` or residuals from the scored well to construct prediction features.
 - Add notebook assertions that alignment maps, pseudo-zone templates, and residual-spatial references exclude validation well IDs during CV.
+
+---
+
+## R11 - Pseudo-stratigraphic features can become confident wrong geology
+
+**Risk:** Hidden-test-safe pseudo-top, pseudo-zone, or typewell-alignment features may assign the wrong formation-relative state with high confidence, especially when GR motifs repeat or the target well is structurally novel.
+**Likelihood:** High if pseudo-labels are used as hard categorical features.
+**Impact:** Large public/private regressions, because a tree or GP can amplify wrong boundary proximity and wrong formation-distance signals.
+**Mitigation:**
+- Prefer soft/uncertainty features over hard pseudo-labels: best score, second-best score, score margin, alignment entropy, DTW distance, lag, stretch, and near-boundary flags.
+- Stress-test models on wells with poor typewell correlation, high analog distance, short known zones, high extrapolation distance, and high GR missingness.
+- Keep direct train-only formation columns only in oracle diagnostics; never use them in submission feature sets.
+- Add fold assertions that pseudo-state models are fit without held-out wells and use only known-zone evidence for validation/test wells.

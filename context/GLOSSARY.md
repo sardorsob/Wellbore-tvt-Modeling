@@ -7,6 +7,7 @@
 | **MD** | Measured Depth (ft) — total cable/drill length from surface |
 | **TVD** | True Vertical Depth (ft) — vertical distance below surface (= Z column) |
 | **TVT** | True Vertical Thickness (ft) — vertical thickness of the formation at the wellbore; the **prediction target** |
+| **TST** | True Stratigraphic Thickness - bed-normal thickness; useful distinction when beds dip and vertical thickness is not the same as thickness perpendicular to bedding |
 | **TVT_input** | Copy of TVT provided as a feature; contains NaN in the evaluation zone |
 | **Lateral** | Horizontal portion of the wellbore; this is where TVT is to be predicted |
 | **Kick-off point** | Depth where the well transitions from vertical to horizontal |
@@ -21,6 +22,11 @@
 | **GR** | Gamma Ray log (API units) — measures natural radioactivity; high GR = shale, low GR = sand/carbonate |
 | **Typewell** | Vertical reference well used for geological correlation; provides GR vs. TVT profile |
 | **Formation** | Named rock unit (e.g., EGFDL, BUDA, ANCC) |
+| **Formation top** | Depth or stratigraphic position where a named formation begins; direct top distances are train-only oracle features unless inferred from test-safe evidence |
+| **Stratigraphic state** | Latent formation-relative position of a row or well segment; includes likely zone/top proximity and uncertainty |
+| **Log motif** | Repeating pattern in a well log sequence, such as a GR peak/trough shape, used for correlation rather than as a single row value |
+| **DTW** | Dynamic Time Warping - sequence-alignment method that can match similar log motifs under lag or local stretching |
+| **Geosteering** | Real-time or retrospective interpretation of well trajectory relative to stratigraphy, often using logs and structural context |
 | **ANCC** | Formation name (predicted depth column in horizontal well) |
 | **ASTNU / ASTNL** | Formation name upper/lower |
 | **EGFDU / EGFDL** | Formation name upper/lower |

@@ -54,6 +54,20 @@ These are not yet promoted into reportable modeling runs unless listed in the fe
 - Strongest univariate target-zone delta signals in Phase 3: `tvt_slope_last_10` by absolute Spearman (**0.199**) and `z_slope_last_100` by mutual information (**0.514**).
 - Raw typewell residual `gr_minus_tw_proxy` is weak as a row-level signal: Spearman delta correlation **0.019**. Prefer robust typewell summaries over raw residuals.
 
+## 2026-06-30 Stratigraphic Feature Backlog
+
+Deep domain review and the latest public misses point to stratigraphic-state inference as the next feature target. Direct formation-distance features are powerful locally but not hidden-test-safe, so the next feature screen should approximate that signal with known-zone evidence only.
+
+Candidate feature groups:
+
+- Typewell/log alignment: DTW distance to typewell windows, best lag, stretch/compression, segment correlation, local motif mismatch, and best-vs-second alignment margin.
+- Pseudo-top uncertainty: soft zone/top probabilities, entropy, candidate margin, inferred distance to likely top/boundary, and near-boundary indicators.
+- Boundary-state continuity: endpoint `TVT_input`, endpoint slope/curvature, target-zone progress, distance past boundary, and monotonicity or local-jump diagnostics.
+- Analog stability: nearest log-plus-trajectory analog id for diagnostics, analog distance, analog-delta magnitude, and whether the nearest analog changes under feature ablation.
+- Reliability/stress flags: GR missingness, known-zone GR coverage, short-known-zone flags, extrapolation distance, and high-trajectory-curvature flags.
+
+Implementation rule: every feature must be recomputed inside the notebook and inside each CV fold. Direct train-only formation columns remain oracle diagnostics only.
+
 ## GAM-Style Feature Notes
 
 - First GAM-style additive spline run used notebook-local features only, with no dependency on local precomputed artifacts.
@@ -109,3 +123,4 @@ Record feature additions here when they are used in reportable experiments:
 | 2026-06-22 | Bayesian HSGP residual coordinates | `notebooks/modeling/06_bayesian/04_hsgp_residual_baseline.ipynb`, `artifacts/reports/model__bayesian_hsgp_residual__2026-06-22.md` | Test first HSGP residual mean structure over boundary/progress geometry | `distance_log1p` plus `eval_progress` with 25 basis functions is the first HSGP reference; increasing basis count or adding horizontal distance did not improve this pass. |
 | 2026-06-22 | Bayesian additive HSGP residual coordinates | `notebooks/modeling/06_bayesian/05_hsgp_additive_tuning.ipynb`, `artifacts/reports/model__bayesian_hsgp_additive__2026-06-22.md` | Test additive one-dimensional HSGP residual terms before Huber/GAM residual HSGP | Best geometry uses `distance_log1p`, `eval_progress`, and `abs_projected_delta_10`; future HSGP notebooks should keep clipped lower-step SVI and try this residual around a stronger Huber/GAM mean. |
 | 2026-06-22 | Huber mean plus additive Hilbert residual | `notebooks/modeling/06_bayesian/06_hsgp_residual_on_gam_huber.ipynb`, `artifacts/reports/model__hsgp_residual_on_gam_huber__2026-06-22.md` | Test residual HSGP corrections on strong GAM/Huber means | Best local result is Huber + additive Hilbert residual over `distance_log1p`, `eval_progress`, and `abs_projected_delta_10`; use this for the next Kaggle-safe residual submission candidate. |
+| 2026-06-30 | Stratigraphic-state feature backlog | `kaggle/FEATURES.md`, `context/ASSUMPTIONS.md`, `kaggle/CV_STRATEGY.md` | Convert domain research into the next hidden-test-safe feature direction | Candidate-only. Must use fold-safe known-zone evidence; direct formation columns remain oracle diagnostics only. |
