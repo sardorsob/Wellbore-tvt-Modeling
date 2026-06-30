@@ -114,6 +114,7 @@
 - [x] `notebooks/modeling/08_alignment/04_spatial_residual_correlation.ipynb`: test whether residuals justify regression kriging or spatial GP residuals.
 - [x] `notebooks/modeling/08_alignment/05_analog_selection_refinement.ipynb`: refine nearest analog selection using log-shape, late-zone performance, and descriptor constraints.
 - [x] `notebooks/modeling/08_alignment/06_alignment_hsgp_residual.ipynb`: add log-plus-trajectory analog features to the Huber + additive Hilbert residual path.
+- [x] `notebooks/modeling/08_alignment/07_stratigraphic_state_feature_screen.ipynb`: screen known-zone state, typewell/log alignment uncertainty, and fold-safe analog descriptors; best non-oracle result **14.9922** RMSE, so do not package.
 - [x] `kaggle/huber_hilbert_analog_submission/`: package a self-contained Kaggle candidate with direct analog-gated correction.
 
 ## Hierarchical promotion gates
@@ -160,8 +161,9 @@ Current public-best baseline remains XGBoost strict inference-safe at **14.472**
 Immediate next work:
 
 - Build a stratigraphic-transfer audit notebook before another Kaggle submission.
-- Measure typewell/log-alignment quality with DTW/correlation/lag/stretch features using known-zone rows only.
-- Add pseudo-top or pseudo-zone uncertainty features rather than hard pseudo-formation labels.
+- First-pass state screen completed: known-zone state summaries helped Huber slightly, while naive alignment/analog bundles did not clear promotion gates.
+- Next state work should inject known-zone state features into the exact current XGBoost inference-safe recipe, not the lightweight square-error screen.
+- For Bayesian work, use alignment uncertainty as shrinkage/gating information rather than raw additive predictors.
 - Re-score XGBoost/LightGBM/Huber candidates on `strict_hybrid_fold`, `analog_distance_fold`, and high-stress slices for poor alignment, high extrapolation, and short known zones.
 - Package only if the new feature family clears both global strict-CV and stress-slice promotion gates.
 

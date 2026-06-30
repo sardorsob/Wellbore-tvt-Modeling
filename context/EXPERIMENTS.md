@@ -532,6 +532,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: promoted to Kaggle packaging for one external probe, but do not promote after the public result. Kaggle submission `54157692` scored **14.583**, worse than the current XGBoost strict inference-safe public LB **14.472**.
 - Notes: The residual signal is strongest outside the earliest progress zone; late target-zone rows improved by roughly **0.23** RMSE in the strict split, while the first quartile slightly worsened. The public miss suggests residual correction is still validation-fragile even when it clears `analog_distance_fold`.
 
+## 2026-06-30__stratigraphic_state_feature_screen
+
+- Task: stratigraphic-state feature screen
+- Purpose: Test whether hidden-test-safe known-zone state, typewell/log alignment uncertainty, and fold-safe nearest-analog descriptors recover part of the train-only formation-distance signal.
+- Config: `notebooks/modeling/08_alignment/07_stratigraphic_state_feature_screen.ipynb`; deterministic target-row sampling capped at **90** rows per well; sequence length **32**; typewell window count **18**; feature sets `safe_base`, `strat_known_state`, `strat_alignment_uncertainty`, `strat_alignment_plus_boundary`, `strat_full`, and `oracle_direct_formations`.
+- Data version: local raw train horizontal wells, typewell files, strict fold assignments, and reusable helpers in `src/preprocessing/stratigraphic.py`.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; secondary rows also exported for `analog_distance_fold`.
+- Model: best non-oracle candidate `huber_delta__strat_known_state`, with XGBoost squared-error and histogram-gradient consumers retained as screen diagnostics only.
+- Primary metric: `strict_hybrid_fold` RMSE **14.9922**, improving same-notebook Huber safe-base **15.0313** by **0.0391** RMSE.
+- Secondary metrics: lightweight XGBoost squared-error `strat_known_state` improved over its same-model safe-base by **0.7738** RMSE, but the consumer scored far worse than the current public-best XGBoost recipe and is not comparable as a promotion candidate.
+- Artifacts: summary, fold metrics, stress-slice diagnostics, feature importance, prediction sample, markdown report, and run bundle under `artifacts/logs/runs/2026-06-30__stratigraphic_state_feature_screen/`.
+- Decision: do not package for Kaggle. Keep known-zone state features as candidate inputs for the next exact XGBoost recipe test or Bayesian stratigraphic-regime model.
+- Notes: Naively adding typewell alignment uncertainty and analog descriptors worsened the Huber screen. Use those quantities as gating/shrinkage signals in a future Bayesian or tree interaction design rather than as a broad additive feature dump.
+
 ## Entry Format
 
 ```text

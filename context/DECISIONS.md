@@ -317,3 +317,17 @@
 **Rationale:** Deep domain review and our own results agree that the missing signal is formation-relative state. Direct formation-distance features helped local XGBoost strongly, but legal proxies did not transfer enough, and two locally promising residual/analog corrections missed publicly. Formation-top and well-log correlation literature support sequence alignment, top/proximity uncertainty, and log motif matching as the next source of hidden-test-safe signal.
 **Consequences:** The next notebook should measure and build fold-safe stratigraphic-state features before another Kaggle submission. The notebook should record whether typewell/known-zone alignment uncertainty explains public-miss-like wells, and only then feed those features into XGBoost/LightGBM/Huber/HSGP candidates.
 **Follow-up:** Create the next alignment/validation notebook around DTW/log-shape alignment, pseudo-top uncertainty, known-zone boundary behavior, and stress-slice validation. Require a clear strict-fold and stress-slice gain before packaging.
+
+---
+
+## D025 - Do not package the first stratigraphic-state feature screen
+
+**Date:** 2026-06-30
+**Decision:** Do not promote `notebooks/modeling/08_alignment/07_stratigraphic_state_feature_screen.ipynb` to Kaggle packaging.
+**Alternatives considered:**
+- Package the known-zone state features because they improved same-notebook Huber safe-base RMSE by **0.0391**.
+- Continue tuning the lightweight XGBoost squared-error consumer used in the screen.
+- Move directly to a Bayesian stratigraphic-regime model using the same features.
+**Rationale:** The screen found directional signal, especially for known-zone state summaries, but it did not clear the promotion gate. Best non-oracle strict-hybrid RMSE was **14.9922**, far worse than the current safe-XGBoost local reference **13.4178** and public baseline **14.472**. The alignment-uncertainty and analog additions worsened the Huber screen when combined naively, and the XGBoost squared-error consumer in this notebook is not comparable to the current packaged pseudo-Huber XGBoost recipe.
+**Consequences:** Keep the reusable `src/preprocessing/stratigraphic.py` utilities and the artifacts as evidence. Treat known-zone state features as a promising component, not a submission candidate.
+**Follow-up:** Run a tighter second-stage screen that injects the known-zone state features into the exact current XGBoost inference-safe package recipe, and separately consider a Bayesian stratigraphic-regime model where alignment uncertainty controls shrinkage rather than entering as raw tree features.

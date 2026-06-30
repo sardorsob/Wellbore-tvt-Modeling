@@ -39,6 +39,9 @@
 ## [Unreleased]
 
 ### Changed
+- Added and ran `notebooks/modeling/08_alignment/07_stratigraphic_state_feature_screen.ipynb`; exported summary, fold metrics, stress-slice diagnostics, feature importance, prediction sample, report, and run bundle.
+- Added tested reusable stratigraphic preprocessing helpers for known-zone state summaries, sequence resampling, DTW distance, lagged correlation, and alignment uncertainty.
+- Recorded A56 and D025: first stratigraphic-state screen found directional known-zone state signal, but did not clear Kaggle packaging gates.
 - Recorded a 2026-06-30 domain research reset focused on TVT as a stratigraphic-state prediction problem, including formation-top uncertainty, log/DTW alignment, geosteering-style continuity, and validation-regime mismatch.
 - Added decision `D024`, assumptions `A51`-`A55`, risk `R11`, stratigraphic-transfer CV requirements, glossary terms, and a feature backlog for the next alignment/validation notebook.
 - Recorded the inference-safe XGBoost Kaggle result (`ref=54129475`, public LB **14.472**) as the new best public submission.
