@@ -64,6 +64,7 @@
 - [x] Run exact XGBoost known-state injection (`2026-06-30__xgboost_known_state_features`) - best legal remained `safe_typewell`, strict-hybrid RMSE **13.4334**, analog-distance stress RMSE **13.8243**; do not package
 - [x] Run gated Bayesian regime screen (`2026-06-30__gated_bayesian_regime`) - best `huber_plus_gate_conservative`, strict-hybrid RMSE **14.1072**, improving same-notebook Huber mean-only by **0.3981**; package as curiosity probe
 - [x] Locally validate self-contained gated Bayesian regime Kaggle notebook - **14,151** finite predictions, in-sample training RMSE **13.7900**, learned shrink **0.9906**
+- [x] Submit gated Bayesian regime Kaggle notebook version 1 (`ref=54211837`) - public score pending
 
 ## In progress
 
@@ -81,7 +82,7 @@
 1. Keep XGBoost strict inference-safe submission `54129475` / public LB **14.472** as the active benchmark.
 2. Do not continue generic residual stacking immediately; the Ridge residual package scored **14.583** publicly despite local strict/stress gains.
 3. Do not package the current proxy-formation XGBoost tuning pass or the raw known-state XGBoost injection; both failed to improve the active path.
-4. Push the gated Bayesian regime package as a curiosity public-score probe, then update the submission log when the Kaggle version completes.
+4. Update gated Bayesian regime notes when submission `54211837` finishes scoring.
 5. Use the oracle direct-formation gap as a design target for a gated or Bayesian stratigraphic-regime model, not as a Kaggle-safe feature set.
 6. Defer full hierarchical HSGP until alignment or stronger geologic descriptors give hierarchy something transferable to pool over.
 7. Investigate why the Huber + Hilbert residual gain transferred externally while the Huber-only public score lagged GAM.

@@ -203,11 +203,11 @@
 - Local submission file: `kaggle/gated_bayesian_regime_submission/artifacts/reports/submission__gated_bayesian_regime__2026-06-30.csv`; Kaggle kernel output `/kaggle/working/submission.csv`.
 - Kaggle notebook: `https://www.kaggle.com/code/sardorbsobirov/wellbore-gated-bayesian-regime`
 - Kaggle kernel version: 1
-- Status: `KernelWorkerStatus.RUNNING`
+- Status: `KernelWorkerStatus.COMPLETE`
 - Public LB: pending
-- Submission ref: pending
-- Submission status: pending
-- Notes: Local package execution completed, trained on **92,760** sampled rows, learned shrink **0.9906**, mean gate weights `[zero=0.2266, hsgp=0.2119, state=0.4902, blend=0.0713]`, and wrote **14,151** finite predictions. Kaggle version 1 was pushed successfully and is running at `https://www.kaggle.com/code/sardorbsobirov/wellbore-gated-bayesian-regime`.
+- Submission ref: `54211837`
+- Submission status: `SubmissionStatus.PENDING`
+- Notes: Local package execution completed, trained on **92,760** sampled rows, learned shrink **0.9906**, mean gate weights `[zero=0.2266, hsgp=0.2119, state=0.4902, blend=0.0713]`, and wrote **14,151** finite predictions. Kaggle version 1 completed and submission `54211837` is pending score.
 - Decision: curiosity probe only until public score returns.
 
 Use this format for every submission:

@@ -40,7 +40,7 @@
 
 ### Changed
 - Added and ran `notebooks/modeling/06_bayesian/07_gated_bayesian_regime.ipynb`; exported gated Bayesian regime metrics, gate diagnostics, report, model comparison row, and run bundle.
-- Added self-contained Kaggle package `kaggle/gated_bayesian_regime_submission/`, locally validated a **14,151** row submission, and recorded the pending public-score probe.
+- Added self-contained Kaggle package `kaggle/gated_bayesian_regime_submission/`, locally validated a **14,151** row submission, pushed version 1, and submitted it as `54211837` with score pending.
 - Recorded A58 and D027: known-zone state is useful as a Bayesian residual-regime gate even though it failed as raw XGBoost columns.
 - Added and ran `notebooks/modeling/02_trees/10_xgboost_known_state_features.ipynb`; exported exact-recipe XGBoost state-feature diagnostics, report, model comparison row, and run bundle.
 - Recorded A57 and D026: raw known-zone state features do not improve the current inference-safe XGBoost recipe, so they should move into gated/Bayesian structure rather than a flat tree feature set.
