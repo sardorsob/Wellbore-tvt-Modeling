@@ -1,7 +1,7 @@
 # Project Status
 
-**Last updated:** 2026-06-28
-**Current phase:** XGBoost inference-safe submission is current best public LB
+**Last updated:** 2026-06-30
+**Current phase:** XGBoost inference-safe submission is current best public LB; stratigraphic-state features are moving toward gated/Bayesian structure
 
 ---
 
@@ -61,6 +61,7 @@
 - [x] Run inference-safe XGBoost tuning screen (`2026-06-28__xgboost_inference_safe_tuning`) - best legal `pseudo_shallow_more_trees__safe_typewell`, strict-hybrid RMSE **13.4178**, analog-distance stress RMSE **13.7533**; do not package yet
 - [x] Run nested XGBoost residual-stacking screen (`2026-06-28__xgboost_residual_stacking`) - best `ridge_residual_s025`, strict-hybrid RMSE **13.2548**, analog-distance stress RMSE **13.5632**; promote to Kaggle package next
 - [x] Push and submit XGBoost Ridge residual-stack Kaggle notebook version 2 (`ref=54157692`) - public LB **14.583**, worse than current best **14.472**
+- [x] Run exact XGBoost known-state injection (`2026-06-30__xgboost_known_state_features`) - best legal remained `safe_typewell`, strict-hybrid RMSE **13.4334**, analog-distance stress RMSE **13.8243**; do not package
 
 ## In progress
 
@@ -77,8 +78,8 @@
 
 1. Keep XGBoost strict inference-safe submission `54129475` / public LB **14.472** as the active benchmark.
 2. Do not continue generic residual stacking immediately; the Ridge residual package scored **14.583** publicly despite local strict/stress gains.
-3. Do not package the current proxy-formation XGBoost tuning pass; proxy features scored worse than safe base locally.
-4. Use the oracle direct-formation gap as a design target for better stratigraphic/typewell features, not as a Kaggle-safe feature set.
+3. Do not package the current proxy-formation XGBoost tuning pass or the raw known-state XGBoost injection; both failed to improve the active path.
+4. Use the oracle direct-formation gap as a design target for a gated or Bayesian stratigraphic-regime model, not as a Kaggle-safe feature set.
 5. Defer full hierarchical HSGP until alignment or stronger geologic descriptors give hierarchy something transferable to pool over.
 6. Investigate why the Huber + Hilbert residual gain transferred externally while the Huber-only public score lagged GAM.
 7. Investigate why the reconstructed spline GAM mean was unstable in `06_hsgp_residual_on_gam_huber.ipynb` despite the public GAM notebook scoring best externally.
@@ -91,7 +92,8 @@
 - [x] `notebooks/modeling/09_validation/01_stricter_cv_fold_design.ipynb`: design cluster/far-analog/high-extrapolation folds that better punish fragile analog gains.
 - [x] `notebooks/modeling/02_trees/06_lightgbm_strict_cv.ipynb`: tune LightGBM only after strict folds and feature families are fixed.
 - [x] `notebooks/modeling/02_trees/07_xgboost_strict_cv.ipynb`: compare XGBoost against LightGBM under the same strict folds.
-- [ ] `notebooks/modeling/02_trees/08_xgboost_inference_safe_tuning.ipynb`: test XGBoost without train-only formation columns and add hidden-test-safe analog/typewell proxies.
+- [x] `notebooks/modeling/02_trees/08_xgboost_inference_safe_tuning.ipynb`: test XGBoost without train-only formation columns and add hidden-test-safe analog/typewell proxies.
+- [x] `notebooks/modeling/02_trees/10_xgboost_known_state_features.ipynb`: inject known-zone state summaries into the exact inference-safe XGBoost recipe; best state-augmented candidate worsened to **13.5189** RMSE, so do not package.
 - [x] `kaggle/lightgbm_strict_submission/`: package and submit the inference-safe LightGBM strict-CV candidate as an external transfer check.
 - [x] `kaggle/xgboost_strict_submission/`: package and submit the inference-safe XGBoost strict-CV candidate as an external transfer check.
 

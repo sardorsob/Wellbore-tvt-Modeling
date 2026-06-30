@@ -1,0 +1,12 @@
+finding,value
+best_legal_model,pseudo_shallow_more_trees__safe_typewell
+best_legal_strict_rmse,13.4334
+best_legal_stress_rmse,13.8243
+best_legal_feature_set,safe_typewell
+safe_base_rmse,13.4784
+best_proxy_rmse,13.5518
+proxy_minus_base_rmse,0.0734
+oracle_direct_rmse,12.9353
+legal_minus_oracle_rmse,0.4981
+recommendation,do_not_package_yet
+recommendation_reason,Best legal tuning did not clear the promotion gate; known-state features require exact-package or Bayesian follow-up only if diagnostics justify it.

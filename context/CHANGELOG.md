@@ -39,6 +39,8 @@
 ## [Unreleased]
 
 ### Changed
+- Added and ran `notebooks/modeling/02_trees/10_xgboost_known_state_features.ipynb`; exported exact-recipe XGBoost state-feature diagnostics, report, model comparison row, and run bundle.
+- Recorded A57 and D026: raw known-zone state features do not improve the current inference-safe XGBoost recipe, so they should move into gated/Bayesian structure rather than a flat tree feature set.
 - Added and ran `notebooks/modeling/08_alignment/07_stratigraphic_state_feature_screen.ipynb`; exported summary, fold metrics, stress-slice diagnostics, feature importance, prediction sample, report, and run bundle.
 - Added tested reusable stratigraphic preprocessing helpers for known-zone state summaries, sequence resampling, DTW distance, lagged correlation, and alignment uncertainty.
 - Recorded A56 and D025: first stratigraphic-state screen found directional known-zone state signal, but did not clear Kaggle packaging gates.

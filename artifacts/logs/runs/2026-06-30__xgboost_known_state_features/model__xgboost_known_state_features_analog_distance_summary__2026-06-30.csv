@@ -1,0 +1,2 @@
+run_id,model_key,candidate,feature_set,fold_column,n_rows,rmse_mean,mae_mean,fold_rmse_std,strict_cv_rmse,oracle_strict_cv_rmse,stress_minus_strict_rmse
+2026-06-30__xgboost_known_state_features,pseudo_shallow_more_trees__safe_typewell,pseudo_shallow_more_trees,safe_typewell,analog_distance_fold,92760,13.824310647609495,9.838632716541877,0.5220308206218603,13.43339085567385,12.93526456332055,0.3909197919356462

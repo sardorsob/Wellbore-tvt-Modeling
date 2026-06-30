@@ -331,3 +331,17 @@
 **Rationale:** The screen found directional signal, especially for known-zone state summaries, but it did not clear the promotion gate. Best non-oracle strict-hybrid RMSE was **14.9922**, far worse than the current safe-XGBoost local reference **13.4178** and public baseline **14.472**. The alignment-uncertainty and analog additions worsened the Huber screen when combined naively, and the XGBoost squared-error consumer in this notebook is not comparable to the current packaged pseudo-Huber XGBoost recipe.
 **Consequences:** Keep the reusable `src/preprocessing/stratigraphic.py` utilities and the artifacts as evidence. Treat known-zone state features as a promising component, not a submission candidate.
 **Follow-up:** Run a tighter second-stage screen that injects the known-zone state features into the exact current XGBoost inference-safe package recipe, and separately consider a Bayesian stratigraphic-regime model where alignment uncertainty controls shrinkage rather than entering as raw tree features.
+
+---
+
+## D026 - Reject raw known-state XGBoost injection
+
+**Date:** 2026-06-30
+**Decision:** Do not package `notebooks/modeling/02_trees/10_xgboost_known_state_features.ipynb` for Kaggle.
+**Alternatives considered:**
+- Promote the notebook because it uses the current inference-safe XGBoost recipe.
+- Keep tuning raw known-zone state features inside XGBoost.
+- Move the state signal into a gated or Bayesian stratigraphic-regime model.
+**Rationale:** Exact-recipe injection did not improve the current local XGBoost benchmark. The best legal result stayed with `safe_typewell` at **13.4334** strict-hybrid RMSE, while known-state feature sets were worse; the best state-augmented result was **13.5189**. Stress RMSE also trailed the current local reference, and the notebook did not beat the active public benchmark submission path.
+**Consequences:** Keep the artifacts as a negative screen and do not create a Kaggle package from this notebook. Known-zone state remains useful evidence, but raw scalar injection is not the right expression for XGBoost.
+**Follow-up:** Try a stratigraphic-regime or Bayesian gating design where state features control shrinkage, mixture weights, or priors, then compare against the current XGBoost public baseline before any submission.

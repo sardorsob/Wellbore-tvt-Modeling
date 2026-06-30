@@ -546,6 +546,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: do not package for Kaggle. Keep known-zone state features as candidate inputs for the next exact XGBoost recipe test or Bayesian stratigraphic-regime model.
 - Notes: Naively adding typewell alignment uncertainty and analog descriptors worsened the Huber screen. Use those quantities as gating/shrinkage signals in a future Bayesian or tree interaction design rather than as a broad additive feature dump.
 
+## 2026-06-30__xgboost_known_state_features
+
+- Task: exact XGBoost known-state feature injection
+- Purpose: Test whether the directional known-zone state signal from the lightweight stratigraphic screen improves the current inference-safe XGBoost recipe when added directly.
+- Config: `notebooks/modeling/02_trees/10_xgboost_known_state_features.ipynb`; deterministic target-row sampling capped at **120** rows per well; same strict-hybrid and analog-distance folds as the inference-safe XGBoost tuning path; added known-zone `TVT`, `GR`, trajectory span, and depth-drop summaries.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell descriptors, fold-safe proxy formation diagnostics, and known-zone state features computed only from rows available before the target-zone gap.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; best legal candidate stress-tested on `analog_distance_fold`; direct formation features retained only as an oracle diagnostic.
+- Model: best legal candidate `pseudo_shallow_more_trees__safe_typewell`, XGBoost histogram trees with pseudo-Huber objective over signed TVT delta.
+- Primary metric: `strict_hybrid_fold` RMSE **13.4334**. The best state-augmented candidate was `square_medium_regularized__safe_typewell_known_state` at **13.5189**, so raw known-state injection worsened the exact recipe.
+- Secondary metrics: `analog_distance_fold` stress RMSE **13.8243** for the best legal candidate. Direct-formation oracle diagnostic scored **12.9353**, leaving a **0.4981** RMSE legal-oracle gap.
+- Artifacts: feature preview, proxy quality, summary, fold metrics, analog-distance stress metrics, feature importance, residual sample, well diagnostics, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-06-30__xgboost_known_state_features/`.
+- Decision: do not package for Kaggle. The notebook is a clean negative screen for raw known-state XGBoost features.
+- Notes: This result does not invalidate stratigraphic-state modeling; it says the state evidence probably needs gating, mixture structure, or Bayesian shrinkage rather than flat tree features.
+
 ## Entry Format
 
 ```text
