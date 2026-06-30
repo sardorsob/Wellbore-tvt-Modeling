@@ -1,0 +1,1 @@
+Gated Bayesian regime screen with Student-t MAP mixture weights and shrinkage priors.

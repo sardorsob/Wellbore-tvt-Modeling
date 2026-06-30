@@ -1,0 +1,11 @@
+{
+  "run_id": "2026-06-30__gated_bayesian_regime",
+  "seed": 20260630,
+  "fold_column": "strict_hybrid_fold",
+  "stress_fold_column": "analog_distance_fold",
+  "max_target_rows_per_well": 120,
+  "max_train_rows_per_fold": 90000,
+  "current_public_best": 14.472,
+  "current_local_xgb_safe": 13.4178,
+  "huber_hilbert_public": 14.514
+}

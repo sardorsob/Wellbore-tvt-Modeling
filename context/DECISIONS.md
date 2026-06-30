@@ -345,3 +345,17 @@
 **Rationale:** Exact-recipe injection did not improve the current local XGBoost benchmark. The best legal result stayed with `safe_typewell` at **13.4334** strict-hybrid RMSE, while known-state feature sets were worse; the best state-augmented result was **13.5189**. Stress RMSE also trailed the current local reference, and the notebook did not beat the active public benchmark submission path.
 **Consequences:** Keep the artifacts as a negative screen and do not create a Kaggle package from this notebook. Known-zone state remains useful evidence, but raw scalar injection is not the right expression for XGBoost.
 **Follow-up:** Try a stratigraphic-regime or Bayesian gating design where state features control shrinkage, mixture weights, or priors, then compare against the current XGBoost public baseline before any submission.
+
+---
+
+## D027 - Package gated Bayesian regime as a curiosity probe
+
+**Date:** 2026-06-30
+**Decision:** Package `huber_plus_gate_conservative` for one Kaggle public-score read, but do not promote it before the score returns.
+**Alternatives considered:**
+- Stop after the local notebook because the model remains worse than local XGBoost.
+- Tune wider gates or weaker priors before any external read.
+- Submit the conservative gate immediately as an informative Bayesian-regime probe.
+**Rationale:** The conservative gate improved same-notebook Huber mean-only by **0.3981** RMSE and gave interpretable mixture weights dominated by the state residual expert. The result is still worse than the current local XGBoost reference, but it directly tests the hypothesis that state should control shrinkage/mixture weights rather than enter as raw features.
+**Consequences:** Create and push a self-contained Kaggle notebook under `kaggle/gated_bayesian_regime_submission/`. Treat the public score as evidence about state-regime transfer, not as an automatic new baseline.
+**Follow-up:** If the public score beats **14.472**, promote and tune this family. If it misses, keep the gating evidence locally and combine the idea with the stronger XGBoost mean or stricter validation calibration.

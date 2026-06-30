@@ -1,0 +1,11 @@
+finding,value
+best_candidate,huber_plus_gate_conservative
+best_strict_rmse,14.1072
+best_gate_candidate,huber_plus_gate_conservative
+best_gate_strict_rmse,14.1072
+huber_mean_rmse,14.5053
+gam_mean_rmse,25.8177
+fixed_hsgp_rmse,14.4838
+best_minus_huber,-0.3981
+best_gate_minus_huber,-0.3981
+recommendation,curiosity_package

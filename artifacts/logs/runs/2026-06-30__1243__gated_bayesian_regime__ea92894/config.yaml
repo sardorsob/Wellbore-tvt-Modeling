@@ -1,0 +1,9 @@
+current_local_xgb_safe: 13.4178
+current_public_best: 14.472
+fold_column: strict_hybrid_fold
+huber_hilbert_public: 14.514
+max_target_rows_per_well: 120
+max_train_rows_per_fold: 90000
+run_id: 2026-06-30__gated_bayesian_regime
+seed: 20260630
+stress_fold_column: analog_distance_fold

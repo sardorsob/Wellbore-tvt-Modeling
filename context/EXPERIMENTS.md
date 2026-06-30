@@ -560,6 +560,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: do not package for Kaggle. The notebook is a clean negative screen for raw known-state XGBoost features.
 - Notes: This result does not invalidate stratigraphic-state modeling; it says the state evidence probably needs gating, mixture structure, or Bayesian shrinkage rather than flat tree features.
 
+## 2026-06-30__gated_bayesian_regime
+
+- Task: gated Bayesian stratigraphic-regime model
+- Purpose: Test whether known-zone state and typewell descriptors can control residual shrinkage and mixture weights after raw XGBoost state features failed.
+- Config: `notebooks/modeling/06_bayesian/07_gated_bayesian_regime.ipynb`; deterministic target-row sampling capped at **120** rows per well; Huber signed-delta mean; additive Hilbert residual expert; Ridge state residual expert; Student-t MAP soft gate over zero, Hilbert, state, and blended residual experts.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell descriptor artifact, and known-zone-only state features.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; package validation used a self-contained all-train notebook that recomputes descriptors inside the Kaggle notebook.
+- Model: best candidate `huber_plus_gate_conservative`, with gate prior scale **0.25** and shrink prior **0.25**.
+- Primary metric: `strict_hybrid_fold` RMSE **14.1072**, improving same-notebook Huber mean-only **14.5053** by **0.3981** RMSE.
+- Secondary metrics: fixed 25% HSGP residual scored **14.4838**; fixed 25% state residual scored **14.3282**; the conservative gate learned average weights of **0.177** zero, **0.202** HSGP, **0.584** state, and **0.037** blend.
+- Artifacts: summary, fold metrics, gate diagnostics, gate weight sample, zone/analog-bin summaries, well diagnostics, residual sample, findings, markdown report, model comparison row, run bundle, and self-contained Kaggle package.
+- Decision: package as a curiosity public-score probe, not as a promoted baseline.
+- Notes: Local execution took about **28.6 minutes** for 3-fold CV; the self-contained Kaggle package executed locally in about **9 minutes** and wrote **14,151** finite predictions.
+
 ## Entry Format
 
 ```text

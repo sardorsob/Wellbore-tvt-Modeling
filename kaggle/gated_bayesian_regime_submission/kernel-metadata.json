@@ -1,0 +1,15 @@
+{
+  "id": "sardorbsobirov/wellbore-gated-bayesian-regime",
+  "title": "Wellbore Gated Bayesian Regime",
+  "code_file": "gated_bayesian_regime_submission.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "competition_sources": [
+    "rogii-wellbore-geology-prediction"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": []
+}

@@ -195,6 +195,21 @@
 - Notes: Version 1 failed before execution because the generated notebook lacked kernelspec metadata. Version 2 completed successfully, used `/kaggle/input/competitions/rogii-wellbore-geology-prediction`, trained on **92,760** sampled rows with **36** base features and **22** residual features, and produced **14,151** prediction rows with no missing `tvt` values. The public score is worse than the current XGBoost strict inference-safe baseline **14.472** despite strong local strict/stress gains.
 - Decision: do not promote over XGBoost strict inference-safe. Treat this as another validation-transfer warning: nested residual stacking captured local residual structure but over-corrected or failed to transfer to the hidden public rerun.
 
+- Timestamp: 2026-06-30
+- Run ID: `2026-06-30__gated_bayesian_regime`
+- Git SHA: package commit containing this entry
+- Config: self-contained gated Bayesian regime package, Huber signed-delta mean, additive Hilbert residual expert, Ridge state residual expert, and conservative Student-t MAP soft gate over zero/Hilbert/state/blend experts. `MAX_TARGET_ROWS_PER_WELL=120`, gate prior scale **0.25**, shrink prior **0.25**, internet disabled.
+- Local CV: `huber_plus_gate_conservative`, `strict_hybrid_fold` RMSE **14.1072** versus same-notebook Huber mean-only **14.5053**.
+- Local submission file: `kaggle/gated_bayesian_regime_submission/artifacts/reports/submission__gated_bayesian_regime__2026-06-30.csv`; Kaggle kernel output `/kaggle/working/submission.csv`.
+- Kaggle notebook: `https://www.kaggle.com/code/sardorbsobirov/wellbore-gated-bayesian-regime`
+- Kaggle kernel version: 1
+- Status: `KernelWorkerStatus.RUNNING`
+- Public LB: pending
+- Submission ref: pending
+- Submission status: pending
+- Notes: Local package execution completed, trained on **92,760** sampled rows, learned shrink **0.9906**, mean gate weights `[zero=0.2266, hsgp=0.2119, state=0.4902, blend=0.0713]`, and wrote **14,151** finite predictions. Kaggle version 1 was pushed successfully and is running at `https://www.kaggle.com/code/sardorbsobirov/wellbore-gated-bayesian-regime`.
+- Decision: curiosity probe only until public score returns.
+
 Use this format for every submission:
 
 ```text
