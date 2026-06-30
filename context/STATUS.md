@@ -168,8 +168,9 @@ Immediate next work:
 
 - Build a stratigraphic-transfer audit notebook before another Kaggle submission.
 - First-pass state screen completed: known-zone state summaries helped Huber slightly, while naive alignment/analog bundles did not clear promotion gates.
-- Next state work should inject known-zone state features into the exact current XGBoost inference-safe recipe, not the lightweight square-error screen.
-- For Bayesian work, use alignment uncertainty as shrinkage/gating information rather than raw additive predictors.
+- Exact XGBoost known-state injection completed: raw state features worsened the current recipe, so do not package.
+- Pseudo-top uncertainty screen completed: proxy tops are meaningful, but raw pseudo-top feature injection did not beat safe/typewell XGBoost.
+- For Bayesian/tree-hybrid work, use state and pseudo-top uncertainty as shrinkage/gating information rather than raw additive predictors.
 - Re-score XGBoost/LightGBM/Huber candidates on `strict_hybrid_fold`, `analog_distance_fold`, and high-stress slices for poor alignment, high extrapolation, and short known zones.
 - Package only if the new feature family clears both global strict-CV and stress-slice promotion gates.
 
@@ -188,6 +189,7 @@ Immediate next work:
 | 2026-06-22 | Huber + additive Hilbert residual `huber_plus_hsgp_dps_m8` | 14.3586 | Sampled target-zone grouped CV; strongest local diagnostic so far, but needs Kaggle public validation because Huber-only previously underperformed externally |
 | 2026-06-26 | LightGBM strict CV `lgbm_medium_l2` | 13.2363 | Strict sampled CV on `strict_hybrid_fold`; analog-distance stress test RMSE **13.4453**; promising but needs reproducibility/tuning before Kaggle |
 | 2026-06-27 | XGBoost strict CV `xgb_pseudohuber_shallow_robust` | 12.7504 | Strict sampled CV on `strict_hybrid_fold`; analog-distance stress test RMSE **12.9116**; strongest local diagnostic so far, but uses train-only formation-distance features |
+| 2026-06-30 | Pseudo-top uncertainty screen `safe_pseudo_top_uncertainty` | 13.5891 | Best pseudo-top legal candidate; best overall legal remained safe/typewell XGBoost at **13.4506**, so use pseudo-top uncertainty for gating/prior structure next |
 
 ## Validation artifacts
 

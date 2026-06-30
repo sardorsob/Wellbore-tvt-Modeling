@@ -4,6 +4,8 @@
 
 **Goal:** Build and run a fold-safe pseudo-formation/top uncertainty notebook that turns train-only formation columns into hidden-test-safe latent stratigraphic features and tests whether those features improve downstream RMSE.
 
+**Execution status:** Completed on 2026-06-30. The first pass is diagnostic/iterative rather than package-ready: best legal overall RMSE **13.4506**, best pseudo-top feature candidate RMSE **13.5891**, mean proxy top RMSE **35.0660**, nearest-top agreement **0.5804**.
+
 **Architecture:** Create one reportable notebook under `notebooks/modeling/08_alignment/08_pseudo_top_uncertainty.ipynb`. The notebook uses direct formation columns only as local training labels and oracle diagnostics, learns fold-safe pseudo-top regressors from known-zone/test-safe evidence, exports uncertainty features, and tests those features first in an XGBoost-style signed-delta consumer plus a robust Huber consumer. Context docs record whether the pseudo-top route is promising enough for a Kaggle package.
 
 **Tech Stack:** Python, pandas, numpy, scikit-learn, xgboost, nbformat/Jupyter, existing `artifacts/tables`, `artifacts/reports`, and `artifacts/logs/runs` conventions.

@@ -574,6 +574,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: package as a curiosity public-score probe, not as a promoted baseline.
 - Notes: Local execution took about **28.6 minutes** for 3-fold CV; the self-contained Kaggle package executed locally in about **9 minutes** and wrote **14,151** finite predictions.
 
+## 2026-06-30__pseudo_top_uncertainty
+
+- Task: pseudo-formation/top uncertainty feature screen
+- Purpose: Convert train-only formation-surface columns into fold-safe latent top-elevation, signed-offset, nearest-top, margin, entropy, and ensemble-spread features.
+- Config: `notebooks/modeling/08_alignment/08_pseudo_top_uncertainty.ipynb`; deterministic target-row sampling capped at **120** rows per well; two-seed XGBoost squared-error top-elevation ensembles for six named formations; downstream XGBoost and Huber consumers.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell descriptors, and direct formation columns used only as fold-local proxy labels and oracle diagnostics.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; legal candidates also scored on `analog_distance_fold`; oracle direct-formation candidates are diagnostic only.
+- Model: best legal overall `xgb_square_regularized__safe_typewell`; best pseudo-top candidate `xgb_pseudohuber_known_state_recipe__safe_pseudo_top_uncertainty`.
+- Primary metric: best legal strict-hybrid RMSE **13.4506**; best pseudo-top strict-hybrid RMSE **13.5891**.
+- Secondary metrics: best legal analog-distance stress RMSE **13.8870**; mean pseudo-top elevation RMSE **35.0660**; nearest pseudo-top agreement **0.5804** under `strict_hybrid_fold`.
+- Artifacts: feature preview, top-label summary, proxy quality, summary, fold metrics, zone/analog-bin summaries, well diagnostics, feature importance, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-06-30__pseudo_top_uncertainty/`.
+- Decision: do not package. Raw pseudo-top feature injection underperforms the simpler safe/typewell XGBoost recipe.
+- Notes: Pseudo-top inference is meaningful enough for state reasoning, but the next attempt should use margin/entropy/spread as gated shrinkage or Bayesian-regime evidence instead of flat tree columns.
+
 ## Entry Format
 
 ```text

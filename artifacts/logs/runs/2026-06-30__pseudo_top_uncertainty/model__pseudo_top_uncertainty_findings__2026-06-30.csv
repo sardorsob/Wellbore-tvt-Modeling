@@ -1,0 +1,5 @@
+finding,detail,value,interpretation
+best_legal_candidate,xgb_square_regularized__safe_typewell,13.450635286744287,Strict CV best legal RMSE with stress RMSE 13.8870.
+best_pseudo_top_candidate,xgb_pseudohuber_known_state_recipe__safe_pseudo_top_uncertainty,13.58913160397504,Best candidate using pseudo-top features.
+nearest_top_proxy_accuracy,strict_hybrid_fold,0.5804333764553687,Agreement between fold-safe nearest pseudo top and direct nearest formation label.
+decision,iterate_before_package,13.450635286744287,"Promotion rule based on strict CV, analog-distance stress, and current public/local baselines."

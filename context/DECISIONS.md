@@ -359,3 +359,17 @@
 **Rationale:** The conservative gate improved same-notebook Huber mean-only by **0.3981** RMSE and gave interpretable mixture weights dominated by the state residual expert. The result is still worse than the current local XGBoost reference, but it directly tests the hypothesis that state should control shrinkage/mixture weights rather than enter as raw features.
 **Consequences:** Create and push a self-contained Kaggle notebook under `kaggle/gated_bayesian_regime_submission/`. Treat the public score as evidence about state-regime transfer, not as an automatic new baseline.
 **Follow-up:** If the public score beats **14.472**, promote and tune this family. If it misses, keep the gating evidence locally and combine the idea with the stronger XGBoost mean or stricter validation calibration.
+
+---
+
+## D028 - Iterate on pseudo-top uncertainty through gating, not raw tree features
+
+**Date:** 2026-06-30
+**Decision:** Do not package the first pseudo-top uncertainty feature screen for Kaggle, but keep the feature family for gated/shrinkage models.
+**Alternatives considered:**
+- Package the best pseudo-top XGBoost candidate because it remains below the active public LB benchmark locally.
+- Keep tuning raw pseudo-top feature columns inside XGBoost.
+- Move pseudo-top margin, entropy, and ensemble spread into a regime gate or Bayesian prior.
+**Rationale:** The pseudo-top proxy itself is plausible, with mean top-elevation RMSE **35.0660** and nearest-top agreement **0.5804** under `strict_hybrid_fold`. But downstream raw feature injection worsened the legal XGBoost path: best legal overall was `xgb_square_regularized__safe_typewell` at **13.4506** strict-hybrid RMSE, while best pseudo-top candidate `xgb_pseudohuber_known_state_recipe__safe_pseudo_top_uncertainty` scored **13.5891**. The stress RMSE for the best legal candidate was **13.8870**, so the package gate is not cleared.
+**Consequences:** Keep the artifacts as a clean fold-safe pseudo-top audit. Treat pseudo-top uncertainty as state evidence for gates, priors, or mixture weights rather than a broad additive tree feature set.
+**Follow-up:** Build a gated XGBoost/Bayesian hybrid where pseudo-top uncertainty controls residual shrinkage and formation-regime weights, then compare against the current public-best XGBoost strict inference-safe path.
