@@ -516,3 +516,9 @@ The `02_plateau_failure_slice_audit` notebook compared eight recent pseudo-top/r
 The `13_xgboost_local_sequence_stack` notebook tested local GR/typewell window summaries and probability-by-sequence interactions as direct meta-features around the pseudo-top regime mean. The best candidate was only the alignment-aware regime blend reference at **13.1613** strict RMSE and **13.4561** stress RMSE. The best residual correction, `blend_plus_sequence_ridge_residual_s08`, scored **13.1626** strict RMSE, and the direct XGBoost sequence meta-head collapsed to **13.8082**.
 
 **Modeling implication:** The local-window signal is not useful as a flat scalar stack layer in the current recipe. If sequence context matters, it likely needs either direct state/top-error correction or a true window/sequence architecture that preserves motif shape, not just window means, slopes, DTW distances, and interaction columns.
+
+### A73 - Top-state correction can improve stress while hurting strict RMSE
+
+The `13_pseudo_top_state_revision` notebook trained second-stage residual correctors for fold-safe pseudo-top elevation predictions. The best TVT candidate scored **13.1194** strict RMSE and **13.3883** analog-distance stress RMSE. This worsened strict RMSE versus the original regime mean **13.0928**, but improved stress by **0.0123** versus **13.4006**. Revision diagnostics showed that **0.25** shrink slightly improved strict top RMSE (**-0.0064** average delta), while **0.50** and **0.75** worsened top RMSE.
+
+**Modeling implication:** Pseudo-top residual correction has real stress-control signal, but broad correction over-moves the local state. The next revision should be lighter or gated to high-stress/high-uncertainty slices rather than applied globally.

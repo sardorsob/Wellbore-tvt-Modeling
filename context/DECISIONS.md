@@ -555,3 +555,17 @@
 **Rationale:** The best local-sequence stack candidate was the reference itself at **13.1613** strict RMSE and **13.4561** stress RMSE, both worse than the original regime mean **13.0928** / **13.4006**. Residual and direct meta heads worsened further.
 **Consequences:** Local GR/typewell window summaries should not be added to the Kaggle package or residual stack as flat scalar features.
 **Follow-up:** Build a pseudo-top state-revision notebook that learns systematic top residual corrections before regime probabilities are formed.
+
+---
+
+## D042 - Keep state revision as stress-control, not package candidate
+
+**Date:** 2026-07-01
+**Decision:** Do not package `13_pseudo_top_state_revision`, but continue with lighter or gated state revision.
+**Alternatives considered:**
+- Package because analog-distance stress improved from **13.4006** to **13.3883**.
+- Abandon state revision because strict RMSE worsened to **13.1194**.
+- Continue with a lighter or stress-gated correction schedule.
+**Rationale:** The broad corrected-state path is a strict/stress tradeoff. It fails the strict promotion gate, but it is the first post-plateau experiment to improve analog stress. The top-correction diagnostics show **0.25** shrink is safer for top RMSE than the heavier correction used downstream.
+**Consequences:** Do not push this notebook to Kaggle. Use it to design a gated state-revision model that applies correction only when pseudo-top uncertainty or analog stress justifies it.
+**Follow-up:** Build `pseudo_top_state_revision_gated`: compare base, 0.25 global correction, confidence-gated correction, stress-gated correction, and hybrid stress-confidence correction.

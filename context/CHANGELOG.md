@@ -44,6 +44,8 @@
 - Recorded A71 and D040: plateau errors concentrate in persistent hard wells, so the next notebook should target state-error modeling rather than schedule tuning.
 - Added and ran `notebooks/modeling/02_trees/13_xgboost_local_sequence_stack.ipynb`; exported summary, fold metrics, diagnostics, findings, report, model-comparison row, and run bundle.
 - Recorded A72 and D041: scalar local-sequence stack features worsened the regime mean, so the next modeling branch should correct pseudo-top/state inference directly.
+- Added and ran `notebooks/modeling/08_alignment/13_pseudo_top_state_revision.ipynb`; exported revision-quality diagnostics, model summaries, findings, report, model-comparison row, and run bundle.
+- Recorded A73 and D042: top-state correction improves analog stress but hurts strict RMSE, so continue only with lighter or gated state revision.
 
 ### Changed
 - Added and ran `notebooks/modeling/06_bayesian/07_gated_bayesian_regime.ipynb`; exported gated Bayesian regime metrics, gate diagnostics, report, model comparison row, and run bundle.

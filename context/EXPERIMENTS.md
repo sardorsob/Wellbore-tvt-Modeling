@@ -770,6 +770,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: diagnostic only. Do not continue scalar local-sequence stack tuning.
 - Notes: Local windows as flat stack features are not enough; next work should revise pseudo-top/top-error state directly or use a true sequence architecture rather than summary window statistics.
 
+## 2026-07-01__pseudo_top_state_revision
+
+- Task: pseudo-top state revision before regime probabilities
+- Purpose: Test whether fold-safe second-stage top residual corrections improve pseudo-top state enough to improve the direct regime-mean model.
+- Config: `notebooks/modeling/08_alignment/13_pseudo_top_state_revision.ipynb`; starts from `09_pseudo_top_regime_mean`, trains XGBoost pseudo-top residual correctors from hidden-test-safe row/typewell/state/descriptors, evaluates shrink levels **0.25**, **0.50**, and **0.75**, then recomputes regime probabilities for the corrected state path.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell descriptors, and direct formation columns used only as fold-local pseudo-top labels/residual diagnostics.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; all candidates also scored on `analog_distance_fold`.
+- Model: best TVT candidate `xgb_square_global__regime_ridge_alpha80__s050`.
+- Primary metric: strict-hybrid RMSE **13.1194**, worse than the original pseudo-top regime mean **13.0928**.
+- Secondary metrics: analog-distance stress RMSE **13.3883**, improving the original regime-mean stress **13.4006** by **0.0123**.
+- Artifacts: feature preview, proxy quality, top-label summary, revision-quality diagnostics, summary, fold metrics, regime diagnostics, zone/analog-bin summaries, well diagnostics, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-07-01__pseudo_top_state_revision/`.
+- Decision: diagnostic only for packaging, but keep as a promising stress-control branch.
+- Notes: Top-residual correction is not monotone. A **0.25** shrink slightly improved strict top RMSE (**-0.0064**) while heavier shrink worsened top RMSE; downstream TVT used the heavier corrected state and improved stress but hurt strict. Next test should use lighter or stress-gated state revision.
+
 ## Entry Format
 
 ```text

@@ -1,0 +1,5 @@
+finding,detail,value,interpretation
+best_overall,xgb_square_global__regime_ridge_alpha80__s050,13.119439375257173,Best strict RMSE with analog stress RMSE 13.3883.
+best_fixed_blend,xgb_square_global__regime_ridge_alpha80__s050,13.119439375257173,Best fixed fallback/blend candidate.
+best_confidence_blend,xgb_square_global__regime_ridge_alpha80__confidence_s100,13.127954421831625,Best confidence-gated regime mean candidate.
+decision,stress_diagnostic_iterate,13.119439375257173,"Stress improved versus the original regime mean, but strict RMSE worsened, so this is a diagnostic branch rather than a package candidate."

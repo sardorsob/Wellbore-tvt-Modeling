@@ -76,6 +76,7 @@
 - [x] Run Bayesian regime partial pooling (`2026-07-01__bayesian_regime_partial_pooling`) - shared Ridge partial pooling worsened; best overall reference re-fit was **13.0953** strict / **13.4038** stress
 - [x] Run plateau failure-slice audit (`2026-07-01__plateau_failure_slice_audit`) - same hard wells recur across all recent pseudo-top/regime runs; pivot to state-error modeling
 - [x] Run XGBoost local sequence stack (`2026-07-01__xgboost_local_sequence_stack`) - flat local-window stack worsened to **13.1613** strict / **13.4561** stress
+- [x] Run pseudo-top state revision (`2026-07-01__pseudo_top_state_revision`) - strict worsened to **13.1194**, but analog stress improved to **13.3883**
 
 ## In progress
 
@@ -221,6 +222,7 @@ Immediate next work:
 | 2026-07-01 | Bayesian regime partial pooling | 13.0953 | Shared Ridge residual/direct partial pooling worsened; best row is only the independent regime-mean reference re-fit at **13.4038** stress |
 | 2026-07-01 | Plateau failure-slice audit | n/a | Stop-gate audit: hard wells repeat across all eight recent runs; next move is state-revision or local-log sequence modeling |
 | 2026-07-01 | XGBoost local sequence stack | 13.1613 | Local GR/typewell window summaries as flat stack features worsened strict and stress; move to state-revision/top-error correction |
+| 2026-07-01 | Pseudo-top state revision | 13.1194 | Broad top residual correction improves stress to **13.3883** but hurts strict; next try lighter/gated revision |
 
 ## Validation artifacts
 
