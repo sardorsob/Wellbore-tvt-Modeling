@@ -1,0 +1,5 @@
+finding,detail,value,interpretation
+best_overall,xgb_square_regularized__safe_typewell,13.474489401303108,Best strict RMSE with analog stress RMSE 13.8284.
+best_safe_typewell,xgb_square_regularized__safe_typewell,13.474489401303108,Best same-notebook safe/typewell baseline.
+best_interaction,xgb_pseudohuber_reference__pseudo_interactions,13.481485928952031,Best candidate using pseudo-top interaction features.
+decision,iterate_before_package,13.474489401303108,"Promotion rule checks strict local reference, stress behavior, and current public context."

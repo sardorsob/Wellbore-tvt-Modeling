@@ -387,3 +387,17 @@
 **Rationale:** The best gated candidate `xgb_pseudohuber_mean__ridge_pseudo_state_residual__uncertainty_gate_conservative` scored **13.4694** strict-hybrid RMSE and **13.7665** analog-distance stress RMSE. This improved the same-notebook mean-only reference **13.4745** by only **0.0051** RMSE and did not beat the strict local reference **13.4506**, even though stress behavior improved versus **13.8870**.
 **Consequences:** Do not create a Kaggle package from this residual gate. Preserve the gate diagnostics because they suggest pseudo-top uncertainty can stabilize stress folds.
 **Follow-up:** Try incorporating pseudo-top uncertainty into the mean learner itself, or into a Bayesian mixture/prior design where it changes regime weights before residuals are estimated.
+
+---
+
+## D030 - Stop flat pseudo-top XGBoost feature engineering
+
+**Date:** 2026-06-30
+**Decision:** Do not package or continue tuning the first pseudo-top interaction XGBoost feature set.
+**Alternatives considered:**
+- Package because the same-notebook safe/typewell baseline remains below the public-best benchmark locally.
+- Keep expanding pseudo-top interactions with deeper trees or more crosses.
+- Pivot to a Bayesian or mixture-regime formulation.
+**Rationale:** The interaction notebook did not beat its own safe/typewell baseline. Best overall was `xgb_square_regularized__safe_typewell` at **13.4745** strict-hybrid RMSE and **13.8284** analog-distance stress RMSE. Best pseudo-top interaction candidate `xgb_pseudohuber_reference__pseudo_interactions` scored **13.4815** strict RMSE and **13.8681** stress RMSE.
+**Consequences:** Treat raw/interacted pseudo-top XGBoost features as a completed negative screen. Keep the artifacts and feature importances as evidence.
+**Follow-up:** Move pseudo-top uncertainty into a Bayesian mixture/prior model over stratigraphic regimes, or revisit validation design before more tree feature engineering.

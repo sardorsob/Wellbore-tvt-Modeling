@@ -444,3 +444,9 @@ The `08_pseudo_top_uncertainty` notebook confirmed that train formation columns 
 The `09_pseudo_top_gated_regime` notebook used pseudo-top margin, confidence, entropy, ensemble spread, and state/typewell descriptors to shrink residual corrections. The best candidate was `xgb_pseudohuber_mean__ridge_pseudo_state_residual__uncertainty_gate_conservative` at **13.4694** strict-hybrid RMSE and **13.7665** analog-distance stress RMSE. It improved the same-notebook mean-only reference **13.4745** by **0.0051** RMSE and improved analog stress versus the prior safe/typewell reference **13.8870**, but it still trailed the strict local safe/typewell reference **13.4506**.
 
 **Modeling implication:** Pseudo-top uncertainty is more useful as a stabilizer than as a point-RMSE breakthrough in the current residual-gate form. The next iteration should either move the gate into the primary mean model or use it as Bayesian prior/mixture evidence; do not package this residual gate as-is.
+
+### A61 - Pseudo-top interaction features do not unlock the XGBoost mean
+
+The `10_pseudo_top_interaction_xgboost` notebook moved pseudo-top uncertainty into the primary XGBoost mean through controlled interactions with progress, distance, analog stress, and typewell error. The best overall candidate remained `xgb_square_regularized__safe_typewell` at **13.4745** strict-hybrid RMSE and **13.8284** analog-distance stress RMSE. The best pseudo-top interaction candidate, `xgb_pseudohuber_reference__pseudo_interactions`, scored **13.4815** strict-hybrid RMSE and **13.8681** stress RMSE, slightly worse than the same-notebook safe/typewell baseline.
+
+**Modeling implication:** Flat pseudo-top feature engineering has likely hit diminishing returns. The next pseudo-top/stratigraphy attempt should be a Bayesian or mixture-regime model where pseudo-top uncertainty changes formation-regime weights or priors, not another additive/interacted tree feature set.

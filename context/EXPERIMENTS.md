@@ -602,6 +602,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: iterate before package. The gate is a useful stabilizer but not a point-RMSE breakthrough.
 - Notes: Next pseudo-top work should move uncertainty into the primary mean learner or a Bayesian prior/mixture, not only a post-hoc residual correction.
 
+## 2026-06-30__pseudo_top_interaction_xgboost
+
+- Task: pseudo-top interaction XGBoost mean model
+- Purpose: Test whether pseudo-top uncertainty helps the primary XGBoost mean when expressed as controlled interactions with progress, distance, analog stress, and typewell alignment error.
+- Config: `notebooks/modeling/08_alignment/10_pseudo_top_interaction_xgboost.ipynb`; deterministic target-row sampling capped at **120** rows per well; two-seed squared-error pseudo-top proxy ensembles; XGBoost pseudo-Huber, squared-error, and shallow interaction candidates.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell descriptors, and direct formation columns used only as fold-local pseudo-top labels.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; all candidates also scored on `analog_distance_fold`.
+- Model: best overall `xgb_square_regularized__safe_typewell`; best interaction candidate `xgb_pseudohuber_reference__pseudo_interactions`.
+- Primary metric: best overall strict-hybrid RMSE **13.4745**; best interaction strict-hybrid RMSE **13.4815**.
+- Secondary metrics: best overall analog-distance stress RMSE **13.8284**; best interaction stress RMSE **13.8681**.
+- Artifacts: feature preview, pseudo-top proxy quality, summary, fold metrics, zone/analog-bin summaries, well diagnostics, feature importance, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-06-30__pseudo_top_interaction_xgboost/`.
+- Decision: do not package. Controlled pseudo-top interactions did not beat the same-notebook safe/typewell baseline.
+- Notes: Flat tree feature engineering around pseudo-top appears exhausted; use Bayesian/mixture-regime priors next.
+
 ## Entry Format
 
 ```text

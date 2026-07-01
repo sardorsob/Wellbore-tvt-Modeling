@@ -171,7 +171,8 @@ Immediate next work:
 - Exact XGBoost known-state injection completed: raw state features worsened the current recipe, so do not package.
 - Pseudo-top uncertainty screen completed: proxy tops are meaningful, but raw pseudo-top feature injection did not beat safe/typewell XGBoost.
 - Pseudo-top gated residual screen completed: conservative gating improved same-notebook mean-only by **0.0051** RMSE and improved analog stress, but did not beat strict safe/typewell reference.
-- For the next Bayesian/tree-hybrid work, move state and pseudo-top uncertainty into the primary mean learner or prior/mixture structure, not only a post-hoc residual gate.
+- Pseudo-top interaction XGBoost completed: controlled interactions did not beat same-notebook safe/typewell baseline.
+- For the next Bayesian/tree-hybrid work, move state and pseudo-top uncertainty into prior/mixture structure rather than more flat XGBoost feature engineering.
 - Re-score XGBoost/LightGBM/Huber candidates on `strict_hybrid_fold`, `analog_distance_fold`, and high-stress slices for poor alignment, high extrapolation, and short known zones.
 - Package only if the new feature family clears both global strict-CV and stress-slice promotion gates.
 
@@ -192,6 +193,7 @@ Immediate next work:
 | 2026-06-27 | XGBoost strict CV `xgb_pseudohuber_shallow_robust` | 12.7504 | Strict sampled CV on `strict_hybrid_fold`; analog-distance stress test RMSE **12.9116**; strongest local diagnostic so far, but uses train-only formation-distance features |
 | 2026-06-30 | Pseudo-top uncertainty screen `safe_pseudo_top_uncertainty` | 13.5891 | Best pseudo-top legal candidate; best overall legal remained safe/typewell XGBoost at **13.4506**, so use pseudo-top uncertainty for gating/prior structure next |
 | 2026-06-30 | Pseudo-top gated regime `uncertainty_gate_conservative` | 13.4694 | Best residual-gated candidate; analog-distance stress RMSE **13.7665**, but strict RMSE still trails safe/typewell reference **13.4506** |
+| 2026-06-30 | Pseudo-top interaction XGBoost `pseudo_interactions` | 13.4815 | Best interaction candidate; same-notebook safe/typewell baseline remained better at **13.4745** |
 
 ## Validation artifacts
 

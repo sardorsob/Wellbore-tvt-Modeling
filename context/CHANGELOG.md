@@ -78,6 +78,7 @@
 - Generated and ran first baseline modeling notebooks; updated structure, status, experiments, and feature log with run IDs and RMSEs.
 
 ### Added
+- Pseudo-top interaction XGBoost notebook and artifacts. Best interaction candidate scored **13.4815** strict RMSE and **13.8681** analog stress RMSE, trailing the same-notebook safe/typewell baseline **13.4745**, so this closes the first flat pseudo-top interaction path.
 - Pseudo-top gated residual-regime notebook and artifacts. Best candidate `xgb_pseudohuber_mean__ridge_pseudo_state_residual__uncertainty_gate_conservative` scored **13.4694** strict RMSE and **13.7665** analog stress RMSE; it improves same-notebook mean-only slightly but is not package-ready.
 - Fold-safe pseudo-top uncertainty screen, artifacts, report, feature log, and model-comparison row. Mean proxy top RMSE was **35.0660** and nearest-top agreement was **0.5804**, but best pseudo-top downstream RMSE **13.5891** trailed the safe/typewell XGBoost result **13.4506**, so no Kaggle package was promoted.
 - Self-contained XGBoost Ridge residual-stack Kaggle package under `kaggle/xgboost_residual_stack_submission/`; Kaggle version 2 completed with 14,151 prediction rows and submission `54157692` scored public LB **14.583**, worse than current XGBoost strict inference-safe **14.472**.
