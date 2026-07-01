@@ -1,0 +1,5 @@
+finding,detail,value,interpretation
+best_overall,xgb_switch_p100,12.636430445484853,Best strict RMSE with analog stress RMSE 13.0089.
+best_weight_candidate,xgb_switch_p100,12.636430445484853,Best deployable calibrated/static gate candidate.
+oracle_upper_bound,oracle_continuous_weight,10.817216008071634,Oracle row switch upper bound is leakage-only and not deployable.
+decision,package_cnn_regime_calibrated_gate,12.636430445484853,"Promotion rule checks the direct regime-mean anchor, analog-distance stress behavior, and current public context."

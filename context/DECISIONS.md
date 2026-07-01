@@ -695,3 +695,17 @@
 **Rationale:** `xgb_weight_soft_s100` improves strict RMSE from **12.6497** to **12.6471** and stress from **12.9956** to **12.9475**. The gain is small but directionally helpful. However, the oracle gap remains large, so shallow weight-head tuning is not enough by itself.
 **Consequences:** The next step should be package readiness or a focused stability check, not another minor gate-parameter sweep.
 **Follow-up:** Build a self-contained Kaggle package for the learned-weight branch or run a seed-stability notebook that confirms it beats `blend_cnn_45` consistently.
+
+---
+
+## D052 - Keep calibrated switch gate as strict-best but not stress-best
+
+**Date:** 2026-07-01
+**Decision:** Record `xgb_switch_p100` as the current strict-CV best candidate, while retaining `xgb_weight_soft_s100` as the more stress-robust CNN/regime gate.
+**Alternatives considered:**
+- Promote `xgb_switch_p100` outright because it scores **12.6364** strict RMSE.
+- Keep `xgb_weight_soft_s100` as the only candidate because it has better stress RMSE (**12.9475** vs **13.0089**).
+- Continue expanding gate features immediately.
+**Rationale:** The calibrated switch gate improves strict RMSE by **0.0107**, but the stress regression suggests it may be fitting fold-specific route cues. Since the user goal is to reach much lower public RMSE, a strict-only decimal gain is not enough to justify treating this as the final direction.
+**Consequences:** Do not keep iterating shallow gates unless they include explicit stress-aware selection. The next serious experiment should improve the CNN specialist, add stronger seed/architecture stability, or change the target representation.
+**Follow-up:** Compare package candidates by Kaggle/public transfer if requested, or build a stress-aware CNN specialist stability notebook next.

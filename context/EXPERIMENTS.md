@@ -910,6 +910,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: learned weighting is a valid but small improvement over the uniform blend. Use it as the current local package candidate unless a focused stability run shows seed variance risk.
 - Notes: The learned weight model only captures a thin slice of the oracle gap. Future gains likely require better CNN predictions or richer gate features, not just more shallow weight-head tuning.
 
+## 2026-07-01__cnn_regime_calibrated_gate
+
+- Task: calibrated row-wise CNN/regime gate
+- Purpose: Test whether richer hidden-test-safe context features and row-wise CNN-win classifiers can route between the regime anchor and CNN specialist better than the previous learned weight regressor.
+- Config: `notebooks/modeling/09_validation/08_cnn_regime_calibrated_gate.ipynb`; reuses the fold-safe pseudo-top regime anchor and two-seed CNN specialist, then adds per-well prediction-context features, logistic CNN-win gates, and XGBoost switch/weight gates.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell descriptors, and direct formation columns used only as fold-local pseudo-top labels in the inherited data prep.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; all candidates also scored on `analog_distance_fold`.
+- Model: best deployable candidate `xgb_switch_p100`; oracle diagnostic `oracle_continuous_weight`.
+- Primary metric: `xgb_switch_p100` strict-hybrid RMSE **12.6364**, improving the prior learned-weight candidate **12.6471** by **0.0107**.
+- Secondary metrics: `xgb_switch_p100` analog-distance stress RMSE **13.0089**, worse than the prior learned-weight stress RMSE **12.9475**. Leakage-only continuous oracle RMSE is **10.8172**.
+- Artifacts: feature preview, proxy quality, top-label summary, summary, fold metrics, diagnostics placeholder, zone/analog-bin summaries, well diagnostics, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-07-01__cnn_regime_calibrated_gate/`.
+- Decision: keep as the best strict-CV local candidate, but do not treat it as a clean replacement for `xgb_weight_soft_s100` because stress regressed.
+- Notes: The richer gate features recover only a small additional slice of the oracle gap and trade off stress robustness. The next improvement should focus on CNN specialist quality or stress-aware gate selection, not just more row-wise gate feature expansion.
+
 ## Entry Format
 
 ```text

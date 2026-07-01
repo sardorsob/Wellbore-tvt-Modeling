@@ -171,6 +171,16 @@
 - Notebook stubs for EDA, modeling (6 approaches), and reporting
 - Unit test stubs (loaders, features, metrics, smoke)
 
+## [2026-07-01] - CNN-Regime Calibrated Gate
+### Added / Changed / Fixed / Removed
+- Added calibrated CNN/regime gate notebook with per-well prediction-context features and fold-heldout switch/weight gates.
+- Added calibrated-gate artifacts, report, run bundle, and context notes.
+
+### Results
+- Local CV RMSE: **12.6364** (`xgb_switch_p100`)
+- Analog-distance stress RMSE: **13.0089**
+- Run ID: `2026-07-01__cnn_regime_calibrated_gate`
+
 ---
 
 ## Milestone format

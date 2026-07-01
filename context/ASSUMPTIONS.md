@@ -576,3 +576,9 @@ The `06_cnn_regime_blend_wide_grid` notebook widened the two-seed blend grid abo
 The `07_cnn_regime_learned_weight_gate` notebook trained fold-heldout XGBoost regressors to predict clipped row-wise CNN blend weights. The best deployable model, `xgb_weight_soft_s100`, scored **12.6471** strict RMSE and **12.9475** analog-distance stress RMSE. This slightly improves uniform `blend_cnn_45` strict RMSE (**12.6497**) and stress (**12.9956**). The leakage-only continuous oracle is **10.8284**.
 
 **Modeling implication:** Row-wise blend weights are learnable enough to help stress, but current gate features only recover a tiny part of the oracle gap. Larger gains likely require improving CNN specialist predictions or adding richer gate features that explain when the CNN correction is trustworthy.
+
+### A83 - Richer calibrated gates improve strict RMSE but lose stress robustness
+
+The `08_cnn_regime_calibrated_gate` notebook added per-well prediction-context features and fold-heldout CNN-win switch gates. The best deployable candidate, `xgb_switch_p100`, scored **12.6364** strict RMSE, improving `xgb_weight_soft_s100` by **0.0107**. However, analog-distance stress RMSE worsened from **12.9475** to **13.0089**. The leakage-only continuous oracle improved slightly to **10.8172**.
+
+**Modeling implication:** More expressive row gates can find a small strict-CV gain but are not yet robust across analog-distance stress splits. The path to a larger RMSE drop is unlikely to be gate feature expansion alone; the CNN specialist itself or a stress-aware selection rule needs to improve.
