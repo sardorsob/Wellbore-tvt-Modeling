@@ -994,6 +994,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: diagnostic only. Do not replace the active dilated-direct candidate.
 - Notes: Learned attention pooling worsened candidate and oracle RMSE. The current small-window motif representation appears best served by smoothed average-pooled dilated features, not attention or max pooling.
 
+## 2026-07-01__cnn_regime_dilated_well_bias
+
+- Task: nested well-level residual bias calibration
+- Purpose: Test whether the large signed hard-well residual offsets from the active dilated direct-CNN branch can be partially corrected from hidden-test-safe well and prediction summary features.
+- Config: `notebooks/modeling/09_validation/14_cnn_regime_dilated_well_bias.ipynb`; active average-pooled dilated direct-CNN/regime branch plus nested fold-heldout Huber well-bias models trained on other folds' well-level residual means, with conservative bias shrinkage values **0.25**, **0.50**, and **0.75**.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell descriptors, and direct formation columns used only as fold-local pseudo-top labels in the inherited data prep.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; all candidates also scored on `analog_distance_fold`.
+- Model: best deployable candidate `logit_switch_floor20__well_bias_s25`; oracle diagnostic `oracle_continuous_weight`.
+- Primary metric: `logit_switch_floor20__well_bias_s25` strict-hybrid RMSE **12.4568**, improving the active dilated-direct candidate **12.4888** by **0.0321**.
+- Secondary metrics: `logit_switch_floor20__well_bias_s25` analog-distance stress RMSE **12.7684**, improving active dilated-direct stress **12.8465**. Leakage-only continuous oracle RMSE remains **10.6114** because the base CNN/regime correction vector is unchanged.
+- Artifacts: feature preview, proxy quality, top-label summary, summary, fold metrics, diagnostics placeholder, zone/analog-bin summaries, well diagnostics, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-07-01__cnn_regime_dilated_well_bias/`.
+- Decision: promote as the active local package candidate. Do not mark the active objective complete because local RMSE is still above **10**.
+- Notes: The improvement confirms that some hard-well signed residual offset is predictable from hidden-test-safe well/prediction summaries. The best shrink is conservative (**0.25**), so future bias work should avoid aggressive correction.
+
 ## Entry Format
 
 ```text

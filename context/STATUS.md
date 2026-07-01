@@ -240,6 +240,7 @@ Immediate next work:
 | 2026-07-01 | CNN-regime dilated direct | 12.4888 | Dilated three-seed direct-delta CNN improves both strict and stress; stress RMSE **12.8465**, oracle **10.6114** |
 | 2026-07-01 | CNN-regime dilated pooling | 12.5051 | Avg+max pooling trails average-pooled dilated direct on strict, stress, and oracle; diagnostic only |
 | 2026-07-01 | CNN-regime dilated attention | 12.5366 | Learned attention pooling trails average-pooled dilated direct on strict, stress, and oracle; diagnostic only |
+| 2026-07-01 | CNN-regime dilated well bias | 12.4568 | Nested fold-heldout well-bias shrink **0.25** improves both strict and stress; stress RMSE **12.7684** |
 
 ## Validation artifacts
 

@@ -612,3 +612,9 @@ The `12_cnn_regime_dilated_pooling` notebook added adaptive max pooling alongsid
 The `13_cnn_regime_dilated_attention` notebook added a learned attention-weighted sequence summary alongside average pooling. The best deployable candidate, `logit_switch_floor20`, scored **12.5366** strict RMSE and **12.9839** analog-distance stress RMSE, both worse than the active average-pooled dilated candidate (**12.4888** strict / **12.8465** stress). Its oracle worsened to **10.7206**.
 
 **Modeling implication:** The failure of both max pooling and attention pooling suggests the current 17-bin local-window representation benefits from smoothed dilated context rather than sharper pooling summaries. Further sequence work should change the window representation itself, not just the pooling head.
+
+### A89 - Hard-well signed residual bias is partially predictable
+
+The `14_cnn_regime_dilated_well_bias` notebook trained nested fold-heldout well-level Huber bias models on hidden-test-safe well and prediction summaries. The best candidate, `logit_switch_floor20__well_bias_s25`, scored **12.4568** strict RMSE and **12.7684** analog-distance stress RMSE, improving the active dilated-direct branch on both metrics. Larger shrink values were not best, so the useful signal is real but should be applied conservatively.
+
+**Modeling implication:** Some of the persistent hard-well error is a signed offset that can be estimated from well/prediction summaries, not only local row-level sequence features. Conservative well-level calibration is now part of the active candidate recipe.

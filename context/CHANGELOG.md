@@ -235,6 +235,16 @@
 - Oracle diagnostic RMSE: **10.7206**
 - Run ID: `2026-07-01__cnn_regime_dilated_attention`
 
+## [2026-07-01] - CNN-Regime Dilated Well Bias
+### Added / Changed / Fixed / Removed
+- Added nested well-level residual bias calibration on top of the active dilated direct-CNN branch.
+- Added run artifacts, report, comparison row, and context notes for the new best local branch.
+
+### Results
+- Local CV RMSE: **12.4568** (`logit_switch_floor20__well_bias_s25`)
+- Analog-distance stress RMSE: **12.7684**
+- Run ID: `2026-07-01__cnn_regime_dilated_well_bias`
+
 ---
 
 ## Milestone format

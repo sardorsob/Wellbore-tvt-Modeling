@@ -779,3 +779,17 @@
 **Rationale:** Attention worsens strict RMSE (**12.5366** vs **12.4888**), stress RMSE (**12.9839** vs **12.8465**), and oracle RMSE (**10.7206** vs **10.6114**). Since max pooling also worsened, sharper pooling heads are not the current bottleneck.
 **Consequences:** Stop pooling-head variants for now. The next useful move is either Kaggle package probing or a different sequence/window representation.
 **Follow-up:** Package the active average-pooled dilated candidate, or test a different input-window strategy instead of another pooling head.
+
+---
+
+## D058 - Promote nested well-bias calibration on dilated CNN
+
+**Date:** 2026-07-01
+**Decision:** Promote `logit_switch_floor20__well_bias_s25` from the nested well-bias run as the active local candidate.
+**Alternatives considered:**
+- Keep the uncorrected dilated-direct candidate because it is simpler.
+- Use larger well-bias shrink values because hard wells have large signed residuals.
+- Stop well-bias work due to possible overfit risk.
+**Rationale:** The conservative **0.25** well-bias shrink improves strict RMSE from **12.4888** to **12.4568** and stress RMSE from **12.8465** to **12.7684**. Larger shrink values were not best, confirming that the correction should stay conservative.
+**Consequences:** Future package or tuning work should include this nested well-bias layer, but avoid aggressive well-level correction unless validated by stress CV.
+**Follow-up:** Package `logit_switch_floor20__well_bias_s25` for Kaggle or tune the well-bias feature/model family conservatively.
