@@ -78,6 +78,7 @@
 - Generated and ran first baseline modeling notebooks; updated structure, status, experiments, and feature log with run IDs and RMSEs.
 
 ### Added
+- Pseudo-top regime-mean more-rows notebook and artifacts. Increasing the target-row cap to **220** worsened strict and stress RMSE versus the original **120**-row regime mean.
 - Pseudo-top probability-scale tuning notebook and artifacts. Original scale **50** remained best on strict and stress RMSE, closing the simple probability-calibration path.
 - Stress-gated XGBoost regime-mean stack notebook and artifacts. Gates reduced some stress damage but did not beat the original regime mean on both strict and stress metrics.
 - XGBoost regime-mean stack notebook and artifacts. Best candidate `blend_plus_ridge_residual_s15` scored **13.0769** strict RMSE but worsened analog stress to **13.4468**, so it is not package-ready.

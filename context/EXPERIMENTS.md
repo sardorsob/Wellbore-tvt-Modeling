@@ -700,6 +700,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: diagnostic only. The original scale **50** is already the best tested probability calibration.
 - Notes: Move next to a structurally different pseudo-top inference model or Bayesian partial pooling; do not continue simple scale sweeps.
 
+## 2026-07-01__pseudo_top_regime_mean_more_rows
+
+- Task: denser target-row pseudo-top regime-mean run
+- Purpose: Test whether increasing target-zone row density from **120** to **220** rows per well improves the direct regime-mean recipe.
+- Config: `notebooks/modeling/06_bayesian/11_pseudo_top_regime_mean_more_rows.ipynb`; same pseudo-top proxy, global XGBoost/Ridge mean, regime Ridge, and confidence blend grid as the original regime-mean notebook; target-row cap increased to **220**.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell descriptors, and direct formation columns used only as fold-local pseudo-top labels.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; all candidates also scored on `analog_distance_fold`.
+- Model: best candidate `xgb_pseudohuber_global__regime_ridge_alpha80__confidence_s100`.
+- Primary metric: strict-hybrid RMSE **13.1185**, worse than the original 120-row regime mean **13.0928**.
+- Secondary metrics: analog-distance stress RMSE **13.4745**, worse than the original regime-mean stress **13.4006**.
+- Artifacts: summary, fold metrics, regime diagnostics, zone/analog-bin summaries, well diagnostics, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-07-01__pseudo_top_regime_mean_more_rows/`.
+- Decision: diagnostic only. Keep the original 120-row regime-mean package.
+- Notes: More rows did not unlock lower RMSE; future work needs different structure rather than denser sampling.
+
 ## Entry Format
 
 ```text

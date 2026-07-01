@@ -486,3 +486,9 @@ The `12_xgboost_regime_stress_gated_stack` notebook tested uniform, confidence, 
 The `11_pseudo_top_probability_scale_tuning` notebook tested softmax probability scales **25**, **35**, **50**, **75**, **100**, and **150** inside the same direct regime-mean recipe. The original scale **50** remained best on both strict RMSE (**13.0928**) and analog-distance stress RMSE (**13.4006**). Sharper scales over-committed to noisy pseudo-tops, while smoother scales diluted useful stratigraphic separation.
 
 **Modeling implication:** The next step should not be another probability-scale or confidence-calibration sweep. To reach a materially lower RMSE, the pseudo-top inference model itself must improve, or the regime means need a structurally different pooling/prior design.
+
+### A68 - Denser target-row sampling does not improve the regime mean
+
+The `11_pseudo_top_regime_mean_more_rows` notebook increased the per-well target-row cap from **120** to **220**, raising evaluated rows from **92,760** to **170,060**. The best candidate shifted to `xgb_pseudohuber_global__regime_ridge_alpha80__confidence_s100` with strict RMSE **13.1185** and analog-distance stress RMSE **13.4745**, worse than the original 120-row regime mean **13.0928** strict and **13.4006** stress.
+
+**Modeling implication:** The regime-mean plateau is not caused by too little target-zone row density in the local notebook. Keep the lighter **120** row cap for fast iteration and package stability unless a future model specifically benefits from more rows.

@@ -103,6 +103,19 @@
 - [ ] Compare best/worst wells, high-error slices, pseudo-top errors, and public-transfer assumptions.
 - [ ] Write the next concrete plan before resuming model generation.
 
+### Extra Task: Target-Row Density Check
+
+**Files:**
+- Create: `notebooks/modeling/06_bayesian/11_pseudo_top_regime_mean_more_rows.ipynb`
+- Create: `artifacts/reports/model__pseudo_top_regime_mean_more_rows__2026-07-01.md`
+- Create: `artifacts/tables/model__pseudo_top_regime_mean_more_rows_*__2026-07-01.csv`
+- Modify: context and feature-log files as in Task 2.
+
+- [x] Increase target-row cap from **120** to **220** while holding the direct regime-mean recipe fixed.
+- [x] Export strict/stress summaries and failure slices.
+- [x] Reject if denser sampling does not beat the original 120-row regime mean.
+- [x] Commit if the notebook produces reportable artifacts.
+
 ## Verification
 
 For every completed notebook:

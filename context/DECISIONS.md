@@ -485,3 +485,17 @@
 **Rationale:** Scale **50** was best on strict RMSE (**13.0928**) and stress RMSE (**13.4006**). Every tested alternative worsened strict RMSE by at least **0.0717** and stress by at least **0.0849**.
 **Consequences:** The current regime-mean package already uses the best tested probability scale. Further gains require better pseudo-top predictions or a different regime-mean modeling structure.
 **Follow-up:** Trigger the stop-and-brainstorm gate before building the next notebook because several local iterations have not produced a package-worthy improvement.
+
+---
+
+## D037 - Keep the 120-row regime-mean sample cap
+
+**Date:** 2026-07-01
+**Decision:** Do not rebuild the pseudo-top regime-mean Kaggle package with the **220** target-row cap.
+**Alternatives considered:**
+- Increase row cap to train on a denser target-zone sample.
+- Use pseudo-Huber global mean because it won the denser sample.
+- Keep the original **120** cap and faster package.
+**Rationale:** The **220** cap produced **13.1185** strict RMSE and **13.4745** stress RMSE, both worse than the original **120** cap result of **13.0928** strict and **13.4006** stress.
+**Consequences:** Keep the existing pseudo-top regime-mean package unchanged. Do not spend more overnight time on row-cap sweeps.
+**Follow-up:** Move to a genuinely different model family or revisit pseudo-top inference labels/features.
