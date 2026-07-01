@@ -569,3 +569,17 @@
 **Rationale:** The broad corrected-state path is a strict/stress tradeoff. It fails the strict promotion gate, but it is the first post-plateau experiment to improve analog stress. The top-correction diagnostics show **0.25** shrink is safer for top RMSE than the heavier correction used downstream.
 **Consequences:** Do not push this notebook to Kaggle. Use it to design a gated state-revision model that applies correction only when pseudo-top uncertainty or analog stress justifies it.
 **Follow-up:** Build `pseudo_top_state_revision_gated`: compare base, 0.25 global correction, confidence-gated correction, stress-gated correction, and hybrid stress-confidence correction.
+
+---
+
+## D043 - Stop pseudo-top residual correction schedules
+
+**Date:** 2026-07-01
+**Decision:** Do not continue tuning global, uncertainty-gated, stress-gated, or hybrid pseudo-top residual correction schedules.
+**Alternatives considered:**
+- Promote the best stress variant because it reached **13.3710** stress RMSE.
+- Continue searching smaller gates or alternative shrinkage weights.
+- Return to the unchanged regime mean and pursue a different state/model direction.
+**Rationale:** The best strict row in `14_pseudo_top_state_revision_gated` is the unchanged base regime mean (**13.0928** strict / **13.4006** stress). The best stress row improves stress to **13.3710** but worsens strict to **13.1309**. This is a calibration tradeoff, not movement toward **10 RMSE**.
+**Consequences:** Keep the original pseudo-top regime mean as the clean package anchor. Do not create another notebook whose main novelty is a top residual shrinkage schedule.
+**Follow-up:** Next work should either calibrate public-transfer risk for the existing package anchor or test a genuinely different state model / higher-capacity architecture.

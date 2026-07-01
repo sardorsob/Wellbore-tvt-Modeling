@@ -46,6 +46,8 @@
 - Recorded A72 and D041: scalar local-sequence stack features worsened the regime mean, so the next modeling branch should correct pseudo-top/state inference directly.
 - Added and ran `notebooks/modeling/08_alignment/13_pseudo_top_state_revision.ipynb`; exported revision-quality diagnostics, model summaries, findings, report, model-comparison row, and run bundle.
 - Recorded A73 and D042: top-state correction improves analog stress but hurts strict RMSE, so continue only with lighter or gated state revision.
+- Added and ran `notebooks/modeling/08_alignment/14_pseudo_top_state_revision_gated.ipynb`; exported variant-specific revision-quality diagnostics, summaries, findings, report, model-comparison row, and run bundle.
+- Recorded A74 and D043: gated top residual correction only trades strict RMSE for stress improvement, so stop correction-schedule tuning.
 
 ### Changed
 - Added and ran `notebooks/modeling/06_bayesian/07_gated_bayesian_regime.ipynb`; exported gated Bayesian regime metrics, gate diagnostics, report, model comparison row, and run bundle.

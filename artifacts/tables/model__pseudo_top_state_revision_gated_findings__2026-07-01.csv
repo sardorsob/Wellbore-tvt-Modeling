@@ -1,0 +1,6 @@
+finding,detail,value,interpretation
+best_overall,base__xgb_square_global__regime_ridge_alpha80__confidence_s100,13.092783707491265,Best strict RMSE with analog stress RMSE 13.4006.
+best_fixed_blend,base__xgb_square_global__regime_ridge_alpha80__s050,13.119564468130609,Best fixed fallback/blend candidate.
+best_confidence_blend,base__xgb_square_global__regime_ridge_alpha80__confidence_s100,13.092783707491265,Best confidence-gated regime mean candidate.
+decision,diagnostic_only,13.092783707491265,Best strict candidate is the unchanged base regime mean; correction variants only trade strict RMSE for stress improvement.
+best_stress_variant,hybrid_s75__xgb_square_global__regime_ridge_alpha220__s050,13.371015333631236,"Best stress RMSE has strict RMSE 13.1309, so it is not a promotion candidate."

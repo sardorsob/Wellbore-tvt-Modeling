@@ -522,3 +522,9 @@ The `13_xgboost_local_sequence_stack` notebook tested local GR/typewell window s
 The `13_pseudo_top_state_revision` notebook trained second-stage residual correctors for fold-safe pseudo-top elevation predictions. The best TVT candidate scored **13.1194** strict RMSE and **13.3883** analog-distance stress RMSE. This worsened strict RMSE versus the original regime mean **13.0928**, but improved stress by **0.0123** versus **13.4006**. Revision diagnostics showed that **0.25** shrink slightly improved strict top RMSE (**-0.0064** average delta), while **0.50** and **0.75** worsened top RMSE.
 
 **Modeling implication:** Pseudo-top residual correction has real stress-control signal, but broad correction over-moves the local state. The next revision should be lighter or gated to high-stress/high-uncertainty slices rather than applied globally.
+
+### A74 - Gated state correction preserves the base strict winner but only improves stress in worse strict rows
+
+The `14_pseudo_top_state_revision_gated` notebook kept separate probability columns for base, global, uncertainty-gated, stress-gated, and hybrid pseudo-top corrections. The best strict candidate was the unchanged base regime mean at **13.0928** strict RMSE and **13.4006** stress RMSE. The best stress candidate, `hybrid_s75__xgb_square_global__regime_ridge_alpha220__s050`, reached **13.3710** stress RMSE but worsened strict RMSE to **13.1309**.
+
+**Modeling implication:** Top residual correction is a stress-calibration tool, not a strict-RMSE breakthrough in this form. Since gating did not produce a joint strict/stress win, stop correction-schedule tuning and move to a different state representation or a public-transfer calibration decision.

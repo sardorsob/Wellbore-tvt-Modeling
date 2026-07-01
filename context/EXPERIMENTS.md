@@ -784,6 +784,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: diagnostic only for packaging, but keep as a promising stress-control branch.
 - Notes: Top-residual correction is not monotone. A **0.25** shrink slightly improved strict top RMSE (**-0.0064**) while heavier shrink worsened top RMSE; downstream TVT used the heavier corrected state and improved stress but hurt strict. Next test should use lighter or stress-gated state revision.
 
+## 2026-07-01__pseudo_top_state_revision_gated
+
+- Task: gated pseudo-top state revision before regime probabilities
+- Purpose: Test whether lighter, uncertainty-gated, stress-gated, or hybrid pseudo-top residual corrections can preserve strict RMSE while retaining the stress improvement from broad state revision.
+- Config: `notebooks/modeling/08_alignment/14_pseudo_top_state_revision_gated.ipynb`; keeps separate state/probability columns for `base`, `global_s25`, `global_s50`, `uncert_s50`, `stress_s50`, and `hybrid_s75`; compact regime-mean grid with `xgb_square_global`, Ridge alphas **80** and **220**, and `s050` / `confidence_s100` blend schedules.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell descriptors, and direct formation columns used only as fold-local pseudo-top labels/residual diagnostics.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; all candidates also scored on `analog_distance_fold`.
+- Model: best strict candidate `base__xgb_square_global__regime_ridge_alpha80__confidence_s100`; best stress candidate `hybrid_s75__xgb_square_global__regime_ridge_alpha220__s050`.
+- Primary metric: best strict-hybrid RMSE **13.0928**, exactly the unchanged original regime mean.
+- Secondary metrics: best stress RMSE **13.3710**, but paired with strict RMSE **13.1309**.
+- Artifacts: feature preview, proxy quality, top-label summary, revision-quality diagnostics, summary, fold metrics, regime diagnostics, zone/analog-bin summaries, well diagnostics, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-07-01__pseudo_top_state_revision_gated/`.
+- Decision: diagnostic only. Gated correction schedules trade strict RMSE for stress and do not move toward the sub-10 objective.
+- Notes: Stop state-correction schedules. The next direction should be a different state model, public-transfer calibration, or a fundamentally higher-capacity architecture rather than more top residual shrinkage.
+
 ## Entry Format
 
 ```text
