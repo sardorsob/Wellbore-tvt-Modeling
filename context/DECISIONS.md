@@ -401,3 +401,17 @@
 **Rationale:** The interaction notebook did not beat its own safe/typewell baseline. Best overall was `xgb_square_regularized__safe_typewell` at **13.4745** strict-hybrid RMSE and **13.8284** analog-distance stress RMSE. Best pseudo-top interaction candidate `xgb_pseudohuber_reference__pseudo_interactions` scored **13.4815** strict RMSE and **13.8681** stress RMSE.
 **Consequences:** Treat raw/interacted pseudo-top XGBoost features as a completed negative screen. Keep the artifacts and feature importances as evidence.
 **Follow-up:** Move pseudo-top uncertainty into a Bayesian mixture/prior model over stratigraphic regimes, or revisit validation design before more tree feature engineering.
+
+---
+
+## D031 - Iterate pseudo-top Bayesian mixture before packaging
+
+**Date:** 2026-07-01
+**Decision:** Keep the pseudo-top Bayesian mixture-regime model as the next promising path, but do not package it yet.
+**Alternatives considered:**
+- Package immediately because it beats the prior strict safe/typewell reference.
+- Reject because the strict gain is too small.
+- Iterate the mixture-regime formulation before a public-score probe.
+**Rationale:** `xgb_pseudohuber_mean__ridge_alpha650__mixture_conf_s050` scored **13.4437** strict-hybrid RMSE and **13.7593** analog-distance stress RMSE. This is the first pseudo-top family result to beat the strict safe/typewell reference **13.4506**, but the margin is only **0.0069** RMSE and does not clear the **0.05** promotion gate.
+**Consequences:** Do not push to Kaggle yet. Preserve the notebook as evidence that soft formation-regime priors are more promising than raw/interacted pseudo-top features.
+**Follow-up:** Try a direct stratigraphic-regime mean model or calibrate the mixture prior against stress slices before packaging.

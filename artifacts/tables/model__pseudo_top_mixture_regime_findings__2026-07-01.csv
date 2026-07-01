@@ -1,0 +1,5 @@
+finding,detail,value,interpretation
+best_overall,xgb_pseudohuber_mean__ridge_alpha650__mixture_conf_s050,13.443736843906953,Best strict RMSE with analog stress RMSE 13.7593.
+best_mean_only,xgb_square_mean__ridge_alpha650__mean_only,13.474489401303108,Best no-mixture-correction candidate.
+best_mixture_prior,xgb_pseudohuber_mean__ridge_alpha650__mixture_conf_s050,13.443736843906953,Best candidate with MAP mixture-regime correction.
+decision,iterate_before_package,13.443736843906953,"Promotion rule checks strict local reference, stress behavior, and current public context."

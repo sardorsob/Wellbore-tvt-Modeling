@@ -450,3 +450,9 @@ The `09_pseudo_top_gated_regime` notebook used pseudo-top margin, confidence, en
 The `10_pseudo_top_interaction_xgboost` notebook moved pseudo-top uncertainty into the primary XGBoost mean through controlled interactions with progress, distance, analog stress, and typewell error. The best overall candidate remained `xgb_square_regularized__safe_typewell` at **13.4745** strict-hybrid RMSE and **13.8284** analog-distance stress RMSE. The best pseudo-top interaction candidate, `xgb_pseudohuber_reference__pseudo_interactions`, scored **13.4815** strict-hybrid RMSE and **13.8681** stress RMSE, slightly worse than the same-notebook safe/typewell baseline.
 
 **Modeling implication:** Flat pseudo-top feature engineering has likely hit diminishing returns. The next pseudo-top/stratigraphy attempt should be a Bayesian or mixture-regime model where pseudo-top uncertainty changes formation-regime weights or priors, not another additive/interacted tree feature set.
+
+### A62 - Soft pseudo-top mixture priors finally move strict RMSE, but only marginally
+
+The `08_pseudo_top_mixture_regime` notebook converted fold-safe pseudo-top distances into soft formation-regime probabilities and fit Ridge MAP residual priors over formation probability, progress, distance, and near-top basis terms. The best candidate, `xgb_pseudohuber_mean__ridge_alpha650__mixture_conf_s050`, scored **13.4437** strict-hybrid RMSE and **13.7593** analog-distance stress RMSE. This beats the prior strict safe/typewell reference **13.4506** by **0.0069** RMSE and improves stress versus **13.8870**, but the gain is far below the normal **0.05** packaging margin.
+
+**Modeling implication:** The mixture-regime framing is the most promising pseudo-top use so far, but should be iterated before Kaggle packaging. Next work should model the TVT mean directly by stratigraphic regime or calibrate the mixture against public-transfer slices, rather than only adding residual MAP corrections.

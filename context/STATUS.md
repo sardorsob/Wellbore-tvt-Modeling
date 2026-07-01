@@ -172,7 +172,8 @@ Immediate next work:
 - Pseudo-top uncertainty screen completed: proxy tops are meaningful, but raw pseudo-top feature injection did not beat safe/typewell XGBoost.
 - Pseudo-top gated residual screen completed: conservative gating improved same-notebook mean-only by **0.0051** RMSE and improved analog stress, but did not beat strict safe/typewell reference.
 - Pseudo-top interaction XGBoost completed: controlled interactions did not beat same-notebook safe/typewell baseline.
-- For the next Bayesian/tree-hybrid work, move state and pseudo-top uncertainty into prior/mixture structure rather than more flat XGBoost feature engineering.
+- Pseudo-top Bayesian mixture completed: soft formation-regime priors reached **13.4437** strict RMSE and **13.7593** analog stress RMSE, the first pseudo-top-family strict improvement, but still below packaging margin.
+- For the next Bayesian/tree-hybrid work, iterate mixture/regime mean structure or public-transfer calibration before Kaggle packaging.
 - Re-score XGBoost/LightGBM/Huber candidates on `strict_hybrid_fold`, `analog_distance_fold`, and high-stress slices for poor alignment, high extrapolation, and short known zones.
 - Package only if the new feature family clears both global strict-CV and stress-slice promotion gates.
 
@@ -194,6 +195,7 @@ Immediate next work:
 | 2026-06-30 | Pseudo-top uncertainty screen `safe_pseudo_top_uncertainty` | 13.5891 | Best pseudo-top legal candidate; best overall legal remained safe/typewell XGBoost at **13.4506**, so use pseudo-top uncertainty for gating/prior structure next |
 | 2026-06-30 | Pseudo-top gated regime `uncertainty_gate_conservative` | 13.4694 | Best residual-gated candidate; analog-distance stress RMSE **13.7665**, but strict RMSE still trails safe/typewell reference **13.4506** |
 | 2026-06-30 | Pseudo-top interaction XGBoost `pseudo_interactions` | 13.4815 | Best interaction candidate; same-notebook safe/typewell baseline remained better at **13.4745** |
+| 2026-07-01 | Pseudo-top Bayesian mixture `mixture_conf_s050` | 13.4437 | Best pseudo-top-family result so far; analog-distance stress RMSE **13.7593**, but strict gain over **13.4506** is only **0.0069** |
 
 ## Validation artifacts
 

@@ -616,6 +616,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: do not package. Controlled pseudo-top interactions did not beat the same-notebook safe/typewell baseline.
 - Notes: Flat tree feature engineering around pseudo-top appears exhausted; use Bayesian/mixture-regime priors next.
 
+## 2026-07-01__pseudo_top_mixture_regime
+
+- Task: pseudo-top Bayesian/MAP mixture-regime model
+- Purpose: Test whether pseudo-top uncertainty is more useful as soft stratigraphic-regime prior evidence than as raw/interacted XGBoost features.
+- Config: `notebooks/modeling/06_bayesian/08_pseudo_top_mixture_regime.ipynb`; deterministic target-row sampling capped at **120** rows per well; two-seed squared-error pseudo-top proxy ensembles; softmax formation probabilities; Ridge MAP residual priors over formation probability, progress, distance, and near-top basis terms; fixed and confidence-weighted shrinkage schedules.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell descriptors, and direct formation columns used only as fold-local pseudo-top labels.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; all candidates also scored on `analog_distance_fold`.
+- Model: best candidate `xgb_pseudohuber_mean__ridge_alpha650__mixture_conf_s050`.
+- Primary metric: strict-hybrid RMSE **13.4437**, improving prior strict safe/typewell reference **13.4506** by **0.0069** RMSE.
+- Secondary metrics: analog-distance stress RMSE **13.7593**; best mean-only candidate **13.4745**.
+- Artifacts: feature preview, pseudo-top proxy quality, top-label summary, summary, fold metrics, mixture diagnostics, zone/analog-bin summaries, well diagnostics, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-07-01__pseudo_top_mixture_regime/`.
+- Decision: iterate before package. This is the best pseudo-top direction so far, but the strict gain is below the promotion margin.
+- Notes: Next Bayesian iteration should model the TVT mean directly by stratigraphic regime or calibrate mixture priors against public-transfer stress slices.
+
 ## Entry Format
 
 ```text
