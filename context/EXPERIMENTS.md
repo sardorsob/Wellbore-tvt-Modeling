@@ -868,6 +868,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: strong positive local candidate. Do not submit the audit notebook as-is until the CNN blend is tuned and made package-ready, but continue this branch immediately.
 - Notes: Simple learned gates did not beat the uniform blend, but the oracle gap suggests gate predictability or calibrated blend tuning is now the bottleneck. Next sweep should tune CNN blend weights around **0.10-0.35**, add repeated CNN seeds, and only then package the best stable candidate.
 
+## 2026-07-01__cnn_regime_blend_tuning
+
+- Task: seed-averaged CNN/regime blend tuning
+- Purpose: Tune the deployable uniform blend after `blend_cnn_20` produced the first large post-plateau gain.
+- Config: `notebooks/modeling/09_validation/05_cnn_regime_blend_tuning.ipynb`; recomputes the direct regime-mean anchor, averages two lightweight CNN seeds per fold, and sweeps blend weights **0.00** through **0.50**.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell descriptors, and direct formation columns used only as fold-local pseudo-top labels in the inherited data prep.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; all candidates also scored on `analog_distance_fold`.
+- Model: best deployable candidate `blend_cnn_50`; oracle diagnostic `oracle_row_switch`.
+- Primary metric: `blend_cnn_50` strict-hybrid RMSE **12.6514**, improving the prior `blend_cnn_20` audit result **12.7816** by **0.1302** and the direct regime-mean anchor by **0.4414**.
+- Secondary metrics: `blend_cnn_50` analog-distance stress RMSE **13.0331**; best stress in the grid is around `blend_cnn_35` at **12.9705**. Leakage-only oracle RMSE is **10.9049**.
+- Artifacts: feature preview, proxy quality, top-label summary, summary, fold metrics, diagnostics placeholder, zone/analog-bin summaries, well diagnostics, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-07-01__cnn_regime_blend_tuning/`.
+- Decision: continue and widen the blend grid. Do not submit yet because strict RMSE is still improving at the largest tested weight.
+- Notes: The optimum has not been bracketed. Next sweep should test weights **0.50-1.00**, include stress-aware selection, and prepare a package only after strict/stress tradeoff is stable.
+
 ## Entry Format
 
 ```text

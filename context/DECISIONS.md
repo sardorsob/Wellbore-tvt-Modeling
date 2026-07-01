@@ -653,3 +653,17 @@
 **Rationale:** The gated-specialist audit found `blend_cnn_20` at **12.7816** strict RMSE and **13.1223** stress RMSE, a much larger gain than recent pseudo-top tuning. The learned gates did not beat uniform blending, so the deployable path is calibration before gating.
 **Consequences:** The next notebook should sweep blend weights around **0.10-0.35**, test repeated CNN seeds, and preserve strict/stress gates. Do not package until the best blend is stable and the notebook can be converted into a hidden-test-safe Kaggle submission.
 **Follow-up:** Build a tuned CNN-regime blend notebook with seed averaging and smaller blend increments.
+
+---
+
+## D049 - Widen CNN blend grid before packaging
+
+**Date:** 2026-07-01
+**Decision:** Continue tuning CNN/regime blend weights above **0.50** before building a Kaggle package.
+**Alternatives considered:**
+- Package `blend_cnn_50` immediately because it scored **12.6514** strict and **13.0331** stress.
+- Choose `blend_cnn_35` because it has the best stress RMSE in the first tuning grid.
+- Widen the grid because strict RMSE is still improving at the largest tested weight.
+**Rationale:** `05_cnn_regime_blend_tuning` did not bracket the strict optimum. `blend_cnn_50` is the best strict candidate and is still stress-improving versus the regime anchor, while `blend_cnn_35` suggests a stress/strict tradeoff.
+**Consequences:** Do not package yet. The next notebook should test **0.50-1.00** blend weights and explicitly choose a candidate by strict/stress balance.
+**Follow-up:** Build `cnn_regime_blend_wide_grid` or equivalent, then package the best stable blend if it remains strong.

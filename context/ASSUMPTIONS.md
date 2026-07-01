@@ -558,3 +558,9 @@ The `05_torch_local_window_cnn` notebook trained a compact three-channel Conv1D 
 The `04_cnn_regime_gated_specialist` audit recomputed a fold-safe regime-mean anchor and local-window CNN specialist in the same validation frame. A uniform **20%** blend toward the CNN reached **12.7816** strict RMSE and **13.1223** analog-distance stress RMSE, improving both the direct regime mean and the residual-stack best. The leakage-only oracle row switch reached **10.7716** strict RMSE, while simple learned gates did not beat the uniform blend.
 
 **Modeling implication:** The CNN is useful as a residual direction, not as a replacement. The next bottleneck is calibration: tune blend weights, stabilize CNN predictions across seeds, and build gates only if they improve on the uniform blend without stress regression.
+
+### A80 - CNN blend optimum is beyond the first tuning grid
+
+The `05_cnn_regime_blend_tuning` notebook averaged two lightweight CNN seeds and swept uniform blend weights from **0.00** to **0.50**. Strict RMSE kept improving through the largest tested weight, reaching **12.6514** at `blend_cnn_50`. Stress RMSE was best near `blend_cnn_35` at **12.9705**, while `blend_cnn_50` still improved stress to **13.0331** versus the direct regime-mean **13.4006**.
+
+**Modeling implication:** The CNN correction is stronger than the first 20% audit suggested. The next sweep must bracket the optimum with weights above **0.50** and choose using both strict and analog-distance stress, rather than assuming a small residual blend is enough.

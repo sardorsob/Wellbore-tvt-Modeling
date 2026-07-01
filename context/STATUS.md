@@ -231,6 +231,7 @@ Immediate next work:
 | 2026-07-01 | Pseudo-top transition distance | 13.0928 | Best row is unchanged reference; best transition variant **13.0950** strict / **13.5710** stress, so stop tabular transition-distance additions |
 | 2026-07-01 | Torch local-window CNN | 13.6857 | Standalone CNN is worse and stress-unstable, but shifts hard-well errors enough to consider only gated specialist use |
 | 2026-07-01 | CNN-regime gated specialist | 12.7816 | Uniform `blend_cnn_20` gives the first large post-plateau gain and improves stress to **13.1223**; oracle row switch **10.7716** shows more blend/gate headroom |
+| 2026-07-01 | CNN-regime blend tuning | 12.6514 | Two-seed blend grid improves again; best strict at upper grid edge `blend_cnn_50`, stress best around `blend_cnn_35` at **12.9705** |
 
 ## Validation artifacts
 
