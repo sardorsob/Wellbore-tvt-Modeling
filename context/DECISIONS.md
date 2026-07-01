@@ -373,3 +373,17 @@
 **Rationale:** The pseudo-top proxy itself is plausible, with mean top-elevation RMSE **35.0660** and nearest-top agreement **0.5804** under `strict_hybrid_fold`. But downstream raw feature injection worsened the legal XGBoost path: best legal overall was `xgb_square_regularized__safe_typewell` at **13.4506** strict-hybrid RMSE, while best pseudo-top candidate `xgb_pseudohuber_known_state_recipe__safe_pseudo_top_uncertainty` scored **13.5891**. The stress RMSE for the best legal candidate was **13.8870**, so the package gate is not cleared.
 **Consequences:** Keep the artifacts as a clean fold-safe pseudo-top audit. Treat pseudo-top uncertainty as state evidence for gates, priors, or mixture weights rather than a broad additive tree feature set.
 **Follow-up:** Build a gated XGBoost/Bayesian hybrid where pseudo-top uncertainty controls residual shrinkage and formation-regime weights, then compare against the current public-best XGBoost strict inference-safe path.
+
+---
+
+## D029 - Do not package first pseudo-top gated residual regime
+
+**Date:** 2026-06-30
+**Decision:** Keep the pseudo-top gated-regime notebook as an iteration artifact, but do not package it for Kaggle yet.
+**Alternatives considered:**
+- Package because analog-distance stress RMSE improved versus the prior safe/typewell stress reference.
+- Tune wider residual gates and larger corrections immediately.
+- Move pseudo-top uncertainty into the primary mean model or Bayesian prior before packaging.
+**Rationale:** The best gated candidate `xgb_pseudohuber_mean__ridge_pseudo_state_residual__uncertainty_gate_conservative` scored **13.4694** strict-hybrid RMSE and **13.7665** analog-distance stress RMSE. This improved the same-notebook mean-only reference **13.4745** by only **0.0051** RMSE and did not beat the strict local reference **13.4506**, even though stress behavior improved versus **13.8870**.
+**Consequences:** Do not create a Kaggle package from this residual gate. Preserve the gate diagnostics because they suggest pseudo-top uncertainty can stabilize stress folds.
+**Follow-up:** Try incorporating pseudo-top uncertainty into the mean learner itself, or into a Bayesian mixture/prior design where it changes regime weights before residuals are estimated.

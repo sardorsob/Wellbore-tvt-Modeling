@@ -588,6 +588,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: do not package. Raw pseudo-top feature injection underperforms the simpler safe/typewell XGBoost recipe.
 - Notes: Pseudo-top inference is meaningful enough for state reasoning, but the next attempt should use margin/entropy/spread as gated shrinkage or Bayesian-regime evidence instead of flat tree columns.
 
+## 2026-06-30__pseudo_top_gated_regime
+
+- Task: pseudo-top gated residual-regime model
+- Purpose: Test whether pseudo-top uncertainty improves transfer when it controls residual shrinkage rather than entering as raw tree predictors.
+- Config: `notebooks/modeling/08_alignment/09_pseudo_top_gated_regime.ipynb`; deterministic target-row sampling capped at **120** rows per well; two-seed squared-error pseudo-top proxy ensembles; safe/typewell XGBoost and Huber mean models; Ridge/Huber residual experts; fixed and uncertainty-gated shrinkage schedules.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell descriptors, and direct formation columns used only as fold-local pseudo-top labels.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; all candidates also scored on `analog_distance_fold`.
+- Model: best candidate `xgb_pseudohuber_mean__ridge_pseudo_state_residual__uncertainty_gate_conservative`.
+- Primary metric: strict-hybrid RMSE **13.4694**, improving same-notebook mean-only **13.4745** by **0.0051** RMSE.
+- Secondary metrics: analog-distance stress RMSE **13.7665**, better than the prior safe/typewell stress reference **13.8870** but still not enough to clear strict-CV promotion versus **13.4506**.
+- Artifacts: feature preview, summary, fold metrics, gate diagnostics, zone/analog-bin summaries, well diagnostics, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-06-30__pseudo_top_gated_regime/`.
+- Decision: iterate before package. The gate is a useful stabilizer but not a point-RMSE breakthrough.
+- Notes: Next pseudo-top work should move uncertainty into the primary mean learner or a Bayesian prior/mixture, not only a post-hoc residual correction.
+
 ## Entry Format
 
 ```text

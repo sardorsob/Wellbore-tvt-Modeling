@@ -1,0 +1,5 @@
+finding,detail,value,interpretation
+best_overall,xgb_pseudohuber_mean__ridge_pseudo_state_residual__uncertainty_gate_conservative,13.469406948121405,Best strict RMSE with analog stress RMSE 13.7665.
+best_mean_only,xgb_square_mean__ridge_pseudo_state_residual__mean_only,13.474489401303108,Best no-correction reference inside the same notebook.
+best_gated_or_fixed_residual,xgb_pseudohuber_mean__ridge_pseudo_state_residual__uncertainty_gate_conservative,13.469406948121405,Best candidate using residual correction with fixed or uncertainty-gated shrinkage.
+decision,iterate_before_package,13.469406948121405,"Promotion rule checks safe/typewell local reference, analog stress, and public-best context."

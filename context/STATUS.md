@@ -170,7 +170,8 @@ Immediate next work:
 - First-pass state screen completed: known-zone state summaries helped Huber slightly, while naive alignment/analog bundles did not clear promotion gates.
 - Exact XGBoost known-state injection completed: raw state features worsened the current recipe, so do not package.
 - Pseudo-top uncertainty screen completed: proxy tops are meaningful, but raw pseudo-top feature injection did not beat safe/typewell XGBoost.
-- For Bayesian/tree-hybrid work, use state and pseudo-top uncertainty as shrinkage/gating information rather than raw additive predictors.
+- Pseudo-top gated residual screen completed: conservative gating improved same-notebook mean-only by **0.0051** RMSE and improved analog stress, but did not beat strict safe/typewell reference.
+- For the next Bayesian/tree-hybrid work, move state and pseudo-top uncertainty into the primary mean learner or prior/mixture structure, not only a post-hoc residual gate.
 - Re-score XGBoost/LightGBM/Huber candidates on `strict_hybrid_fold`, `analog_distance_fold`, and high-stress slices for poor alignment, high extrapolation, and short known zones.
 - Package only if the new feature family clears both global strict-CV and stress-slice promotion gates.
 
@@ -190,6 +191,7 @@ Immediate next work:
 | 2026-06-26 | LightGBM strict CV `lgbm_medium_l2` | 13.2363 | Strict sampled CV on `strict_hybrid_fold`; analog-distance stress test RMSE **13.4453**; promising but needs reproducibility/tuning before Kaggle |
 | 2026-06-27 | XGBoost strict CV `xgb_pseudohuber_shallow_robust` | 12.7504 | Strict sampled CV on `strict_hybrid_fold`; analog-distance stress test RMSE **12.9116**; strongest local diagnostic so far, but uses train-only formation-distance features |
 | 2026-06-30 | Pseudo-top uncertainty screen `safe_pseudo_top_uncertainty` | 13.5891 | Best pseudo-top legal candidate; best overall legal remained safe/typewell XGBoost at **13.4506**, so use pseudo-top uncertainty for gating/prior structure next |
+| 2026-06-30 | Pseudo-top gated regime `uncertainty_gate_conservative` | 13.4694 | Best residual-gated candidate; analog-distance stress RMSE **13.7665**, but strict RMSE still trails safe/typewell reference **13.4506** |
 
 ## Validation artifacts
 
