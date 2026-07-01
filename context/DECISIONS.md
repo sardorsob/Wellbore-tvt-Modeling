@@ -807,3 +807,17 @@
 **Rationale:** The tuned setting improves strict RMSE from **12.4568** to **12.4549** and stress RMSE from **12.7684** to **12.7649**. The gain is small, but it improves both primary and stress metrics while staying within a conservative shrink regime.
 **Consequences:** Use the tuned well-bias setting as the current local best, but do not spend the next run on another tiny shrink-grid pass.
 **Follow-up:** Move to representation/gate improvements aimed at a larger jump toward **10** RMSE, or package this candidate for Kaggle transfer testing.
+
+---
+
+## D060 - Reject same-feature neural blend gates for now
+
+**Date:** 2026-07-01
+**Decision:** Do not replace the active tuned logit-switch well-bias candidate with the neural blend-gate audit.
+**Alternatives considered:**
+- Promote a neural-gate-derived corrected row because it directly optimizes blended TVT loss.
+- Promote a stress-friendlier tree-gated correction because it slightly improves analog-distance stress RMSE.
+- Keep the active `logit_switch_floor20__well_bias_h015_s30` candidate.
+**Rationale:** The best neural-gate-derived corrected row scores **12.4886** strict RMSE, worse than the active **12.4549**. The best stress-friendlier row improves stress to **12.7519** but worsens strict to **12.4832**, so it does not meet the joint promotion standard.
+**Consequences:** Same-feature gate-only tuning is unlikely to deliver the needed jump toward **10** RMSE. Keep the current active candidate and shift the next experiment toward representation or state-feature changes.
+**Follow-up:** Test a materially different sequence/state representation or package the active tuned well-bias candidate for Kaggle transfer validation.

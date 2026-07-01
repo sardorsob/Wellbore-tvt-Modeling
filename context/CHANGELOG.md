@@ -256,6 +256,18 @@
 - Analog-distance stress RMSE: **12.7649**
 - Run ID: `2026-07-01__cnn_regime_dilated_well_bias_tuning`
 
+## [2026-07-01] - CNN-Regime Neural Gate
+### Added / Changed / Fixed / Removed
+- Added compact neural blend-gate audit on top of the active dilated direct-CNN/regime branch.
+- Added conservative well-bias corrections for selected neural/tree gate candidates.
+- Recorded the run as diagnostic because the neural gates did not beat the active tuned logit-switch well-bias candidate.
+
+### Results
+- Local CV RMSE: **12.4549** (`logit_switch_floor20__well_bias_h015_s30`, unchanged active best)
+- Best neural-derived corrected RMSE: **12.4886** (`neural_gate_p003_floor25__well_bias_h015_s30`)
+- Analog-distance stress RMSE: **12.7649** for active best; **12.7519** stress for the best stress-friendlier tree-gated correction with worse strict RMSE
+- Run ID: `2026-07-01__cnn_regime_neural_gate`
+
 ---
 
 ## Milestone format

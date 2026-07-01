@@ -1,0 +1,5 @@
+finding,detail,value,interpretation
+best_overall,logit_switch_floor20__well_bias_h015_s30,12.45487918884013,Best strict RMSE with analog stress RMSE 12.7649.
+best_weight_candidate,logit_switch_floor20__well_bias_h015_s30,12.45487918884013,Best deployable neural blend-gate or corrected candidate.
+oracle_upper_bound,oracle_continuous_weight,10.611369082636026,Oracle row switch upper bound is leakage-only and not deployable.
+decision,stress_improves_strict_regresses,12.45487918884013,"Promotion rule checks the direct regime-mean anchor, analog-distance stress behavior, and current public context."

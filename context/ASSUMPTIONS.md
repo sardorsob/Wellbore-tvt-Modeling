@@ -624,3 +624,9 @@ The `14_cnn_regime_dilated_well_bias` notebook trained nested fold-heldout well-
 The `15_cnn_regime_dilated_well_bias_tuning` notebook tuned the nested well-bias layer using a restricted deployable source grid, Huber alphas **0.15** and **0.40**, and shrink values **0.10-0.30**. The best candidate, `logit_switch_floor20__well_bias_h015_s30`, scored **12.4549** strict RMSE and **12.7649** analog-distance stress RMSE. This beats the original **0.25** shrink candidate by only **0.0019** strict RMSE and **0.0034** stress RMSE.
 
 **Modeling implication:** The well-bias signal is real but nearly saturated under the current features. Keep the tuned conservative correction as the active recipe, but the next large gain should come from improving the CNN/state representation or deployable gate rather than another narrow well-bias shrink grid.
+
+### A91 - Neural gates do not explain enough of the CNN/regime oracle gap
+
+The `16_cnn_regime_neural_gate` notebook trained compact fold-heldout MLP gates directly on blended TVT loss. The active candidate remained `logit_switch_floor20__well_bias_h015_s30` at **12.4549** strict RMSE and **12.7649** stress RMSE. The best neural-gate-derived corrected row reached only **12.4886** strict RMSE, well behind the active logit-switch correction. Some non-neural corrected rows improved stress slightly, but only by accepting worse strict RMSE.
+
+**Modeling implication:** The oracle gap is not being recovered by stronger gates on the current features. Treat same-feature gate-only tuning as a lower-priority path; future large gains should come from better state/sequence representations, new targets, or more informative hidden-test-safe features.

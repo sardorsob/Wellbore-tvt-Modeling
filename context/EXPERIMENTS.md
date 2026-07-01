@@ -1022,6 +1022,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: promote as the active local package candidate, but treat the gain as a small calibration refinement rather than a new modeling breakthrough. Do not mark the active objective complete because local RMSE is still above **10**.
 - Notes: The best setting moved from the original untuned shrink **0.25** to Huber alpha **0.15** with shrink **0.30**. This supports conservative well-bias correction, but the tiny gain suggests the next large improvement must come from a better CNN/state representation or a stronger deployable gate, not more fine-grained bias shrink tuning.
 
+## 2026-07-01__cnn_regime_neural_gate
+
+- Task: compact neural blend-gate audit
+- Purpose: Test whether a fold-heldout neural gate trained directly on blended TVT loss can recover more of the large CNN/regime oracle gap than logistic or XGBoost gates.
+- Config: `notebooks/modeling/09_validation/16_cnn_regime_neural_gate.ipynb`; active average-pooled dilated direct-CNN/regime branch, compact MLP blend gates with prior penalties **0.01**, **0.03**, and **0.08**, conservative shrink/floor schedules, and the tuned Huber **0.15** well-bias correction on selected source candidates.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell descriptors, and direct formation columns used only as fold-local pseudo-top labels in the inherited data prep.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; all candidates also scored on `analog_distance_fold`.
+- Model: best strict deployable candidate remained `logit_switch_floor20__well_bias_h015_s30`; best neural-gate-derived candidate was below the active best.
+- Primary metric: `logit_switch_floor20__well_bias_h015_s30` strict-hybrid RMSE **12.4549**, unchanged from the prior active best. The best neural-gate-derived corrected row, `neural_gate_p003_floor25__well_bias_h015_s30`, reached **12.4886** strict RMSE.
+- Secondary metrics: `logit_switch_floor20__well_bias_h015_s30` analog-distance stress RMSE stayed **12.7649**. Some tree-gated corrected rows improved stress slightly, e.g. `xgb_weight_medium_s100__well_bias_h015_s30` at **12.7519** stress RMSE but worse **12.4832** strict RMSE.
+- Artifacts: feature preview, proxy quality, top-label summary, summary, fold metrics, regime diagnostics, zone/analog-bin summaries, well diagnostics, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-07-01__cnn_regime_neural_gate/`.
+- Decision: diagnostic only. Do not replace the active tuned logit-switch well-bias candidate.
+- Notes: Direct neural blend gates did not recover the oracle gap enough to justify more gate-only tuning. The next high-leverage work should change the representation, target, or row-level state information feeding the CNN/regime pair rather than train another gate on the same features.
+
 ## Entry Format
 
 ```text
