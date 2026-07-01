@@ -468,3 +468,9 @@ The `09_pseudo_top_regime_mean` notebook moved pseudo-top probabilities into the
 The `10_pseudo_top_regime_mean_tuning` notebook narrowed the search around the direct regime-mean winner with Ridge alphas **40**, **80**, **140**, and **220**, two XGBoost global means, and fixed/confidence/margin-heavy blend schedules. The best candidate, `xgb_square_global__regime_ridge_alpha40__confidence_s100`, scored **13.0910** strict-hybrid RMSE and **13.4065** analog-distance stress RMSE. This improves strict RMSE by only **0.0018** versus the first regime-mean baseline **13.0928** and worsens stress by **0.0059** versus **13.4006**.
 
 **Modeling implication:** The direct regime-mean family is useful, but small alpha/blend tuning is saturated. Keep the original `alpha80` package as the cleaner public probe, and move the next RMSE push to boosted stacking, better pseudo-top inference, or a structurally different Bayesian/partial-pooling regime model.
+
+### A65 - Regime-mean residual stacking improves strict RMSE but hurts stress
+
+The `11_xgboost_regime_mean_stack` notebook used fold-safe regime-mean predictions as meta-features and residual baselines for direct XGBoost, XGBoost residual, and Ridge residual heads. The best candidate, `blend_plus_ridge_residual_s15`, scored **13.0769** strict-hybrid RMSE, improving the direct regime-mean reference **13.0928** by **0.0159** RMSE. However, analog-distance stress worsened from **13.4006** to **13.4468**.
+
+**Modeling implication:** There is residual signal around the regime mean, but the first stack correction is not stress-stable. Continue only with stress-gated or uncertainty-gated residual corrections; do not package the raw stack over the cleaner regime-mean notebook.

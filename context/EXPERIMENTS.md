@@ -658,6 +658,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: do not package over the first regime-mean candidate. The strict gain is negligible and stress behavior is slightly worse.
 - Notes: Move next to boosted stacking, pseudo-top inference tuning, or a structurally different Bayesian/partial-pooling regime model.
 
+## 2026-07-01__xgboost_regime_mean_stack
+
+- Task: XGBoost/regression stack on top of pseudo-top regime mean
+- Purpose: Test whether fold-safe regime-mean predictions can improve a boosted/meta model after simple Ridge/blend tuning saturated.
+- Config: `notebooks/modeling/02_trees/11_xgboost_regime_mean_stack.ipynb`; deterministic target-row sampling capped at **120** rows per well; two-seed squared-error pseudo-top proxy ensembles; fold-safe direct regime-mean OOF predictions; XGBoost direct meta model; XGBoost and Ridge residual heads with conservative shrinkage.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell descriptors, and direct formation columns used only as fold-local pseudo-top labels.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; all candidates also scored on `analog_distance_fold`.
+- Model: best candidate `blend_plus_ridge_residual_s15`.
+- Primary metric: strict-hybrid RMSE **13.0769**, improving the direct regime-mean reference **13.0928** by **0.0159** RMSE.
+- Secondary metrics: analog-distance stress RMSE **13.4468**, worse than the direct regime-mean reference **13.4006**.
+- Artifacts: summary, fold metrics, regime diagnostics placeholder, zone/analog-bin summaries, well diagnostics, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-07-01__xgboost_regime_mean_stack/`.
+- Decision: iterate before package. The strict gain is real but small, and stress behavior worsened.
+- Notes: Next stack work should gate residual corrections by pseudo-top confidence, analog stress, or high-stress slices rather than applying a uniform shrinkage.
+
 ## Entry Format
 
 ```text

@@ -443,3 +443,17 @@
 **Rationale:** The tuned candidate scored **13.0910** strict-hybrid RMSE, only **0.0018** better than the packaged `alpha80` baseline **13.0928**, while analog-distance stress worsened from **13.4006** to **13.4065**. The improvement is below any meaningful promotion margin and adds no new structure.
 **Consequences:** Keep the `alpha80` pseudo-top regime-mean package as the next Kaggle public-transfer probe. Treat the tuning notebook as evidence that this small deterministic family is saturated.
 **Follow-up:** Move the next local modeling notebook to regime-mean stacking or pseudo-top inference quality rather than another narrow alpha/blend sweep.
+
+---
+
+## D034 - Do not package ungated regime-mean residual stack
+
+**Date:** 2026-07-01
+**Decision:** Keep `blend_plus_ridge_residual_s15` as a local diagnostic improvement, but do not package it over the pseudo-top regime-mean notebook.
+**Alternatives considered:**
+- Package the stack because it is the new best strict-CV result.
+- Increase residual shrinkage or use direct XGBoost meta-features.
+- Add stress-gated residual shrinkage before reconsidering packaging.
+**Rationale:** `blend_plus_ridge_residual_s15` improved strict RMSE from **13.0928** to **13.0769**, but analog-distance stress worsened from **13.4006** to **13.4468**. The local strict gain is only **0.0159**, below the **0.05** promotion gate, and it moves the known transfer-risk metric in the wrong direction.
+**Consequences:** Do not push this stack to Kaggle as-is. Preserve it as evidence that residual structure exists around the regime mean.
+**Follow-up:** Try stress-gated or pseudo-top-uncertainty-gated residual shrinkage, or improve the pseudo-top inference stage itself.

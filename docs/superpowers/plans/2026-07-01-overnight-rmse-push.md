@@ -49,10 +49,10 @@
 - Create: `artifacts/tables/model__xgboost_regime_mean_stack_*__2026-07-01.csv`
 - Modify: context and feature-log files as in Task 2.
 
-- [ ] Use the regime-mean prediction as a fold-safe meta-feature or blend component.
-- [ ] Compare XGBoost square, pseudo-Huber, and conservative regularized recipes.
-- [ ] Reject candidates that improve strict RMSE but worsen analog-distance stress materially.
-- [ ] Commit if the notebook produces reportable artifacts.
+- [x] Use the regime-mean prediction as a fold-safe meta-feature or blend component.
+- [x] Compare XGBoost square, pseudo-Huber, and conservative regularized recipes.
+- [x] Reject candidates that improve strict RMSE but worsen analog-distance stress materially.
+- [x] Commit if the notebook produces reportable artifacts.
 
 ### Task 4: Rebuild Pseudo-Top Inference If Plateaued
 
