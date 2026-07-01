@@ -415,3 +415,17 @@
 **Rationale:** `xgb_pseudohuber_mean__ridge_alpha650__mixture_conf_s050` scored **13.4437** strict-hybrid RMSE and **13.7593** analog-distance stress RMSE. This is the first pseudo-top family result to beat the strict safe/typewell reference **13.4506**, but the margin is only **0.0069** RMSE and does not clear the **0.05** promotion gate.
 **Consequences:** Do not push to Kaggle yet. Preserve the notebook as evidence that soft formation-regime priors are more promising than raw/interacted pseudo-top features.
 **Follow-up:** Try a direct stratigraphic-regime mean model or calibrate the mixture prior against stress slices before packaging.
+
+---
+
+## D032 - Package pseudo-top regime mean for Kaggle probe
+
+**Date:** 2026-07-01
+**Decision:** Promote `xgb_square_global__regime_ridge_alpha80__confidence_s100` to a self-contained Kaggle package next.
+**Alternatives considered:**
+- Keep iterating locally because previous local gains have sometimes failed publicly.
+- Package the smaller residual mixture prior instead.
+- Move immediately to a heavier hierarchical Bayesian regime mean.
+**Rationale:** The direct regime-mean model scored **13.0928** strict-hybrid RMSE and **13.4006** analog-distance stress RMSE. This clears the **0.05** local promotion margin versus both the pseudo-top mixture prior **13.4437** and the strict safe/typewell reference **13.4506**. It also improves analog stress by **0.3588** versus the previous pseudo-top mixture-prior stress score **13.7593**.
+**Consequences:** Build a Kaggle code-competition notebook that recomputes pseudo-top proxy models on all train wells, predicts hidden test pseudo-top probabilities, fits the global XGBoost mean and regime-specific Ridge means, blends by confidence, and writes `/kaggle/working/submission.csv`.
+**Follow-up:** Package and run locally first; submit to Kaggle only after the package writes finite predictions with the exact sample submission row count.

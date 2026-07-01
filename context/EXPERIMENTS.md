@@ -630,6 +630,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: iterate before package. This is the best pseudo-top direction so far, but the strict gain is below the promotion margin.
 - Notes: Next Bayesian iteration should model the TVT mean directly by stratigraphic regime or calibrate mixture priors against public-transfer stress slices.
 
+## 2026-07-01__pseudo_top_regime_mean
+
+- Task: direct pseudo-top stratigraphic-regime mean model
+- Purpose: Test whether pseudo-top probabilities help more when they define the primary TVT mean rather than a residual correction.
+- Config: `notebooks/modeling/06_bayesian/09_pseudo_top_regime_mean.ipynb`; deterministic target-row sampling capped at **120** rows per well; two-seed squared-error pseudo-top proxy ensembles; soft formation probabilities; global safe/typewell XGBoost/Ridge means; per-formation weighted Ridge MAP means; fixed and confidence-weighted blends back to the global mean.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell descriptors, and direct formation columns used only as fold-local pseudo-top labels.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; all candidates also scored on `analog_distance_fold`.
+- Model: best candidate `xgb_square_global__regime_ridge_alpha80__confidence_s100`.
+- Primary metric: strict-hybrid RMSE **13.0928**, improving the pseudo-top mixture prior **13.4437** by **0.3510** RMSE and strict safe/typewell reference **13.4506** by **0.3579** RMSE.
+- Secondary metrics: analog-distance stress RMSE **13.4006**; best fixed blend **13.1196** strict RMSE.
+- Artifacts: summary, fold metrics, regime diagnostics, zone/analog-bin summaries, well diagnostics, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-07-01__pseudo_top_regime_mean/`.
+- Decision: package for Kaggle after local package validation. This is the first pseudo-top-family result to clear the local promotion gate by a meaningful margin.
+- Notes: Public-transfer risk remains. The package must recompute pseudo-top proxies and regime means from all training wells and hidden-test-safe inputs only.
+
 ## Entry Format
 
 ```text

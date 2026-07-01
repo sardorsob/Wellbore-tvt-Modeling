@@ -78,6 +78,7 @@
 - Generated and ran first baseline modeling notebooks; updated structure, status, experiments, and feature log with run IDs and RMSEs.
 
 ### Added
+- Pseudo-top regime-mean notebook and artifacts. Best candidate `xgb_square_global__regime_ridge_alpha80__confidence_s100` scored **13.0928** strict RMSE and **13.4006** analog stress RMSE, clearing the local packaging gate for the next Kaggle-safe probe.
 - Pseudo-top Bayesian mixture-regime notebook and artifacts. Best candidate `xgb_pseudohuber_mean__ridge_alpha650__mixture_conf_s050` scored **13.4437** strict RMSE and **13.7593** analog stress RMSE, the first pseudo-top-family result to edge past the strict safe/typewell reference.
 - Pseudo-top interaction XGBoost notebook and artifacts. Best interaction candidate scored **13.4815** strict RMSE and **13.8681** analog stress RMSE, trailing the same-notebook safe/typewell baseline **13.4745**, so this closes the first flat pseudo-top interaction path.
 - Pseudo-top gated residual-regime notebook and artifacts. Best candidate `xgb_pseudohuber_mean__ridge_pseudo_state_residual__uncertainty_gate_conservative` scored **13.4694** strict RMSE and **13.7665** analog stress RMSE; it improves same-notebook mean-only slightly but is not package-ready.

@@ -1,7 +1,7 @@
 # Project Status
 
-**Last updated:** 2026-06-30
-**Current phase:** XGBoost inference-safe submission is current best public LB; gated Bayesian regime is packaged as a curiosity public-score probe
+**Last updated:** 2026-07-01
+**Current phase:** XGBoost inference-safe submission is current best public LB; pseudo-top regime mean is the next local package candidate
 
 ---
 
@@ -65,6 +65,7 @@
 - [x] Run gated Bayesian regime screen (`2026-06-30__gated_bayesian_regime`) - best `huber_plus_gate_conservative`, strict-hybrid RMSE **14.1072**, improving same-notebook Huber mean-only by **0.3981**; package as curiosity probe
 - [x] Locally validate self-contained gated Bayesian regime Kaggle notebook - **14,151** finite predictions, in-sample training RMSE **13.7900**, learned shrink **0.9906**
 - [x] Submit gated Bayesian regime Kaggle notebook version 1 (`ref=54211837`) - public score pending
+- [x] Run pseudo-top regime-mean screen (`2026-07-01__pseudo_top_regime_mean`) - best `xgb_square_global__regime_ridge_alpha80__confidence_s100`, strict RMSE **13.0928**, analog-distance stress RMSE **13.4006**; package next
 
 ## In progress
 
@@ -82,13 +83,14 @@
 1. Keep XGBoost strict inference-safe submission `54129475` / public LB **14.472** as the active benchmark.
 2. Do not continue generic residual stacking immediately; the Ridge residual package scored **14.583** publicly despite local strict/stress gains.
 3. Do not package the current proxy-formation XGBoost tuning pass or the raw known-state XGBoost injection; both failed to improve the active path.
-4. Update gated Bayesian regime notes when submission `54211837` finishes scoring.
-5. Use the oracle direct-formation gap as a design target for a gated or Bayesian stratigraphic-regime model, not as a Kaggle-safe feature set.
-6. Defer full hierarchical HSGP until alignment or stronger geologic descriptors give hierarchy something transferable to pool over.
-7. Investigate why the Huber + Hilbert residual gain transferred externally while the Huber-only public score lagged GAM.
-8. Investigate why the reconstructed spline GAM mean was unstable in `06_hsgp_residual_on_gam_huber.ipynb` despite the public GAM notebook scoring best externally.
-9. Refine validation before making many leaderboard submissions from small public-LB gains.
-10. Revisit neighbors only with radius constraints, clusters, or richer local geologic features.
+4. Package the pseudo-top regime-mean candidate as the next Kaggle-safe notebook because it cleared local strict and stress gates.
+5. Update gated Bayesian regime notes when submission `54211837` finishes scoring.
+6. Use the oracle direct-formation gap as a design target for a gated or Bayesian stratigraphic-regime model, not as a Kaggle-safe feature set.
+7. Defer full hierarchical HSGP until alignment or stronger geologic descriptors give hierarchy something transferable to pool over.
+8. Investigate why the Huber + Hilbert residual gain transferred externally while the Huber-only public score lagged GAM.
+9. Investigate why the reconstructed spline GAM mean was unstable in `06_hsgp_residual_on_gam_huber.ipynb` despite the public GAM notebook scoring best externally.
+10. Refine validation before making many leaderboard submissions from small public-LB gains.
+11. Revisit neighbors only with radius constraints, clusters, or richer local geologic features.
 
 ## Validation / boosted-tree task ladder
 
@@ -173,7 +175,8 @@ Immediate next work:
 - Pseudo-top gated residual screen completed: conservative gating improved same-notebook mean-only by **0.0051** RMSE and improved analog stress, but did not beat strict safe/typewell reference.
 - Pseudo-top interaction XGBoost completed: controlled interactions did not beat same-notebook safe/typewell baseline.
 - Pseudo-top Bayesian mixture completed: soft formation-regime priors reached **13.4437** strict RMSE and **13.7593** analog stress RMSE, the first pseudo-top-family strict improvement, but still below packaging margin.
-- For the next Bayesian/tree-hybrid work, iterate mixture/regime mean structure or public-transfer calibration before Kaggle packaging.
+- Pseudo-top regime-mean completed: direct confidence-weighted regime means reached **13.0928** strict RMSE and **13.4006** analog stress RMSE, clearing the local packaging gate.
+- For the next Bayesian/tree-hybrid work, package the regime-mean candidate before adding more complexity.
 - Re-score XGBoost/LightGBM/Huber candidates on `strict_hybrid_fold`, `analog_distance_fold`, and high-stress slices for poor alignment, high extrapolation, and short known zones.
 - Package only if the new feature family clears both global strict-CV and stress-slice promotion gates.
 
@@ -196,6 +199,7 @@ Immediate next work:
 | 2026-06-30 | Pseudo-top gated regime `uncertainty_gate_conservative` | 13.4694 | Best residual-gated candidate; analog-distance stress RMSE **13.7665**, but strict RMSE still trails safe/typewell reference **13.4506** |
 | 2026-06-30 | Pseudo-top interaction XGBoost `pseudo_interactions` | 13.4815 | Best interaction candidate; same-notebook safe/typewell baseline remained better at **13.4745** |
 | 2026-07-01 | Pseudo-top Bayesian mixture `mixture_conf_s050` | 13.4437 | Best pseudo-top-family result so far; analog-distance stress RMSE **13.7593**, but strict gain over **13.4506** is only **0.0069** |
+| 2026-07-01 | Pseudo-top regime mean `confidence_s100` | 13.0928 | Best pseudo-top result so far; analog-distance stress RMSE **13.4006** and enough local margin to package next |
 
 ## Validation artifacts
 
