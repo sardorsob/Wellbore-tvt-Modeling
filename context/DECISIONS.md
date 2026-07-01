@@ -835,3 +835,17 @@
 **Rationale:** The derivative-channel run worsens strict RMSE (**12.4984** vs **12.4549**), stress RMSE (**12.8224** vs **12.7649**), and oracle RMSE (**10.7443** vs **10.6114**). This points to representation degradation, not only gate failure.
 **Consequences:** Stop simple derivative-channel variants on the 17-bin window.
 **Follow-up:** Use a materially different state/sequence target or alignment context for the next representation experiment.
+
+---
+
+## D062 - Promote well-trajectory context as active candidate
+
+**Date:** 2026-07-01
+**Decision:** Promote `logit_switch_floor20__well_bias_h015_s30` from the well-trajectory context run as the active local candidate.
+**Alternatives considered:**
+- Continue the GRU sequence specialist after two timed-out notebook runs.
+- Keep the prior tuned well-bias candidate because it is simpler.
+- Treat trajectory context as diagnostic until Kaggle transfer is known.
+**Rationale:** Well-trajectory context improves strict RMSE from **12.4549** to **11.6868**, stress RMSE from **12.7649** to **11.9598**, and leakage-only oracle RMSE from **10.6114** to **9.8460**. This is a representation-level improvement, not a tiny gate or shrinkage gain.
+**Consequences:** The active recipe should include trajectory context features. The recurrent GRU idea should only return in a separate optimized implementation, not inside the full pseudo-top/CNN notebook loop.
+**Follow-up:** Package this candidate for Kaggle transfer testing or run a focused trajectory-context tuning notebook.

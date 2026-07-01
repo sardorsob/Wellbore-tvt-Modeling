@@ -244,6 +244,7 @@ Immediate next work:
 | 2026-07-01 | CNN-regime dilated well-bias tuning | 12.4549 | Huber alpha **0.15** with shrink **0.30** is a tiny new local best; stress RMSE **12.7649**, so promote but stop fine shrink tuning |
 | 2026-07-01 | CNN-regime neural gate | 12.4549 | Same active best remains; best neural-derived row **12.4886**, so gate-only tuning did not recover the oracle gap |
 | 2026-07-01 | CNN-regime multichannel dilated CNN | 12.4984 | Derivative channels worsened strict, stress, and oracle; stop simple derivative-channel variants |
+| 2026-07-01 | CNN-regime well trajectory context | 11.6868 | Large new active best; stress RMSE **11.9598**, oracle **9.8460**, package or tune trajectory features next |
 
 ## Validation artifacts
 

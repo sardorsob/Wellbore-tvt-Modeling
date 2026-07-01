@@ -280,6 +280,18 @@
 - Oracle diagnostic RMSE: **10.7443**
 - Run ID: `2026-07-01__cnn_regime_multichannel_dilated`
 
+## [2026-07-01] - CNN-Regime Well Trajectory Context
+### Added / Changed / Fixed / Removed
+- Added hidden-test-safe within-well trajectory context features to the active pseudo-top/regime/CNN stack.
+- Abandoned the uncommitted GRU sequence attempt after two timed-out runs and removed its partial artifacts.
+- Added run artifacts, report, comparison row, and context notes for the new active local best.
+
+### Results
+- Local CV RMSE: **11.6868** (`logit_switch_floor20__well_bias_h015_s30`)
+- Analog-distance stress RMSE: **11.9598**
+- Oracle diagnostic RMSE: **9.8460**
+- Run ID: `2026-07-01__cnn_regime_well_trajectory_context`
+
 ---
 
 ## Milestone format

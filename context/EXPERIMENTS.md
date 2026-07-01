@@ -1050,6 +1050,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: diagnostic only. Do not replace the active tuned logit-switch well-bias candidate.
 - Notes: Simple derivative-channel expansion made the CNN representation worse, including the oracle. Future representation work should not add generic derivatives to the same 17-bin window; it should use a different state target, wider/alternative alignment context, or a model that learns state transitions more directly.
 
+## 2026-07-01__cnn_regime_well_trajectory_context
+
+- Task: hidden-test-safe well-trajectory context features
+- Purpose: Test whether within-well ordered target-row context can add the long-range state signal that same-feature gates, derivative channels, and the timed-out GRU attempt could not recover.
+- Config: `notebooks/modeling/09_validation/18_cnn_regime_well_trajectory_context.ipynb`; active fold-safe pseudo-top regime anchor, average-pooled dilated CNN specialist, trajectory features from ordered target-row GR/typewell mismatch/distance/alignment diagnostics, existing gate family, and conservative Huber well-bias corrections.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell descriptors, and direct formation columns used only as fold-local pseudo-top labels in the inherited data prep. Trajectory context uses only input-side rows and hidden-test-safe within-well ordering.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; all candidates also scored on `analog_distance_fold`.
+- Model: best deployable candidate `logit_switch_floor20__well_bias_h015_s30`; oracle diagnostic `oracle_continuous_weight`.
+- Primary metric: `logit_switch_floor20__well_bias_h015_s30` strict-hybrid RMSE **11.6868**, improving the prior active best **12.4549** by **0.7681**.
+- Secondary metrics: analog-distance stress RMSE **11.9598**, improving prior active stress **12.7649** by **0.8051**. Leakage-only continuous oracle improved from **10.6114** to **9.8460**.
+- Artifacts: feature preview, proxy quality, top-label summary, summary, fold metrics, regime diagnostics, zone/analog-bin summaries, well diagnostics, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-07-01__cnn_regime_well_trajectory_context/`.
+- Decision: promote as the active local package candidate. Do not mark the active objective complete because deployable local RMSE remains above **10**.
+- Notes: This is the largest improvement since the CNN/regime branch began. The failed GRU sequence attempt suggests recurrent sequence models need a separate optimized notebook, but simple trajectory feature context is immediately useful and should be packaged or carefully tuned next.
+
 ## Entry Format
 
 ```text

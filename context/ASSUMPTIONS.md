@@ -636,3 +636,9 @@ The `16_cnn_regime_neural_gate` notebook trained compact fold-heldout MLP gates 
 The `17_cnn_regime_multichannel_dilated` notebook expanded the CNN input from 3 local-window channels to 9 channels by adding first- and second-derivative sequences. The best deployable row scored **12.4984** strict RMSE and **12.8224** stress RMSE, both worse than the active **12.4549** / **12.7649** candidate. The leakage-only continuous oracle also worsened from **10.6114** to **10.7443**.
 
 **Modeling implication:** The current 17-bin derivative expansion adds noise or unstable local shape information rather than useful stratigraphic state. Do not continue simple derivative-channel variants; the next representation attempt should change the state target or alignment context more materially.
+
+### A93 - Ordered well-trajectory context is a major missing signal
+
+The `18_cnn_regime_well_trajectory_context` notebook added hidden-test-safe within-well trajectory features from ordered target-row GR, typewell mismatch, distance, and local alignment diagnostics. The best deployable row, `logit_switch_floor20__well_bias_h015_s30`, scored **11.6868** strict RMSE and **11.9598** stress RMSE, a large improvement over the prior **12.4549** / **12.7649** active candidate. The leakage-only continuous oracle also improved to **9.8460**.
+
+**Modeling implication:** The model was missing long-range target-row context, not just a better local motif or gate. Trajectory context should become part of the active recipe, and the next high-leverage work should tune/package these features or build an optimized sequence-state model around the same signal.
