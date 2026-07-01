@@ -541,3 +541,17 @@
 **Rationale:** The stop-gate audit shows the same hard wells recur across all eight recent runs. Strict-only improvements worsen analog stress, while the original regime mean remains the cleanest joint strict/stress anchor at **13.0928** / **13.4006**.
 **Consequences:** The next notebook should focus on pseudo-top/state revision or a local-log sequence architecture. Do not create another notebook whose main novelty is a different blend weight, Ridge alpha, probability scale, or target-row cap.
 **Follow-up:** Start with a state-revision/top-error audit that uses fold-safe proxy-top residuals, hard-well membership, progress zones, analog distance, GR motifs, and typewell lag diagnostics.
+
+---
+
+## D041 - Do not continue scalar local-sequence stack tuning
+
+**Date:** 2026-07-01
+**Decision:** Keep `13_xgboost_local_sequence_stack` as a negative diagnostic and do not tune its flat local-window stack further.
+**Alternatives considered:**
+- Continue shrinking/gating local-sequence residual corrections.
+- Package the local-sequence stack as a public probe.
+- Move to top-error/state revision.
+**Rationale:** The best local-sequence stack candidate was the reference itself at **13.1613** strict RMSE and **13.4561** stress RMSE, both worse than the original regime mean **13.0928** / **13.4006**. Residual and direct meta heads worsened further.
+**Consequences:** Local GR/typewell window summaries should not be added to the Kaggle package or residual stack as flat scalar features.
+**Follow-up:** Build a pseudo-top state-revision notebook that learns systematic top residual corrections before regime probabilities are formed.

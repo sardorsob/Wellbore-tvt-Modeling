@@ -1,0 +1,26 @@
+{
+  "run_id": "2026-07-01__xgboost_local_sequence_stack",
+  "seed": 20260630,
+  "formation_cols": [
+    "ANCC",
+    "ASTNU",
+    "ASTNL",
+    "EGFDU",
+    "EGFDL",
+    "BUDA"
+  ],
+  "primary_fold": "strict_hybrid_fold",
+  "stress_fold": "analog_distance_fold",
+  "max_target_rows_per_well": 120,
+  "ensemble_seeds": [
+    20260630,
+    20260631
+  ],
+  "current_public_best_rmse": 14.472,
+  "best_xgb_known_state_local_rmse": 13.4334,
+  "best_xgb_known_state_stress_rmse": 13.7533,
+  "promotion_margin": 0.05,
+  "baseline_regime_mean_rmse": 13.092783707491265,
+  "baseline_regime_mean_stress_rmse": 13.400574608144202,
+  "plateau_audit": "2026-07-01__plateau_failure_slice_audit"
+}

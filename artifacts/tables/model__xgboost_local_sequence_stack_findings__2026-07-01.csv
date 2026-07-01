@@ -1,0 +1,5 @@
+finding,detail,value,interpretation
+best_overall,alignment_regime_blend_reference,13.161267457957424,Best strict RMSE with analog stress RMSE 13.4561.
+regime_blend_reference,alignment_regime_blend_reference,13.161267457957424,Fold-safe direct regime-mean reference inside this stack notebook.
+best_residual_stack,blend_plus_sequence_ridge_residual_s08,13.162563475519962,Best residual correction layered on the regime-mean reference.
+decision,diagnostic_only,13.161267457957424,Promotion rule checks the first regime-mean baseline and analog stress behavior.

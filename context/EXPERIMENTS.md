@@ -756,6 +756,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: stop simple shrinkage, row-density, confidence-schedule, and direct alignment-feature sweeps.
 - Notes: The same hard wells recur in the top-15 error list across all eight recent runs, so the next notebook should audit and revise pseudo-top/state inference or move to a local-log sequence model.
 
+## 2026-07-01__xgboost_local_sequence_stack
+
+- Task: local sequence-window stack around pseudo-top regime mean
+- Purpose: Test whether hidden-test-safe local GR/typewell window features can improve recurring hard-well behavior when used directly in XGBoost/Ridge stack heads.
+- Config: `notebooks/modeling/02_trees/13_xgboost_local_sequence_stack.ipynb`; cloned alignment-aware pseudo-top data prep, added compact local sequence contrasts, probability-by-sequence interactions, an alignment-aware regime blend reference, XGBoost direct meta head, XGBoost residual heads, Ridge residual heads, confidence gates, and low-stress gates.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell descriptors, and direct formation columns used only as fold-local pseudo-top labels.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; all candidates also scored on `analog_distance_fold`.
+- Model: best overall candidate `alignment_regime_blend_reference`; best residual correction `blend_plus_sequence_ridge_residual_s08`.
+- Primary metric: best strict-hybrid RMSE **13.1613**, worse than the original pseudo-top regime mean **13.0928**.
+- Secondary metrics: best analog-distance stress RMSE **13.4561**, worse than the original regime-mean stress **13.4006**.
+- Artifacts: feature preview, proxy quality, top-label summary, summary, fold metrics, regime diagnostics placeholder, zone/analog-bin summaries, well diagnostics, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-07-01__xgboost_local_sequence_stack/`.
+- Decision: diagnostic only. Do not continue scalar local-sequence stack tuning.
+- Notes: Local windows as flat stack features are not enough; next work should revise pseudo-top/top-error state directly or use a true sequence architecture rather than summary window statistics.
+
 ## Entry Format
 
 ```text

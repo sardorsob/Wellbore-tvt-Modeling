@@ -42,6 +42,8 @@
 - Recorded A70 and D039: shared partial pooling over current pseudo-top probabilities does not improve the direct regime mean, so the next move should revise state inference or model architecture rather than sweep more shrinkage.
 - Added and ran `notebooks/modeling/09_validation/02_plateau_failure_slice_audit.ipynb`; exported score summary, hard-well consensus, zone and analog comparisons, findings, report, and run bundle.
 - Recorded A71 and D040: plateau errors concentrate in persistent hard wells, so the next notebook should target state-error modeling rather than schedule tuning.
+- Added and ran `notebooks/modeling/02_trees/13_xgboost_local_sequence_stack.ipynb`; exported summary, fold metrics, diagnostics, findings, report, model-comparison row, and run bundle.
+- Recorded A72 and D041: scalar local-sequence stack features worsened the regime mean, so the next modeling branch should correct pseudo-top/state inference directly.
 
 ### Changed
 - Added and ran `notebooks/modeling/06_bayesian/07_gated_bayesian_regime.ipynb`; exported gated Bayesian regime metrics, gate diagnostics, report, model comparison row, and run bundle.

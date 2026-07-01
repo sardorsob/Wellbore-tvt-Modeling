@@ -510,3 +510,9 @@ The `12_bayesian_regime_partial_pooling` notebook tested an empirical-Bayes styl
 The `02_plateau_failure_slice_audit` notebook compared eight recent pseudo-top/regime experiments. The best strict variants were the residual stacks at **13.0769** RMSE, but both worsened analog-distance stress to **13.4468**. More importantly, the same hard wells appeared in the top-15 error list across all eight recent runs, including `86454a6f`, `1b1eba53`, `a959858c`, `5f4d2a52`, `ba48188d`, `2fd68f7b`, `f88ddb26`, and `fef8af96`.
 
 **Modeling implication:** The plateau is not mostly random variance from candidate schedules. It is concentrated in persistent well/state failures that the current feature families cannot explain. The next major experiment should either revise the pseudo-top/state labels for these wells or use a local-log sequence/window model that can learn motifs missed by scalar regime probabilities.
+
+### A72 - Local sequence summaries worsen when used as flat stack features
+
+The `13_xgboost_local_sequence_stack` notebook tested local GR/typewell window summaries and probability-by-sequence interactions as direct meta-features around the pseudo-top regime mean. The best candidate was only the alignment-aware regime blend reference at **13.1613** strict RMSE and **13.4561** stress RMSE. The best residual correction, `blend_plus_sequence_ridge_residual_s08`, scored **13.1626** strict RMSE, and the direct XGBoost sequence meta-head collapsed to **13.8082**.
+
+**Modeling implication:** The local-window signal is not useful as a flat scalar stack layer in the current recipe. If sequence context matters, it likely needs either direct state/top-error correction or a true window/sequence architecture that preserves motif shape, not just window means, slopes, DTW distances, and interaction columns.
