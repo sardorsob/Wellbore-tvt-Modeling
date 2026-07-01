@@ -812,6 +812,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: diagnostic only. Do not continue flat raw-window tabular features.
 - Notes: If local motifs matter, the architecture needs to preserve sequence structure more directly than binned tabular XGBoost/Ridge features.
 
+## 2026-07-01__oof_candidate_blend_audit
+
+- Task: row-level OOF candidate blend audit
+- Purpose: Test whether the strongest regime-mean, Ridge residual, and XGBoost residual candidates contain enough independent signal for fixed averages or leave-one-fold-out positive linear meta-blends to beat the current plateau.
+- Config: `notebooks/modeling/09_validation/03_oof_candidate_blend_audit.ipynb`; clones the XGBoost regime-mean stack data path, adds `row_idx_original` to prediction exports, and evaluates fixed averages plus fold-heldout positive linear meta-blends over candidate sets.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell descriptors, and direct formation columns used only as fold-local pseudo-top labels.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; all candidates also scored on `analog_distance_fold`.
+- Model: best candidate remains `blend_plus_ridge_residual_s15`.
+- Primary metric: strict-hybrid RMSE **13.0769**, matching the previous residual-stack best and improving the direct regime-mean reference **13.0928** by **0.0159**.
+- Secondary metrics: analog-distance stress RMSE **13.4468**, worse than the direct regime-mean stress **13.4006**. Best simple blend `oof_avg__base_ridge25` reached **13.0779** strict / **13.4371** stress, and positive-linear meta-blends worsened.
+- Artifacts: summary, fold metrics, zone/analog-bin summaries, well diagnostics, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-07-01__oof_candidate_blend_audit/`.
+- Decision: diagnostic only. Do not continue OOF candidate averaging/meta-blending around the same residual-stack family.
+- Notes: Candidate diversity is too weak for a step-change. To move toward **10 RMSE**, the next notebook should change the state representation or target, not optimize blends of the same pseudo-top regime candidates.
+
 ## Entry Format
 
 ```text

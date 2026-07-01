@@ -597,3 +597,17 @@
 **Rationale:** Raw-window bins worsened strict RMSE to **13.1664** and stress RMSE to **13.4758**. This is weaker than both the original pseudo-top regime mean and the earlier scalar alignment-aware variant.
 **Consequences:** Do not package this branch and do not spend more iteration budget on flat motif bins.
 **Follow-up:** Either submit the clean pseudo-top regime-mean package as the current stable probe or test a non-tabular sequence/state architecture.
+
+---
+
+## D045 - Stop same-family OOF candidate blending
+
+**Date:** 2026-07-01
+**Decision:** Do not continue fixed averaging or positive-linear meta-blending among the current pseudo-top regime-mean, Ridge residual, and XGBoost residual stack candidates.
+**Alternatives considered:**
+- Use simple averages to reduce analog-distance stress while preserving most of the residual-stack strict gain.
+- Use leave-one-fold-out positive linear meta-blends to learn fold-safe candidate weights.
+- Move to a structurally different state representation or target.
+**Rationale:** `03_oof_candidate_blend_audit` found the previous `blend_plus_ridge_residual_s15` candidate still best at **13.0769** strict RMSE / **13.4468** stress RMSE. The best simple blend, `oof_avg__base_ridge25`, reached **13.0779** strict / **13.4371** stress, close but not better. Positive-linear meta-blends worsened to **13.1001+** strict and **13.5604** stress, indicating poor transfer from candidate weights.
+**Consequences:** Treat the residual-stack family as saturated unless a new candidate source changes the error geometry. Do not spend overnight iteration budget on more candidate weights, foldwise average schedules, or same-family stack heads.
+**Follow-up:** Build the next notebook around a different target or representation: formation-boundary/state-transition modeling, hard-well pseudo-top relabeling diagnostics, or a true sequence representation that is evaluated against the same strict/stress gates.

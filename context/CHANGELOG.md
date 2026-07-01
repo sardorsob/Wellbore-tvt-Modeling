@@ -50,6 +50,8 @@
 - Recorded A74 and D043: gated top residual correction only trades strict RMSE for stress improvement, so stop correction-schedule tuning.
 - Added and ran `notebooks/modeling/02_trees/14_xgboost_raw_window_sequence.ipynb`; exported raw-window feature preview, summaries, findings, report, model-comparison row, and run bundle.
 - Recorded A75 and D044: raw local motif bins worsen the current tabular regime-mean recipe, so stop flat local-window additions.
+- Added and ran `notebooks/modeling/09_validation/03_oof_candidate_blend_audit.ipynb`; exported OOF blend summaries, fold metrics, diagnostics, findings, report, model-comparison row, and run bundle.
+- Recorded A76 and D045: same-family candidate averaging/meta-blending does not beat the residual-stack plateau, so the next branch needs a new state target or representation.
 
 ### Changed
 - Added and ran `notebooks/modeling/06_bayesian/07_gated_bayesian_regime.ipynb`; exported gated Bayesian regime metrics, gate diagnostics, report, model comparison row, and run bundle.

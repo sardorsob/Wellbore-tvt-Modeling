@@ -534,3 +534,9 @@ The `14_pseudo_top_state_revision_gated` notebook kept separate probability colu
 The `14_xgboost_raw_window_sequence` notebook added raw local GR and typewell window bins to preserve motif shape around each target row. The best candidate, `xgb_square_global__raw_window_regime_ridge_alpha80__confidence_s100`, scored **13.1664** strict RMSE and **13.4758** analog-distance stress RMSE, both worse than the original pseudo-top regime mean.
 
 **Modeling implication:** The current plateau is not solved by adding more flat local motif columns. If log-shape context is important, it likely needs a true sequence/representation model or a different state target, not tabular bins layered into the existing regime-mean recipe.
+
+### A76 - Current residual candidates are too correlated for blending to break the plateau
+
+The `03_oof_candidate_blend_audit` notebook preserved row-level OOF predictions for the regime-mean reference and residual-stack heads, then tested fixed averages and leave-one-fold-out positive linear meta-blends. The previous best `blend_plus_ridge_residual_s15` remained best at **13.0769** strict RMSE and **13.4468** analog-distance stress RMSE. The best fixed average, `oof_avg__base_ridge25`, was close at **13.0779** strict / **13.4371** stress, but did not beat strict RMSE. Positive-linear meta-blends worsened to at least **13.1001** strict and **13.5604** stress.
+
+**Modeling implication:** The current pseudo-top regime and residual-stack candidates mostly share the same errors. More candidate weighting is unlikely to create a path toward **10 RMSE**. A useful next experiment needs a new state target, formation-transition representation, or sequence model that changes which wells/rows are hard.
