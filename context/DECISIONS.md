@@ -751,3 +751,17 @@
 **Rationale:** The dilated CNN improves strict RMSE to **12.4888** and stress RMSE to **12.8465**, beating both the prior strict-best and stress-best candidates. The oracle also improves to **10.6114**, suggesting the representation itself is better.
 **Consequences:** This is the strongest local package candidate so far. Further local work should tune around the dilated architecture or validate public transfer through Kaggle.
 **Follow-up:** Package `logit_switch_floor20` for Kaggle or run a compact dilated-CNN tuning pass focused on stress/strict balance.
+
+---
+
+## D056 - Reject avg+max pooling variant for current dilated CNN
+
+**Date:** 2026-07-01
+**Decision:** Do not replace the active average-pooled dilated direct CNN with the avg+max pooling variant.
+**Alternatives considered:**
+- Promote `xgb_weight_medium_s100` from the pooling run because it remains better than older CNN branches.
+- Continue tuning max-pooling heads.
+- Keep the average-pooled dilated direct branch.
+**Rationale:** The pooling run worsens strict RMSE (**12.5051** vs **12.4888**), stress RMSE (**12.9361** vs **12.8465**), and oracle RMSE (**10.6897** vs **10.6114**). The deterioration appears representation-level, not only gate selection.
+**Consequences:** Do not spend more immediate runs on avg+max pooling. The next useful step is package probing or a different dilated architecture/window strategy.
+**Follow-up:** Package the average-pooled dilated candidate or test a genuinely different sequence representation.

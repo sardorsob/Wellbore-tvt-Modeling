@@ -600,3 +600,9 @@ The `10_cnn_regime_direct_stability` notebook upgraded the direct-delta CNN spec
 The `11_cnn_regime_dilated_direct` notebook replaced the stronger direct CNN with a dilated local-window CNN while keeping the three-seed setup and comparable gates. The best deployable candidate, `logit_switch_floor20`, scored **12.4888** strict RMSE and **12.8465** analog-distance stress RMSE. This improves the prior strict-best **12.5179** and the prior stress-best **12.9475**. The leakage-only continuous oracle improved to **10.6114**.
 
 **Modeling implication:** Local motif representation quality is still yielding measurable gains. The dilated direct-delta CNN should become the active package candidate, and the next modeling step should either tune this architecture further or use Kaggle public transfer to validate whether the local strict/stress gains carry over.
+
+### A87 - Max pooling does not improve the dilated CNN branch
+
+The `12_cnn_regime_dilated_pooling` notebook added adaptive max pooling alongside average pooling in the dilated CNN sequence encoder. The best deployable candidate, `xgb_weight_medium_s100`, scored **12.5051** strict RMSE and **12.9361** analog-distance stress RMSE, both worse than the active average-pooled dilated run (**12.4888** strict / **12.8465** stress). Its oracle also worsened from **10.6114** to **10.6897**.
+
+**Modeling implication:** Peak-response pooling is not helping this small local-window representation. Keep the average-pooled dilated CNN as the active architecture and avoid further avg+max pooling variants unless the window design changes.

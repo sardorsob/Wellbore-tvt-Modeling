@@ -213,6 +213,17 @@
 - Oracle diagnostic RMSE: **10.6114**
 - Run ID: `2026-07-01__cnn_regime_dilated_direct`
 
+## [2026-07-01] - CNN-Regime Dilated Pooling
+### Added / Changed / Fixed / Removed
+- Added dilated CNN avg+max pooling diagnostic notebook and run artifacts.
+- Marked the run diagnostic because it trails the active average-pooled dilated branch.
+
+### Results
+- Local CV RMSE: **12.5051** (`xgb_weight_medium_s100`)
+- Analog-distance stress RMSE: **12.9361**
+- Oracle diagnostic RMSE: **10.6897**
+- Run ID: `2026-07-01__cnn_regime_dilated_pooling`
+
 ---
 
 ## Milestone format

@@ -238,6 +238,7 @@ Immediate next work:
 | 2026-07-01 | CNN-regime residual specialist | 12.7353 | Residual-targeted CNN trails current strict-best and stress-best gates; oracle **11.8132** is also worse than direct-delta CNN oracle |
 | 2026-07-01 | CNN-regime direct stability | 12.5179 | Stronger three-seed direct-delta CNN gives the largest recent strict gain; stress-best compromise `xgb_weight_soft_s075` is **12.5788** strict / **12.9485** stress |
 | 2026-07-01 | CNN-regime dilated direct | 12.4888 | Dilated three-seed direct-delta CNN improves both strict and stress; stress RMSE **12.8465**, oracle **10.6114** |
+| 2026-07-01 | CNN-regime dilated pooling | 12.5051 | Avg+max pooling trails average-pooled dilated direct on strict, stress, and oracle; diagnostic only |
 
 ## Validation artifacts
 

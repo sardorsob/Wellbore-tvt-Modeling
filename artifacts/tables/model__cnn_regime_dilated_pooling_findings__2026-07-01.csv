@@ -1,0 +1,5 @@
+finding,detail,value,interpretation
+best_overall,xgb_weight_medium_s100,12.505080892969495,Best strict RMSE with analog stress RMSE 12.9361.
+best_weight_candidate,xgb_weight_medium_s100,12.505080892969495,Best deployable dilated-pooling/static gate candidate.
+oracle_upper_bound,oracle_continuous_weight,10.68969341960093,Oracle row switch upper bound is leakage-only and not deployable.
+decision,diagnostic_only_current_best_worse,12.505080892969495,Dilated pooling remains strong but trails the active dilated-direct candidate on both strict and stress RMSE.

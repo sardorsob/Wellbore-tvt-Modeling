@@ -966,6 +966,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: promote as the active local package candidate. Do not mark the active objective complete because local RMSE is still above **10**.
 - Notes: The dilated CNN improves both deployable RMSE and the leakage-only oracle, so representation quality remains a productive direction. Next step should be Kaggle package probing or a focused dilated-CNN stress/strict tuning pass.
 
+## 2026-07-01__cnn_regime_dilated_pooling
+
+- Task: dilated direct-delta CNN with average-plus-max pooling
+- Purpose: Test whether keeping peak-response features via max pooling improves the dilated direct-delta CNN specialist beyond the average-pooled dilated branch.
+- Config: `notebooks/modeling/09_validation/12_cnn_regime_dilated_pooling.ipynb`; same fold-safe pseudo-top regime anchor and three-seed dilated direct CNN branch, but the sequence encoder concatenates adaptive average and max pooled activations before the tabular head.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell descriptors, and direct formation columns used only as fold-local pseudo-top labels in the inherited data prep.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; all candidates also scored on `analog_distance_fold`.
+- Model: best deployable candidate `xgb_weight_medium_s100`; oracle diagnostic `oracle_continuous_weight`.
+- Primary metric: `xgb_weight_medium_s100` strict-hybrid RMSE **12.5051**, worse than active dilated-direct `logit_switch_floor20` **12.4888**.
+- Secondary metrics: `xgb_weight_medium_s100` analog-distance stress RMSE **12.9361**, worse than active dilated-direct stress **12.8465**. Leakage-only continuous oracle RMSE is **10.6897**, also worse than the average-pooled dilated oracle **10.6114**.
+- Artifacts: feature preview, proxy quality, top-label summary, summary, fold metrics, diagnostics placeholder, zone/analog-bin summaries, well diagnostics, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-07-01__cnn_regime_dilated_pooling/`.
+- Decision: diagnostic only. Do not replace the active dilated-direct candidate.
+- Notes: Adding max-pooling features worsened the candidate and oracle, suggesting the current task benefits more from smoothed local motif context than peak-response pooling in this small-window setup.
+
 ## Entry Format
 
 ```text
