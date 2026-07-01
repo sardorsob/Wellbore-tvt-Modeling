@@ -181,6 +181,16 @@
 - Analog-distance stress RMSE: **13.0089**
 - Run ID: `2026-07-01__cnn_regime_calibrated_gate`
 
+## [2026-07-01] - CNN-Regime Residual Specialist
+### Added / Changed / Fixed / Removed
+- Added residual-targeted CNN specialist notebook and run artifacts.
+- Corrected promotion logic to exclude leakage-only oracle rows and mark the run diagnostic because it trails current best CNN/regime gates.
+
+### Results
+- Local CV RMSE: **12.7353** (`residual_cnn_s085`)
+- Analog-distance stress RMSE: **13.1028**
+- Run ID: `2026-07-01__cnn_regime_residual_specialist`
+
 ---
 
 ## Milestone format

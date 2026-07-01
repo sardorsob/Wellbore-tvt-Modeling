@@ -1,0 +1,5 @@
+finding,detail,value,interpretation
+best_overall,residual_cnn_s085,12.735337814514358,Best strict RMSE with analog stress RMSE 13.1028.
+best_weight_candidate,residual_cnn_s085,12.735337814514358,Best deployable residual/static specialist candidate.
+oracle_upper_bound,oracle_continuous_shrink,11.813173693213136,Oracle upper bound is leakage-only and not deployable.
+decision,diagnostic_only_current_best_worse,12.735337814514358,Residual specialist beats the old regime anchor but trails the current CNN/regime calibrated strict best and stress-robust learned gate.

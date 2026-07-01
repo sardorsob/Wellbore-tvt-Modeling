@@ -924,6 +924,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: keep as the best strict-CV local candidate, but do not treat it as a clean replacement for `xgb_weight_soft_s100` because stress regressed.
 - Notes: The richer gate features recover only a small additional slice of the oracle gap and trade off stress robustness. The next improvement should focus on CNN specialist quality or stress-aware gate selection, not just more row-wise gate feature expansion.
 
+## 2026-07-01__cnn_regime_residual_specialist
+
+- Task: residual-targeted CNN specialist
+- Purpose: Test whether the local-window CNN is more useful when it learns the residual left by the pseudo-top regime anchor instead of the full TVT delta.
+- Config: `notebooks/modeling/09_validation/09_cnn_regime_residual_specialist.ipynb`; same fold-safe pseudo-top regime anchor as the CNN/regime branch, but the CNN target is `actual_tvt - regime_anchor_tvt`, followed by residual shrinkage and fold-heldout shrink/switch gates.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell descriptors, and direct formation columns used only as fold-local pseudo-top labels in the inherited data prep.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; all candidates also scored on `analog_distance_fold`.
+- Model: best deployable candidate `residual_cnn_s085`; oracle diagnostic `oracle_continuous_shrink`.
+- Primary metric: `residual_cnn_s085` strict-hybrid RMSE **12.7353**, worse than the current strict-best calibrated switch gate **12.6364** and worse than the prior learned-weight gate **12.6471**.
+- Secondary metrics: `residual_cnn_s085` analog-distance stress RMSE **13.1028**, worse than the stress-robust learned-weight gate **12.9475**. Leakage-only continuous residual-shrink oracle RMSE is **11.8132**.
+- Artifacts: feature preview, proxy quality, top-label summary, summary, fold metrics, diagnostics placeholder, zone/analog-bin summaries, well diagnostics, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-07-01__cnn_regime_residual_specialist/`.
+- Decision: diagnostic only. Do not package this residual-targeted branch.
+- Notes: Residual targeting did not improve deployable predictions and its oracle is worse than the direct-delta CNN/regime oracle. The useful CNN branch remains the direct-delta specialist blended or gated against the regime anchor.
+
 ## Entry Format
 
 ```text

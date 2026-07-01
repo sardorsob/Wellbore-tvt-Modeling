@@ -709,3 +709,17 @@
 **Rationale:** The calibrated switch gate improves strict RMSE by **0.0107**, but the stress regression suggests it may be fitting fold-specific route cues. Since the user goal is to reach much lower public RMSE, a strict-only decimal gain is not enough to justify treating this as the final direction.
 **Consequences:** Do not keep iterating shallow gates unless they include explicit stress-aware selection. The next serious experiment should improve the CNN specialist, add stronger seed/architecture stability, or change the target representation.
 **Follow-up:** Compare package candidates by Kaggle/public transfer if requested, or build a stress-aware CNN specialist stability notebook next.
+
+---
+
+## D053 - Stop residual-targeted CNN branch
+
+**Date:** 2026-07-01
+**Decision:** Treat the residual-targeted CNN specialist as diagnostic only and do not package it.
+**Alternatives considered:**
+- Package `residual_cnn_s085` because it still beats the old regime-mean anchor.
+- Continue tuning residual shrink gates because the residual oracle reaches **11.8132**.
+- Return to the direct-delta CNN/regime branch.
+**Rationale:** `residual_cnn_s085` scores **12.7353** strict RMSE and **13.1028** stress RMSE, both worse than the current direct-delta CNN/gate candidates. Its oracle is also weaker than the direct-delta branch oracle, so this is not just a gate failure.
+**Consequences:** Future CNN work should keep the direct-delta target or change the architecture/seed stability, not target residuals after the current regime anchor.
+**Follow-up:** Build a stress-aware seed/architecture stability run for the direct-delta CNN branch, or package the current strict/stress candidates for public transfer testing.

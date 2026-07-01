@@ -582,3 +582,9 @@ The `07_cnn_regime_learned_weight_gate` notebook trained fold-heldout XGBoost re
 The `08_cnn_regime_calibrated_gate` notebook added per-well prediction-context features and fold-heldout CNN-win switch gates. The best deployable candidate, `xgb_switch_p100`, scored **12.6364** strict RMSE, improving `xgb_weight_soft_s100` by **0.0107**. However, analog-distance stress RMSE worsened from **12.9475** to **13.0089**. The leakage-only continuous oracle improved slightly to **10.8172**.
 
 **Modeling implication:** More expressive row gates can find a small strict-CV gain but are not yet robust across analog-distance stress splits. The path to a larger RMSE drop is unlikely to be gate feature expansion alone; the CNN specialist itself or a stress-aware selection rule needs to improve.
+
+### A84 - Residual-targeted CNN is worse than direct-delta CNN blending
+
+The `09_cnn_regime_residual_specialist` notebook trained the local-window CNN on residuals after the pseudo-top regime anchor. The best deployable row, `residual_cnn_s085`, scored **12.7353** strict RMSE and **13.1028** analog-distance stress RMSE, trailing both `xgb_switch_p100` (**12.6364** strict) and `xgb_weight_soft_s100` (**12.9475** stress). Its leakage-only continuous shrink oracle was **11.8132**, worse than the direct-delta CNN/regime oracle around **10.817-10.828**.
+
+**Modeling implication:** The CNN is more useful as an alternate direct-delta specialist than as a residual learner after the current regime anchor. Do not package the residual-targeted branch; return to direct-delta CNN quality, seed stability, or stress-aware gate selection.
