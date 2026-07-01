@@ -667,3 +667,17 @@
 **Rationale:** `05_cnn_regime_blend_tuning` did not bracket the strict optimum. `blend_cnn_50` is the best strict candidate and is still stress-improving versus the regime anchor, while `blend_cnn_35` suggests a stress/strict tradeoff.
 **Consequences:** Do not package yet. The next notebook should test **0.50-1.00** blend weights and explicitly choose a candidate by strict/stress balance.
 **Follow-up:** Build `cnn_regime_blend_wide_grid` or equivalent, then package the best stable blend if it remains strong.
+
+---
+
+## D050 - Use blend_cnn_45 as current local package candidate
+
+**Date:** 2026-07-01
+**Decision:** Treat `blend_cnn_45` as the current best deployable local candidate from the CNN/regime branch.
+**Alternatives considered:**
+- Use `blend_cnn_50` because it was best in the first tuning grid.
+- Use a higher CNN weight because strict had improved through **0.50** before the wide grid.
+- Return to learned gates because the oracle row switch remains much better.
+**Rationale:** The wide grid brackets the uniform blend optimum: `blend_cnn_45` scores **12.6497** strict RMSE and **12.9956** stress RMSE, while heavier CNN weights degrade stress and pure CNN worsens strict RMSE.
+**Consequences:** The next practical step is either a hidden-test-safe Kaggle package for `blend_cnn_45` or a focused stability pass with more CNN seeds around **0.40-0.50**. Do not pursue weights above **0.70** without changing the CNN architecture.
+**Follow-up:** Package `blend_cnn_45` if the user wants a Kaggle probe; otherwise run seed/architecture stability tests around the bracketed blend range.

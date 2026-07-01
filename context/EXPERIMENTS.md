@@ -882,6 +882,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: continue and widen the blend grid. Do not submit yet because strict RMSE is still improving at the largest tested weight.
 - Notes: The optimum has not been bracketed. Next sweep should test weights **0.50-1.00**, include stress-aware selection, and prepare a package only after strict/stress tradeoff is stable.
 
+## 2026-07-01__cnn_regime_blend_wide_grid
+
+- Task: wide CNN/regime blend grid
+- Purpose: Bracket the blend-weight optimum after the first two-seed tuning grid improved through `blend_cnn_50`.
+- Config: `notebooks/modeling/09_validation/06_cnn_regime_blend_wide_grid.ipynb`; same fold-safe regime anchor and two-seed CNN specialist as `05_cnn_regime_blend_tuning`, but weights **0.45** through **1.00**.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell descriptors, and direct formation columns used only as fold-local pseudo-top labels in the inherited data prep.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; all candidates also scored on `analog_distance_fold`.
+- Model: best deployable candidate `blend_cnn_45`; oracle diagnostic `oracle_row_switch`.
+- Primary metric: `blend_cnn_45` strict-hybrid RMSE **12.6497**, a small improvement over `blend_cnn_50` **12.6514** and a large improvement over the prior non-CNN plateau.
+- Secondary metrics: `blend_cnn_45` analog-distance stress RMSE **12.9956**. Higher weights degrade stress and pure CNN (`blend_cnn_100`) worsens strict RMSE to **13.2216**.
+- Artifacts: feature preview, proxy quality, top-label summary, summary, fold metrics, diagnostics placeholder, zone/analog-bin summaries, well diagnostics, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-07-01__cnn_regime_blend_wide_grid/`.
+- Decision: `blend_cnn_45` is the best local package candidate in this branch so far. Build a hidden-test-safe Kaggle package or test local refinements around **0.40-0.50** with stronger CNN seed averaging.
+- Notes: The uniform blend optimum is bracketed around **0.45**. The oracle remains **10.9049**, so a learned gate could still matter, but uniform blending is currently the deployable baseline to beat.
+
 ## Entry Format
 
 ```text

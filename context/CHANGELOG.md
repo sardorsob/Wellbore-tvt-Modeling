@@ -60,6 +60,8 @@
 - Recorded A79 and D048: `blend_cnn_20` improves strict RMSE to **12.7816** and stress to **13.1223**, while oracle switching at **10.7716** exposes a new calibration/gating path.
 - Added and ran `notebooks/modeling/09_validation/05_cnn_regime_blend_tuning.ipynb`; exported seed-averaged CNN blend-grid summaries, diagnostics, findings, report, model-comparison row, and run bundle.
 - Recorded A80 and D049: `blend_cnn_50` improves strict RMSE to **12.6514**, but the optimum is not bracketed because the best strict score sits at the upper grid edge.
+- Added and ran `notebooks/modeling/09_validation/06_cnn_regime_blend_wide_grid.ipynb`; exported wide CNN blend-grid summaries, diagnostics, findings, report, model-comparison row, and run bundle.
+- Recorded A81 and D050: `blend_cnn_45` brackets the current deployable optimum with strict RMSE **12.6497** and stress RMSE **12.9956**.
 
 ### Changed
 - Added and ran `notebooks/modeling/06_bayesian/07_gated_bayesian_regime.ipynb`; exported gated Bayesian regime metrics, gate diagnostics, report, model comparison row, and run bundle.

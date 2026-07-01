@@ -564,3 +564,9 @@ The `04_cnn_regime_gated_specialist` audit recomputed a fold-safe regime-mean an
 The `05_cnn_regime_blend_tuning` notebook averaged two lightweight CNN seeds and swept uniform blend weights from **0.00** to **0.50**. Strict RMSE kept improving through the largest tested weight, reaching **12.6514** at `blend_cnn_50`. Stress RMSE was best near `blend_cnn_35` at **12.9705**, while `blend_cnn_50` still improved stress to **13.0331** versus the direct regime-mean **13.4006**.
 
 **Modeling implication:** The CNN correction is stronger than the first 20% audit suggested. The next sweep must bracket the optimum with weights above **0.50** and choose using both strict and analog-distance stress, rather than assuming a small residual blend is enough.
+
+### A81 - Uniform CNN blend optimum is bracketed near 0.45
+
+The `06_cnn_regime_blend_wide_grid` notebook widened the two-seed blend grid above **0.50**. Strict RMSE peaked at `blend_cnn_45` with **12.6497**, while `blend_cnn_50` was nearly tied at **12.6514**. Higher weights degraded stress, and the pure CNN blend (`blend_cnn_100`) worsened strict RMSE to **13.2216**.
+
+**Modeling implication:** The deployable uniform blend is now bracketed around **0.40-0.50**. Further gains are more likely from better CNN seed averaging, architecture/target changes, or gate learning than from larger uniform CNN weights.
