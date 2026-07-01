@@ -644,6 +644,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: package for Kaggle after local package validation. This is the first pseudo-top-family result to clear the local promotion gate by a meaningful margin.
 - Notes: Public-transfer risk remains. The package must recompute pseudo-top proxies and regime means from all training wells and hidden-test-safe inputs only.
 
+## 2026-07-01__pseudo_top_regime_mean_tuning
+
+- Task: pseudo-top regime-mean tuning
+- Purpose: Test whether denser Ridge alpha and blend-schedule tuning can materially improve the direct pseudo-top regime-mean candidate.
+- Config: `notebooks/modeling/06_bayesian/10_pseudo_top_regime_mean_tuning.ipynb`; deterministic target-row sampling capped at **120** rows per well; two-seed squared-error pseudo-top proxy ensembles; two XGBoost global means; regime Ridge alphas **40**, **80**, **140**, and **220**; fixed, confidence, confidence-power, and margin-heavy blend schedules.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell descriptors, and direct formation columns used only as fold-local pseudo-top labels.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; all candidates also scored on `analog_distance_fold`.
+- Model: best candidate `xgb_square_global__regime_ridge_alpha40__confidence_s100`.
+- Primary metric: strict-hybrid RMSE **13.0910**, only **0.0018** better than the first regime-mean baseline **13.0928**.
+- Secondary metrics: analog-distance stress RMSE **13.4065**, slightly worse than the first regime-mean baseline **13.4006**.
+- Artifacts: summary, fold metrics, regime diagnostics, zone/analog-bin summaries, well diagnostics, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-07-01__pseudo_top_regime_mean_tuning/`.
+- Decision: do not package over the first regime-mean candidate. The strict gain is negligible and stress behavior is slightly worse.
+- Notes: Move next to boosted stacking, pseudo-top inference tuning, or a structurally different Bayesian/partial-pooling regime model.
+
 ## Entry Format
 
 ```text

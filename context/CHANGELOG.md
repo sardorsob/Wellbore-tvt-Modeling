@@ -78,6 +78,7 @@
 - Generated and ran first baseline modeling notebooks; updated structure, status, experiments, and feature log with run IDs and RMSEs.
 
 ### Added
+- Pseudo-top regime-mean tuning notebook and artifacts. Best candidate `xgb_square_global__regime_ridge_alpha40__confidence_s100` scored **13.0910** strict RMSE and **13.4065** analog stress RMSE, a negligible strict gain with slightly worse stress versus the packaged regime-mean baseline.
 - Self-contained pseudo-top regime-mean Kaggle package under `kaggle/pseudo_top_regime_mean_submission/`; local execution completed and passed submission row-order, non-null, and finite-prediction assertions.
 - Pseudo-top regime-mean notebook and artifacts. Best candidate `xgb_square_global__regime_ridge_alpha80__confidence_s100` scored **13.0928** strict RMSE and **13.4006** analog stress RMSE, clearing the local packaging gate for the next Kaggle-safe probe.
 - Pseudo-top Bayesian mixture-regime notebook and artifacts. Best candidate `xgb_pseudohuber_mean__ridge_alpha650__mixture_conf_s050` scored **13.4437** strict RMSE and **13.7593** analog stress RMSE, the first pseudo-top-family result to edge past the strict safe/typewell reference.

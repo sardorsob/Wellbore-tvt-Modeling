@@ -462,3 +462,9 @@ The `08_pseudo_top_mixture_regime` notebook converted fold-safe pseudo-top dista
 The `09_pseudo_top_regime_mean` notebook moved pseudo-top probabilities into the mean function itself. Each formation regime received a weighted Ridge MAP mean over legal row/typewell/state features, and predictions blended those regime means with a global safe/typewell mean according to pseudo-top confidence. The best candidate, `xgb_square_global__regime_ridge_alpha80__confidence_s100`, scored **13.0928** strict-hybrid RMSE and **13.4006** analog-distance stress RMSE. This improves the previous pseudo-top mixture prior **13.4437** by **0.3510** RMSE and the strict safe/typewell reference **13.4506** by **0.3579** RMSE.
 
 **Modeling implication:** Pseudo-top structure is most valuable when it defines the primary stratigraphic-regime mean, not as a raw feature or post-hoc residual correction. This clears the local packaging gate, but public-transfer caution remains because earlier local gains did not always transfer.
+
+### A64 - Simple regime-mean tuning is nearly saturated
+
+The `10_pseudo_top_regime_mean_tuning` notebook narrowed the search around the direct regime-mean winner with Ridge alphas **40**, **80**, **140**, and **220**, two XGBoost global means, and fixed/confidence/margin-heavy blend schedules. The best candidate, `xgb_square_global__regime_ridge_alpha40__confidence_s100`, scored **13.0910** strict-hybrid RMSE and **13.4065** analog-distance stress RMSE. This improves strict RMSE by only **0.0018** versus the first regime-mean baseline **13.0928** and worsens stress by **0.0059** versus **13.4006**.
+
+**Modeling implication:** The direct regime-mean family is useful, but small alpha/blend tuning is saturated. Keep the original `alpha80` package as the cleaner public probe, and move the next RMSE push to boosted stacking, better pseudo-top inference, or a structurally different Bayesian/partial-pooling regime model.

@@ -36,10 +36,10 @@
 - Modify: `context/STATUS.md`
 - Modify: `kaggle/FEATURES.md`
 
-- [ ] Expand the candidate grid around the best regime-mean setup.
-- [ ] Test confidence schedules, regime shrinkage, stress-aware blending, and robust fallback.
-- [ ] Export strict/stress summaries and failure slices.
-- [ ] Commit if the notebook produces reportable artifacts.
+- [x] Expand the candidate grid around the best regime-mean setup.
+- [x] Test confidence schedules, regime shrinkage, stress-aware blending, and robust fallback.
+- [x] Export strict/stress summaries and failure slices.
+- [x] Commit if the notebook produces reportable artifacts.
 
 ### Task 3: Stack Regime Means With Boosted Global Models
 

@@ -429,3 +429,17 @@
 **Rationale:** The direct regime-mean model scored **13.0928** strict-hybrid RMSE and **13.4006** analog-distance stress RMSE. This clears the **0.05** local promotion margin versus both the pseudo-top mixture prior **13.4437** and the strict safe/typewell reference **13.4506**. It also improves analog stress by **0.3588** versus the previous pseudo-top mixture-prior stress score **13.7593**.
 **Consequences:** Build a Kaggle code-competition notebook that recomputes pseudo-top proxy models on all train wells, predicts hidden test pseudo-top probabilities, fits the global XGBoost mean and regime-specific Ridge means, blends by confidence, and writes `/kaggle/working/submission.csv`.
 **Follow-up:** Package and run locally first; submit to Kaggle only after the package writes finite predictions with the exact sample submission row count.
+
+---
+
+## D033 - Stop small-grid pseudo-top regime-mean tuning
+
+**Date:** 2026-07-01
+**Decision:** Do not replace the packaged `alpha80` regime-mean candidate with the tuned `alpha40` near-tie.
+**Alternatives considered:**
+- Package `xgb_square_global__regime_ridge_alpha40__confidence_s100` because it has the lowest strict RMSE.
+- Continue widening Ridge alpha and confidence schedule sweeps.
+- Move to boosted stacking or pseudo-top inference improvements.
+**Rationale:** The tuned candidate scored **13.0910** strict-hybrid RMSE, only **0.0018** better than the packaged `alpha80` baseline **13.0928**, while analog-distance stress worsened from **13.4006** to **13.4065**. The improvement is below any meaningful promotion margin and adds no new structure.
+**Consequences:** Keep the `alpha80` pseudo-top regime-mean package as the next Kaggle public-transfer probe. Treat the tuning notebook as evidence that this small deterministic family is saturated.
+**Follow-up:** Move the next local modeling notebook to regime-mean stacking or pseudo-top inference quality rather than another narrow alpha/blend sweep.
