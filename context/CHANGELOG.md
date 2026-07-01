@@ -191,6 +191,17 @@
 - Analog-distance stress RMSE: **13.1028**
 - Run ID: `2026-07-01__cnn_regime_residual_specialist`
 
+## [2026-07-01] - CNN-Regime Direct Stability
+### Added / Changed / Fixed / Removed
+- Added stronger direct-delta CNN stability notebook with three seed offsets and direct-stability gates.
+- Added run artifacts, report, comparison row, and context notes for the new strict-best branch.
+
+### Results
+- Local CV RMSE: **12.5179** (`logit_switch_floor20`)
+- Analog-distance stress RMSE: **12.9574**
+- Stress-balanced candidate: **12.5788** strict / **12.9485** stress (`xgb_weight_soft_s075`)
+- Run ID: `2026-07-01__cnn_regime_direct_stability`
+
 ---
 
 ## Milestone format

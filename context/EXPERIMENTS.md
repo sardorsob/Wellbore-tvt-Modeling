@@ -938,6 +938,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: diagnostic only. Do not package this residual-targeted branch.
 - Notes: Residual targeting did not improve deployable predictions and its oracle is worse than the direct-delta CNN/regime oracle. The useful CNN branch remains the direct-delta specialist blended or gated against the regime anchor.
 
+## 2026-07-01__cnn_regime_direct_stability
+
+- Task: stronger direct-delta CNN stability run
+- Purpose: Test whether the best CNN/regime branch improves when the CNN specialist uses a slightly stronger architecture and three seed offsets instead of the earlier lighter two-seed setup.
+- Config: `notebooks/modeling/09_validation/10_cnn_regime_direct_stability.ipynb`; fold-safe pseudo-top regime anchor, stronger direct-delta local-window CNN with seed offsets `0`, `101`, and `211`, static blend grid, fold-heldout XGBoost weight/switch gates, and logistic switch-floor gates.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell descriptors, and direct formation columns used only as fold-local pseudo-top labels in the inherited data prep.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; all candidates also scored on `analog_distance_fold`.
+- Model: strict-best deployable candidate `logit_switch_floor20`; stress-balanced candidate `xgb_weight_soft_s075`; oracle diagnostic `oracle_continuous_weight`.
+- Primary metric: `logit_switch_floor20` strict-hybrid RMSE **12.5179**, improving the prior strict-best `xgb_switch_p100` **12.6364** by **0.1185**.
+- Secondary metrics: `logit_switch_floor20` analog-distance stress RMSE **12.9574**, narrowly worse than the prior stress-best `xgb_weight_soft_s100` **12.9475**. `xgb_weight_soft_s075` gives a strong compromise at **12.5788** strict RMSE and **12.9485** stress RMSE. Leakage-only continuous oracle RMSE is **10.9067**.
+- Artifacts: feature preview, proxy quality, top-label summary, summary, fold metrics, diagnostics placeholder, zone/analog-bin summaries, well diagnostics, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-07-01__cnn_regime_direct_stability/`.
+- Decision: real improvement. Keep `logit_switch_floor20` as strict-best and `xgb_weight_soft_s075` as the stress-balanced fallback. Do not mark the active objective complete because local RMSE is still above **10**.
+- Notes: Architecture/seed stability was more useful than residual targeting. Next iteration should either tune stress-aware selection around these candidates or package/probe the stronger direct-delta CNN branch on Kaggle.
+
 ## Entry Format
 
 ```text

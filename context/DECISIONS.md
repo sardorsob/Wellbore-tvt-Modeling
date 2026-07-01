@@ -723,3 +723,17 @@
 **Rationale:** `residual_cnn_s085` scores **12.7353** strict RMSE and **13.1028** stress RMSE, both worse than the current direct-delta CNN/gate candidates. Its oracle is also weaker than the direct-delta branch oracle, so this is not just a gate failure.
 **Consequences:** Future CNN work should keep the direct-delta target or change the architecture/seed stability, not target residuals after the current regime anchor.
 **Follow-up:** Build a stress-aware seed/architecture stability run for the direct-delta CNN branch, or package the current strict/stress candidates for public transfer testing.
+
+---
+
+## D054 - Promote stronger direct-delta CNN branch for next package/tuning step
+
+**Date:** 2026-07-01
+**Decision:** Treat the stronger three-seed direct-delta CNN branch as the active modeling direction.
+**Alternatives considered:**
+- Continue residual-targeted CNN tuning.
+- Keep the calibrated switch gate as the active strict-best without changing CNN architecture.
+- Package only the prior stress-best learned-weight gate.
+**Rationale:** `logit_switch_floor20` reaches **12.5179** strict RMSE, the largest post-CNN improvement since the initial branch began. Stress regresses slightly versus **12.9475**, but `xgb_weight_soft_s075` gives a near stress-tie at **12.5788** strict / **12.9485** stress.
+**Consequences:** Keep both a strict-best and stress-balanced candidate in the tracker. The next step should be either a Kaggle package probe for the stronger branch or a compact stress-aware selector tuning notebook.
+**Follow-up:** Package `logit_switch_floor20` or `xgb_weight_soft_s075` for Kaggle, or run one more tuning pass focused on the stress/strict tradeoff around these candidates.

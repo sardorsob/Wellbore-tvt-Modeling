@@ -588,3 +588,9 @@ The `08_cnn_regime_calibrated_gate` notebook added per-well prediction-context f
 The `09_cnn_regime_residual_specialist` notebook trained the local-window CNN on residuals after the pseudo-top regime anchor. The best deployable row, `residual_cnn_s085`, scored **12.7353** strict RMSE and **13.1028** analog-distance stress RMSE, trailing both `xgb_switch_p100` (**12.6364** strict) and `xgb_weight_soft_s100` (**12.9475** stress). Its leakage-only continuous shrink oracle was **11.8132**, worse than the direct-delta CNN/regime oracle around **10.817-10.828**.
 
 **Modeling implication:** The CNN is more useful as an alternate direct-delta specialist than as a residual learner after the current regime anchor. Do not package the residual-targeted branch; return to direct-delta CNN quality, seed stability, or stress-aware gate selection.
+
+### A85 - Stronger direct-delta CNN seed stability creates a real strict-CV gain
+
+The `10_cnn_regime_direct_stability` notebook upgraded the direct-delta CNN specialist to a slightly wider three-convolution architecture and averaged three seed offsets. The strict-best candidate, `logit_switch_floor20`, scored **12.5179** strict RMSE, beating the prior strict-best **12.6364** by **0.1185**. Its stress RMSE was **12.9574**, slightly worse than the prior stress-best **12.9475**. The compromise candidate `xgb_weight_soft_s075` scored **12.5788** strict and **12.9485** stress.
+
+**Modeling implication:** Improving the direct-delta CNN correction vector is more valuable than residual-targeting or shallow gate-only expansion. The next step should tune stress-aware selection around the stronger CNN candidates or test Kaggle transfer, while preserving the stronger architecture/seed recipe.
