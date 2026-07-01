@@ -268,6 +268,18 @@
 - Analog-distance stress RMSE: **12.7649** for active best; **12.7519** stress for the best stress-friendlier tree-gated correction with worse strict RMSE
 - Run ID: `2026-07-01__cnn_regime_neural_gate`
 
+## [2026-07-01] - CNN-Regime Multichannel Dilated CNN
+### Added / Changed / Fixed / Removed
+- Added multichannel dilated CNN audit with first- and second-derivative local-window channels.
+- Kept the same fold-safe regime anchor, candidate gates, and conservative well-bias correction for comparison.
+- Recorded the run as diagnostic because derivative channels worsened strict, stress, and oracle RMSE.
+
+### Results
+- Local CV RMSE: **12.4984** (`logit_switch_floor20__well_bias_h015_s30`)
+- Analog-distance stress RMSE: **12.8224**
+- Oracle diagnostic RMSE: **10.7443**
+- Run ID: `2026-07-01__cnn_regime_multichannel_dilated`
+
 ---
 
 ## Milestone format

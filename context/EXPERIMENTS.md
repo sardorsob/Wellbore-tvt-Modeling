@@ -1036,6 +1036,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: diagnostic only. Do not replace the active tuned logit-switch well-bias candidate.
 - Notes: Direct neural blend gates did not recover the oracle gap enough to justify more gate-only tuning. The next high-leverage work should change the representation, target, or row-level state information feeding the CNN/regime pair rather than train another gate on the same features.
 
+## 2026-07-01__cnn_regime_multichannel_dilated
+
+- Task: multichannel dilated CNN representation audit
+- Purpose: Test whether adding first- and second-derivative local-window channels for GR, typewell, and GR-minus-typewell improves the dilated CNN specialist after gate-only neural tuning failed.
+- Config: `notebooks/modeling/09_validation/17_cnn_regime_multichannel_dilated.ipynb`; active fold-safe pseudo-top regime anchor, multichannel dilated CNN with 9 sequence channels, existing static/tree/logistic gates, and conservative Huber well-bias corrections.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell descriptors, and direct formation columns used only as fold-local pseudo-top labels in the inherited data prep.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; all candidates also scored on `analog_distance_fold`.
+- Model: best deployable candidate `logit_switch_floor20__well_bias_h015_s30`; oracle diagnostic `oracle_continuous_weight`.
+- Primary metric: `logit_switch_floor20__well_bias_h015_s30` strict-hybrid RMSE **12.4984**, worse than active tuned well-bias **12.4549**.
+- Secondary metrics: analog-distance stress RMSE **12.8224**, worse than active stress **12.7649**. Leakage-only continuous oracle worsened from **10.6114** to **10.7443**.
+- Artifacts: feature preview, proxy quality, top-label summary, summary, fold metrics, regime diagnostics, zone/analog-bin summaries, well diagnostics, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-07-01__cnn_regime_multichannel_dilated/`.
+- Decision: diagnostic only. Do not replace the active tuned logit-switch well-bias candidate.
+- Notes: Simple derivative-channel expansion made the CNN representation worse, including the oracle. Future representation work should not add generic derivatives to the same 17-bin window; it should use a different state target, wider/alternative alignment context, or a model that learns state transitions more directly.
+
 ## Entry Format
 
 ```text

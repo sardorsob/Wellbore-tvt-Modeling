@@ -630,3 +630,9 @@ The `15_cnn_regime_dilated_well_bias_tuning` notebook tuned the nested well-bias
 The `16_cnn_regime_neural_gate` notebook trained compact fold-heldout MLP gates directly on blended TVT loss. The active candidate remained `logit_switch_floor20__well_bias_h015_s30` at **12.4549** strict RMSE and **12.7649** stress RMSE. The best neural-gate-derived corrected row reached only **12.4886** strict RMSE, well behind the active logit-switch correction. Some non-neural corrected rows improved stress slightly, but only by accepting worse strict RMSE.
 
 **Modeling implication:** The oracle gap is not being recovered by stronger gates on the current features. Treat same-feature gate-only tuning as a lower-priority path; future large gains should come from better state/sequence representations, new targets, or more informative hidden-test-safe features.
+
+### A92 - Simple derivative channels worsen the dilated CNN representation
+
+The `17_cnn_regime_multichannel_dilated` notebook expanded the CNN input from 3 local-window channels to 9 channels by adding first- and second-derivative sequences. The best deployable row scored **12.4984** strict RMSE and **12.8224** stress RMSE, both worse than the active **12.4549** / **12.7649** candidate. The leakage-only continuous oracle also worsened from **10.6114** to **10.7443**.
+
+**Modeling implication:** The current 17-bin derivative expansion adds noise or unstable local shape information rather than useful stratigraphic state. Do not continue simple derivative-channel variants; the next representation attempt should change the state target or alignment context more materially.

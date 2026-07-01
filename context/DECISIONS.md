@@ -821,3 +821,17 @@
 **Rationale:** The best neural-gate-derived corrected row scores **12.4886** strict RMSE, worse than the active **12.4549**. The best stress-friendlier row improves stress to **12.7519** but worsens strict to **12.4832**, so it does not meet the joint promotion standard.
 **Consequences:** Same-feature gate-only tuning is unlikely to deliver the needed jump toward **10** RMSE. Keep the current active candidate and shift the next experiment toward representation or state-feature changes.
 **Follow-up:** Test a materially different sequence/state representation or package the active tuned well-bias candidate for Kaggle transfer validation.
+
+---
+
+## D061 - Reject simple derivative-channel CNN expansion
+
+**Date:** 2026-07-01
+**Decision:** Do not replace the active tuned logit-switch well-bias candidate with the multichannel derivative CNN.
+**Alternatives considered:**
+- Promote the multichannel CNN if derivative channels improved the oracle even without immediate gate gains.
+- Continue derivative-channel tuning with different widths or pooling.
+- Keep the average-pooled 3-channel dilated CNN branch.
+**Rationale:** The derivative-channel run worsens strict RMSE (**12.4984** vs **12.4549**), stress RMSE (**12.8224** vs **12.7649**), and oracle RMSE (**10.7443** vs **10.6114**). This points to representation degradation, not only gate failure.
+**Consequences:** Stop simple derivative-channel variants on the 17-bin window.
+**Follow-up:** Use a materially different state/sequence target or alignment context for the next representation experiment.
