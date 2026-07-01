@@ -672,6 +672,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: iterate before package. The strict gain is real but small, and stress behavior worsened.
 - Notes: Next stack work should gate residual corrections by pseudo-top confidence, analog stress, or high-stress slices rather than applying a uniform shrinkage.
 
+## 2026-07-01__xgboost_regime_stress_gated_stack
+
+- Task: stress-gated XGBoost/regression stack on top of pseudo-top regime mean
+- Purpose: Test whether pseudo-top confidence, margin, analog stress, and hybrid gates can keep the strict gain from residual stacking while reducing analog-distance stress damage.
+- Config: `notebooks/modeling/02_trees/12_xgboost_regime_stress_gated_stack.ipynb`; same fold-safe regime-mean OOF setup as `11_xgboost_regime_mean_stack`; XGBoost/Ridge residual heads; uniform, confidence, margin, low-stress, hybrid, and stress-floor residual gates.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell descriptors, and direct formation columns used only as fold-local pseudo-top labels.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; all candidates also scored on `analog_distance_fold`.
+- Model: best strict candidate `blend_plus_ridge_residual_s15_uniform`; best lower-stress compromise `blend_plus_ridge_residual_s15_margin`.
+- Primary metric: best strict RMSE **13.0769**; best lower-stress compromise strict RMSE **13.0853**.
+- Secondary metrics: best strict stress RMSE **13.4468**; lower-stress compromise stress RMSE **13.4079**; original regime mean stress reference **13.4006**.
+- Artifacts: summary, fold metrics, regime diagnostics placeholder, zone/analog-bin summaries, well diagnostics, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-07-01__xgboost_regime_stress_gated_stack/`.
+- Decision: diagnostic only. Stress gates do not beat the original regime mean on both strict and stress.
+- Notes: Move next to pseudo-top inference tuning or partial-pooling regime means.
+
 ## Entry Format
 
 ```text

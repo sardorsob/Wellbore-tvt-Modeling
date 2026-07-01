@@ -457,3 +457,17 @@
 **Rationale:** `blend_plus_ridge_residual_s15` improved strict RMSE from **13.0928** to **13.0769**, but analog-distance stress worsened from **13.4006** to **13.4468**. The local strict gain is only **0.0159**, below the **0.05** promotion gate, and it moves the known transfer-risk metric in the wrong direction.
 **Consequences:** Do not push this stack to Kaggle as-is. Preserve it as evidence that residual structure exists around the regime mean.
 **Follow-up:** Try stress-gated or pseudo-top-uncertainty-gated residual shrinkage, or improve the pseudo-top inference stage itself.
+
+---
+
+## D035 - Move beyond residual shrinkage gates
+
+**Date:** 2026-07-01
+**Decision:** Do not continue local tuning of simple stress/confidence gates on the regime-mean residual stack.
+**Alternatives considered:**
+- Package the best strict residual stack despite stress degradation.
+- Use the lower-stress margin-gated residual stack as a safer local candidate.
+- Move to pseudo-top inference tuning or partial-pooling regime means.
+**Rationale:** Stress gates produced a tradeoff but no promotion candidate. The best strict model remained `blend_plus_ridge_residual_s15_uniform` at **13.0769** strict RMSE and **13.4468** stress RMSE. The margin-gated compromise reduced stress to **13.4079**, but strict RMSE relaxed to **13.0853** and stress still trailed the original regime-mean reference **13.4006**.
+**Consequences:** Keep the original pseudo-top regime-mean Kaggle package as the next public probe. Treat residual stacks as local diagnostics until a new gate or feature family improves both strict and stress.
+**Follow-up:** Rebuild or calibrate pseudo-top inference, then revisit residual stacking only if the pseudo-top state estimate improves.

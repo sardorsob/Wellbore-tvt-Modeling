@@ -78,6 +78,7 @@
 - Generated and ran first baseline modeling notebooks; updated structure, status, experiments, and feature log with run IDs and RMSEs.
 
 ### Added
+- Stress-gated XGBoost regime-mean stack notebook and artifacts. Gates reduced some stress damage but did not beat the original regime mean on both strict and stress metrics.
 - XGBoost regime-mean stack notebook and artifacts. Best candidate `blend_plus_ridge_residual_s15` scored **13.0769** strict RMSE but worsened analog stress to **13.4468**, so it is not package-ready.
 - Pseudo-top regime-mean tuning notebook and artifacts. Best candidate `xgb_square_global__regime_ridge_alpha40__confidence_s100` scored **13.0910** strict RMSE and **13.4065** analog stress RMSE, a negligible strict gain with slightly worse stress versus the packaged regime-mean baseline.
 - Self-contained pseudo-top regime-mean Kaggle package under `kaggle/pseudo_top_regime_mean_submission/`; local execution completed and passed submission row-order, non-null, and finite-prediction assertions.

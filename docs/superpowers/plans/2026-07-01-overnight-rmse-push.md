@@ -67,6 +67,19 @@
 - [ ] Promote only if downstream TVT RMSE improves, not merely top-label proxy accuracy.
 - [ ] Commit if the notebook produces reportable artifacts.
 
+### Extra Task: Stress-Gated Regime Residual Stack
+
+**Files:**
+- Create: `notebooks/modeling/02_trees/12_xgboost_regime_stress_gated_stack.ipynb`
+- Create: `artifacts/reports/model__xgboost_regime_stress_gated_stack__2026-07-01.md`
+- Create: `artifacts/tables/model__xgboost_regime_stress_gated_stack_*__2026-07-01.csv`
+- Modify: context and feature-log files as in Task 2.
+
+- [x] Test whether confidence, margin, low-stress, hybrid, or stress-floor gates rescue the residual-stack stress penalty.
+- [x] Export strict/stress summaries and failure slices.
+- [x] Reject candidates that do not beat the original regime mean on both strict and stress.
+- [x] Commit if the notebook produces reportable artifacts.
+
 ### Task 5: Bayesian Partial-Pooling Regime Means
 
 **Files:**

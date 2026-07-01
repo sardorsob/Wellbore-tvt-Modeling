@@ -69,6 +69,7 @@
 - [x] Create and locally validate pseudo-top regime-mean Kaggle package - self-contained notebook passed submission shape, finite prediction, and row-order assertions
 - [x] Run pseudo-top regime-mean tuning (`2026-07-01__pseudo_top_regime_mean_tuning`) - best `alpha40` strict RMSE **13.0910**, analog stress **13.4065**; do not replace packaged `alpha80`
 - [x] Run XGBoost regime-mean stack (`2026-07-01__xgboost_regime_mean_stack`) - best Ridge residual stack strict RMSE **13.0769**, analog stress **13.4468**; diagnostic only until stress is gated
+- [x] Run stress-gated regime-mean stack (`2026-07-01__xgboost_regime_stress_gated_stack`) - gates did not beat original regime mean on both strict and stress; move to pseudo-top inference or partial pooling
 
 ## In progress
 
@@ -87,7 +88,7 @@
 2. Do not continue generic residual stacking immediately; the Ridge residual package scored **14.583** publicly despite local strict/stress gains.
 3. Do not package the current proxy-formation XGBoost tuning pass or the raw known-state XGBoost injection; both failed to improve the active path.
 4. Push the locally validated pseudo-top regime-mean package when ready for the next Kaggle public-transfer probe.
-5. Move the next local notebook to stress-gated regime residuals or pseudo-top inference tuning; ungated residual stacking improves strict RMSE but worsens stress.
+5. Move the next local notebook to pseudo-top inference tuning or partial-pooling regime means; stress-gated residual shrinkage did not clear promotion gates.
 6. Update gated Bayesian regime notes when submission `54211837` finishes scoring.
 7. Use the oracle direct-formation gap as a design target for a gated or Bayesian stratigraphic-regime model, not as a Kaggle-safe feature set.
 8. Defer full hierarchical HSGP until alignment or stronger geologic descriptors give hierarchy something transferable to pool over.
@@ -206,6 +207,7 @@ Immediate next work:
 | 2026-07-01 | Pseudo-top regime mean `confidence_s100` | 13.0928 | Best pseudo-top result so far; analog-distance stress RMSE **13.4006** and enough local margin to package next |
 | 2026-07-01 | Pseudo-top regime mean tuning `alpha40 confidence_s100` | 13.0910 | Strict near-tie with packaged `alpha80`; stress worsened slightly to **13.4065**, so do not package over the cleaner first candidate |
 | 2026-07-01 | XGBoost regime-mean stack `blend_plus_ridge_residual_s15` | 13.0769 | New best strict local result, but analog-distance stress worsened to **13.4468**, so use as a diagnostic path toward gated residual corrections |
+| 2026-07-01 | Stress-gated regime stack `blend_plus_ridge_residual_s15_uniform` | 13.0769 | Gates produced no strict/stress joint win; best lower-stress compromise **13.0853** strict / **13.4079** stress still trails original regime-mean stress **13.4006** |
 
 ## Validation artifacts
 

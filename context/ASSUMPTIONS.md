@@ -474,3 +474,9 @@ The `10_pseudo_top_regime_mean_tuning` notebook narrowed the search around the d
 The `11_xgboost_regime_mean_stack` notebook used fold-safe regime-mean predictions as meta-features and residual baselines for direct XGBoost, XGBoost residual, and Ridge residual heads. The best candidate, `blend_plus_ridge_residual_s15`, scored **13.0769** strict-hybrid RMSE, improving the direct regime-mean reference **13.0928** by **0.0159** RMSE. However, analog-distance stress worsened from **13.4006** to **13.4468**.
 
 **Modeling implication:** There is residual signal around the regime mean, but the first stack correction is not stress-stable. Continue only with stress-gated or uncertainty-gated residual corrections; do not package the raw stack over the cleaner regime-mean notebook.
+
+### A66 - Stress-gated residual stacks trade strict gain for stress but do not beat the regime mean
+
+The `12_xgboost_regime_stress_gated_stack` notebook tested uniform, confidence, margin, low-stress, hybrid, and stress-floor gates on top of Ridge/XGBoost residual heads. The best strict candidate remained the uniform `blend_plus_ridge_residual_s15_uniform` at **13.0769** strict-hybrid RMSE and **13.4468** analog-distance stress RMSE. The best lower-stress gated compromise, `blend_plus_ridge_residual_s15_margin`, scored **13.0853** strict RMSE and **13.4079** stress RMSE, still slightly worse than the direct regime-mean stress **13.4006**.
+
+**Modeling implication:** Gating confirms that residual corrections contain fragile, transfer-risk-sensitive signal. Since none of the gates improve both strict and stress against the original regime mean, the next major improvement should target pseudo-top inference quality or a different partial-pooling structure rather than residual shrinkage schedules.
