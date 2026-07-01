@@ -742,6 +742,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: diagnostic only. Shared partial pooling does not beat the current direct regime mean.
 - Notes: Trigger the stop-and-brainstorm gate; the next step should improve state inference or model architecture, not sweep more shrinkage schedules.
 
+## 2026-07-01__plateau_failure_slice_audit
+
+- Task: plateau failure-slice audit
+- Purpose: Compare the recent pseudo-top regime-mean family after several sub-0.05 or negative improvements, and decide whether the next work should continue tuning or change modeling direction.
+- Config: `notebooks/modeling/09_validation/02_plateau_failure_slice_audit.ipynb`; reads completed summary, well, zone, and analog-bin artifact tables for regime mean, tuning, residual stacks, probability scale, denser rows, alignment-aware regime mean, and Bayesian partial pooling.
+- Data version: completed artifact tables from local raw train horizontal-well experiments on `strict_hybrid_fold` and `analog_distance_fold`.
+- Split / CV: no new model fitting; compares existing strict/stress summaries and hard-well diagnostics.
+- Model: not applicable.
+- Primary metric: best strict score still belongs to residual stack variants at **13.0769**, but their stress RMSE is **13.4468**, worse than the original regime mean.
+- Secondary metrics: original regime mean remains the cleanest joint strict/stress anchor at **13.0928** strict and **13.4006** stress.
+- Artifacts: score summary, hard-well consensus, zone comparison, analog-bin comparison, findings, markdown report, and run bundle under `artifacts/logs/runs/2026-07-01__plateau_failure_slice_audit/`.
+- Decision: stop simple shrinkage, row-density, confidence-schedule, and direct alignment-feature sweeps.
+- Notes: The same hard wells recur in the top-15 error list across all eight recent runs, so the next notebook should audit and revise pseudo-top/state inference or move to a local-log sequence model.
+
 ## Entry Format
 
 ```text

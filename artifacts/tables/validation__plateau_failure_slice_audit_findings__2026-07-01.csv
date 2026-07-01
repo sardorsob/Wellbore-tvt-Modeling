@@ -1,0 +1,4 @@
+finding,detail,value,interpretation
+best_strict_is_fragile,Residual stacks own the best strict score but worsen analog stress.,13.0769,Do not chase strict-only residual gains without changing the state signal or stress objective.
+best_stress_still_original_regime_mean,The original direct regime mean remains the cleanest strict/stress package-ready point.,13.4006,"Recent tuning, denser rows, alignment, and partial pooling did not improve the joint gate."
+next_model_direction,"Build a state-revision or local-log sequence model, not another shrinkage schedule.",,The plateau is more likely pseudo-top/state error than insufficient Ridge/Bayesian pooling.

@@ -527,3 +527,17 @@
 **Rationale:** The best overall candidate was the independent regime-mean reference at **13.0953** strict RMSE and **13.4038** stress RMSE, slightly worse than the package-ready regime mean **13.0928** strict / **13.4006** stress. The new shared residual and direct partial-pooling layers were materially worse, with best strict RMSE **13.4272** and **13.2049** respectively.
 **Consequences:** Keep this notebook as a documented negative Bayesian shrinkage screen. Do not spend more time on shared Ridge partial-pooling schedules until the pseudo-top/state signal improves.
 **Follow-up:** Trigger the stop-and-brainstorm gate and prioritize state revision, pseudo-top inference architecture, or a neural/sequence model that can learn local log motifs more directly.
+
+---
+
+## D040 - Pivot from schedule tuning to state-error modeling
+
+**Date:** 2026-07-01
+**Decision:** Stop simple shrinkage, confidence-schedule, row-density, and direct alignment-feature sweeps for the current pseudo-top regime-mean family.
+**Alternatives considered:**
+- Continue residual-stack tuning because it owns the best strict RMSE **13.0769**.
+- Package alignment-aware or tuned regime means because they slightly improve strict RMSE.
+- Build a failure-slice audit and change the next modeling target.
+**Rationale:** The stop-gate audit shows the same hard wells recur across all eight recent runs. Strict-only improvements worsen analog stress, while the original regime mean remains the cleanest joint strict/stress anchor at **13.0928** / **13.4006**.
+**Consequences:** The next notebook should focus on pseudo-top/state revision or a local-log sequence architecture. Do not create another notebook whose main novelty is a different blend weight, Ridge alpha, probability scale, or target-row cap.
+**Follow-up:** Start with a state-revision/top-error audit that uses fold-safe proxy-top residuals, hard-well membership, progress zones, analog distance, GR motifs, and typewell lag diagnostics.

@@ -74,6 +74,7 @@
 - [x] Run pseudo-top regime mean with more target rows (`2026-07-01__pseudo_top_regime_mean_more_rows`) - **220** row cap worsened strict to **13.1185** and stress to **13.4745**
 - [x] Run alignment-aware pseudo-top regime mean (`2026-07-01__alignment_aware_pseudo_top_regime_mean`) - local alignment features improved strict to **13.0838** but worsened stress to **13.4303**
 - [x] Run Bayesian regime partial pooling (`2026-07-01__bayesian_regime_partial_pooling`) - shared Ridge partial pooling worsened; best overall reference re-fit was **13.0953** strict / **13.4038** stress
+- [x] Run plateau failure-slice audit (`2026-07-01__plateau_failure_slice_audit`) - same hard wells recur across all recent pseudo-top/regime runs; pivot to state-error modeling
 
 ## In progress
 
@@ -217,6 +218,7 @@ Immediate next work:
 | 2026-07-01 | Pseudo-top regime mean more rows `cap220` | 13.1185 | Denser target-row sample worsened strict and stress; keep the **120** row cap |
 | 2026-07-01 | Alignment-aware pseudo-top regime mean | 13.0838 | Local alignment features improve strict slightly but stress worsens to **13.4303**; diagnostic only |
 | 2026-07-01 | Bayesian regime partial pooling | 13.0953 | Shared Ridge residual/direct partial pooling worsened; best row is only the independent regime-mean reference re-fit at **13.4038** stress |
+| 2026-07-01 | Plateau failure-slice audit | n/a | Stop-gate audit: hard wells repeat across all eight recent runs; next move is state-revision or local-log sequence modeling |
 
 ## Validation artifacts
 

@@ -101,8 +101,8 @@
 - Modify: `context/EXPERIMENTS.md`
 
 - [x] If three consecutive completed notebooks fail to improve strict RMSE by at least **0.05**, stop coding.
-- [ ] Compare best/worst wells, high-error slices, pseudo-top errors, and public-transfer assumptions.
-- [ ] Write the next concrete plan before resuming model generation.
+- [x] Compare best/worst wells, high-error slices, pseudo-top errors, and public-transfer assumptions.
+- [x] Write the next concrete plan before resuming model generation.
 
 ### Extra Task: Target-Row Density Check
 

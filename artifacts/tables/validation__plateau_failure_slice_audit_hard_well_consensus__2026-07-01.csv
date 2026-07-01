@@ -1,0 +1,18 @@
+wellname,n_top15_runs,mean_top_rmse,max_top_rmse,runs
+86454a6f,8,59.89337333426811,63.2358430638434,"alignment_aware, more_rows, partial_pooling, probability_scale, regime_mean, regime_stack, regime_tuned, stress_gated_stack"
+1b1eba53,8,58.73540290614709,60.90010050295798,"alignment_aware, more_rows, partial_pooling, probability_scale, regime_mean, regime_stack, regime_tuned, stress_gated_stack"
+a959858c,8,48.05537041280312,48.47651848225152,"alignment_aware, more_rows, partial_pooling, probability_scale, regime_mean, regime_stack, regime_tuned, stress_gated_stack"
+5f4d2a52,8,46.791880956546024,48.44606329023845,"alignment_aware, more_rows, partial_pooling, probability_scale, regime_mean, regime_stack, regime_tuned, stress_gated_stack"
+ba48188d,8,44.74985373372016,49.04580327716633,"alignment_aware, more_rows, partial_pooling, probability_scale, regime_mean, regime_stack, regime_tuned, stress_gated_stack"
+2fd68f7b,8,44.46589682739519,45.18871513593288,"alignment_aware, more_rows, partial_pooling, probability_scale, regime_mean, regime_stack, regime_tuned, stress_gated_stack"
+f88ddb26,8,44.32562333674037,46.8412698267562,"alignment_aware, more_rows, partial_pooling, probability_scale, regime_mean, regime_stack, regime_tuned, stress_gated_stack"
+fef8af96,8,44.000180537586594,44.37812038296608,"alignment_aware, more_rows, partial_pooling, probability_scale, regime_mean, regime_stack, regime_tuned, stress_gated_stack"
+389ae58f,8,40.45283211589843,41.06554363203392,"alignment_aware, more_rows, partial_pooling, probability_scale, regime_mean, regime_stack, regime_tuned, stress_gated_stack"
+f6d009f4,8,37.22931314777648,37.8074639051998,"alignment_aware, more_rows, partial_pooling, probability_scale, regime_mean, regime_stack, regime_tuned, stress_gated_stack"
+8382f4b6,8,36.27033431750737,36.64127034521219,"alignment_aware, more_rows, partial_pooling, probability_scale, regime_mean, regime_stack, regime_tuned, stress_gated_stack"
+94d813a4,8,36.08530299915715,37.35556469591133,"alignment_aware, more_rows, partial_pooling, probability_scale, regime_mean, regime_stack, regime_tuned, stress_gated_stack"
+c8d9680c,8,35.227149565632494,36.2417551778122,"alignment_aware, more_rows, partial_pooling, probability_scale, regime_mean, regime_stack, regime_tuned, stress_gated_stack"
+7e721392,7,40.170235280114504,41.57278648625519,"alignment_aware, partial_pooling, probability_scale, regime_mean, regime_stack, regime_tuned, stress_gated_stack"
+206b6193,6,34.162053884871916,35.820318674397015,"alignment_aware, more_rows, partial_pooling, probability_scale, regime_mean, regime_tuned"
+84c3b497,2,33.48586060356805,33.48586060356805,"regime_stack, stress_gated_stack"
+95c8427f,1,32.31402616932629,32.31402616932629,more_rows
