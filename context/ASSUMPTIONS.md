@@ -480,3 +480,9 @@ The `11_xgboost_regime_mean_stack` notebook used fold-safe regime-mean predictio
 The `12_xgboost_regime_stress_gated_stack` notebook tested uniform, confidence, margin, low-stress, hybrid, and stress-floor gates on top of Ridge/XGBoost residual heads. The best strict candidate remained the uniform `blend_plus_ridge_residual_s15_uniform` at **13.0769** strict-hybrid RMSE and **13.4468** analog-distance stress RMSE. The best lower-stress gated compromise, `blend_plus_ridge_residual_s15_margin`, scored **13.0853** strict RMSE and **13.4079** stress RMSE, still slightly worse than the direct regime-mean stress **13.4006**.
 
 **Modeling implication:** Gating confirms that residual corrections contain fragile, transfer-risk-sensitive signal. Since none of the gates improve both strict and stress against the original regime mean, the next major improvement should target pseudo-top inference quality or a different partial-pooling structure rather than residual shrinkage schedules.
+
+### A67 - Pseudo-top probability scale 50 is already locally optimal
+
+The `11_pseudo_top_probability_scale_tuning` notebook tested softmax probability scales **25**, **35**, **50**, **75**, **100**, and **150** inside the same direct regime-mean recipe. The original scale **50** remained best on both strict RMSE (**13.0928**) and analog-distance stress RMSE (**13.4006**). Sharper scales over-committed to noisy pseudo-tops, while smoother scales diluted useful stratigraphic separation.
+
+**Modeling implication:** The next step should not be another probability-scale or confidence-calibration sweep. To reach a materially lower RMSE, the pseudo-top inference model itself must improve, or the regime means need a structurally different pooling/prior design.

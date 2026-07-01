@@ -471,3 +471,17 @@
 **Rationale:** Stress gates produced a tradeoff but no promotion candidate. The best strict model remained `blend_plus_ridge_residual_s15_uniform` at **13.0769** strict RMSE and **13.4468** stress RMSE. The margin-gated compromise reduced stress to **13.4079**, but strict RMSE relaxed to **13.0853** and stress still trailed the original regime-mean reference **13.4006**.
 **Consequences:** Keep the original pseudo-top regime-mean Kaggle package as the next public probe. Treat residual stacks as local diagnostics until a new gate or feature family improves both strict and stress.
 **Follow-up:** Rebuild or calibrate pseudo-top inference, then revisit residual stacking only if the pseudo-top state estimate improves.
+
+---
+
+## D036 - Stop probability-scale calibration sweeps
+
+**Date:** 2026-07-01
+**Decision:** Keep pseudo-top probability scale **50** as the default and stop tuning softmax scale in isolation.
+**Alternatives considered:**
+- Use a sharper pseudo-top probability scale to emphasize nearest formation state.
+- Use a smoother scale to hedge pseudo-top uncertainty.
+- Continue searching intermediate scales.
+**Rationale:** Scale **50** was best on strict RMSE (**13.0928**) and stress RMSE (**13.4006**). Every tested alternative worsened strict RMSE by at least **0.0717** and stress by at least **0.0849**.
+**Consequences:** The current regime-mean package already uses the best tested probability scale. Further gains require better pseudo-top predictions or a different regime-mean modeling structure.
+**Follow-up:** Trigger the stop-and-brainstorm gate before building the next notebook because several local iterations have not produced a package-worthy improvement.

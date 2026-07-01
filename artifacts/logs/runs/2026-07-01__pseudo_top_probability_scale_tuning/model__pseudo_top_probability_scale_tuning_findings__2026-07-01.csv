@@ -1,0 +1,5 @@
+finding,detail,value,interpretation
+best_overall,xgb_square_global__regime_ridge_alpha80__scale50__confidence_s100,13.092783707491265,Best strict RMSE with analog stress RMSE 13.4006.
+scale50_reference,xgb_square_global__regime_ridge_alpha80__scale50__confidence_s100,13.092783707491265,Original probability scale used by the first regime-mean model.
+best_stress,xgb_square_global__regime_ridge_alpha80__scale50__confidence_s100,13.400574608144202,Lowest analog-distance stress RMSE in the probability-scale sweep.
+decision,diagnostic_only,13.092783707491265,Promotion rule checks the first regime-mean baseline and stress behavior.

@@ -63,9 +63,9 @@
 - Modify: context and feature-log files as in Task 2.
 
 - [ ] Improve the pseudo-top probability engine itself.
-- [ ] Test calibration, top-label smoothing, uncertainty margins, and alternative distance transforms.
-- [ ] Promote only if downstream TVT RMSE improves, not merely top-label proxy accuracy.
-- [ ] Commit if the notebook produces reportable artifacts.
+- [x] Test calibration, top-label smoothing, uncertainty margins, and alternative distance transforms.
+- [x] Promote only if downstream TVT RMSE improves, not merely top-label proxy accuracy.
+- [x] Commit if the notebook produces reportable artifacts.
 
 ### Extra Task: Stress-Gated Regime Residual Stack
 

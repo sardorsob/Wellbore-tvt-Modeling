@@ -686,6 +686,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: diagnostic only. Stress gates do not beat the original regime mean on both strict and stress.
 - Notes: Move next to pseudo-top inference tuning or partial-pooling regime means.
 
+## 2026-07-01__pseudo_top_probability_scale_tuning
+
+- Task: pseudo-top probability-scale tuning for direct regime means
+- Purpose: Test whether sharper or smoother pseudo-top softmax probabilities improve the direct regime-mean model.
+- Config: `notebooks/modeling/08_alignment/11_pseudo_top_probability_scale_tuning.ipynb`; deterministic target-row sampling capped at **120** rows per well; two-seed squared-error pseudo-top proxy ensembles; probability scales **25**, **35**, **50**, **75**, **100**, and **150**; fixed global XGBoost and per-formation Ridge `alpha=80` regime means.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell descriptors, and direct formation columns used only as fold-local pseudo-top labels.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; all candidates also scored on `analog_distance_fold`.
+- Model: best candidate `xgb_square_global__regime_ridge_alpha80__scale50__confidence_s100`.
+- Primary metric: strict-hybrid RMSE **13.0928**, unchanged from the first direct regime-mean baseline.
+- Secondary metrics: analog-distance stress RMSE **13.4006**, also best among tested scales.
+- Artifacts: summary, fold metrics, regime diagnostics, zone/analog-bin summaries, well diagnostics, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-07-01__pseudo_top_probability_scale_tuning/`.
+- Decision: diagnostic only. The original scale **50** is already the best tested probability calibration.
+- Notes: Move next to a structurally different pseudo-top inference model or Bayesian partial pooling; do not continue simple scale sweeps.
+
 ## Entry Format
 
 ```text
