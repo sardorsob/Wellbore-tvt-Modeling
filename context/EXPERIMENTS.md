@@ -826,6 +826,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: diagnostic only. Do not continue OOF candidate averaging/meta-blending around the same residual-stack family.
 - Notes: Candidate diversity is too weak for a step-change. To move toward **10 RMSE**, the next notebook should change the state representation or target, not optimize blends of the same pseudo-top regime candidates.
 
+## 2026-07-01__pseudo_top_transition_distance
+
+- Task: pseudo-top transition-distance state representation
+- Purpose: Test whether fold-safe pseudo tops are more useful as signed transition geometry around adjacent inferred formation boundaries than as soft regime probabilities alone.
+- Config: `notebooks/modeling/08_alignment/15_pseudo_top_transition_distance.ipynb`; clones the direct pseudo-top regime-mean setup, adds nearest-top order, signed/absolute distances to adjacent tops, normalized spacing, weighted signed/absolute offsets, boundary pressure, and adjacent-pair transition features.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell descriptors, and direct formation columns used only as fold-local pseudo-top labels.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; all candidates also scored on `analog_distance_fold`.
+- Model: best overall candidate is the unchanged reference `reference__xgb_square_global__regime_ridge_alpha80__confidence_s100`; best non-reference transition candidate is `transition_regime__xgb_square_global__regime_ridge_alpha80__confidence_s100`.
+- Primary metric: unchanged reference strict RMSE **13.0928**; best transition variant strict RMSE **13.0950**, slightly worse.
+- Secondary metrics: unchanged reference stress RMSE **13.4006**; the best transition variant worsened stress to **13.5710**.
+- Artifacts: feature preview, proxy quality, top-label summary, summary, fold metrics, regime diagnostics, zone/analog-bin summaries, well diagnostics, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-07-01__pseudo_top_transition_distance/`.
+- Decision: diagnostic only. Do not continue transition-distance tabular feature additions.
+- Notes: Transition geometry is too collinear or noisy when added to the current Ridge/XGBoost regime mean. The next branch should stop adding pseudo-top-derived columns and instead target hard-well relabeling, direct sequence learning, or a different supervised objective.
+
 ## Entry Format
 
 ```text

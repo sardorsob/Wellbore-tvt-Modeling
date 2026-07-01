@@ -1,0 +1,6 @@
+finding,detail,value,interpretation
+best_overall,reference__xgb_square_global__regime_ridge_alpha80__confidence_s100,13.092783707491265,Best strict RMSE with analog stress RMSE 13.4006.
+best_fixed_blend,reference__xgb_square_global__regime_ridge_alpha80__s075,13.33435120019052,Best fixed fallback/blend candidate.
+best_confidence_blend,reference__xgb_square_global__regime_ridge_alpha80__confidence_s100,13.092783707491265,Best confidence-gated regime mean candidate.
+best_transition_variant,transition_regime__xgb_square_global__regime_ridge_alpha80__confidence_s100,13.09502516510802,Best non-reference transition-distance variant.
+decision,diagnostic_only,13.092783707491265,"Promotion rule checks mixture-prior reference, stress behavior, and current public context."

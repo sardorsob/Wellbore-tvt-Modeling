@@ -52,6 +52,8 @@
 - Recorded A75 and D044: raw local motif bins worsen the current tabular regime-mean recipe, so stop flat local-window additions.
 - Added and ran `notebooks/modeling/09_validation/03_oof_candidate_blend_audit.ipynb`; exported OOF blend summaries, fold metrics, diagnostics, findings, report, model-comparison row, and run bundle.
 - Recorded A76 and D045: same-family candidate averaging/meta-blending does not beat the residual-stack plateau, so the next branch needs a new state target or representation.
+- Added and ran `notebooks/modeling/08_alignment/15_pseudo_top_transition_distance.ipynb`; exported transition-distance summaries, diagnostics, findings, report, model-comparison row, and run bundle.
+- Recorded A77 and D046: transition-distance tabular features do not beat the direct regime-mean reference, so stop pseudo-top scalar column engineering.
 
 ### Changed
 - Added and ran `notebooks/modeling/06_bayesian/07_gated_bayesian_regime.ipynb`; exported gated Bayesian regime metrics, gate diagnostics, report, model comparison row, and run bundle.

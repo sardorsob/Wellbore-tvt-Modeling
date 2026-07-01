@@ -228,6 +228,7 @@ Immediate next work:
 | 2026-07-01 | Gated pseudo-top state revision | 13.0928 | Best strict row is unchanged base; best stress improves to **13.3710** but strict worsens to **13.1309** |
 | 2026-07-01 | XGBoost raw-window sequence | 13.1664 | Raw local GR/typewell motif bins worsened strict and stress; stop flat local-window tabular additions |
 | 2026-07-01 | OOF candidate blend audit | 13.0769 | Candidate averages and leave-one-fold-out positive meta-blends did not beat `blend_plus_ridge_residual_s15`; stop blending same-family candidates |
+| 2026-07-01 | Pseudo-top transition distance | 13.0928 | Best row is unchanged reference; best transition variant **13.0950** strict / **13.5710** stress, so stop tabular transition-distance additions |
 
 ## Validation artifacts
 

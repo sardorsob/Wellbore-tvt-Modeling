@@ -611,3 +611,17 @@
 **Rationale:** `03_oof_candidate_blend_audit` found the previous `blend_plus_ridge_residual_s15` candidate still best at **13.0769** strict RMSE / **13.4468** stress RMSE. The best simple blend, `oof_avg__base_ridge25`, reached **13.0779** strict / **13.4371** stress, close but not better. Positive-linear meta-blends worsened to **13.1001+** strict and **13.5604** stress, indicating poor transfer from candidate weights.
 **Consequences:** Treat the residual-stack family as saturated unless a new candidate source changes the error geometry. Do not spend overnight iteration budget on more candidate weights, foldwise average schedules, or same-family stack heads.
 **Follow-up:** Build the next notebook around a different target or representation: formation-boundary/state-transition modeling, hard-well pseudo-top relabeling diagnostics, or a true sequence representation that is evaluated against the same strict/stress gates.
+
+---
+
+## D046 - Stop tabular transition-distance features
+
+**Date:** 2026-07-01
+**Decision:** Do not continue adding pseudo-top transition-distance geometry as tabular columns to the current regime-mean model.
+**Alternatives considered:**
+- Add signed distances to adjacent pseudo tops only inside regime-specific Ridge means.
+- Add transition features to both the global XGBoost mean and regime-specific Ridge means.
+- Keep the unchanged direct regime-mean reference.
+**Rationale:** `15_pseudo_top_transition_distance` found the unchanged reference still best at **13.0928** strict / **13.4006** stress. The best non-reference transition candidate scored **13.0950** strict and worsened stress to **13.5710**. Adding transition geometry to the global XGBoost path was worse.
+**Consequences:** Treat pseudo-top-derived scalar feature additions as saturated. They can support diagnostics, but they should not consume more main modeling iterations unless paired with a different supervised target.
+**Follow-up:** Move to hard-well/state-target diagnostics, sequence learning, or a direct well-trajectory architecture rather than more pseudo-top column engineering.

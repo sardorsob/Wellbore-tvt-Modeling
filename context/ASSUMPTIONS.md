@@ -540,3 +540,9 @@ The `14_xgboost_raw_window_sequence` notebook added raw local GR and typewell wi
 The `03_oof_candidate_blend_audit` notebook preserved row-level OOF predictions for the regime-mean reference and residual-stack heads, then tested fixed averages and leave-one-fold-out positive linear meta-blends. The previous best `blend_plus_ridge_residual_s15` remained best at **13.0769** strict RMSE and **13.4468** analog-distance stress RMSE. The best fixed average, `oof_avg__base_ridge25`, was close at **13.0779** strict / **13.4371** stress, but did not beat strict RMSE. Positive-linear meta-blends worsened to at least **13.1001** strict and **13.5604** stress.
 
 **Modeling implication:** The current pseudo-top regime and residual-stack candidates mostly share the same errors. More candidate weighting is unlikely to create a path toward **10 RMSE**. A useful next experiment needs a new state target, formation-transition representation, or sequence model that changes which wells/rows are hard.
+
+### A77 - Transition-distance geometry does not improve the tabular regime mean
+
+The `15_pseudo_top_transition_distance` notebook represented fold-safe pseudo tops as signed distances to adjacent inferred formation boundaries, nearest-top order, normalized spacing, probability-weighted offsets, boundary pressure, and adjacent-pair transition features. The unchanged reference remained best at **13.0928** strict RMSE and **13.4006** analog-distance stress RMSE. The best transition variant reached **13.0950** strict RMSE and worsened stress to **13.5710**.
+
+**Modeling implication:** Pseudo-top geometry is not enough as additional scalar columns in the current Ridge/XGBoost setup. The plateau likely requires changing the target or architecture, especially for persistent hard wells, rather than adding more tabular pseudo-top derivatives.
