@@ -528,3 +528,9 @@ The `13_pseudo_top_state_revision` notebook trained second-stage residual correc
 The `14_pseudo_top_state_revision_gated` notebook kept separate probability columns for base, global, uncertainty-gated, stress-gated, and hybrid pseudo-top corrections. The best strict candidate was the unchanged base regime mean at **13.0928** strict RMSE and **13.4006** stress RMSE. The best stress candidate, `hybrid_s75__xgb_square_global__regime_ridge_alpha220__s050`, reached **13.3710** stress RMSE but worsened strict RMSE to **13.1309**.
 
 **Modeling implication:** Top residual correction is a stress-calibration tool, not a strict-RMSE breakthrough in this form. Since gating did not produce a joint strict/stress win, stop correction-schedule tuning and move to a different state representation or a public-transfer calibration decision.
+
+### A75 - Raw local motif bins do not help as flat tabular features
+
+The `14_xgboost_raw_window_sequence` notebook added raw local GR and typewell window bins to preserve motif shape around each target row. The best candidate, `xgb_square_global__raw_window_regime_ridge_alpha80__confidence_s100`, scored **13.1664** strict RMSE and **13.4758** analog-distance stress RMSE, both worse than the original pseudo-top regime mean.
+
+**Modeling implication:** The current plateau is not solved by adding more flat local motif columns. If log-shape context is important, it likely needs a true sequence/representation model or a different state target, not tabular bins layered into the existing regime-mean recipe.

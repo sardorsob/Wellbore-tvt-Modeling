@@ -798,6 +798,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: diagnostic only. Gated correction schedules trade strict RMSE for stress and do not move toward the sub-10 objective.
 - Notes: Stop state-correction schedules. The next direction should be a different state model, public-transfer calibration, or a fundamentally higher-capacity architecture rather than more top residual shrinkage.
 
+## 2026-07-01__xgboost_raw_window_sequence
+
+- Task: raw local-window sequence features in the regime mean
+- Purpose: Test whether preserving raw local GR/typewell motif shape as tabular bins improves over scalar window summaries and state-correction schedules.
+- Config: `notebooks/modeling/02_trees/14_xgboost_raw_window_sequence.ipynb`; starts from the alignment-aware pseudo-top regime mean, adds **17** target GR window bins, **17** best-lag typewell bins, and **17** bin-wise GR-minus-typewell features; compact grid with XGBoost square/pseudo-Huber global means, raw-window Ridge regime means, alphas **80** and **220**, and fixed/confidence schedules.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell descriptors, and direct formation columns used only as fold-local pseudo-top labels.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; all candidates also scored on `analog_distance_fold`.
+- Model: best candidate `xgb_square_global__raw_window_regime_ridge_alpha80__confidence_s100`.
+- Primary metric: strict-hybrid RMSE **13.1664**, worse than the original pseudo-top regime mean **13.0928**.
+- Secondary metrics: analog-distance stress RMSE **13.4758**, worse than the original regime-mean stress **13.4006**.
+- Artifacts: feature preview, proxy quality, top-label summary, summary, fold metrics, regime diagnostics, zone/analog-bin summaries, well diagnostics, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-07-01__xgboost_raw_window_sequence/`.
+- Decision: diagnostic only. Do not continue flat raw-window tabular features.
+- Notes: If local motifs matter, the architecture needs to preserve sequence structure more directly than binned tabular XGBoost/Ridge features.
+
 ## Entry Format
 
 ```text

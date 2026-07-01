@@ -583,3 +583,17 @@
 **Rationale:** The best strict row in `14_pseudo_top_state_revision_gated` is the unchanged base regime mean (**13.0928** strict / **13.4006** stress). The best stress row improves stress to **13.3710** but worsens strict to **13.1309**. This is a calibration tradeoff, not movement toward **10 RMSE**.
 **Consequences:** Keep the original pseudo-top regime mean as the clean package anchor. Do not create another notebook whose main novelty is a top residual shrinkage schedule.
 **Follow-up:** Next work should either calibrate public-transfer risk for the existing package anchor or test a genuinely different state model / higher-capacity architecture.
+
+---
+
+## D044 - Stop flat local-window tabular feature additions
+
+**Date:** 2026-07-01
+**Decision:** Do not continue adding raw local GR/typewell window bins to the current tabular regime-mean recipe.
+**Alternatives considered:**
+- Use more raw window bins or tune XGBoost regularization around them.
+- Keep only the target GR bins and drop typewell/difference bins.
+- Move to a genuinely different architecture or public-transfer calibration.
+**Rationale:** Raw-window bins worsened strict RMSE to **13.1664** and stress RMSE to **13.4758**. This is weaker than both the original pseudo-top regime mean and the earlier scalar alignment-aware variant.
+**Consequences:** Do not package this branch and do not spend more iteration budget on flat motif bins.
+**Follow-up:** Either submit the clean pseudo-top regime-mean package as the current stable probe or test a non-tabular sequence/state architecture.

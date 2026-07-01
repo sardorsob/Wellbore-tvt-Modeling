@@ -48,6 +48,8 @@
 - Recorded A73 and D042: top-state correction improves analog stress but hurts strict RMSE, so continue only with lighter or gated state revision.
 - Added and ran `notebooks/modeling/08_alignment/14_pseudo_top_state_revision_gated.ipynb`; exported variant-specific revision-quality diagnostics, summaries, findings, report, model-comparison row, and run bundle.
 - Recorded A74 and D043: gated top residual correction only trades strict RMSE for stress improvement, so stop correction-schedule tuning.
+- Added and ran `notebooks/modeling/02_trees/14_xgboost_raw_window_sequence.ipynb`; exported raw-window feature preview, summaries, findings, report, model-comparison row, and run bundle.
+- Recorded A75 and D044: raw local motif bins worsen the current tabular regime-mean recipe, so stop flat local-window additions.
 
 ### Changed
 - Added and ran `notebooks/modeling/06_bayesian/07_gated_bayesian_regime.ipynb`; exported gated Bayesian regime metrics, gate diagnostics, report, model comparison row, and run bundle.
