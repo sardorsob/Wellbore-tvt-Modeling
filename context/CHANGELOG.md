@@ -54,6 +54,8 @@
 - Recorded A76 and D045: same-family candidate averaging/meta-blending does not beat the residual-stack plateau, so the next branch needs a new state target or representation.
 - Added and ran `notebooks/modeling/08_alignment/15_pseudo_top_transition_distance.ipynb`; exported transition-distance summaries, diagnostics, findings, report, model-comparison row, and run bundle.
 - Recorded A77 and D046: transition-distance tabular features do not beat the direct regime-mean reference, so stop pseudo-top scalar column engineering.
+- Added and ran `notebooks/modeling/05_neural_network/05_torch_local_window_cnn.ipynb`; exported CNN summaries, diagnostics, findings, report, model-comparison row, and run bundle.
+- Recorded A78 and D047: direct local-window CNN is worse overall but has different hard-well errors, so future neural use should be gated/residualized only.
 
 ### Changed
 - Added and ran `notebooks/modeling/06_bayesian/07_gated_bayesian_regime.ipynb`; exported gated Bayesian regime metrics, gate diagnostics, report, model comparison row, and run bundle.

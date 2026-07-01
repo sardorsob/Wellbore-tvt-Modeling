@@ -546,3 +546,9 @@ The `03_oof_candidate_blend_audit` notebook preserved row-level OOF predictions 
 The `15_pseudo_top_transition_distance` notebook represented fold-safe pseudo tops as signed distances to adjacent inferred formation boundaries, nearest-top order, normalized spacing, probability-weighted offsets, boundary pressure, and adjacent-pair transition features. The unchanged reference remained best at **13.0928** strict RMSE and **13.4006** analog-distance stress RMSE. The best transition variant reached **13.0950** strict RMSE and worsened stress to **13.5710**.
 
 **Modeling implication:** Pseudo-top geometry is not enough as additional scalar columns in the current Ridge/XGBoost setup. The plateau likely requires changing the target or architecture, especially for persistent hard wells, rather than adding more tabular pseudo-top derivatives.
+
+### A78 - A direct local-window CNN changes some hard-well errors but is not a standalone solution
+
+The `05_torch_local_window_cnn` notebook trained a compact three-channel Conv1D model over target GR, typewell GR, and difference windows plus safe scalar context. It scored **13.6857** strict RMSE and **14.5202** analog-distance stress RMSE, far worse than the direct regime mean. However, the hard-well ordering changed: `86454a6f` improved to about **49.9** RMSE from roughly **60.0** in the residual-stack diagnostics, while other hard wells worsened.
+
+**Modeling implication:** Sequence learning has different errors but poor calibration and transfer as a direct model. Future neural work should be gated or residualized against the regime-mean anchor, with explicit hard-well/slice safeguards, instead of replacing the anchor outright.

@@ -1,0 +1,5 @@
+finding,detail,value,interpretation
+best_overall,torch_cnn_direct_delta,13.685711227725163,Best strict RMSE with analog stress RMSE 14.5202.
+best_direct_cnn,torch_cnn_direct_delta,13.685711227725163,Direct CNN candidate.
+best_direct_cnn_repeat,torch_cnn_direct_delta,13.685711227725163,Direct CNN candidate repeated for template compatibility.
+decision,diagnostic_only,13.685711227725163,"Promotion rule checks mixture-prior reference, stress behavior, and current public context."

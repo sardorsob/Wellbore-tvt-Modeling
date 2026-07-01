@@ -840,6 +840,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: diagnostic only. Do not continue transition-distance tabular feature additions.
 - Notes: Transition geometry is too collinear or noisy when added to the current Ridge/XGBoost regime mean. The next branch should stop adding pseudo-top-derived columns and instead target hard-well relabeling, direct sequence learning, or a different supervised objective.
 
+## 2026-07-01__torch_local_window_cnn
+
+- Task: compact PyTorch local-window CNN
+- Purpose: Test whether treating local GR/typewell/difference bins as a three-channel sequence changes the persistent hard-well error pattern after tabular local-window features failed.
+- Config: `notebooks/modeling/05_neural_network/05_torch_local_window_cnn.ipynb`; reuses the fold-safe raw-window data prep, trains a small Conv1D + tabular MLP direct-delta model per fold, and evaluates strict/stress CV.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell descriptors, and direct formation columns used only as fold-local pseudo-top labels in the inherited data prep.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; all candidates also scored on `analog_distance_fold`.
+- Model: `torch_cnn_direct_delta`.
+- Primary metric: strict-hybrid RMSE **13.6857**, worse than the direct regime-mean anchor **13.0928** and residual-stack best **13.0769**.
+- Secondary metrics: analog-distance stress RMSE **14.5202**, not packageable.
+- Artifacts: feature preview, proxy quality, top-label summary, summary, fold metrics, diagnostics, zone/analog-bin summaries, well diagnostics, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-07-01__torch_local_window_cnn/`.
+- Decision: diagnostic only. Do not package or continue this exact direct-delta CNN.
+- Notes: Despite weak aggregate RMSE, the CNN changes the hard-well error pattern: `86454a6f` improves from roughly **60.0** RMSE under the residual stack to **49.9**, while other wells worsen. Neural sequence features may be useful only as a gated specialist or ensemble source, not as a standalone model.
+
 ## Entry Format
 
 ```text

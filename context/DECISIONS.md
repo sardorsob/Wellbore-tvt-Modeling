@@ -625,3 +625,17 @@
 **Rationale:** `15_pseudo_top_transition_distance` found the unchanged reference still best at **13.0928** strict / **13.4006** stress. The best non-reference transition candidate scored **13.0950** strict and worsened stress to **13.5710**. Adding transition geometry to the global XGBoost path was worse.
 **Consequences:** Treat pseudo-top-derived scalar feature additions as saturated. They can support diagnostics, but they should not consume more main modeling iterations unless paired with a different supervised target.
 **Follow-up:** Move to hard-well/state-target diagnostics, sequence learning, or a direct well-trajectory architecture rather than more pseudo-top column engineering.
+
+---
+
+## D047 - Do not use direct CNN as a standalone model
+
+**Date:** 2026-07-01
+**Decision:** Keep `05_torch_local_window_cnn` as a diagnostic only; do not package or continue the same direct-delta CNN as a standalone predictor.
+**Alternatives considered:**
+- Promote neural sequence modeling because it changes some hard-well errors.
+- Tune the direct CNN architecture, epochs, and regularization.
+- Use the CNN only as a gated specialist or residual candidate.
+**Rationale:** The direct CNN scored **13.6857** strict RMSE and **14.5202** analog-distance stress RMSE, much worse than the regime-mean anchor. The one useful signal is diversity: `86454a6f` improved materially while other hard wells worsened.
+**Consequences:** Do not spend the next iteration on larger direct CNNs. If neural sequence work continues, it should be residualized or gated against the regime mean and judged by hard-well/slice safeguards.
+**Follow-up:** Audit whether CNN-vs-regime residual differences can be predicted from stress/analog/sequence diagnostics before trying a gated specialist ensemble.

@@ -1,0 +1,7 @@
+run_id,fold_column,fold,label,global_model,regime_model,schedule,n_train_rows,n_valid_rows,n_base_features,n_regime_features,rmse,mae,r2,last_known_hold_rmse
+2026-07-01__torch_local_window_cnn,strict_hybrid_fold,1,torch_cnn_direct_delta,torch_local_window_cnn,direct_delta,direct,61440,31320,58,51,13.91988854464428,9.80727438152554,0.9994425788132638,16.418628035195592
+2026-07-01__torch_local_window_cnn,strict_hybrid_fold,2,torch_cnn_direct_delta,torch_local_window_cnn,direct_delta,direct,61920,30840,58,51,13.309380748981585,9.691833045980413,0.9995613750391769,14.945727201198121
+2026-07-01__torch_local_window_cnn,strict_hybrid_fold,3,torch_cnn_direct_delta,torch_local_window_cnn,direct_delta,direct,62160,30600,58,51,13.827864389549621,9.965634414847418,0.9995176531321577,15.349475644958154
+2026-07-01__torch_local_window_cnn,analog_distance_fold,1,torch_cnn_direct_delta,torch_local_window_cnn,direct_delta,direct,61800,30960,58,51,13.563944725880113,9.933033903620787,0.9994990743405135,14.98930873931675
+2026-07-01__torch_local_window_cnn,analog_distance_fold,2,torch_cnn_direct_delta,torch_local_window_cnn,direct_delta,direct,61920,30840,58,51,13.419751427045558,9.87836872429933,0.9995311995525625,15.583667771819318
+2026-07-01__torch_local_window_cnn,analog_distance_fold,3,torch_cnn_direct_delta,torch_local_window_cnn,direct_delta,direct,61800,30960,58,51,16.577025918291262,12.011543111713744,0.9993121583924841,16.170740933803614
