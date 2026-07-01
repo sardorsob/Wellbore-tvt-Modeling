@@ -210,6 +210,21 @@
 - Notes: Local package execution completed, trained on **92,760** sampled rows, learned shrink **0.9906**, mean gate weights `[zero=0.2266, hsgp=0.2119, state=0.4902, blend=0.0713]`, and wrote **14,151** finite predictions. Kaggle version 1 completed and submission `54211837` is pending score.
 - Decision: curiosity probe only until public score returns.
 
+- Timestamp: 2026-07-01
+- Run ID: `2026-07-01__pseudo_top_regime_mean`
+- Git SHA: package commit containing this entry
+- Config: self-contained pseudo-top regime-mean package, global `XGBRegressor(objective="reg:squarederror")`, fold-inspired pseudo-top XGBoost ensemble, formation-probability regime basis, regime-specific weighted Ridge means with `alpha=80`, and confidence-schedule blend `confidence_s100`. Internet disabled.
+- Local CV: `xgb_square_global__regime_ridge_alpha80__confidence_s100`, strict RMSE **13.0928**, analog-distance stress RMSE **13.4006**.
+- Local submission file: Kaggle kernel output `/kaggle/working/submission.csv`; local package execution wrote the same file shape during validation and passed row-order, non-null, and finite-prediction assertions.
+- Kaggle notebook: `https://www.kaggle.com/code/sardorbsobirov/wellbore-pseudo-top-regime-mean`
+- Kaggle kernel version: not pushed yet
+- Status: local package validated
+- Public LB: not submitted yet
+- Submission ref: not submitted yet
+- Submission status: not submitted yet
+- Notes: The package recomputes descriptors, pseudo-top models, regime probabilities, global mean, and regime-specific Ridge means from competition inputs only. Validation completed locally after fixing parent-directory discovery and missing formation-top labels in pseudo-top training.
+- Decision: ready to push as the next public-transfer probe.
+
 Use this format for every submission:
 
 ```text

@@ -66,6 +66,7 @@
 - [x] Locally validate self-contained gated Bayesian regime Kaggle notebook - **14,151** finite predictions, in-sample training RMSE **13.7900**, learned shrink **0.9906**
 - [x] Submit gated Bayesian regime Kaggle notebook version 1 (`ref=54211837`) - public score pending
 - [x] Run pseudo-top regime-mean screen (`2026-07-01__pseudo_top_regime_mean`) - best `xgb_square_global__regime_ridge_alpha80__confidence_s100`, strict RMSE **13.0928**, analog-distance stress RMSE **13.4006**; package next
+- [x] Create and locally validate pseudo-top regime-mean Kaggle package - self-contained notebook passed submission shape, finite prediction, and row-order assertions
 
 ## In progress
 
@@ -83,14 +84,15 @@
 1. Keep XGBoost strict inference-safe submission `54129475` / public LB **14.472** as the active benchmark.
 2. Do not continue generic residual stacking immediately; the Ridge residual package scored **14.583** publicly despite local strict/stress gains.
 3. Do not package the current proxy-formation XGBoost tuning pass or the raw known-state XGBoost injection; both failed to improve the active path.
-4. Package the pseudo-top regime-mean candidate as the next Kaggle-safe notebook because it cleared local strict and stress gates.
-5. Update gated Bayesian regime notes when submission `54211837` finishes scoring.
-6. Use the oracle direct-formation gap as a design target for a gated or Bayesian stratigraphic-regime model, not as a Kaggle-safe feature set.
-7. Defer full hierarchical HSGP until alignment or stronger geologic descriptors give hierarchy something transferable to pool over.
-8. Investigate why the Huber + Hilbert residual gain transferred externally while the Huber-only public score lagged GAM.
-9. Investigate why the reconstructed spline GAM mean was unstable in `06_hsgp_residual_on_gam_huber.ipynb` despite the public GAM notebook scoring best externally.
-10. Refine validation before making many leaderboard submissions from small public-LB gains.
-11. Revisit neighbors only with radius constraints, clusters, or richer local geologic features.
+4. Push the locally validated pseudo-top regime-mean package when ready for the next Kaggle public-transfer probe.
+5. Tune the pseudo-top regime-mean family before leaving the regime-state direction.
+6. Update gated Bayesian regime notes when submission `54211837` finishes scoring.
+7. Use the oracle direct-formation gap as a design target for a gated or Bayesian stratigraphic-regime model, not as a Kaggle-safe feature set.
+8. Defer full hierarchical HSGP until alignment or stronger geologic descriptors give hierarchy something transferable to pool over.
+9. Investigate why the Huber + Hilbert residual gain transferred externally while the Huber-only public score lagged GAM.
+10. Investigate why the reconstructed spline GAM mean was unstable in `06_hsgp_residual_on_gam_huber.ipynb` despite the public GAM notebook scoring best externally.
+11. Refine validation before making many leaderboard submissions from small public-LB gains.
+12. Revisit neighbors only with radius constraints, clusters, or richer local geologic features.
 
 ## Validation / boosted-tree task ladder
 
