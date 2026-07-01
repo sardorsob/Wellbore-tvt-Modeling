@@ -1,0 +1,5 @@
+finding,detail,value,interpretation
+best_overall,xgb_weight_soft_s100,12.647147390238317,Best deployable strict RMSE with analog stress RMSE 12.9475.
+best_weight_candidate,xgb_weight_soft_s100,12.647147390238317,Best deployable learned/static weight candidate.
+oracle_upper_bound,oracle_continuous_weight,10.828380654090289,Leakage-only row-wise continuous/oracle blend upper bound; not deployable.
+decision,package_cnn_regime_learned_weight_gate,12.647147390238317,Promotion rule excludes oracle rows and checks direct regime-mean anchor plus analog-distance stress behavior.

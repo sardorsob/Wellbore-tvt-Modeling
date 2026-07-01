@@ -233,6 +233,7 @@ Immediate next work:
 | 2026-07-01 | CNN-regime gated specialist | 12.7816 | Uniform `blend_cnn_20` gives the first large post-plateau gain and improves stress to **13.1223**; oracle row switch **10.7716** shows more blend/gate headroom |
 | 2026-07-01 | CNN-regime blend tuning | 12.6514 | Two-seed blend grid improves again; best strict at upper grid edge `blend_cnn_50`, stress best around `blend_cnn_35` at **12.9705** |
 | 2026-07-01 | CNN-regime wide blend grid | 12.6497 | Optimum bracketed around `blend_cnn_45`; stress **12.9956**, pure CNN worsens, oracle remains **10.9049** |
+| 2026-07-01 | CNN-regime learned weight gate | 12.6471 | XGBoost row-weight model barely beats uniform blend and improves stress to **12.9475**; continuous oracle **10.8284** still shows calibration headroom |
 
 ## Validation artifacts
 

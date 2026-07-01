@@ -681,3 +681,17 @@
 **Rationale:** The wide grid brackets the uniform blend optimum: `blend_cnn_45` scores **12.6497** strict RMSE and **12.9956** stress RMSE, while heavier CNN weights degrade stress and pure CNN worsens strict RMSE.
 **Consequences:** The next practical step is either a hidden-test-safe Kaggle package for `blend_cnn_45` or a focused stability pass with more CNN seeds around **0.40-0.50**. Do not pursue weights above **0.70** without changing the CNN architecture.
 **Follow-up:** Package `blend_cnn_45` if the user wants a Kaggle probe; otherwise run seed/architecture stability tests around the bracketed blend range.
+
+---
+
+## D051 - Treat xgb_weight_soft_s100 as current local candidate
+
+**Date:** 2026-07-01
+**Decision:** Promote `xgb_weight_soft_s100` over the uniform `blend_cnn_45` as the current local candidate, but recognize the improvement is small.
+**Alternatives considered:**
+- Keep `blend_cnn_45` because it is simpler and nearly tied.
+- Continue sweeping shallow learned weight heads.
+- Package the learned-weight candidate or run a stability check first.
+**Rationale:** `xgb_weight_soft_s100` improves strict RMSE from **12.6497** to **12.6471** and stress from **12.9956** to **12.9475**. The gain is small but directionally helpful. However, the oracle gap remains large, so shallow weight-head tuning is not enough by itself.
+**Consequences:** The next step should be package readiness or a focused stability check, not another minor gate-parameter sweep.
+**Follow-up:** Build a self-contained Kaggle package for the learned-weight branch or run a seed-stability notebook that confirms it beats `blend_cnn_45` consistently.

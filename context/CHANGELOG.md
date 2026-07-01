@@ -62,6 +62,8 @@
 - Recorded A80 and D049: `blend_cnn_50` improves strict RMSE to **12.6514**, but the optimum is not bracketed because the best strict score sits at the upper grid edge.
 - Added and ran `notebooks/modeling/09_validation/06_cnn_regime_blend_wide_grid.ipynb`; exported wide CNN blend-grid summaries, diagnostics, findings, report, model-comparison row, and run bundle.
 - Recorded A81 and D050: `blend_cnn_45` brackets the current deployable optimum with strict RMSE **12.6497** and stress RMSE **12.9956**.
+- Added and ran `notebooks/modeling/09_validation/07_cnn_regime_learned_weight_gate.ipynb`; exported learned CNN/regime weight summaries, diagnostics, findings, report, model-comparison row, and run bundle.
+- Recorded A82 and D051: `xgb_weight_soft_s100` slightly improves the current deployable candidate to **12.6471** strict RMSE and **12.9475** stress RMSE.
 
 ### Changed
 - Added and ran `notebooks/modeling/06_bayesian/07_gated_bayesian_regime.ipynb`; exported gated Bayesian regime metrics, gate diagnostics, report, model comparison row, and run bundle.

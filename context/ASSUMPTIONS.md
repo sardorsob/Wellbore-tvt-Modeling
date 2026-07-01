@@ -570,3 +570,9 @@ The `05_cnn_regime_blend_tuning` notebook averaged two lightweight CNN seeds and
 The `06_cnn_regime_blend_wide_grid` notebook widened the two-seed blend grid above **0.50**. Strict RMSE peaked at `blend_cnn_45` with **12.6497**, while `blend_cnn_50` was nearly tied at **12.6514**. Higher weights degraded stress, and the pure CNN blend (`blend_cnn_100`) worsened strict RMSE to **13.2216**.
 
 **Modeling implication:** The deployable uniform blend is now bracketed around **0.40-0.50**. Further gains are more likely from better CNN seed averaging, architecture/target changes, or gate learning than from larger uniform CNN weights.
+
+### A82 - Learned row weights improve stress but barely improve strict RMSE
+
+The `07_cnn_regime_learned_weight_gate` notebook trained fold-heldout XGBoost regressors to predict clipped row-wise CNN blend weights. The best deployable model, `xgb_weight_soft_s100`, scored **12.6471** strict RMSE and **12.9475** analog-distance stress RMSE. This slightly improves uniform `blend_cnn_45` strict RMSE (**12.6497**) and stress (**12.9956**). The leakage-only continuous oracle is **10.8284**.
+
+**Modeling implication:** Row-wise blend weights are learnable enough to help stress, but current gate features only recover a tiny part of the oracle gap. Larger gains likely require improving CNN specialist predictions or adding richer gate features that explain when the CNN correction is trustworthy.

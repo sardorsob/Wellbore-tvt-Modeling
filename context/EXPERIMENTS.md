@@ -896,6 +896,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: `blend_cnn_45` is the best local package candidate in this branch so far. Build a hidden-test-safe Kaggle package or test local refinements around **0.40-0.50** with stronger CNN seed averaging.
 - Notes: The uniform blend optimum is bracketed around **0.45**. The oracle remains **10.9049**, so a learned gate could still matter, but uniform blending is currently the deployable baseline to beat.
 
+## 2026-07-01__cnn_regime_learned_weight_gate
+
+- Task: learned row-wise CNN/regime blend weights
+- Purpose: Test whether row-level CNN contribution can be predicted from hidden-test-safe diagnostics rather than using one uniform blend weight.
+- Config: `notebooks/modeling/09_validation/07_cnn_regime_learned_weight_gate.ipynb`; same fold-safe regime anchor and two-seed CNN specialist as the wide grid, plus fold-heldout XGBoost regressors trained to approximate clipped optimal blend weights from state/confidence/disagreement/raw-window diagnostics.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell descriptors, and direct formation columns used only as fold-local pseudo-top labels in the inherited data prep.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; all candidates also scored on `analog_distance_fold`.
+- Model: best deployable candidate `xgb_weight_soft_s100`; oracle diagnostic `oracle_continuous_weight`.
+- Primary metric: `xgb_weight_soft_s100` strict-hybrid RMSE **12.6471**, a small improvement over uniform `blend_cnn_45` **12.6497**.
+- Secondary metrics: `xgb_weight_soft_s100` analog-distance stress RMSE **12.9475**, improving `blend_cnn_45` stress **12.9956**. Leakage-only continuous oracle RMSE is **10.8284**.
+- Artifacts: feature preview, proxy quality, top-label summary, summary, fold metrics, diagnostics placeholder, zone/analog-bin summaries, well diagnostics, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-07-01__cnn_regime_learned_weight_gate/`.
+- Decision: learned weighting is a valid but small improvement over the uniform blend. Use it as the current local package candidate unless a focused stability run shows seed variance risk.
+- Notes: The learned weight model only captures a thin slice of the oracle gap. Future gains likely require better CNN predictions or richer gate features, not just more shallow weight-head tuning.
+
 ## Entry Format
 
 ```text
