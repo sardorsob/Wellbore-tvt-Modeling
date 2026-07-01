@@ -72,6 +72,7 @@
 - [x] Run stress-gated regime-mean stack (`2026-07-01__xgboost_regime_stress_gated_stack`) - gates did not beat original regime mean on both strict and stress; move to pseudo-top inference or partial pooling
 - [x] Run pseudo-top probability-scale tuning (`2026-07-01__pseudo_top_probability_scale_tuning`) - original scale **50** remained best on strict **13.0928** and stress **13.4006**
 - [x] Run pseudo-top regime mean with more target rows (`2026-07-01__pseudo_top_regime_mean_more_rows`) - **220** row cap worsened strict to **13.1185** and stress to **13.4745**
+- [x] Run alignment-aware pseudo-top regime mean (`2026-07-01__alignment_aware_pseudo_top_regime_mean`) - local alignment features improved strict to **13.0838** but worsened stress to **13.4303**
 
 ## In progress
 
@@ -90,7 +91,7 @@
 2. Do not continue generic residual stacking immediately; the Ridge residual package scored **14.583** publicly despite local strict/stress gains.
 3. Do not package the current proxy-formation XGBoost tuning pass or the raw known-state XGBoost injection; both failed to improve the active path.
 4. Push the locally validated pseudo-top regime-mean package when ready for the next Kaggle public-transfer probe.
-5. Stop and brainstorm before the next notebook; simple regime tuning, residual stacking/gating, probability-scale tuning, and row-cap changes have not produced a package-worthy jump.
+5. Stop and brainstorm before the next notebook; simple regime tuning, residual stacking/gating, probability-scale tuning, row-cap changes, and first local-alignment features have not produced a package-worthy jump.
 6. Update gated Bayesian regime notes when submission `54211837` finishes scoring.
 7. Use the oracle direct-formation gap as a design target for a gated or Bayesian stratigraphic-regime model, not as a Kaggle-safe feature set.
 8. Defer full hierarchical HSGP until alignment or stronger geologic descriptors give hierarchy something transferable to pool over.
@@ -212,6 +213,7 @@ Immediate next work:
 | 2026-07-01 | Stress-gated regime stack `blend_plus_ridge_residual_s15_uniform` | 13.0769 | Gates produced no strict/stress joint win; best lower-stress compromise **13.0853** strict / **13.4079** stress still trails original regime-mean stress **13.4006** |
 | 2026-07-01 | Pseudo-top probability scale `scale50 confidence_s100` | 13.0928 | Original scale **50** remained best on strict and stress; simple pseudo-top probability calibration is saturated |
 | 2026-07-01 | Pseudo-top regime mean more rows `cap220` | 13.1185 | Denser target-row sample worsened strict and stress; keep the **120** row cap |
+| 2026-07-01 | Alignment-aware pseudo-top regime mean | 13.0838 | Local alignment features improve strict slightly but stress worsens to **13.4303**; diagnostic only |
 
 ## Validation artifacts
 

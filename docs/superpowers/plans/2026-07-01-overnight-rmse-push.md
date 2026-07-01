@@ -116,6 +116,19 @@
 - [x] Reject if denser sampling does not beat the original 120-row regime mean.
 - [x] Commit if the notebook produces reportable artifacts.
 
+### Extra Task: Alignment-Aware Pseudo-Top Regime Mean
+
+**Files:**
+- Create: `notebooks/modeling/08_alignment/12_alignment_aware_pseudo_top_regime_mean.ipynb`
+- Create: `artifacts/reports/model__alignment_aware_pseudo_top_regime_mean__2026-07-01.md`
+- Create: `artifacts/tables/model__alignment_aware_pseudo_top_regime_mean_*__2026-07-01.csv`
+- Modify: context and feature-log files as in Task 2.
+
+- [x] Add hidden-test-safe local GR/typewell alignment features to the pseudo-top proxy and regime mean.
+- [x] Export strict/stress summaries, pseudo-top proxy quality, and failure slices.
+- [x] Reject if alignment features do not improve both strict and stress against the original regime mean.
+- [x] Commit if the notebook produces reportable artifacts.
+
 ## Verification
 
 For every completed notebook:

@@ -492,3 +492,9 @@ The `11_pseudo_top_probability_scale_tuning` notebook tested softmax probability
 The `11_pseudo_top_regime_mean_more_rows` notebook increased the per-well target-row cap from **120** to **220**, raising evaluated rows from **92,760** to **170,060**. The best candidate shifted to `xgb_pseudohuber_global__regime_ridge_alpha80__confidence_s100` with strict RMSE **13.1185** and analog-distance stress RMSE **13.4745**, worse than the original 120-row regime mean **13.0928** strict and **13.4006** stress.
 
 **Modeling implication:** The regime-mean plateau is not caused by too little target-zone row density in the local notebook. Keep the lighter **120** row cap for fast iteration and package stability unless a future model specifically benefits from more rows.
+
+### A69 - Local GR/typewell alignment features help strict RMSE slightly but do not improve pseudo-top state
+
+The `12_alignment_aware_pseudo_top_regime_mean` notebook added hidden-test-safe local GR/typewell alignment features: local GR window statistics, local DTW distance to typewell GR windows, local correlation to linear/best-lag typewell windows, and alignment margins. The best candidate, `xgb_square_global__regime_ridge_alpha80__confidence_s100`, scored **13.0838** strict-hybrid RMSE, a **0.0089** improvement over the original regime mean **13.0928**. However, analog-distance stress worsened to **13.4303** versus **13.4006**, and pseudo-top proxy RMSE did not improve.
+
+**Modeling implication:** Local alignment descriptors carry some row-level mean signal, but they are not a better pseudo-top state estimator in this form. Do not package over the original regime mean. If alignment is revisited, separate it into a stress-aware mean feature path or a different top-inference architecture rather than simply adding DTW/correlation columns to the pseudo-top XGBoost.

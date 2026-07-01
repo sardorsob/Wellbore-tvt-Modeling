@@ -714,6 +714,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: diagnostic only. Keep the original 120-row regime-mean package.
 - Notes: More rows did not unlock lower RMSE; future work needs different structure rather than denser sampling.
 
+## 2026-07-01__alignment_aware_pseudo_top_regime_mean
+
+- Task: alignment-aware pseudo-top regime mean
+- Purpose: Test whether local GR/typewell alignment features improve pseudo-top state inference and downstream direct regime-mean RMSE.
+- Config: `notebooks/modeling/08_alignment/12_alignment_aware_pseudo_top_regime_mean.ipynb`; deterministic target-row sampling capped at **120** rows per well; two-seed squared-error pseudo-top proxy ensembles; added local GR window statistics, local typewell DTW distances, local typewell correlations, and alignment margins; same global XGBoost and per-formation Ridge regime means as the original regime-mean notebook.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell descriptors, and direct formation columns used only as fold-local pseudo-top labels.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; all candidates also scored on `analog_distance_fold`.
+- Model: best candidate `xgb_square_global__regime_ridge_alpha80__confidence_s100`.
+- Primary metric: strict-hybrid RMSE **13.0838**, improving the original regime mean **13.0928** by **0.0089** RMSE.
+- Secondary metrics: analog-distance stress RMSE **13.4303**, worse than the original regime-mean stress **13.4006**; proxy-top quality did not improve.
+- Artifacts: feature preview, proxy quality, top-label summary, summary, fold metrics, regime diagnostics, zone/analog-bin summaries, well diagnostics, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-07-01__alignment_aware_pseudo_top_regime_mean/`.
+- Decision: diagnostic only. Do not package over the original pseudo-top regime mean.
+- Notes: Alignment features have local mean signal but need stress-aware treatment or a different top-inference architecture before they can be promoted.
+
 ## Entry Format
 
 ```text

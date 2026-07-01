@@ -499,3 +499,17 @@
 **Rationale:** The **220** cap produced **13.1185** strict RMSE and **13.4745** stress RMSE, both worse than the original **120** cap result of **13.0928** strict and **13.4006** stress.
 **Consequences:** Keep the existing pseudo-top regime-mean package unchanged. Do not spend more overnight time on row-cap sweeps.
 **Follow-up:** Move to a genuinely different model family or revisit pseudo-top inference labels/features.
+
+---
+
+## D038 - Do not package alignment-aware pseudo-top regime mean
+
+**Date:** 2026-07-01
+**Decision:** Keep `12_alignment_aware_pseudo_top_regime_mean` as a diagnostic improvement, but do not replace the original pseudo-top regime-mean package.
+**Alternatives considered:**
+- Package because strict RMSE improved from **13.0928** to **13.0838**.
+- Continue adding more local alignment descriptors.
+- Treat alignment features as separate stress-aware mean features instead of pseudo-top predictors.
+**Rationale:** Alignment-aware features improved strict RMSE by only **0.0089** and worsened stress from **13.4006** to **13.4303**. The proxy-top quality table also does not show a better pseudo-top estimator, so the gain is likely a fragile row-level mean effect rather than improved stratigraphic state.
+**Consequences:** Do not push this candidate to Kaggle. Preserve artifacts because they show local alignment features have signal but need stress control.
+**Follow-up:** Either build a different pseudo-top inference architecture or move to Bayesian/partial-pooling regime means where alignment uncertainty affects priors rather than raw features.

@@ -78,6 +78,7 @@
 - Generated and ran first baseline modeling notebooks; updated structure, status, experiments, and feature log with run IDs and RMSEs.
 
 ### Added
+- Alignment-aware pseudo-top regime-mean notebook and artifacts. Local GR/typewell DTW and correlation features improved strict RMSE slightly to **13.0838** but worsened stress to **13.4303**, so the original regime-mean package remains preferred.
 - Pseudo-top regime-mean more-rows notebook and artifacts. Increasing the target-row cap to **220** worsened strict and stress RMSE versus the original **120**-row regime mean.
 - Pseudo-top probability-scale tuning notebook and artifacts. Original scale **50** remained best on strict and stress RMSE, closing the simple probability-calibration path.
 - Stress-gated XGBoost regime-mean stack notebook and artifacts. Gates reduced some stress damage but did not beat the original regime mean on both strict and stress metrics.
