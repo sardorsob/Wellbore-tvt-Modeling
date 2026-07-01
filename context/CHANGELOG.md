@@ -38,6 +38,9 @@
 
 ## [Unreleased]
 
+- Added and ran `notebooks/modeling/06_bayesian/12_bayesian_regime_partial_pooling.ipynb`; exported summary, fold metrics, regime diagnostics, zone/analog-bin summaries, well diagnostics, findings, report, model-comparison row, and run bundle.
+- Recorded A70 and D039: shared partial pooling over current pseudo-top probabilities does not improve the direct regime mean, so the next move should revise state inference or model architecture rather than sweep more shrinkage.
+
 ### Changed
 - Added and ran `notebooks/modeling/06_bayesian/07_gated_bayesian_regime.ipynb`; exported gated Bayesian regime metrics, gate diagnostics, report, model comparison row, and run bundle.
 - Added self-contained Kaggle package `kaggle/gated_bayesian_regime_submission/`, locally validated a **14,151** row submission, pushed version 1, and submitted it as `54211837` with score pending.

@@ -728,6 +728,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: diagnostic only. Do not package over the original pseudo-top regime mean.
 - Notes: Alignment features have local mean signal but need stress-aware treatment or a different top-inference architecture before they can be promoted.
 
+## 2026-07-01__bayesian_regime_partial_pooling
+
+- Task: empirical-Bayes partial-pooling regime mean
+- Purpose: Test whether shared Ridge shrinkage over pseudo-top probability interactions improves the direct regime-mean model without the stress penalty seen in residual stacks.
+- Config: `notebooks/modeling/06_bayesian/12_bayesian_regime_partial_pooling.ipynb`; deterministic target-row sampling capped at **120** rows per well; fold-safe pseudo-top probabilities; global XGBoost mean; shared Ridge residual and direct partial-pooling layers with alphas **20**, **80**, **220**, **650**, **1400**, and **3000**; fixed, confidence, and margin-confidence blend schedules.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell descriptors, and direct formation columns used only as fold-local pseudo-top labels.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; all candidates also scored on `analog_distance_fold`.
+- Model: best overall candidate `xgb_square_global__reference_regime_ridge_alpha80__reference_confidence_s100`; best new residual partial-pooling candidate `xgb_square_global__pp_resid_ridge_alpha20__resid_s025`; best direct partial-pooling candidate `xgb_square_global__pp_direct_ridge_alpha220__direct_s025`.
+- Primary metric: best overall strict-hybrid RMSE **13.0953**; best new residual partial-pooling strict RMSE **13.4272**; best direct partial-pooling strict RMSE **13.2049**.
+- Secondary metrics: best overall analog-distance stress RMSE **13.4038**, slightly worse than the package-ready regime mean **13.4006**.
+- Artifacts: feature preview, proxy quality, top-label summary, summary, fold metrics, regime diagnostics, zone/analog-bin summaries, well diagnostics, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-07-01__bayesian_regime_partial_pooling/`.
+- Decision: diagnostic only. Shared partial pooling does not beat the current direct regime mean.
+- Notes: Trigger the stop-and-brainstorm gate; the next step should improve state inference or model architecture, not sweep more shrinkage schedules.
+
 ## Entry Format
 
 ```text

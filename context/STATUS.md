@@ -73,6 +73,7 @@
 - [x] Run pseudo-top probability-scale tuning (`2026-07-01__pseudo_top_probability_scale_tuning`) - original scale **50** remained best on strict **13.0928** and stress **13.4006**
 - [x] Run pseudo-top regime mean with more target rows (`2026-07-01__pseudo_top_regime_mean_more_rows`) - **220** row cap worsened strict to **13.1185** and stress to **13.4745**
 - [x] Run alignment-aware pseudo-top regime mean (`2026-07-01__alignment_aware_pseudo_top_regime_mean`) - local alignment features improved strict to **13.0838** but worsened stress to **13.4303**
+- [x] Run Bayesian regime partial pooling (`2026-07-01__bayesian_regime_partial_pooling`) - shared Ridge partial pooling worsened; best overall reference re-fit was **13.0953** strict / **13.4038** stress
 
 ## In progress
 
@@ -84,6 +85,7 @@
 - [ ] Investigate why Huber GLM beat GAM locally but scored worse publicly
 - [ ] Investigate why local CV ranked Random Forest worse than Ridge while public LB ranked it better
 - [ ] Defer SVR/radius-neighbor work unless new well-local features make neighbor geometry plausible
+- [ ] Stop-and-brainstorm gate after repeated sub-0.05 or negative improvements; compare failure slices and write the next concrete state/model architecture plan before the next notebook
 
 ## Next up
 
@@ -214,6 +216,7 @@ Immediate next work:
 | 2026-07-01 | Pseudo-top probability scale `scale50 confidence_s100` | 13.0928 | Original scale **50** remained best on strict and stress; simple pseudo-top probability calibration is saturated |
 | 2026-07-01 | Pseudo-top regime mean more rows `cap220` | 13.1185 | Denser target-row sample worsened strict and stress; keep the **120** row cap |
 | 2026-07-01 | Alignment-aware pseudo-top regime mean | 13.0838 | Local alignment features improve strict slightly but stress worsens to **13.4303**; diagnostic only |
+| 2026-07-01 | Bayesian regime partial pooling | 13.0953 | Shared Ridge residual/direct partial pooling worsened; best row is only the independent regime-mean reference re-fit at **13.4038** stress |
 
 ## Validation artifacts
 

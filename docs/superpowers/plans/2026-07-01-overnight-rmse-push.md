@@ -84,14 +84,15 @@
 
 **Files:**
 - Create: `notebooks/modeling/06_bayesian/11_bayesian_regime_partial_pooling.ipynb`
+- Actual: `notebooks/modeling/06_bayesian/12_bayesian_regime_partial_pooling.ipynb`
 - Create: `artifacts/reports/model__bayesian_regime_partial_pooling__2026-07-01.md`
 - Create: `artifacts/tables/model__bayesian_regime_partial_pooling_*__2026-07-01.csv`
 - Modify: context and feature-log files as in Task 2.
 
-- [ ] Add partial pooling only after deterministic regime means plateau.
-- [ ] Use conservative Student-t or Ridge-MAP analogues first, then heavier Bayesian tooling only if warranted.
-- [ ] Record priors and generative assumptions in `context/ASSUMPTIONS.md`.
-- [ ] Commit if the notebook produces reportable artifacts.
+- [x] Add partial pooling only after deterministic regime means plateau.
+- [x] Use conservative Student-t or Ridge-MAP analogues first, then heavier Bayesian tooling only if warranted.
+- [x] Record priors and generative assumptions in `context/ASSUMPTIONS.md`.
+- [x] Commit if the notebook produces reportable artifacts.
 
 ### Task 6: Stop-And-Brainstorm Gate
 
@@ -99,7 +100,7 @@
 - Modify: `context/STATUS.md`
 - Modify: `context/EXPERIMENTS.md`
 
-- [ ] If three consecutive completed notebooks fail to improve strict RMSE by at least **0.05**, stop coding.
+- [x] If three consecutive completed notebooks fail to improve strict RMSE by at least **0.05**, stop coding.
 - [ ] Compare best/worst wells, high-error slices, pseudo-top errors, and public-transfer assumptions.
 - [ ] Write the next concrete plan before resuming model generation.
 

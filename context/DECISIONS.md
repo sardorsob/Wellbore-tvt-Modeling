@@ -513,3 +513,17 @@
 **Rationale:** Alignment-aware features improved strict RMSE by only **0.0089** and worsened stress from **13.4006** to **13.4303**. The proxy-top quality table also does not show a better pseudo-top estimator, so the gain is likely a fragile row-level mean effect rather than improved stratigraphic state.
 **Consequences:** Do not push this candidate to Kaggle. Preserve artifacts because they show local alignment features have signal but need stress control.
 **Follow-up:** Either build a different pseudo-top inference architecture or move to Bayesian/partial-pooling regime means where alignment uncertainty affects priors rather than raw features.
+
+---
+
+## D039 - Pause current partial-pooling route after negative result
+
+**Date:** 2026-07-01
+**Decision:** Do not package or continue tuning `12_bayesian_regime_partial_pooling` in its current shared Ridge form.
+**Alternatives considered:**
+- Promote the reference regime-mean re-fit because it nearly matches the package-ready regime mean.
+- Continue sweeping Ridge alphas and confidence schedules in the partial-pooling residual/direct layers.
+- Move to better pseudo-top/state inference or a different model class before returning to Bayesian hierarchy.
+**Rationale:** The best overall candidate was the independent regime-mean reference at **13.0953** strict RMSE and **13.4038** stress RMSE, slightly worse than the package-ready regime mean **13.0928** strict / **13.4006** stress. The new shared residual and direct partial-pooling layers were materially worse, with best strict RMSE **13.4272** and **13.2049** respectively.
+**Consequences:** Keep this notebook as a documented negative Bayesian shrinkage screen. Do not spend more time on shared Ridge partial-pooling schedules until the pseudo-top/state signal improves.
+**Follow-up:** Trigger the stop-and-brainstorm gate and prioritize state revision, pseudo-top inference architecture, or a neural/sequence model that can learn local log motifs more directly.

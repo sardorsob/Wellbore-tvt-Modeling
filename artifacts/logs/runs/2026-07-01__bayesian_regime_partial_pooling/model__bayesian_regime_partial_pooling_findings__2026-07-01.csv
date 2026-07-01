@@ -1,0 +1,6 @@
+finding,detail,value,interpretation
+best_overall,xgb_square_global__reference_regime_ridge_alpha80__reference_confidence_s100,13.095322032273657,Best strict RMSE with analog stress RMSE 13.4038.
+best_residual_pool,xgb_square_global__pp_resid_ridge_alpha20__resid_s025,13.42721775626815,Best shared residual correction around the global mean.
+best_direct_pool,xgb_square_global__pp_direct_ridge_alpha220__direct_s025,13.20485046059346,Best direct partial-pooling mean blended with the global mean.
+reference_regime_mean,xgb_square_global__reference_regime_ridge_alpha80__reference_confidence_s100,13.095322032273657,Independent regime mean reference re-fit inside this notebook.
+decision,diagnostic_iterate_before_package,13.095322032273657,Promotion requires beating the package-ready regime mean without stress-fold regression.
