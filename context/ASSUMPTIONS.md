@@ -594,3 +594,9 @@ The `09_cnn_regime_residual_specialist` notebook trained the local-window CNN on
 The `10_cnn_regime_direct_stability` notebook upgraded the direct-delta CNN specialist to a slightly wider three-convolution architecture and averaged three seed offsets. The strict-best candidate, `logit_switch_floor20`, scored **12.5179** strict RMSE, beating the prior strict-best **12.6364** by **0.1185**. Its stress RMSE was **12.9574**, slightly worse than the prior stress-best **12.9475**. The compromise candidate `xgb_weight_soft_s075` scored **12.5788** strict and **12.9485** stress.
 
 **Modeling implication:** Improving the direct-delta CNN correction vector is more valuable than residual-targeting or shallow gate-only expansion. The next step should tune stress-aware selection around the stronger CNN candidates or test Kaggle transfer, while preserving the stronger architecture/seed recipe.
+
+### A86 - Dilated CNN windows improve both strict and stress RMSE
+
+The `11_cnn_regime_dilated_direct` notebook replaced the stronger direct CNN with a dilated local-window CNN while keeping the three-seed setup and comparable gates. The best deployable candidate, `logit_switch_floor20`, scored **12.4888** strict RMSE and **12.8465** analog-distance stress RMSE. This improves the prior strict-best **12.5179** and the prior stress-best **12.9475**. The leakage-only continuous oracle improved to **10.6114**.
+
+**Modeling implication:** Local motif representation quality is still yielding measurable gains. The dilated direct-delta CNN should become the active package candidate, and the next modeling step should either tune this architecture further or use Kaggle public transfer to validate whether the local strict/stress gains carry over.

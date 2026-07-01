@@ -737,3 +737,17 @@
 **Rationale:** `logit_switch_floor20` reaches **12.5179** strict RMSE, the largest post-CNN improvement since the initial branch began. Stress regresses slightly versus **12.9475**, but `xgb_weight_soft_s075` gives a near stress-tie at **12.5788** strict / **12.9485** stress.
 **Consequences:** Keep both a strict-best and stress-balanced candidate in the tracker. The next step should be either a Kaggle package probe for the stronger branch or a compact stress-aware selector tuning notebook.
 **Follow-up:** Package `logit_switch_floor20` or `xgb_weight_soft_s075` for Kaggle, or run one more tuning pass focused on the stress/strict tradeoff around these candidates.
+
+---
+
+## D055 - Promote dilated direct-delta CNN as active candidate
+
+**Date:** 2026-07-01
+**Decision:** Promote `logit_switch_floor20` from the dilated direct-delta CNN run as the active local candidate.
+**Alternatives considered:**
+- Keep the stronger non-dilated direct-stability branch because it was simpler.
+- Use `xgb_weight_medium_s100` from the dilated run because it has slightly lower stress (**12.8205**) but worse strict (**12.5045**).
+- Continue architecture tuning before any package probe.
+**Rationale:** The dilated CNN improves strict RMSE to **12.4888** and stress RMSE to **12.8465**, beating both the prior strict-best and stress-best candidates. The oracle also improves to **10.6114**, suggesting the representation itself is better.
+**Consequences:** This is the strongest local package candidate so far. Further local work should tune around the dilated architecture or validate public transfer through Kaggle.
+**Follow-up:** Package `logit_switch_floor20` for Kaggle or run a compact dilated-CNN tuning pass focused on stress/strict balance.

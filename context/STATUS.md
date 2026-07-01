@@ -237,6 +237,7 @@ Immediate next work:
 | 2026-07-01 | CNN-regime calibrated gate | 12.6364 | `xgb_switch_p100` improves strict CV by **0.0107** vs learned-weight gate, but stress worsens to **13.0089**; keep as strict-best, not stress-best |
 | 2026-07-01 | CNN-regime residual specialist | 12.7353 | Residual-targeted CNN trails current strict-best and stress-best gates; oracle **11.8132** is also worse than direct-delta CNN oracle |
 | 2026-07-01 | CNN-regime direct stability | 12.5179 | Stronger three-seed direct-delta CNN gives the largest recent strict gain; stress-best compromise `xgb_weight_soft_s075` is **12.5788** strict / **12.9485** stress |
+| 2026-07-01 | CNN-regime dilated direct | 12.4888 | Dilated three-seed direct-delta CNN improves both strict and stress; stress RMSE **12.8465**, oracle **10.6114** |
 
 ## Validation artifacts
 

@@ -202,6 +202,17 @@
 - Stress-balanced candidate: **12.5788** strict / **12.9485** stress (`xgb_weight_soft_s075`)
 - Run ID: `2026-07-01__cnn_regime_direct_stability`
 
+## [2026-07-01] - CNN-Regime Dilated Direct
+### Added / Changed / Fixed / Removed
+- Added dilated direct-delta CNN notebook with three seed offsets and comparable CNN/regime gates.
+- Added run artifacts, report, comparison row, and context notes for the new best local branch.
+
+### Results
+- Local CV RMSE: **12.4888** (`logit_switch_floor20`)
+- Analog-distance stress RMSE: **12.8465**
+- Oracle diagnostic RMSE: **10.6114**
+- Run ID: `2026-07-01__cnn_regime_dilated_direct`
+
 ---
 
 ## Milestone format

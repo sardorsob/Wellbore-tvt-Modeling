@@ -952,6 +952,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: real improvement. Keep `logit_switch_floor20` as strict-best and `xgb_weight_soft_s075` as the stress-balanced fallback. Do not mark the active objective complete because local RMSE is still above **10**.
 - Notes: Architecture/seed stability was more useful than residual targeting. Next iteration should either tune stress-aware selection around these candidates or package/probe the stronger direct-delta CNN branch on Kaggle.
 
+## 2026-07-01__cnn_regime_dilated_direct
+
+- Task: dilated direct-delta CNN specialist
+- Purpose: Test whether a dilated convolutional local-window CNN can improve the useful direct-delta CNN/regime correction vector beyond the stronger three-seed stability run.
+- Config: `notebooks/modeling/09_validation/11_cnn_regime_dilated_direct.ipynb`; fold-safe pseudo-top regime anchor, dilated direct-delta local-window CNN with seed offsets `0`, `101`, and `211`, static blend grid, fold-heldout XGBoost weight/switch gates, and logistic switch-floor gates.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell descriptors, and direct formation columns used only as fold-local pseudo-top labels in the inherited data prep.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; all candidates also scored on `analog_distance_fold`.
+- Model: best deployable candidate `logit_switch_floor20`; oracle diagnostic `oracle_continuous_weight`.
+- Primary metric: `logit_switch_floor20` strict-hybrid RMSE **12.4888**, improving the prior direct-stability strict-best **12.5179** by **0.0291**.
+- Secondary metrics: `logit_switch_floor20` analog-distance stress RMSE **12.8465**, improving the prior direct-stability stress **12.9574** and prior stress-best **12.9475**. Leakage-only continuous oracle RMSE is **10.6114**.
+- Artifacts: feature preview, proxy quality, top-label summary, summary, fold metrics, diagnostics placeholder, zone/analog-bin summaries, well diagnostics, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-07-01__cnn_regime_dilated_direct/`.
+- Decision: promote as the active local package candidate. Do not mark the active objective complete because local RMSE is still above **10**.
+- Notes: The dilated CNN improves both deployable RMSE and the leakage-only oracle, so representation quality remains a productive direction. Next step should be Kaggle package probing or a focused dilated-CNN stress/strict tuning pass.
+
 ## Entry Format
 
 ```text
