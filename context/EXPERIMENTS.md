@@ -854,6 +854,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: diagnostic only. Do not package or continue this exact direct-delta CNN.
 - Notes: Despite weak aggregate RMSE, the CNN changes the hard-well error pattern: `86454a6f` improves from roughly **60.0** RMSE under the residual stack to **49.9**, while other wells worsen. Neural sequence features may be useful only as a gated specialist or ensemble source, not as a standalone model.
 
+## 2026-07-01__cnn_regime_gated_specialist
+
+- Task: CNN/regime gated-specialist audit
+- Purpose: Test whether the weak standalone CNN can still improve the strong pseudo-top regime-mean anchor when used as a specialist residual/blend source.
+- Config: `notebooks/modeling/09_validation/04_cnn_regime_gated_specialist.ipynb`; recomputes the direct regime-mean anchor and a compact local-window CNN, then scores uniform CNN blends, simple stress/confidence/disagreement gates, fold-heldout learned logistic gates, and a leakage-only oracle row switch.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell descriptors, and direct formation columns used only as fold-local pseudo-top labels in the inherited data prep.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; all candidates also scored on `analog_distance_fold`.
+- Model: best deployable candidate `blend_cnn_20`; oracle diagnostic `oracle_row_switch`.
+- Primary metric: `blend_cnn_20` strict-hybrid RMSE **12.7816**, improving the direct regime-mean anchor **13.0928** by **0.3112** and the previous residual-stack best **13.0769** by **0.2953**.
+- Secondary metrics: `blend_cnn_20` analog-distance stress RMSE **13.1223**, improving the direct regime-mean stress **13.4006** by **0.2783**. Leakage-only oracle RMSE is **10.7716**, showing substantial unused complementarity.
+- Artifacts: feature preview, proxy quality, top-label summary, summary, fold metrics, diagnostics placeholder, zone/analog-bin summaries, well diagnostics, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-07-01__cnn_regime_gated_specialist/`.
+- Decision: strong positive local candidate. Do not submit the audit notebook as-is until the CNN blend is tuned and made package-ready, but continue this branch immediately.
+- Notes: Simple learned gates did not beat the uniform blend, but the oracle gap suggests gate predictability or calibrated blend tuning is now the bottleneck. Next sweep should tune CNN blend weights around **0.10-0.35**, add repeated CNN seeds, and only then package the best stable candidate.
+
 ## Entry Format
 
 ```text

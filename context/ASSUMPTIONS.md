@@ -552,3 +552,9 @@ The `15_pseudo_top_transition_distance` notebook represented fold-safe pseudo to
 The `05_torch_local_window_cnn` notebook trained a compact three-channel Conv1D model over target GR, typewell GR, and difference windows plus safe scalar context. It scored **13.6857** strict RMSE and **14.5202** analog-distance stress RMSE, far worse than the direct regime mean. However, the hard-well ordering changed: `86454a6f` improved to about **49.9** RMSE from roughly **60.0** in the residual-stack diagnostics, while other hard wells worsened.
 
 **Modeling implication:** Sequence learning has different errors but poor calibration and transfer as a direct model. Future neural work should be gated or residualized against the regime-mean anchor, with explicit hard-well/slice safeguards, instead of replacing the anchor outright.
+
+### A79 - CNN residual blending is the first strong post-plateau signal
+
+The `04_cnn_regime_gated_specialist` audit recomputed a fold-safe regime-mean anchor and local-window CNN specialist in the same validation frame. A uniform **20%** blend toward the CNN reached **12.7816** strict RMSE and **13.1223** analog-distance stress RMSE, improving both the direct regime mean and the residual-stack best. The leakage-only oracle row switch reached **10.7716** strict RMSE, while simple learned gates did not beat the uniform blend.
+
+**Modeling implication:** The CNN is useful as a residual direction, not as a replacement. The next bottleneck is calibration: tune blend weights, stabilize CNN predictions across seeds, and build gates only if they improve on the uniform blend without stress regression.

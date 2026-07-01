@@ -639,3 +639,17 @@
 **Rationale:** The direct CNN scored **13.6857** strict RMSE and **14.5202** analog-distance stress RMSE, much worse than the regime-mean anchor. The one useful signal is diversity: `86454a6f` improved materially while other hard wells worsened.
 **Consequences:** Do not spend the next iteration on larger direct CNNs. If neural sequence work continues, it should be residualized or gated against the regime mean and judged by hard-well/slice safeguards.
 **Follow-up:** Audit whether CNN-vs-regime residual differences can be predicted from stress/analog/sequence diagnostics before trying a gated specialist ensemble.
+
+---
+
+## D048 - Continue CNN residual blend branch
+
+**Date:** 2026-07-01
+**Decision:** Continue the CNN/regime blend branch and treat `blend_cnn_20` as the new best local candidate family, but do not submit the audit notebook as-is.
+**Alternatives considered:**
+- Abandon neural models because the direct CNN scored **13.6857**.
+- Use learned gates immediately because the oracle row switch reaches **10.7716**.
+- Tune and stabilize a uniform CNN residual blend first.
+**Rationale:** The gated-specialist audit found `blend_cnn_20` at **12.7816** strict RMSE and **13.1223** stress RMSE, a much larger gain than recent pseudo-top tuning. The learned gates did not beat uniform blending, so the deployable path is calibration before gating.
+**Consequences:** The next notebook should sweep blend weights around **0.10-0.35**, test repeated CNN seeds, and preserve strict/stress gates. Do not package until the best blend is stable and the notebook can be converted into a hidden-test-safe Kaggle submission.
+**Follow-up:** Build a tuned CNN-regime blend notebook with seed averaging and smaller blend increments.

@@ -1,0 +1,5 @@
+finding,detail,value,interpretation
+best_overall,blend_cnn_20,12.781567618974512,Best strict RMSE with analog stress RMSE 13.1223.
+best_gate_candidate,blend_cnn_20,12.781567618974512,Best deployable or diagnostic gate candidate.
+oracle_upper_bound,oracle_row_switch,10.771640769811022,Oracle row switch upper bound is leakage-only and not deployable.
+decision,package_cnn_regime_gated_specialist,12.781567618974512,"Promotion rule checks the direct regime-mean anchor, analog-distance stress behavior, and current public context."

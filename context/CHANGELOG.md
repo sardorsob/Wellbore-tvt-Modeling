@@ -56,6 +56,8 @@
 - Recorded A77 and D046: transition-distance tabular features do not beat the direct regime-mean reference, so stop pseudo-top scalar column engineering.
 - Added and ran `notebooks/modeling/05_neural_network/05_torch_local_window_cnn.ipynb`; exported CNN summaries, diagnostics, findings, report, model-comparison row, and run bundle.
 - Recorded A78 and D047: direct local-window CNN is worse overall but has different hard-well errors, so future neural use should be gated/residualized only.
+- Added and ran `notebooks/modeling/09_validation/04_cnn_regime_gated_specialist.ipynb`; exported CNN/regime blend and gate summaries, diagnostics, findings, report, model-comparison row, and run bundle.
+- Recorded A79 and D048: `blend_cnn_20` improves strict RMSE to **12.7816** and stress to **13.1223**, while oracle switching at **10.7716** exposes a new calibration/gating path.
 
 ### Changed
 - Added and ran `notebooks/modeling/06_bayesian/07_gated_bayesian_regime.ipynb`; exported gated Bayesian regime metrics, gate diagnostics, report, model comparison row, and run bundle.
