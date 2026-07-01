@@ -793,3 +793,17 @@
 **Rationale:** The conservative **0.25** well-bias shrink improves strict RMSE from **12.4888** to **12.4568** and stress RMSE from **12.8465** to **12.7684**. Larger shrink values were not best, confirming that the correction should stay conservative.
 **Consequences:** Future package or tuning work should include this nested well-bias layer, but avoid aggressive well-level correction unless validated by stress CV.
 **Follow-up:** Package `logit_switch_floor20__well_bias_s25` for Kaggle or tune the well-bias feature/model family conservatively.
+
+---
+
+## D059 - Promote tuned conservative well-bias shrinkage as active candidate
+
+**Date:** 2026-07-01
+**Decision:** Promote `logit_switch_floor20__well_bias_h015_s30` from the well-bias tuning run as the active local candidate.
+**Alternatives considered:**
+- Keep the simpler original `logit_switch_floor20__well_bias_s25` candidate because the gain is tiny.
+- Use stronger Huber regularization or lower shrink values to be more conservative.
+- Continue fine shrink-grid tuning immediately.
+**Rationale:** The tuned setting improves strict RMSE from **12.4568** to **12.4549** and stress RMSE from **12.7684** to **12.7649**. The gain is small, but it improves both primary and stress metrics while staying within a conservative shrink regime.
+**Consequences:** Use the tuned well-bias setting as the current local best, but do not spend the next run on another tiny shrink-grid pass.
+**Follow-up:** Move to representation/gate improvements aimed at a larger jump toward **10** RMSE, or package this candidate for Kaggle transfer testing.

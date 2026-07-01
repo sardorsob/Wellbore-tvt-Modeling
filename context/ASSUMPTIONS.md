@@ -618,3 +618,9 @@ The `13_cnn_regime_dilated_attention` notebook added a learned attention-weighte
 The `14_cnn_regime_dilated_well_bias` notebook trained nested fold-heldout well-level Huber bias models on hidden-test-safe well and prediction summaries. The best candidate, `logit_switch_floor20__well_bias_s25`, scored **12.4568** strict RMSE and **12.7684** analog-distance stress RMSE, improving the active dilated-direct branch on both metrics. Larger shrink values were not best, so the useful signal is real but should be applied conservatively.
 
 **Modeling implication:** Some of the persistent hard-well error is a signed offset that can be estimated from well/prediction summaries, not only local row-level sequence features. Conservative well-level calibration is now part of the active candidate recipe.
+
+### A90 - Fine-tuning well-bias shrinkage gives only a marginal gain
+
+The `15_cnn_regime_dilated_well_bias_tuning` notebook tuned the nested well-bias layer using a restricted deployable source grid, Huber alphas **0.15** and **0.40**, and shrink values **0.10-0.30**. The best candidate, `logit_switch_floor20__well_bias_h015_s30`, scored **12.4549** strict RMSE and **12.7649** analog-distance stress RMSE. This beats the original **0.25** shrink candidate by only **0.0019** strict RMSE and **0.0034** stress RMSE.
+
+**Modeling implication:** The well-bias signal is real but nearly saturated under the current features. Keep the tuned conservative correction as the active recipe, but the next large gain should come from improving the CNN/state representation or deployable gate rather than another narrow well-bias shrink grid.

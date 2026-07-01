@@ -241,6 +241,7 @@ Immediate next work:
 | 2026-07-01 | CNN-regime dilated pooling | 12.5051 | Avg+max pooling trails average-pooled dilated direct on strict, stress, and oracle; diagnostic only |
 | 2026-07-01 | CNN-regime dilated attention | 12.5366 | Learned attention pooling trails average-pooled dilated direct on strict, stress, and oracle; diagnostic only |
 | 2026-07-01 | CNN-regime dilated well bias | 12.4568 | Nested fold-heldout well-bias shrink **0.25** improves both strict and stress; stress RMSE **12.7684** |
+| 2026-07-01 | CNN-regime dilated well-bias tuning | 12.4549 | Huber alpha **0.15** with shrink **0.30** is a tiny new local best; stress RMSE **12.7649**, so promote but stop fine shrink tuning |
 
 ## Validation artifacts
 

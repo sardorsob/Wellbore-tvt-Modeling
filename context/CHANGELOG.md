@@ -245,6 +245,17 @@
 - Analog-distance stress RMSE: **12.7684**
 - Run ID: `2026-07-01__cnn_regime_dilated_well_bias`
 
+## [2026-07-01] - CNN-Regime Dilated Well-Bias Tuning
+### Added / Changed / Fixed / Removed
+- Added conservative well-bias shrinkage tuning around the active dilated direct-CNN branch.
+- Restricted the tuning candidate grid after the first failed aggregation attempt to keep notebook execution bounded.
+- Added run artifacts, report, comparison row, and context notes for the new best local branch.
+
+### Results
+- Local CV RMSE: **12.4549** (`logit_switch_floor20__well_bias_h015_s30`)
+- Analog-distance stress RMSE: **12.7649**
+- Run ID: `2026-07-01__cnn_regime_dilated_well_bias_tuning`
+
 ---
 
 ## Milestone format

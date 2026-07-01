@@ -1008,6 +1008,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: promote as the active local package candidate. Do not mark the active objective complete because local RMSE is still above **10**.
 - Notes: The improvement confirms that some hard-well signed residual offset is predictable from hidden-test-safe well/prediction summaries. The best shrink is conservative (**0.25**), so future bias work should avoid aggressive correction.
 
+## 2026-07-01__cnn_regime_dilated_well_bias_tuning
+
+- Task: conservative nested well-bias shrinkage tuning
+- Purpose: Tune the successful nested well-level residual bias layer around the conservative **0.25** shrink setting, testing smaller/larger nearby shrink values and Huber regularization strengths without expanding the candidate grid enough to exhaust memory.
+- Config: `notebooks/modeling/09_validation/15_cnn_regime_dilated_well_bias_tuning.ipynb`; active average-pooled dilated direct-CNN/regime branch, restricted deployable source list, nested fold-heldout Huber well-bias models, Huber alphas **0.15** and **0.40**, and shrink values **0.10-0.30**.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell descriptors, and direct formation columns used only as fold-local pseudo-top labels in the inherited data prep.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; all candidates also scored on `analog_distance_fold`.
+- Model: best deployable candidate `logit_switch_floor20__well_bias_h015_s30`; oracle diagnostic `oracle_continuous_weight`.
+- Primary metric: `logit_switch_floor20__well_bias_h015_s30` strict-hybrid RMSE **12.4549**, improving the prior well-bias best **12.4568** by **0.0019**.
+- Secondary metrics: `logit_switch_floor20__well_bias_h015_s30` analog-distance stress RMSE **12.7649**, improving prior well-bias stress **12.7684** by **0.0034**. Leakage-only continuous oracle RMSE remains **10.6114** because the base CNN/regime correction vector is unchanged.
+- Artifacts: feature preview, proxy quality, top-label summary, summary, fold metrics, regime diagnostics, zone/analog-bin summaries, well diagnostics, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-07-01__cnn_regime_dilated_well_bias_tuning/`.
+- Decision: promote as the active local package candidate, but treat the gain as a small calibration refinement rather than a new modeling breakthrough. Do not mark the active objective complete because local RMSE is still above **10**.
+- Notes: The best setting moved from the original untuned shrink **0.25** to Huber alpha **0.15** with shrink **0.30**. This supports conservative well-bias correction, but the tiny gain suggests the next large improvement must come from a better CNN/state representation or a stronger deployable gate, not more fine-grained bias shrink tuning.
+
 ## Entry Format
 
 ```text
