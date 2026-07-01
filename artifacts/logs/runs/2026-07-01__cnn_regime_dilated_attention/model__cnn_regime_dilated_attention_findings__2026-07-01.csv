@@ -1,0 +1,5 @@
+finding,detail,value,interpretation
+best_overall,logit_switch_floor20,12.536642647217636,Best strict RMSE with analog stress RMSE 12.9839.
+best_weight_candidate,logit_switch_floor20,12.536642647217636,Best deployable dilated-attention/static gate candidate.
+oracle_upper_bound,oracle_continuous_weight,10.720559337660278,Oracle row switch upper bound is leakage-only and not deployable.
+decision,diagnostic_only_current_best_worse,12.536642647217636,"Dilated attention remains strong but trails the active dilated-direct candidate on strict, stress, and oracle RMSE."

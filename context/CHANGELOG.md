@@ -224,6 +224,17 @@
 - Oracle diagnostic RMSE: **10.6897**
 - Run ID: `2026-07-01__cnn_regime_dilated_pooling`
 
+## [2026-07-01] - CNN-Regime Dilated Attention
+### Added / Changed / Fixed / Removed
+- Added dilated CNN average-plus-attention pooling diagnostic notebook and run artifacts.
+- Marked the run diagnostic because it trails the active average-pooled dilated branch.
+
+### Results
+- Local CV RMSE: **12.5366** (`logit_switch_floor20`)
+- Analog-distance stress RMSE: **12.9839**
+- Oracle diagnostic RMSE: **10.7206**
+- Run ID: `2026-07-01__cnn_regime_dilated_attention`
+
 ---
 
 ## Milestone format

@@ -765,3 +765,17 @@
 **Rationale:** The pooling run worsens strict RMSE (**12.5051** vs **12.4888**), stress RMSE (**12.9361** vs **12.8465**), and oracle RMSE (**10.6897** vs **10.6114**). The deterioration appears representation-level, not only gate selection.
 **Consequences:** Do not spend more immediate runs on avg+max pooling. The next useful step is package probing or a different dilated architecture/window strategy.
 **Follow-up:** Package the average-pooled dilated candidate or test a genuinely different sequence representation.
+
+---
+
+## D057 - Reject learned attention pooling for current dilated CNN
+
+**Date:** 2026-07-01
+**Decision:** Do not replace the active average-pooled dilated direct CNN with the learned attention-pooling variant.
+**Alternatives considered:**
+- Promote the attention variant because it remains stronger than older non-dilated CNN branches.
+- Continue attention-head tuning.
+- Keep the average-pooled dilated direct branch.
+**Rationale:** Attention worsens strict RMSE (**12.5366** vs **12.4888**), stress RMSE (**12.9839** vs **12.8465**), and oracle RMSE (**10.7206** vs **10.6114**). Since max pooling also worsened, sharper pooling heads are not the current bottleneck.
+**Consequences:** Stop pooling-head variants for now. The next useful move is either Kaggle package probing or a different sequence/window representation.
+**Follow-up:** Package the active average-pooled dilated candidate, or test a different input-window strategy instead of another pooling head.

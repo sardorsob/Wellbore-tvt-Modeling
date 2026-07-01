@@ -606,3 +606,9 @@ The `11_cnn_regime_dilated_direct` notebook replaced the stronger direct CNN wit
 The `12_cnn_regime_dilated_pooling` notebook added adaptive max pooling alongside average pooling in the dilated CNN sequence encoder. The best deployable candidate, `xgb_weight_medium_s100`, scored **12.5051** strict RMSE and **12.9361** analog-distance stress RMSE, both worse than the active average-pooled dilated run (**12.4888** strict / **12.8465** stress). Its oracle also worsened from **10.6114** to **10.6897**.
 
 **Modeling implication:** Peak-response pooling is not helping this small local-window representation. Keep the average-pooled dilated CNN as the active architecture and avoid further avg+max pooling variants unless the window design changes.
+
+### A88 - Learned attention pooling also worsens the dilated CNN branch
+
+The `13_cnn_regime_dilated_attention` notebook added a learned attention-weighted sequence summary alongside average pooling. The best deployable candidate, `logit_switch_floor20`, scored **12.5366** strict RMSE and **12.9839** analog-distance stress RMSE, both worse than the active average-pooled dilated candidate (**12.4888** strict / **12.8465** stress). Its oracle worsened to **10.7206**.
+
+**Modeling implication:** The failure of both max pooling and attention pooling suggests the current 17-bin local-window representation benefits from smoothed dilated context rather than sharper pooling summaries. Further sequence work should change the window representation itself, not just the pooling head.

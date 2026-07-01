@@ -980,6 +980,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: diagnostic only. Do not replace the active dilated-direct candidate.
 - Notes: Adding max-pooling features worsened the candidate and oracle, suggesting the current task benefits more from smoothed local motif context than peak-response pooling in this small-window setup.
 
+## 2026-07-01__cnn_regime_dilated_attention
+
+- Task: dilated direct-delta CNN with learned attention pooling
+- Purpose: Test whether learned attention pooling can recover sharper local motifs without the blunt peak-response behavior that hurt the avg+max pooling variant.
+- Config: `notebooks/modeling/09_validation/13_cnn_regime_dilated_attention.ipynb`; same fold-safe pseudo-top regime anchor and three-seed dilated direct CNN branch, but the sequence encoder concatenates adaptive average pooled activations with a learned attention-weighted sequence summary before the tabular head.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell descriptors, and direct formation columns used only as fold-local pseudo-top labels in the inherited data prep.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; all candidates also scored on `analog_distance_fold`.
+- Model: best deployable candidate `logit_switch_floor20`; oracle diagnostic `oracle_continuous_weight`.
+- Primary metric: `logit_switch_floor20` strict-hybrid RMSE **12.5366**, worse than active dilated-direct `logit_switch_floor20` **12.4888**.
+- Secondary metrics: `logit_switch_floor20` analog-distance stress RMSE **12.9839**, worse than active dilated-direct stress **12.8465**. Leakage-only continuous oracle RMSE is **10.7206**, also worse than the average-pooled dilated oracle **10.6114**.
+- Artifacts: feature preview, proxy quality, top-label summary, summary, fold metrics, diagnostics placeholder, zone/analog-bin summaries, well diagnostics, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-07-01__cnn_regime_dilated_attention/`.
+- Decision: diagnostic only. Do not replace the active dilated-direct candidate.
+- Notes: Learned attention pooling worsened candidate and oracle RMSE. The current small-window motif representation appears best served by smoothed average-pooled dilated features, not attention or max pooling.
+
 ## Entry Format
 
 ```text
