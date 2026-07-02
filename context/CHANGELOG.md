@@ -340,6 +340,18 @@
 - Stress-best deployable row: **11.6028** strict / **11.8448** stress (`xgb_weight_soft_s110__well_bias_h0005_s45`)
 - Run ID: `2026-07-01__cnn_regime_selective_calibration`
 
+## [2026-07-01] - CNN-Regime Selective Neural Gate
+### Added / Changed / Fixed / Removed
+- Added a diagnostic notebook that trains compact fold-heldout neural blend gates on the selective trajectory recipe.
+- Tested neural prior penalties, shrink/floor schedules, and conservative well-bias corrections.
+- Recorded the run as diagnostic because the active calibrated logit-switch row remained stronger.
+
+### Results
+- Local CV RMSE: **11.5968** (`logit_switch_floor18__well_bias_h0005_s40`, unchanged active best)
+- Best neural-derived row: **11.6200** strict / **11.9210** stress (`neural_gate_p0005_floor15__well_bias_h0005_s38`)
+- Analog-distance stress RMSE for active row: **11.9062**
+- Run ID: `2026-07-01__cnn_regime_selective_neural_gate`
+
 ---
 
 ## Milestone format

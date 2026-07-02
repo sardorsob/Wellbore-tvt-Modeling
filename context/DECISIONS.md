@@ -905,3 +905,17 @@
 **Rationale:** The calibrated row improves strict RMSE from **11.6129** to **11.5968** and stress RMSE from **11.9208** to **11.9062**. The stress-best row is close on strict but still worse than the strict-best row.
 **Consequences:** The active recipe now uses floor **0.18**, Huber alpha **0.005**, and bias shrink **0.40** on the selective trajectory feature set.
 **Follow-up:** Package this candidate for Kaggle transfer testing or seek a new feature-family jump instead of another narrow calibration pass.
+
+---
+
+## D067 - Reject selective neural gate as active candidate
+
+**Date:** 2026-07-01
+**Decision:** Do not replace `logit_switch_floor18__well_bias_h0005_s40` with the selective neural-gate candidates.
+**Alternatives considered:**
+- Promote the best neural-gate row if the MLP blend gate recovered more of the oracle gap.
+- Keep the calibrated logistic gate because it remains simpler and stronger.
+- Continue same-feature neural gate tuning with more epochs or wider networks.
+**Rationale:** The active calibrated logit-switch row remained best at **11.5968** strict RMSE and **11.9062** stress RMSE. The best neural-derived corrected row reached only **11.6200** strict and **11.9210** stress, so added gate flexibility worsened both selection metrics.
+**Consequences:** Same-feature neural blend gates should not be the next main path. They add runtime and candidate complexity without improving the current selective trajectory representation.
+**Follow-up:** Move to a representation/target change or Kaggle transfer validation rather than another narrow gate family.

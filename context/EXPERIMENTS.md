@@ -1120,6 +1120,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: promote as the active local package candidate. Do not mark the active objective complete because deployable local RMSE remains above **10**.
 - Notes: Very small Huber regularization (**0.005**) and bias shrink around **0.40** are now favored. Continued gate/bias calibration is delivering diminishing returns; future larger gains likely require another feature-family shift or Kaggle transfer validation.
 
+## 2026-07-01__cnn_regime_selective_neural_gate
+
+- Task: selective trajectory neural blend-gate audit
+- Purpose: Test whether a compact fold-heldout MLP can recover more of the CNN/regime oracle gap after the selective trajectory feature jump.
+- Config: `notebooks/modeling/09_validation/23_cnn_regime_selective_neural_gate.ipynb`; selective trajectory pseudo-top/regime/CNN stack, compact neural blend gate trained directly on blended TVT loss, prior penalties **0.005**, **0.015**, and **0.040**, neural shrink/floor candidates, and the same conservative well-bias correction allowlist.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell descriptors, direct formation columns used only as fold-local pseudo-top labels, and hidden-test-safe selective within-well trajectory context.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; all candidates also scored on `analog_distance_fold`.
+- Model: active deployable candidate remains `logit_switch_floor18__well_bias_h0005_s40`; best neural-derived row was `neural_gate_p0005_floor15__well_bias_h0005_s38`; oracle diagnostic `oracle_continuous_weight`.
+- Primary metric: active row stayed at strict-hybrid RMSE **11.5968**. Best neural-derived row scored **11.6200**, so it did not improve the active candidate.
+- Secondary metrics: active row analog-distance stress RMSE stayed **11.9062**. Best neural-derived row scored **11.9210** stress RMSE. Leakage-only continuous oracle remained **9.9643**.
+- Artifacts: feature preview, proxy quality, top-label summary, summary, fold metrics, regime diagnostics, zone/analog-bin summaries, well diagnostics, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-07-01__cnn_regime_selective_neural_gate/`.
+- Decision: diagnostic only. Do not promote because neural gating worsened both strict and stress relative to the active calibrated logit-switch recipe.
+- Notes: This repeats the earlier neural-gate pattern even after the stronger trajectory representation: a flexible gate does not close enough of the oracle gap. Next high-leverage work should change the representation or target structure, not add another same-feature gate.
+
 ## Entry Format
 
 ```text

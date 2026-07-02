@@ -249,6 +249,7 @@ Immediate next work:
 | 2026-07-01 | CNN-regime trajectory expansion | 11.7138 | Diagnostic only: stress improves to **11.8366**, but strict and oracle regress |
 | 2026-07-01 | CNN-regime selective trajectory context | 11.6129 | New active best with curated trajectory features; stress RMSE **11.9208**, stress-best fallback **11.8611** |
 | 2026-07-01 | CNN-regime selective trajectory calibration | 11.5968 | New active best after local floor/bias tuning; stress RMSE **11.9062**, stress-best fallback **11.8448** |
+| 2026-07-01 | CNN-regime selective neural gate | 11.5968 | Diagnostic only: active logit-switch row remains best; best neural-derived row **11.6200** strict / **11.9210** stress |
 
 ## Validation artifacts
 

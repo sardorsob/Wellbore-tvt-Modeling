@@ -666,3 +666,9 @@ The `21_cnn_regime_trajectory_selective` notebook kept the calibrated recipe but
 The `22_cnn_regime_selective_calibration` notebook tuned the promoted selective trajectory recipe. The best row, `logit_switch_floor18__well_bias_h0005_s40`, scored **11.5968** strict RMSE and **11.9062** stress RMSE, improving the prior active best by **0.0161** strict RMSE and **0.0146** stress RMSE. The stress-best XGBoost weighted row reached **11.8448** stress RMSE but had worse strict RMSE.
 
 **Modeling implication:** Local gate and bias calibration still helps, but the gains are now small. The active recipe should use the calibrated selective trajectory row; further progress probably needs a new feature-family idea or Kaggle transfer validation.
+
+### A98 - Neural blend gates still do not close the selective trajectory oracle gap
+
+The `23_cnn_regime_selective_neural_gate` notebook added compact fold-heldout MLP gates that learned only the blend weight between the regime anchor and CNN specialist. The active calibrated logit-switch row remained best at **11.5968** strict RMSE and **11.9062** stress RMSE. The best neural-derived corrected row, `neural_gate_p0005_floor15__well_bias_h0005_s38`, reached **11.6200** strict RMSE and **11.9210** stress RMSE.
+
+**Modeling implication:** The remaining gap to the leakage-only oracle is not mainly a same-feature gate-capacity problem. A stronger gate on the current selective trajectory features adds runtime and complexity but does not improve RMSE, so the next serious attempt should change the representation, target, or submission validation path.
