@@ -863,3 +863,17 @@
 **Rationale:** The calibrated row improves strict RMSE from **11.6868** to **11.6724** and stress RMSE from **11.9598** to **11.9379**. The stress-best row gives up too much strict RMSE to replace it.
 **Consequences:** Use the calibrated trajectory-context candidate as the active local best.
 **Follow-up:** Package this candidate for Kaggle transfer testing or tune the trajectory feature construction itself.
+
+---
+
+## D064 - Reject broad trajectory expansion as active candidate
+
+**Date:** 2026-07-01
+**Decision:** Do not replace the active calibrated trajectory-context candidate with the broad trajectory expansion run.
+**Alternatives considered:**
+- Promote the expanded feature run because it improves analog-distance stress RMSE to **11.8366**.
+- Keep the active calibrated trajectory candidate because strict and oracle are stronger.
+- Use the expanded feature run only as a stress fallback.
+**Rationale:** The expanded run worsens strict RMSE (**11.7138** vs **11.6724**) and oracle RMSE (**10.0207** vs **9.8460**) while improving stress. The active selection standard requires primary strict improvement unless a public/Kaggle check proves stress transfer matters more.
+**Consequences:** Keep the simpler calibrated trajectory recipe active. Treat expanded trajectory features as a stress diagnostic, not the package default.
+**Follow-up:** Package the active calibrated trajectory candidate or test a more selective trajectory feature subset instead of broad expansion.

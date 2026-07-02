@@ -304,6 +304,18 @@
 - Stress-best deployable row: **11.7019** strict / **11.9158** stress (`xgb_weight_soft_s100__well_bias_h005_s35`)
 - Run ID: `2026-07-01__cnn_regime_trajectory_calibration`
 
+## [2026-07-01] - CNN-Regime Trajectory Expansion
+### Added / Changed / Fixed / Removed
+- Added expanded well-trajectory context audit with wider rolling windows, expanding summaries, and early/late trend features.
+- Fixed all-NaN expanded feature handling after the first execution failed during scoring.
+- Recorded the run as diagnostic because strict RMSE and oracle regressed despite stress improvement.
+
+### Results
+- Local CV RMSE: **11.7138** (`xgb_switch_p100__well_bias_h005_s25`)
+- Analog-distance stress RMSE: **11.8366**
+- Oracle diagnostic RMSE: **10.0207**
+- Run ID: `2026-07-01__cnn_regime_trajectory_expansion`
+
 ---
 
 ## Milestone format
