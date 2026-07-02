@@ -1106,6 +1106,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: promote as the active local package candidate. Do not mark the active objective complete because deployable local RMSE remains above **10**.
 - Notes: Selective trajectory context is better than both the simpler calibrated run and the broad expansion for primary strict CV. The oracle regression suggests the feature set may be improving deployable calibration more than raw specialist complementarity.
 
+## 2026-07-01__cnn_regime_selective_calibration
+
+- Task: selective trajectory local calibration
+- Purpose: Tune logit floors, XGBoost weight/switch rows, Huber regularization, and bias shrink around the promoted selective trajectory recipe.
+- Config: `notebooks/modeling/09_validation/22_cnn_regime_selective_calibration.ipynb`; selective trajectory pseudo-top/regime/CNN stack, logit floors **0.08-0.22**, XGBoost switch powers **0.70-1.20**, XGBoost weight shrink **0.90-1.10**, Huber alphas **0.005** and **0.05**, and bias shrink **0.32-0.50**.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell descriptors, direct formation columns used only as fold-local pseudo-top labels, and hidden-test-safe selective within-well trajectory context.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; all candidates also scored on `analog_distance_fold`.
+- Model: best deployable candidate `logit_switch_floor18__well_bias_h0005_s40`; stress fallback `xgb_weight_soft_s110__well_bias_h0005_s45`; oracle diagnostic `oracle_continuous_weight`.
+- Primary metric: `logit_switch_floor18__well_bias_h0005_s40` strict-hybrid RMSE **11.5968**, improving the selective trajectory best **11.6129** by **0.0161**.
+- Secondary metrics: analog-distance stress RMSE **11.9062**, improving selective trajectory stress **11.9208** by **0.0146**. Stress-best deployable row reached **11.8448** stress RMSE with worse **11.6028** strict RMSE. Leakage-only continuous oracle remained **9.9643**.
+- Artifacts: feature preview, proxy quality, top-label summary, summary, fold metrics, regime diagnostics, zone/analog-bin summaries, well diagnostics, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-07-01__cnn_regime_selective_calibration/`.
+- Decision: promote as the active local package candidate. Do not mark the active objective complete because deployable local RMSE remains above **10**.
+- Notes: Very small Huber regularization (**0.005**) and bias shrink around **0.40** are now favored. Continued gate/bias calibration is delivering diminishing returns; future larger gains likely require another feature-family shift or Kaggle transfer validation.
+
 ## Entry Format
 
 ```text

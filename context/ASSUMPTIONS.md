@@ -660,3 +660,9 @@ The `20_cnn_regime_trajectory_expansion` notebook added wider rolling windows, e
 The `21_cnn_regime_trajectory_selective` notebook kept the calibrated recipe but added a smaller curated trajectory expansion: roll-9 centered summaries, early/late trend summaries, and a few progress-context interactions. The best deployable row, `logit_switch_floor15__well_bias_h005_s40`, scored **11.6129** strict RMSE and **11.9208** stress RMSE, improving the calibrated active best on both metrics. The oracle worsened to **9.9643**, but deployable calibration improved.
 
 **Modeling implication:** Selective trajectory features are useful; broad expansion is too noisy. Future feature work should stay curated and validate both strict and stress behavior rather than adding many trajectory summaries at once.
+
+### A97 - Selective trajectory calibration is now in diminishing returns
+
+The `22_cnn_regime_selective_calibration` notebook tuned the promoted selective trajectory recipe. The best row, `logit_switch_floor18__well_bias_h0005_s40`, scored **11.5968** strict RMSE and **11.9062** stress RMSE, improving the prior active best by **0.0161** strict RMSE and **0.0146** stress RMSE. The stress-best XGBoost weighted row reached **11.8448** stress RMSE but had worse strict RMSE.
+
+**Modeling implication:** Local gate and bias calibration still helps, but the gains are now small. The active recipe should use the calibrated selective trajectory row; further progress probably needs a new feature-family idea or Kaggle transfer validation.

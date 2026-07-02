@@ -328,6 +328,18 @@
 - Stress-best deployable row: **11.6282** strict / **11.8611** stress (`xgb_weight_soft_s100__well_bias_h005_s40`)
 - Run ID: `2026-07-01__cnn_regime_trajectory_selective`
 
+## [2026-07-01] - CNN-Regime Selective Trajectory Calibration
+### Added / Changed / Fixed / Removed
+- Added local calibration notebook around the promoted selective trajectory context recipe.
+- Tuned nearby logit floors, XGBoost switch powers, XGBoost weight shrink, Huber regularization, and well-bias shrink.
+- Added run artifacts, report, comparison row, and context notes for the new active local best.
+
+### Results
+- Local CV RMSE: **11.5968** (`logit_switch_floor18__well_bias_h0005_s40`)
+- Analog-distance stress RMSE: **11.9062**
+- Stress-best deployable row: **11.6028** strict / **11.8448** stress (`xgb_weight_soft_s110__well_bias_h0005_s45`)
+- Run ID: `2026-07-01__cnn_regime_selective_calibration`
+
 ---
 
 ## Milestone format

@@ -891,3 +891,17 @@
 **Rationale:** The selective candidate improves strict RMSE from **11.6724** to **11.6129** and stress RMSE from **11.9379** to **11.9208**. The stress-best row is interesting but gives up primary strict RMSE.
 **Consequences:** The active recipe should use curated trajectory context rather than the broad expansion or the simpler calibrated baseline.
 **Follow-up:** Package this candidate for Kaggle transfer testing or continue with carefully scoped trajectory feature refinement.
+
+---
+
+## D066 - Promote locally calibrated selective trajectory candidate
+
+**Date:** 2026-07-01
+**Decision:** Promote `logit_switch_floor18__well_bias_h0005_s40` from the selective trajectory calibration run as the active local candidate.
+**Alternatives considered:**
+- Keep the prior selective trajectory row because the gain is small.
+- Promote the stress-best XGBoost weighted row because it reaches **11.8448** stress RMSE.
+- Use the calibrated logit-switch row as the balanced strict/stress candidate.
+**Rationale:** The calibrated row improves strict RMSE from **11.6129** to **11.5968** and stress RMSE from **11.9208** to **11.9062**. The stress-best row is close on strict but still worse than the strict-best row.
+**Consequences:** The active recipe now uses floor **0.18**, Huber alpha **0.005**, and bias shrink **0.40** on the selective trajectory feature set.
+**Follow-up:** Package this candidate for Kaggle transfer testing or seek a new feature-family jump instead of another narrow calibration pass.
