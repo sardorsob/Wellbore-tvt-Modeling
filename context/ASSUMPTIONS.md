@@ -642,3 +642,9 @@ The `17_cnn_regime_multichannel_dilated` notebook expanded the CNN input from 3 
 The `18_cnn_regime_well_trajectory_context` notebook added hidden-test-safe within-well trajectory features from ordered target-row GR, typewell mismatch, distance, and local alignment diagnostics. The best deployable row, `logit_switch_floor20__well_bias_h015_s30`, scored **11.6868** strict RMSE and **11.9598** stress RMSE, a large improvement over the prior **12.4549** / **12.7649** active candidate. The leakage-only continuous oracle also improved to **9.8460**.
 
 **Modeling implication:** The model was missing long-range target-row context, not just a better local motif or gate. Trajectory context should become part of the active recipe, and the next high-leverage work should tune/package these features or build an optimized sequence-state model around the same signal.
+
+### A94 - Trajectory calibration gives a small follow-on gain
+
+The `19_cnn_regime_trajectory_calibration` notebook tuned logit-switch floors, XGBoost switch powers, XGBoost weight shrinkage, and conservative well-bias settings around the trajectory-context representation. The best row, `logit_switch_floor25__well_bias_h005_s35`, scored **11.6724** strict RMSE and **11.9379** stress RMSE. This improves the first trajectory-context candidate by **0.0144** strict RMSE and **0.0219** stress RMSE.
+
+**Modeling implication:** The current trajectory-context representation still benefits from calibration, but the gain is much smaller than the feature-family jump. Use the calibrated row as the active local best; the next large gain likely requires expanding or refining trajectory context itself.

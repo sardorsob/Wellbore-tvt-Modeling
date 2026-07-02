@@ -245,6 +245,7 @@ Immediate next work:
 | 2026-07-01 | CNN-regime neural gate | 12.4549 | Same active best remains; best neural-derived row **12.4886**, so gate-only tuning did not recover the oracle gap |
 | 2026-07-01 | CNN-regime multichannel dilated CNN | 12.4984 | Derivative channels worsened strict, stress, and oracle; stop simple derivative-channel variants |
 | 2026-07-01 | CNN-regime well trajectory context | 11.6868 | Large new active best; stress RMSE **11.9598**, oracle **9.8460**, package or tune trajectory features next |
+| 2026-07-01 | CNN-regime trajectory calibration | 11.6724 | New active best after calibrated logit floor **0.25**, Huber alpha **0.05**, shrink **0.35**; stress RMSE **11.9379** |
 
 ## Validation artifacts
 

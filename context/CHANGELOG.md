@@ -292,6 +292,18 @@
 - Oracle diagnostic RMSE: **9.8460**
 - Run ID: `2026-07-01__cnn_regime_well_trajectory_context`
 
+## [2026-07-01] - CNN-Regime Trajectory Calibration
+### Added / Changed / Fixed / Removed
+- Added focused calibration notebook around the successful trajectory-context representation.
+- Expanded logit-switch floors, XGBoost switch powers, and conservative well-bias shrinkage/regularization.
+- Added run artifacts, report, comparison row, and context notes for the new active local best.
+
+### Results
+- Local CV RMSE: **11.6724** (`logit_switch_floor25__well_bias_h005_s35`)
+- Analog-distance stress RMSE: **11.9379**
+- Stress-best deployable row: **11.7019** strict / **11.9158** stress (`xgb_weight_soft_s100__well_bias_h005_s35`)
+- Run ID: `2026-07-01__cnn_regime_trajectory_calibration`
+
 ---
 
 ## Milestone format

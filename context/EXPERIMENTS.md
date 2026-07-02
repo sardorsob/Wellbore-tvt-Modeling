@@ -1064,6 +1064,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: promote as the active local package candidate. Do not mark the active objective complete because deployable local RMSE remains above **10**.
 - Notes: This is the largest improvement since the CNN/regime branch began. The failed GRU sequence attempt suggests recurrent sequence models need a separate optimized notebook, but simple trajectory feature context is immediately useful and should be packaged or carefully tuned next.
 
+## 2026-07-01__cnn_regime_trajectory_calibration
+
+- Task: trajectory-context gate and well-bias calibration
+- Purpose: Tune deployable logit-switch floors, XGBoost switch powers, and conservative well-bias shrinkage around the successful well-trajectory context representation.
+- Config: `notebooks/modeling/09_validation/19_cnn_regime_trajectory_calibration.ipynb`; trajectory-context pseudo-top/regime/CNN stack, expanded logit floor grid **0.05-0.35**, XGBoost switch powers **0.50-1.40**, XGBoost weight shrink values **0.75-1.15**, and Huber well-bias alphas **0.05** and **0.15** with shrink **0.25-0.50**.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell descriptors, direct formation columns used only as fold-local pseudo-top labels, and hidden-test-safe within-well trajectory context.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; all candidates also scored on `analog_distance_fold`.
+- Model: best deployable candidate `logit_switch_floor25__well_bias_h005_s35`; oracle diagnostic `oracle_continuous_weight`.
+- Primary metric: `logit_switch_floor25__well_bias_h005_s35` strict-hybrid RMSE **11.6724**, improving the trajectory-context best **11.6868** by **0.0144**.
+- Secondary metrics: analog-distance stress RMSE **11.9379**, improving trajectory-context stress **11.9598** by **0.0219**. Stress-best deployable row `xgb_weight_soft_s100__well_bias_h005_s35` reached **11.9158** stress RMSE with worse **11.7019** strict RMSE. Leakage-only continuous oracle stayed **9.8460**.
+- Artifacts: feature preview, proxy quality, top-label summary, summary, fold metrics, regime diagnostics, zone/analog-bin summaries, well diagnostics, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-07-01__cnn_regime_trajectory_calibration/`.
+- Decision: promote as the active local package candidate. Do not mark the active objective complete because deployable local RMSE remains above **10**.
+- Notes: Calibration provides a small but real gain after the major trajectory-context jump. The best strict candidate uses a slightly higher logit floor (**0.25**), lower Huber alpha (**0.05**), and moderate bias shrink (**0.35**).
+
 ## Entry Format
 
 ```text

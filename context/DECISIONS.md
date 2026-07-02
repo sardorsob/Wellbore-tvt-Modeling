@@ -849,3 +849,17 @@
 **Rationale:** Well-trajectory context improves strict RMSE from **12.4549** to **11.6868**, stress RMSE from **12.7649** to **11.9598**, and leakage-only oracle RMSE from **10.6114** to **9.8460**. This is a representation-level improvement, not a tiny gate or shrinkage gain.
 **Consequences:** The active recipe should include trajectory context features. The recurrent GRU idea should only return in a separate optimized implementation, not inside the full pseudo-top/CNN notebook loop.
 **Follow-up:** Package this candidate for Kaggle transfer testing or run a focused trajectory-context tuning notebook.
+
+---
+
+## D063 - Promote calibrated trajectory-context candidate
+
+**Date:** 2026-07-01
+**Decision:** Promote `logit_switch_floor25__well_bias_h005_s35` from the trajectory calibration run as the active local candidate.
+**Alternatives considered:**
+- Keep the first trajectory-context candidate because most of the gain came from features, not calibration.
+- Promote the stress-best XGBoost weight row because it reaches **11.9158** stress RMSE.
+- Use the calibrated logit-switch candidate as the balanced strict/stress package.
+**Rationale:** The calibrated row improves strict RMSE from **11.6868** to **11.6724** and stress RMSE from **11.9598** to **11.9379**. The stress-best row gives up too much strict RMSE to replace it.
+**Consequences:** Use the calibrated trajectory-context candidate as the active local best.
+**Follow-up:** Package this candidate for Kaggle transfer testing or tune the trajectory feature construction itself.
