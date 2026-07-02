@@ -654,3 +654,9 @@ The `19_cnn_regime_trajectory_calibration` notebook tuned logit-switch floors, X
 The `20_cnn_regime_trajectory_expansion` notebook added wider rolling windows, expanding context, and early/late within-well trend features. The best deployable row scored **11.7138** strict RMSE and **11.8366** stress RMSE. This improves stress versus the active **11.9379**, but worsens strict versus **11.6724** and worsens the leakage-only oracle from **9.8460** to **10.0207**.
 
 **Modeling implication:** Extra broad trajectory summaries are not a clean representation improvement. They may stabilize analog-distance stress splits, but they add enough noise to hurt the primary strict split. Keep the simpler calibrated trajectory feature set as active.
+
+### A96 - Curated trajectory expansion improves deployable strict RMSE
+
+The `21_cnn_regime_trajectory_selective` notebook kept the calibrated recipe but added a smaller curated trajectory expansion: roll-9 centered summaries, early/late trend summaries, and a few progress-context interactions. The best deployable row, `logit_switch_floor15__well_bias_h005_s40`, scored **11.6129** strict RMSE and **11.9208** stress RMSE, improving the calibrated active best on both metrics. The oracle worsened to **9.9643**, but deployable calibration improved.
+
+**Modeling implication:** Selective trajectory features are useful; broad expansion is too noisy. Future feature work should stay curated and validate both strict and stress behavior rather than adding many trajectory summaries at once.

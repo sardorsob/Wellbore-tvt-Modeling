@@ -1092,6 +1092,20 @@ This file is the human-readable registry for reportable runs.
 - Decision: diagnostic only. Do not replace the active calibrated trajectory candidate because strict RMSE and oracle both regress.
 - Notes: The extra trajectory features look stress-robust but too noisy for the primary split. Keep the simpler calibrated trajectory context as active, and consider a future stress-aware ensemble only if Kaggle public transfer rewards the stress metric more than strict CV.
 
+## 2026-07-01__cnn_regime_trajectory_selective
+
+- Task: selective well-trajectory context expansion
+- Purpose: Test a curated subset of wider trajectory features after broad expansion improved stress but hurt strict RMSE and oracle behavior.
+- Config: `notebooks/modeling/09_validation/21_cnn_regime_trajectory_selective.ipynb`; calibrated trajectory-context pseudo-top/regime/CNN stack, selective roll-9 centered context, early/late trend summaries with finite fallback, progress/context interactions, robust all-NaN feature standardization, and the calibrated gate/bias grid.
+- Data version: local raw train horizontal wells, strict fold assignments, typewell descriptors, direct formation columns used only as fold-local pseudo-top labels, and hidden-test-safe within-well trajectory context.
+- Split / CV: primary evaluation on `strict_hybrid_fold`; all candidates also scored on `analog_distance_fold`.
+- Model: best deployable candidate `logit_switch_floor15__well_bias_h005_s40`; oracle diagnostic `oracle_continuous_weight`.
+- Primary metric: `logit_switch_floor15__well_bias_h005_s40` strict-hybrid RMSE **11.6129**, improving the active calibrated trajectory best **11.6724** by **0.0594**.
+- Secondary metrics: analog-distance stress RMSE **11.9208**, improving active stress **11.9379** by **0.0171**. Stress-best deployable row `xgb_weight_soft_s100__well_bias_h005_s40` reached **11.8611** stress RMSE with worse **11.6282** strict RMSE. Leakage-only continuous oracle worsened from **9.8460** to **9.9643**.
+- Artifacts: feature preview, proxy quality, top-label summary, summary, fold metrics, regime diagnostics, zone/analog-bin summaries, well diagnostics, findings, markdown report, model comparison row, and run bundle under `artifacts/logs/runs/2026-07-01__cnn_regime_trajectory_selective/`.
+- Decision: promote as the active local package candidate. Do not mark the active objective complete because deployable local RMSE remains above **10**.
+- Notes: Selective trajectory context is better than both the simpler calibrated run and the broad expansion for primary strict CV. The oracle regression suggests the feature set may be improving deployable calibration more than raw specialist complementarity.
+
 ## Entry Format
 
 ```text

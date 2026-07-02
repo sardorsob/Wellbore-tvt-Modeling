@@ -877,3 +877,17 @@
 **Rationale:** The expanded run worsens strict RMSE (**11.7138** vs **11.6724**) and oracle RMSE (**10.0207** vs **9.8460**) while improving stress. The active selection standard requires primary strict improvement unless a public/Kaggle check proves stress transfer matters more.
 **Consequences:** Keep the simpler calibrated trajectory recipe active. Treat expanded trajectory features as a stress diagnostic, not the package default.
 **Follow-up:** Package the active calibrated trajectory candidate or test a more selective trajectory feature subset instead of broad expansion.
+
+---
+
+## D065 - Promote selective trajectory context as active candidate
+
+**Date:** 2026-07-01
+**Decision:** Promote `logit_switch_floor15__well_bias_h005_s40` from the selective trajectory context run as the active local candidate.
+**Alternatives considered:**
+- Keep the calibrated trajectory candidate because its oracle is stronger.
+- Promote the stress-best XGBoost weight row because it reaches **11.8611** stress RMSE.
+- Use the selective logit-switch row as the balanced strict/stress package.
+**Rationale:** The selective candidate improves strict RMSE from **11.6724** to **11.6129** and stress RMSE from **11.9379** to **11.9208**. The stress-best row is interesting but gives up primary strict RMSE.
+**Consequences:** The active recipe should use curated trajectory context rather than the broad expansion or the simpler calibrated baseline.
+**Follow-up:** Package this candidate for Kaggle transfer testing or continue with carefully scoped trajectory feature refinement.

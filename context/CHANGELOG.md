@@ -316,6 +316,18 @@
 - Oracle diagnostic RMSE: **10.0207**
 - Run ID: `2026-07-01__cnn_regime_trajectory_expansion`
 
+## [2026-07-01] - CNN-Regime Selective Trajectory Context
+### Added / Changed / Fixed / Removed
+- Added selective trajectory-context notebook with curated roll-9 centered features, early/late trend summaries, and progress interactions.
+- Kept calibrated gates and robust all-NaN standardization from the prior trajectory runs.
+- Added run artifacts, report, comparison row, and context notes for the new active local best.
+
+### Results
+- Local CV RMSE: **11.6129** (`logit_switch_floor15__well_bias_h005_s40`)
+- Analog-distance stress RMSE: **11.9208**
+- Stress-best deployable row: **11.6282** strict / **11.8611** stress (`xgb_weight_soft_s100__well_bias_h005_s40`)
+- Run ID: `2026-07-01__cnn_regime_trajectory_selective`
+
 ---
 
 ## Milestone format

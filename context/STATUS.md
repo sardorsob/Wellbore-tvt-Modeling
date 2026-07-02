@@ -247,6 +247,7 @@ Immediate next work:
 | 2026-07-01 | CNN-regime well trajectory context | 11.6868 | Large new active best; stress RMSE **11.9598**, oracle **9.8460**, package or tune trajectory features next |
 | 2026-07-01 | CNN-regime trajectory calibration | 11.6724 | New active best after calibrated logit floor **0.25**, Huber alpha **0.05**, shrink **0.35**; stress RMSE **11.9379** |
 | 2026-07-01 | CNN-regime trajectory expansion | 11.7138 | Diagnostic only: stress improves to **11.8366**, but strict and oracle regress |
+| 2026-07-01 | CNN-regime selective trajectory context | 11.6129 | New active best with curated trajectory features; stress RMSE **11.9208**, stress-best fallback **11.8611** |
 
 ## Validation artifacts
 
